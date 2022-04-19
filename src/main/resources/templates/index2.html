@@ -1,0 +1,31 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Thymeleaf</title>
+</head>
+<body>
+<div>
+    <span>访问 Model：</span><span th:text="${person.testname}"></span>
+</div>
+<div>
+    <span>访问列表</span>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>描述</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="human : ${list}">
+            <td th:text="${human.testid}"></td>
+            <td th:text="${human.testname}"></td>
+            <td th:text="${human.testdesc}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
