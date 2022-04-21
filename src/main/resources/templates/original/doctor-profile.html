@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tabib Apps web | Admin Dashboard Template</title>
+    <!-- Base Styling  -->
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="main-wrapper" class="show">
+
+
+        <!-- start logo components -->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="index.html"> <img class="logo-tabib" src="picture/download.png" alt=""></a>
+                <a href="index.html"><img class="brand-title" src="picture/logo.png" alt=""></a>
+            </div>
+        </div>
+        <!-- End logo components -->
+
+        <!-- start section sidebar -->
+        <aside class="left-panel nicescroll-box">
+            <nav class="navigation">
+                <ul class="list-unstyled main-menu">
+                    <li class="has-submenu">
+                        <a href="index.html">
+                            <i class="fas fa-th-large"></i>
+                            <span class="nav-label">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu active">
+                        <a href="#" class="has-arrow mm-collapsed">
+                            <i class="fas fa-user-md"></i>
+                            <span class="nav-label">Doctors</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="add-doctor.html">Add Doctor</a></li>
+                            <li><a href="doctor-list.html">All Doctors</a></li>
+                            <li> <a href="">Doctors Profile</a> </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="has-arrow mm-collapsed">
+                            <i class="fas fa-users"></i>
+                            <span class="nav-label">Patients</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="new-patient.html">New Patient</a></li>
+                            <li><a href="all-patients.html">All Patients</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="new-appointment.html">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span class="nav-label">Appointment</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="has-arrow mm-collapsed">
+                            <i class="fas fa-book-medical"></i>
+                            <span class="nav-label">Prescriptions</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="new-prescription.html">New Prescription</a></li>
+                            <li><a href="all-prescriptions.html">All Prescriptions</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="add-drug.html">
+                            <i class="fas fa-pills"></i>
+                            <span class="nav-label">Add Drug</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="has-arrow mm-collapsed">
+                            <i class="fas fa-heartbeat"></i>
+                            <span class="nav-label">Tests</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="add-test.html">Add Test</a></li>
+                            <li><a href="all-tests.html">All Tests</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="calendar.html">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span class="nav-label">calendar</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="reports.html">
+                            <i class="fas fa-chart-pie"></i>
+                            <span class="nav-label">Reports</span>
+                        </a>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="has-arrow mm-collapsed">
+                            <i class="fas fa-file-invoice"></i>
+                            <span class="nav-label">Billing</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="create-invoice.html">Create Invoice</a></li>
+                            <li><a href="billing-list.html">Billing List</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="has-arrow mm-collapsed">
+                            <i class="fas fa-cog"></i>
+                            <span class="nav-label">Settings</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="doctor-settings.html">Doctor Settings</a></li>
+                            <li><a href="prescription-settings.html">Prescription Settings</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#" class="has-arrow mm-collapsed">
+                            <i class="fa fa-tag"></i>
+                            <span class="nav-label">Authentication</span>
+                        </a>
+                        <ul class="list-unstyled mm-collapse">
+                            <li><a href="empty-page.html">Empty Page</a></li>
+                            <li><a href="page-login.html">Login simple</a></li>
+                            <li><a href="page-login-one.html">Login with Bg Image</a></li>
+                            <li><a href="page-register.html">Register simple</a></li>
+                            <li><a href="page-register-one.html">Register with Bg Image</a></li>
+                            <li><a href="page-lock-screen.html">Lock Screen</a></li>
+                            <li><a href="page-forgot-password.html">Page forgot password</a></li>
+                            <li><a href="page-error-404.html">Error 404</a></li>
+                            <li><a href="page-error-500.html">Error 500</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-widgets">
+                <div class="top-sidebar box-shadow mx-25 m-b-30 p-b-20 text-center">
+                    <a href="new-appointment.html">
+                        <img src="picture/appointement.svg" class="side-img" alt="img">
+                    </a>
+                    <a href="#">
+                        <h4 class="text-primary mb-0">Make an Appointments</h4>
+                    </a>
+                </div>
+                <div class="copyright text-center">
+                    <p class="mb-0"> Tabib Dashboard</p>
+                    <p class="mb-0"> © 2021 </p>
+                </div>
+            </div>
+        </aside>
+        <!-- End section sidebar -->
+
+
+        <!-- start section header -->
+        <div class="header">
+            <header class="top-head container-fluid">
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="line"></span><span class="line"></span><span class="line"></span>
+                    </div>
+                    <div class="left-header content-header__menu">
+                        <ul class="list-unstyled">
+                            <li class="nav-link btn">
+                                <a href="#"><i class="far fa-calendar-check"></i> <span> Make an appointment</span></a>
+                            </li>
+                            <li class="nav-link btn">
+                                <a href="#"><i class="far fa-file-alt"></i> <span> Write a prescription</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="fullscreen notification_dropdown">
+                        <div class="full">
+                            <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">
+                                <i class="fas fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="notification_dropdown">
+                        <div class="cart-wrapper">
+                            <div class="cart-icon">
+                                <a class="cart-control" href="#">
+                                    <i class="fas fa-bell"></i>
+                                    <div class="pulse-css"></div>
+                                </a>
+                            </div>
+                            <div class="cart-dropdown-form dropdown-container">
+                                <div class="form-content">
+                                    <div class="widget-media main-scroll nicescroll-box">
+                                        <ul class="timeline">
+                                            <li>
+                                                <h6 class="mb-0">Notitications</h6>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-panel">
+                                                    <div class="media mr-2">
+                                                        <img alt="image" src="picture/1.jpg">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-1 ">Incoming Message</h6>
+                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-panel">
+                                                    <div class="media mr-2 media-info">
+                                                        <img alt="image" src="picture/1.jpg">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-1">You got a new email</h6>
+                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-panel">
+                                                    <div class="media mr-2 media-success">
+                                                        <img alt="image" src="picture/1.jpg">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-1">Hello world!</h6>
+                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-panel">
+                                                    <div class="media mr-2">
+                                                        <img alt="image" src="picture/1.jpg">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-1">Beep Boop. Beee...</h6>
+                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-panel">
+                                                    <div class="media mr-2 media-danger">
+                                                        <!-- KG -->
+                                                        <img alt="image" src="picture/1.jpg">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-1">Hello world!</h6>
+                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="timeline-panel">
+                                                    <div class="media mr-2 media-primary">
+                                                        <img alt="image" src="picture/1.jpg">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mb-1">Incoming Message</h6>
+                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a class="all-notification btn btn-primary" href="#">
+                                        See all notifications
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-account-wrapper">
+                        <div class="account-wrapper">
+                            <div class="account-control">
+                                <a class="login header-profile" href="#" title="Sign in">
+                                    <div class="header-info">
+                                        <span>Dr Roberts</span>
+                                        <small>Admin</small>
+                                    </div>
+                                    <img src="picture/client.jpg" alt="people">
+                                </a>
+                                <div class="account-dropdown-form dropdown-container">
+                                    <div class="form-content">
+                                        <a href="doctor-settings.html">
+                                            <i class="far fa-user"></i>
+                                            <span class="ml-2">Profile</span>
+                                        </a>
+                                        <a href="#">
+                                            <i class="far fa-envelope"></i>
+                                            <span class="ml-2">Inbox</span>
+                                        </a>
+                                        <a href="page-login.html">
+                                            <i class="fas fa-sign-in-alt"></i>
+                                            <span class="ml-2">Logout </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <!-- End section header -->
+
+
+        <!-- start section content -->
+        <div class="content-body">
+            <div class="warper container-fluid">
+                <div class="main_container">
+
+
+                    <div class="row page-titles mx-0">
+                        <div class="col-sm-6 p-md-0">
+                            <div class="welcome-text">
+                                <h4 class="text-primary">Doctor Profile & Settings</h4>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript:;">Doctor Profile</a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between doctor-info-details">
+                                        <div class="d-flex left-content">
+                                            <div class="media align-self-start">
+                                                <img alt="image" class="rounded-circle shadow" width="90" src="picture/client.jpg">
+                                                <div class="pulse-css"></div>
+                                            </div>
+                                            <div class="media-body">
+                                                <h2 class="mb-2">Dr. Michael Sullivan</h2>
+                                                <p class="mb-md-2 mb-sm-4 mb-2">Endocrinologist</p>
+                                                <div class="star-review">
+                                                    <i class="fa fa-star text-orange"></i>
+                                                    <i class="fa fa-star text-orange"></i>
+                                                    <i class="fa fa-star text-orange"></i>
+                                                    <i class="fa fa-star text-orange"></i>
+                                                    <i class="fa fa-star text-gray"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group btn-group-style-1">
+                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <div class="form-content">
+                                                <a href="#">
+                                                    <span class="ml-2">Appointment</span>
+                                                </a>
+                                                <a href="#">
+                                                    <span class="ml-2">Edit</span>
+                                                </a>
+                                                <a href="#">
+                                                    <span class="ml-2">Delete </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="doctor-info-content">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item col-md-4" role="presentation">
+                                        <button class="nav-link  active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">
+                                            Short Biography
+                                        </button>
+                                    </li>
+                                    <li class="nav-item col-md-4" role="presentation">
+                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">
+                                            Patient
+                                        </button>
+                                    </li>
+                                    <li class="nav-item col-md-4" role="presentation">
+                                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Settings</button>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="card m-t-30">
+                                            <div class="card-body">
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                                                </p>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                                                </p>
+                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
+                                                    the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="card m-t-30">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="items p-4 mb-4">
+                                                            <div class="bootstrap-media">
+                                                                <div class="d-flex media">
+                                                                    <img class="mr-3 img-fluid rounded" width="60" src="picture/user1.jpg" alt="DexignZone">
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            <h4 class="mt-0 mb-1">Pt. Airi Satou </h4>
+                                                                        </a>
+                                                                        <p class="mb-0">Rabat, Maroc</p>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-style-1">
+                                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="fas fa-ellipsis-v"></i>
+                                                                        </button>
+                                                                        <div class="dropdown-menu">
+                                                                            <div class="form-content">
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Edit</span>
+                                                                                </a>
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Delete </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 ">
+                                                        <div class="items p-4 mb-4">
+                                                            <div class="bootstrap-media">
+                                                                <div class="d-flex media">
+                                                                    <img class="mr-3 img-fluid rounded" width="60" src="picture/user2.jpg" alt="DexignZone">
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            <h4 class="mt-0 mb-1">Pt. Airi Satou </h4>
+                                                                        </a>
+                                                                        <p class="mb-0">Rabat, Maroc</p>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-style-1">
+                                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="fas fa-ellipsis-v"></i>
+                                                                        </button>
+                                                                        <div class="dropdown-menu">
+                                                                            <div class="form-content">
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Edit</span>
+                                                                                </a>
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Delete </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 ">
+                                                        <div class="items p-4 mb-4">
+                                                            <div class="bootstrap-media">
+                                                                <div class="d-flex media">
+                                                                    <img class="mr-3 img-fluid rounded" width="60" src="picture/user3.jpg" alt="DexignZone">
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            <h4 class="mt-0 mb-1">Pt. Airi Satou </h4>
+                                                                        </a>
+                                                                        <p class="mb-0">Rabat, Maroc</p>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-style-1">
+                                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="fas fa-ellipsis-v"></i>
+                                                                        </button>
+                                                                        <div class="dropdown-menu">
+                                                                            <div class="form-content">
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Edit</span>
+                                                                                </a>
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Delete </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="items p-4 mb-4">
+                                                            <div class="bootstrap-media">
+                                                                <div class="d-flex media">
+                                                                    <img class="mr-3 img-fluid rounded" width="60" src="picture/user4.jpg" alt="DexignZone">
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            <h4 class="mt-0 mb-1">Pt. Airi Satou </h4>
+                                                                        </a>
+                                                                        <p class="mb-0">Rabat, Maroc</p>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-style-1">
+                                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="fas fa-ellipsis-v"></i>
+                                                                        </button>
+                                                                        <div class="dropdown-menu">
+                                                                            <div class="form-content">
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Edit</span>
+                                                                                </a>
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Delete </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 ">
+                                                        <div class="items p-4 mb-4">
+                                                            <div class="bootstrap-media">
+                                                                <div class="d-flex media">
+                                                                    <img class="mr-3 img-fluid rounded" width="60" src="picture/user5.jpg" alt="DexignZone">
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            <h4 class="mt-0 mb-1">Pt. Airi Satou </h4>
+                                                                        </a>
+                                                                        <p class="mb-0">Rabat, Maroc</p>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-style-1">
+                                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="fas fa-ellipsis-v"></i>
+                                                                        </button>
+                                                                        <div class="dropdown-menu">
+                                                                            <div class="form-content">
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Edit</span>
+                                                                                </a>
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Delete </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 ">
+                                                        <div class="items p-4 mb-4">
+                                                            <div class="bootstrap-media">
+                                                                <div class="d-flex media">
+                                                                    <img class="mr-3 img-fluid rounded" width="60" src="picture/user6.jpg" alt="DexignZone">
+                                                                    <div class="media-body">
+                                                                        <a href="#">
+                                                                            <h4 class="mt-0 mb-1">Pt. Airi Satou </h4>
+                                                                        </a>
+                                                                        <p class="mb-0">Rabat, Maroc</p>
+                                                                    </div>
+                                                                    <div class="btn-group btn-group-style-1">
+                                                                        <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                            <i class="fas fa-ellipsis-v"></i>
+                                                                        </button>
+                                                                        <div class="dropdown-menu">
+                                                                            <div class="form-content">
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Edit</span>
+                                                                                </a>
+                                                                                <a href="#">
+                                                                                    <span class="ml-2">Delete </span>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                        <div class="row m-t-30 m-l-0 m-r-0">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Personal Information</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="basic-form">
+                                                        <form>
+                                                            <div class="row">
+                                                                <div class="col-xl-4">
+                                                                    <div class="form-group row widget-3">
+                                                                        <div class="form-input">
+                                                                            <label class="labeltest" for="file-ip-1">
+                                                                                <span> Drop image here or click to
+                                                                                    upload. </span>
+                                                                            </label>
+                                                                            <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
+                                                                            <div class="preview">
+                                                                                <img id="file-ip-1-preview" src="https://www.17sucai.com/preview/776298/2021-08-30/tabib/doctor-profile.html" alt="img">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-4">
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" placeholder="First Name">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" placeholder="Last Name">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="email" class="form-control" placeholder="Email">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" placeholder="Mobile No.">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-4">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control form-select">
+                                                                            <option>Choose A Gnder</option>
+                                                                            <option>Female</option>
+                                                                            <option>Male</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <input type="text" class="form-control" placeholder="Date Of Birth">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control form-select">
+                                                                            <option>Languages</option>
+                                                                            <option>Arabic</option>
+                                                                            <option>English</option>
+                                                                            <option>French</option>
+                                                                            <option>German</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <select class="form-control form-select">
+                                                                            <option>Nationality</option>
+                                                                            <option>Maroc</option>
+                                                                            <option>Algerier</option>
+                                                                            <option>Tunisie</option>
+                                                                            <option>Egypt</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-4">
+                                                                </div>
+                                                                <div class="col-xl-4">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-12">
+                                                                            <select class="form-control form-select">
+                                                                                <option>City</option>
+                                                                                <option>Rabat</option>
+                                                                                <option>Kenitra</option>
+                                                                                <option>Casablanca</option>
+                                                                                <option>Marakesh</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-4">
+                                                                    <div class="form-group row">
+                                                                        <div class="col-lg-12">
+                                                                            <input type="text" class="form-control" placeholder="Zip">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-4">
+                                                                </div>
+                                                                <div class="col-xl-8">
+                                                                    <div class="form-group">
+                                                                        <select class="form-control ">
+                                                                            <option>User role</option>
+                                                                            <option>Surgery</option>
+                                                                            <option>Gastroenterologist</option>
+                                                                            <option>Endocrinologist</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-4">
+                                                                    <div class="form-group">
+                                                                        <textarea class="form-control" placeholder="Address" rows="4"></textarea>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-8">
+                                                                    <div class="form-group">
+                                                                        <textarea class="form-control" placeholder="Bio:" rows="4"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group text-right">
+                                                                        <button type="submit" class="btn btn-primary float-end">
+                                                                            Submit</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title">Medical Information</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="basic-form">
+                                                        <form>
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">Main
+                                                                            specialization</label>
+                                                                        <select class="form-control form-select">
+                                                                            <option>Type 1 Diabetes</option>
+                                                                            <option>Multiple Sclerosis</option>
+                                                                            <option>Rheumatoid Arthritis</option>
+                                                                            <option>Allergies & Asthma</option>
+                                                                        </select>
+                                                                        <div class="col-lg-12">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">Secondary
+                                                                            specialization</label>
+                                                                        <select class="form-control form-select">
+                                                                            <option>Secondary specialization</option>
+                                                                            <option>Celiac Disease</option>
+                                                                            <option>cancer</option>
+                                                                            <option>Catarrh</option>
+                                                                            <option>Conjunctivitis</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label"> Medical Education
+                                                                        </label>
+                                                                        <select class="form-control form-select">
+                                                                            <option>Medical University</option>
+                                                                            <option>Medical College</option>
+                                                                            <option>Nurse School</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-xl-6">
+                                                                    <div class="form-group">
+                                                                        <label class="form-label">Period</label>
+                                                                        <input type="text" class="form-control" placeholder="Period">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group text-right">
+                                                                <button type="submit" class="btn btn-primary float-end ">Submit</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4 class="card-title"> Change Password & User Name </h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form>
+                                                        <div class="row g-3 align-items-center">
+                                                            <div class="col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">User Name</label>
+                                                                    <input type="text" class="form-control" placeholder="User Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">Password</label>
+                                                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">Confirm Password</label>
+                                                                    <input type="password" class="form-control" id="cnpassword" placeholder="Confirm Password">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-xl-6">
+                                                                <div class="form-group">
+                                                                    <label class="form-label">User role</label>
+                                                                    <select class="form-control ">
+                                                                        <option>User role</option>
+                                                                        <option>Surgery</option>
+                                                                        <option>Gastroenterologist</option>
+                                                                        <option>Endocrinologist</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="submit" class="btn btn-primary float-end">
+                                                            Submit</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card shadow">
+                                <div class="card-header fix-card">
+                                    <div class="row">
+                                        <div class="col-8">
+                                            <h4 class="card-title">Appointment </h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table id="example1" class="display nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>Time</th>
+                                                    <th>Date</th>
+                                                    <th>Patient</th>
+                                                    <th>Address</th>
+                                                    <th>Phone</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        07:00
+                                                    </td>
+                                                    <td>01 Jun 2021</td>
+                                                    <td> Michael R Sheets </td>
+                                                    <td> 1468 Selah Way - Rabat</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        07:30
+                                                    </td>
+                                                    <td>02 Jun 2021</td>
+                                                    <td> Eric J Lane</td>
+                                                    <td>1468 Selah Way - Agadir</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        08:00
+                                                    </td>
+                                                    <td>03 Jun 2021</td>
+                                                    <td> Pamela R Matheney </td>
+                                                    <td>1468 Selah Way - Casablanca</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        08:30
+                                                    </td>
+                                                    <td>04 Jun 2021</td>
+                                                    <td> Chelsea S Coy
+                                                    </td>
+                                                    <td>1468 Selah Way - Fes </td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        09:00
+                                                    </td>
+                                                    <td>05 Jun 2021</td>
+                                                    <td> Michael R Sheets
+                                                    </td>
+                                                    <td> 1468 Selah Way - Oujda</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        09:30
+                                                    </td>
+                                                    <td>06 Jun 2021</td>
+                                                    <td>Eric J Lane</td>
+                                                    <td>1468 Selah Way - Marakesh</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 10:00 </td>
+                                                    <td>07 Jun 2021</td>
+                                                    <td> Pamela R Matheney </td>
+                                                    <td>1468 Selah Way - Lexington</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 10:30 </td>
+                                                    <td>08 Jun 2021</td>
+                                                    <td> Chelsea S Coy </td>
+                                                    <td>1468 Selah Way - Bakersfield </td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 11:00 </td>
+                                                    <td>09 Jun 2021</td>
+                                                    <td> Michael R Sheets </td>
+                                                    <td> 1468 Selah Way - Brattleboro</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 11:30 </td>
+                                                    <td>10 Jun 2021</td>
+                                                    <td> Eric J Lane</td>
+                                                    <td>1468 Selah Way - Laayoune</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 09:00 </td>
+                                                    <td>11 Jun 2021</td>
+                                                    <td> Pamela R Matheney </td>
+                                                    <td>2320 May Street - Lexington</td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                                <tr>
+                                                    <td> 09:00 </td>
+                                                    <td>12 Jun 2021</td>
+                                                    <td> Chelsea S Coy </td>
+                                                    <td>3342 Lowndes Hill - Berrechid </td>
+                                                    <td>833 - 844 - 0100</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Notifications</h4>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="widget-timline list-unstyled">
+                                        <li>
+                                            <div class="timeline-dots border-success"></div>
+                                            <h4 class="mb-1">Dr. Roberts Send you Photo</h4>
+                                            <p class="mb-0">12 aout 2021</p>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-dots border-danger"></div>
+                                            <h4 class="mb-1">Reminder : Opertion Time!</h4>
+                                            <p class="mb-0">12 aout 2021</p>
+                                        </li>
+                                        <li>
+                                            <div class="timeline-dots border-primary"></div>
+                                            <h4 class="mb-1">Patient Call</h4>
+                                            <p class="mb-0">12 aout 2021</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Work Progress </h4>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="widget-progress list-unstyled">
+                                        <li>
+                                            <h4 class="mb-1">OPD</h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h4 class="mb-1">Operations</h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-info" role="progressbar" style="width: 35%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">35%</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h4 class="mb-1">Patient visit</h4>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-secondary" role="progressbar" style="width: 45%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">45%</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- End section content -->
+
+
+    <!-- start section footer -->
+    <div class="footer ">
+        <div class="copyright ">
+            <p class="mb-0">Copyright &copy; 2021.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+        </div>
+    </div>
+    <!-- End section footer -->
+
+
+    <!-- JQuery v3.5.1 -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- popper js -->
+    <script src="js/popper.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Moment -->
+    <script src="js/moment.min.js"></script>
+
+    <!-- Date Range Picker -->
+    <script src="js/daterangepicker.min.js"></script>
+
+    <!-- Datatable -->
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/init-tdatatable.js"></script>
+
+    <!-- Main Custom JQuery -->
+    <script src="js/toggleFullScreen.js"></script>
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
