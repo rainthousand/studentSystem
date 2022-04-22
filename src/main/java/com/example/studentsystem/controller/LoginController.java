@@ -69,7 +69,7 @@ public class LoginController {
             session.setMaxInactiveInterval(7200);
 //            System.out.println(session.getAttribute("registerstatus"));
             String adminURL = URLs.get(0);
-            return "redirect:/admin";
+            return "redirect:"+adminURL;
         } else if (currUser.getRole().equals(1)) {
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
@@ -79,7 +79,7 @@ public class LoginController {
             session.setMaxInactiveInterval(7200);
 //            System.out.println(session.getAttribute("registerstatus"));
             String teacherURL = URLs.get(1);
-            return "redirect:/teacher";
+            return "redirect:"+teacherURL;
         } else if (currUser.getRole().equals(2)) {
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
@@ -89,7 +89,7 @@ public class LoginController {
             session.setMaxInactiveInterval(7200);
 //            System.out.println(session.getAttribute("registerstatus"));
             String studentURL = URLs.get(2);
-            return "redirect:/student";
+            return "redirect:"+studentURL;
         }
 
         return "/page-login";
