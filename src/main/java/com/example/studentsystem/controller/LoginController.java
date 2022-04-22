@@ -25,7 +25,6 @@ public class LoginController {
     @Resource(name = "feeServiceImpl")
     private FeeService feeService;
 
-
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String toLogin() throws Exception {
         return "page-login";
@@ -64,7 +63,7 @@ public class LoginController {
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
-            session.setAttribute("registerstatus", userSessionInfo.getRegisterStatus());
+            session.setAttribute("registerstatus", 0);
             //设置session过期时间为7200s 默认是1800s，指的是在不进行任何操作的情况下，超时时间，（即若    处于操作时间期间的话，则自动延长超时时间）
             session.setMaxInactiveInterval(7200);
 //            System.out.println(session.getAttribute("registerstatus"));
@@ -74,7 +73,7 @@ public class LoginController {
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
-            session.setAttribute("registerstatus", userSessionInfo.getRegisterStatus());
+            session.setAttribute("registerstatus", 0);
             //设置session过期时间为7200s 默认是1800s，指的是在不进行任何操作的情况下，超时时间，（即若    处于操作时间期间的话，则自动延长超时时间）
             session.setMaxInactiveInterval(7200);
 //            System.out.println(session.getAttribute("registerstatus"));
