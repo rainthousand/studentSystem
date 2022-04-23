@@ -13,6 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,6 +48,7 @@ public class LoginController {
         units.add(teacherUnit);
         units.add(studentUnit);
         List<String> URLs = units.accept(mainPageVisitor);
+
         UserLogin currUser = userloginService.findByUserName(userlogin.getUsername());
         Integer status = feeService.findFeeByUserName(userlogin.getUsername()).getFeestatus();
 
