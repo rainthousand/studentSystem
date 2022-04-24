@@ -59,6 +59,7 @@ public class LoginController {
         //different roles go to different paths and pages
         //√需要修改为visitor模式，此处仅用于测试
         //已使用visitor模式提取不同的URL
+        //TODO 修改为state模式存储状态
         if (currUser.getRole().equals(0)) {
             Integer status = 0;
 

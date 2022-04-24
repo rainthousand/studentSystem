@@ -45,14 +45,12 @@ public class StudentCourseController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
-//        System.out.println("siddddddddddddddddddddddddddd");
-//        System.out.println(sid);
         courseService.deleteSelectedCourse(sid,cid);
 
         return "redirect:/student/selectedCourse";
     }
 
-    @RequestMapping("/addSelected/{cid}")
+    @RequestMapping("/addSelected")
     public String addSelectedCourse(@PathVariable("cid")Integer cid){
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
