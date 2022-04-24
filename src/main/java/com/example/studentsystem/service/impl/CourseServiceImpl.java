@@ -54,7 +54,7 @@ public class CourseServiceImpl implements CourseService {
         SelectedCourseExample selectedCourseExample = new SelectedCourseExample();
         SelectedCourseExample.Criteria criteria = selectedCourseExample.createCriteria();
         criteria.andCourseidEqualTo(courseid);
-        criteria.andStudentidEqualTo(courseid);
+        criteria.andStudentidEqualTo(studentid);
 
         return selectedCourseMapper.deleteByExample(selectedCourseExample);
     }
@@ -63,7 +63,8 @@ public class CourseServiceImpl implements CourseService {
     public Integer addSelectedCourse(Integer studentid, Integer courseid) {
         SelectedCourse selectedCourse = new SelectedCourse();
         selectedCourse.setStudentid(studentid);
-        selectedCourse.setStudentid(courseid);
+        selectedCourse.setCourseid(courseid);
+        selectedCourse.setMark(0);
 
         return selectedCourseMapper.insert(selectedCourse);
     }

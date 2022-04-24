@@ -26,33 +26,41 @@ public class StudentCourseController {
         List<Course> courseList = courseService.findAllCourse();
         model.addAttribute("courseList",courseList);
 
-        return "course";
+        return "student/course";
     }
 
     @RequestMapping(value = "/selectedCourse")
     public String studentAllSelectedCourse(Model model) throws Exception {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
-        List<Course> selectedCourseList = courseService.findAllCourseByStudentid((Integer) session.getAttribute("username"));
+        System.out.println(session.getAttribute("username"));
+        List<Course> selectedCourseList = courseService.findAllCourseByStudentid(Integer.valueOf((String) session.getAttribute("username")) );
         model.addAttribute("selectedCourseList",selectedCourseList);
 
-        return "selectedCourse";
+        return "student/selectedcourse";
     }
 
-    @RequestMapping("/deleteSelected")
-    public String deleteSelectedCourse(@RequestParam("sid") Integer sid, @RequestParam("cid") Integer cid){
+    @RequestMapping("/deleteSelected/{cid}")
+    public String deleteSelectedCourse(@PathVariable("cid") Integer cid){
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        Integer sid = Integer.valueOf((String) session.getAttribute("username"));
+//        System.out.println("siddddddddddddddddddddddddddd");
+//        System.out.println(sid);
         courseService.deleteSelectedCourse(sid,cid);
 
-        return "redirect:/selectedCourse";
+        return "redirect:/student/selectedCourse";
     }
 
     @RequestMapping("/addSelected/{cid}")
-    public String addSelectedCourse(Model model, @PathVariable("cid")Integer cid){
+    public String addSelectedCourse(@PathVariable("cid")Integer cid){
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
-        Integer sid = (Integer) session.getAttribute("username");
+        Integer sid = Integer.valueOf((String) session.getAttribute("username"));
+        System.out.println("cidddddddddddddddd");
+        System.out.println(cid);
         courseService.addSelectedCourse(sid,cid);
 
-        return "redirect:/selectedCourse";
+        return "redirect:/student/course";
     }
 }

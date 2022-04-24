@@ -16,14 +16,14 @@ public class RedirectController {
         return "student/index";
     }
 
-    @RequestMapping(value = "/student/course", method = {RequestMethod.GET})
+    @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
     public String studentToCoursePage() throws Exception {
-        return "student/course";
+        return "redirect:student/course";
     }
 
-    @RequestMapping(value = "/student/selectedCourse", method = {RequestMethod.GET})
+    @RequestMapping(value = "/studentToSelectedCourse", method = {RequestMethod.GET})
     public String studentToSelectedCoursePage() throws Exception {
-        return "student/selectedCourse";
+        return "redirect:student/selectedCourse";
     }
 
     @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
