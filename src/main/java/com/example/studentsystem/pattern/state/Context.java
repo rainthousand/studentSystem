@@ -6,6 +6,9 @@ public class Context {
     public Context(){
         state=null;
     }
+//    public void setState(studentState state){
+//        this.state = state;
+//    }
     public void setState(studentState state){
         this.state = state;
     }
