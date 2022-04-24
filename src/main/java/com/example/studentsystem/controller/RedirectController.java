@@ -3,11 +3,6 @@ package com.example.studentsystem.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpSession;
-import java.util.Objects;
 
 @Controller
 public class RedirectController {
@@ -34,5 +29,20 @@ public class RedirectController {
     @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
     public String adminToMainPage() throws Exception {
         return "admin/index";
+    }
+
+    @RequestMapping(value = "/adminToCourse", method = {RequestMethod.GET})
+    public String adminToCoursePage() throws Exception {
+        return "redirect:admin/course";
+    }
+
+    @RequestMapping(value = "/adminToSelectedCourse", method = {RequestMethod.GET})
+    public String adminToSelectedCoursePage() throws Exception {
+        return "redirect:admin/selectedCourse";
+    }
+
+    @RequestMapping(value = "/adminToAddCourse", method = {RequestMethod.GET})
+    public String adminToAddCoursePage() throws Exception {
+        return "redirect:admin/toAddCoursePage";
     }
 }

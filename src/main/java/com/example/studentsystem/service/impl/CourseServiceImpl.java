@@ -68,4 +68,18 @@ public class CourseServiceImpl implements CourseService {
 
         return selectedCourseMapper.insert(selectedCourse);
     }
+
+    @Override
+    public List<SelectedCourse> findAllSelectedCourse() {
+        SelectedCourseExample selectedCourseExample = new SelectedCourseExample();
+        SelectedCourseExample.Criteria criteria = selectedCourseExample.createCriteria();
+        criteria.andStudentidIsNotNull();
+        criteria.andCourseidIsNotNull();
+        return selectedCourseMapper.selectByExample(selectedCourseExample);
+    }
+
+    @Override
+    public Course findCourseByCourseID(Integer courseid) {
+        return courseMapper.selectByPrimaryKey(courseid);
+    }
 }
