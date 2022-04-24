@@ -27,7 +27,7 @@
 <!--        <table schema="" tableName="college" domainObjectName="College"/>-->
 <!--        <table schema="" tableName="course" domainObjectName="Course"/>-->
 <!--        <table schema="" tableName="fee" domainObjectName="Fee"/>-->
-        <table schema="" tableName="major" domainObjectName="Major"/>
+        <table schema="" tableName="fee" domainObjectName="Fee"/>
 <!--        <table schema="" tableName="newsletter" domainObjectName="NewsLetter"/>-->
 <!--        <table schema="" tableName="role" domainObjectName="Role"/>-->
 <!--        <table schema="" tableName="schoolactivity" domainObjectName="SchoolActivity"/>-->

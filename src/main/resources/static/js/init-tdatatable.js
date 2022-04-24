@@ -26,25 +26,25 @@ let ex2 = jQuery('#example2').DataTable({
 
     "columnDefs": [{
         "targets": [3],
-        "visible": false
+        "visible": true
     }, {
         "targets": [5],
-        "visible": false
+        "visible": true
     }, {
         "targets": [8],
-        "visible": false
+        "visible": true
     }, {
         "targets": [9],
-        "visible": false
+        "visible": true
     }, {
         "targets": [10],
-        "visible": false
+        "visible": true
     }, {
         "targets": [11],
-        "visible": false
+        "visible": true
     }, {
         "targets": [12],
-        "visible": false
+        "visible": true
     }, ]
 
 
