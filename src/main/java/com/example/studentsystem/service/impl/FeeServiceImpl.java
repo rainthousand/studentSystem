@@ -31,4 +31,12 @@ public class FeeServiceImpl implements FeeService {
 
         return feeMapper.selectByExample(feeExample);
     }
+
+    public Fee findFeeById(Integer id) throws Exception{
+        FeeExample feeExample = new FeeExample();
+        FeeExample.Criteria criteria = feeExample.createCriteria();
+        criteria.andFeeidEqualTo(id);
+
+        return feeMapper.selectByExample(feeExample).get(0);
+    }
 }
