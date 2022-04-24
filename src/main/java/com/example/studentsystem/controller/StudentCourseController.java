@@ -57,10 +57,12 @@ public class StudentCourseController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
-        System.out.println("cidddddddddddddddd");
-        System.out.println(cid);
-        courseService.addSelectedCourse(sid,cid);
-
-        return "redirect:/student/course";
+        Integer status = Integer.valueOf((String) session.getAttribute("registerstatus"));
+        if(status.equals(1)){
+            courseService.addSelectedCourse(sid,cid);
+            return "redirect:/student/course";
+        }else{
+            return "redirect:/student/course";
+        }
     }
 }
