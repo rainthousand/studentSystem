@@ -28,7 +28,7 @@ public class StudentFeeController {
 //
 //        Fee studentfee = FeeService.findFeeByUserName((String) session.getAttribute("username"));
 //
-        Fee studentfee = FeeService.findFeeByUserName("1001");
+        Fee studentfee = FeeService.findFeeByUserName(10001);
 
         Context contextOff = new Context(new Offline());
         Context contextOn = new Context(new Online());
