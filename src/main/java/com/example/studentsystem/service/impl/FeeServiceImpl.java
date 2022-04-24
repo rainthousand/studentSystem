@@ -15,7 +15,7 @@ public class FeeServiceImpl implements FeeService {
     private FeeMapper feeMapper;
 
     @Override
-    public Fee findFeeByUserName(String name) throws Exception {
+    public Fee findFeeByUserName(Integer name) throws Exception {
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();
         criteria.andFeepayerusernameEqualTo(name);

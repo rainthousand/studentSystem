@@ -50,9 +50,7 @@ public class LoginController {
         List<String> URLs = units.accept(mainPageVisitor);
 
         UserLogin currUser = userloginService.findByUserName(userlogin.getUsername());
-        Integer status = feeService.findFeeByUserName(userlogin.getUsername()).getFeestatus();
 
-        UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
         //获取session
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
@@ -62,6 +60,9 @@ public class LoginController {
         //√需要修改为visitor模式，此处仅用于测试
         //已使用visitor模式提取不同的URL
         if (currUser.getRole().equals(0)) {
+            Integer status = 0;
+
+            UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
@@ -72,6 +73,9 @@ public class LoginController {
             String adminURL = URLs.get(0);
             return "redirect:"+adminURL;
         } else if (currUser.getRole().equals(1)) {
+            Integer status = 0;
+
+            UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
@@ -82,6 +86,9 @@ public class LoginController {
             String teacherURL = URLs.get(1);
             return "redirect:"+teacherURL;
         } else if (currUser.getRole().equals(2)) {
+            Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
+
+            UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
