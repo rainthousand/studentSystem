@@ -1,6 +1,7 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.Fee;
+import com.example.studentsystem.entity.Feeforshow;
 import com.example.studentsystem.pattern.strategy.Context;
 import com.example.studentsystem.pattern.strategy.Offline;
 import com.example.studentsystem.pattern.strategy.Online;
@@ -13,6 +14,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Controller
@@ -23,17 +26,28 @@ public class StudentFeeController {
 
     @RequestMapping(value = "/fee")
     public String toFee(Model model) throws Exception{
-//        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-//                .getRequestAttributes())).getRequest().getSession();
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
 //
-//        Fee studentfee = FeeService.findFeeByUserName((String) session.getAttribute("username"));
+        Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
 //
-        Fee studentfee = FeeService.findFeeByUserName(10001);
+//        Fee studentfee = FeeService.findFeeByUserName(10001);
 
         Context contextOff = new Context(new Offline());
         Context contextOn = new Context(new Online());
 
-        studentfee.setFeeonlineoroffline(contextOn.executeStrategy());
+        studentfee_temp.setFeeonlineoroffline(contextOn.executeStrategy());
+
+        String str="";
+        if(studentfee_temp.getFeeonlineoroffline()==1) str+="Online";
+        else if(studentfee_temp.getFeeonlineoroffline()==2) str+="Offline";
+        String status="";
+        if(studentfee_temp.getFeestatus()==1) status+="Registered";
+        else if(studentfee_temp.getFeestatus()==2) status+="Pending";
+        else if(studentfee_temp.getFeestatus()==3) status+="Not Registered";
+        List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
+        Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,studentfee_temp.getFeepaymentmethod());
+
 
         model.addAttribute("student_fee",studentfee);
         return "student/studentfee";

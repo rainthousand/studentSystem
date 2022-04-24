@@ -35,4 +35,13 @@ public class RedirectController {
     public String adminToMainPage() throws Exception {
         return "admin/index";
     }
+    @RequestMapping(value = "/studentToFeePage",method = {RequestMethod.GET})
+    public String studentToFeePage() throws Exception{
+        return "redirect:student/fee";
+    }
+    @RequestMapping(value = "/adminToFeePage",method = {RequestMethod.GET})
+    public String adminToFeePage() throws Exception{
+        return "redirect:admin/fee";
+    }
+
 }
