@@ -1,7 +1,11 @@
 package com.example.studentsystem.controller;
 
+import com.example.studentsystem.entity.Teacher;
 import com.example.studentsystem.entity.UserLogin;
 import com.example.studentsystem.entity.UserSessionInfo;
+import com.example.studentsystem.pattern.template.AdminLogin;
+import com.example.studentsystem.pattern.template.StudentLogin;
+import com.example.studentsystem.pattern.template.TeacherLogin;
 import com.example.studentsystem.pattern.visitor.*;
 import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.UserLoginService;
@@ -59,45 +63,23 @@ public class LoginController {
         //different roles go to different paths and pages
         //√需要修改为visitor模式，此处仅用于测试
         //已使用visitor模式提取不同的URL
-        if (currUser.getRole().equals(0)) {
-            Integer status = 0;
-
-            UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
-            // 在sesssion 中存储用户信息
-            session.setAttribute("username", userSessionInfo.getUsername());
-            session.setAttribute("password", userSessionInfo.getPassword());
-            session.setAttribute("registerstatus", 0);
-            //设置session过期时间为7200s 默认是1800s，指的是在不进行任何操作的情况下，超时时间，（即若    处于操作时间期间的话，则自动延长超时时间）
-            session.setMaxInactiveInterval(7200);
-//            System.out.println(session.getAttribute("registerstatus"));
-            String adminURL = URLs.get(0);
-            return "redirect:"+adminURL;
-        } else if (currUser.getRole().equals(1)) {
-            Integer status = 0;
-
-            UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
-            // 在sesssion 中存储用户信息
-            session.setAttribute("username", userSessionInfo.getUsername());
-            session.setAttribute("password", userSessionInfo.getPassword());
-            session.setAttribute("registerstatus", 0);
-            //设置session过期时间为7200s 默认是1800s，指的是在不进行任何操作的情况下，超时时间，（即若    处于操作时间期间的话，则自动延长超时时间）
-            session.setMaxInactiveInterval(7200);
-//            System.out.println(session.getAttribute("registerstatus"));
-            String teacherURL = URLs.get(1);
-            return "redirect:"+teacherURL;
-        } else if (currUser.getRole().equals(2)) {
-            Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
-
-            UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
-            // 在sesssion 中存储用户信息
-            session.setAttribute("username", userSessionInfo.getUsername());
-            session.setAttribute("password", userSessionInfo.getPassword());
-            session.setAttribute("registerstatus", userSessionInfo.getRegisterStatus());
-            //设置session过期时间为7200s 默认是1800s，指的是在不进行任何操作的情况下，超时时间，（即若    处于操作时间期间的话，则自动延长超时时间）
-            session.setMaxInactiveInterval(7200);
-//            System.out.println(session.getAttribute("registerstatus"));
-            String studentURL = URLs.get(2);
-            return "redirect:"+studentURL;
+        switch (currUser.getRole()) {
+            case 0: {
+                // admin login
+                AdminLogin admin = new AdminLogin();
+                return admin.Login(currUser, session, URLs, 0);
+            }
+            case 1: {
+                // teacher login
+                TeacherLogin teacher = new TeacherLogin();
+                return teacher.Login(currUser, session, URLs, 0);
+            }
+            case 2: {
+                // student login
+                Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
+                StudentLogin student = new StudentLogin();
+                return student.Login(currUser, session, URLs, status);
+            }
         }
 
         return "/page-login";
