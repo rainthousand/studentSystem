@@ -82,4 +82,18 @@ public class CourseServiceImpl implements CourseService {
     public Course findCourseByCourseID(Integer courseid) {
         return courseMapper.selectByPrimaryKey(courseid);
     }
+
+    @Override
+    public Integer indexNewCourse() {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andCourseidIsNotNull();
+
+        return courseMapper.countByExample(courseExample);
+    }
+
+    @Override
+    public Integer addNewCourse(Course course) {
+        return courseMapper.insert(course);
+    }
 }

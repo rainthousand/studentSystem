@@ -12,4 +12,6 @@ public interface CourseService {
     Integer addSelectedCourse(Integer studentid, Integer courseid);
     List<SelectedCourse> findAllSelectedCourse();
     Course findCourseByCourseID(Integer courseid);
+    Integer indexNewCourse();
+    Integer addNewCourse(Course course);
 }

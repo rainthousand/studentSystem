@@ -50,12 +50,12 @@ public class StudentCourseController {
         return "redirect:/student/selectedCourse";
     }
 
-    @RequestMapping("/addSelected")
-    public String addSelectedCourse(@PathVariable("cid")Integer cid){
+    @RequestMapping("/addSelected/{cid}")
+    public String addSelectedCourse(@PathVariable("cid") Integer cid){
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
-        Integer status = Integer.valueOf((String) session.getAttribute("registerstatus"));
+        Integer status = (Integer) session.getAttribute("registerstatus");
         if(status.equals(1)){
             courseService.addSelectedCourse(sid,cid);
             return "redirect:/student/course";

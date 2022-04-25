@@ -391,10 +391,9 @@
 <!--                                                        <a class='mr-4 vue' href="@{/admin/addSelected}">-->
 <!--                                                            <span class='fa fa-eye' aria-hidden='true'></span>-->
 <!--                                                        </a>-->
-
 <!--                                                        <input type="text" th:value="${course.courseid}" name="courseid"/>-->
-                                                        <input type="text" th:value= "${course.courseid}" name="courseid"/>
-                                                        <button class="btn btn-primary" type="submit" value="test">test</button>
+                                                        <input type="hidden" th:value= "${course.courseid}" name="courseid"/>
+                                                        <button class="btn btn-primary" type="submit" value="test">Select</button>
 
                                                     </td>
                                                     </form>
