@@ -26,6 +26,16 @@ public class RedirectController {
         return "redirect:student/selectedCourse";
     }
 
+    @RequestMapping(value = "/studentToNewsletter", method = {RequestMethod.GET})
+    public String studentToNewsletterPage() throws Exception {
+        return "redirect:student/newsletter";
+    }
+
+    @RequestMapping(value = "/studentToSubscribedNewsletter", method = {RequestMethod.GET})
+    public String studentToSubscribeNewsletterPage() throws Exception {
+        return "redirect:student/subscribedNewsletter";
+    }
+
     @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
     public String teacherToMainPage() throws Exception {
         return "teacher/index";
