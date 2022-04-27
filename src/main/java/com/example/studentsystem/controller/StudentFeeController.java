@@ -2,17 +2,21 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
+import com.example.studentsystem.mapper.FeeMapper;
 import com.example.studentsystem.pattern.strategy.Context;
 import com.example.studentsystem.pattern.strategy.Offline;
 import com.example.studentsystem.pattern.strategy.Online;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +54,17 @@ public class StudentFeeController {
 
 
         model.addAttribute("student_fee",studentfee);
-        return "student/studentfee";
+        return "student/studentfee-list";
+    }
+    @RequestMapping("updateByUsername")
+    public String updataByUsername(@RequestParam Integer feeAmount,@RequestParam String feePaymentMethod,@RequestParam String feeOnlineOrOffline) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
+//        System.out.println(feeAmount);
+//        System.out.println(feePaymentMethod);
+//        System.out.println(feeOnlineOrOffline);
+        FeeService.UpdateByUserName(studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,feeOnlineOrOffline);
+        return "redirect:fee";
     }
 }

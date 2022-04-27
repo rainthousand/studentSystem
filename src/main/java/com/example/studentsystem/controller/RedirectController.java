@@ -41,7 +41,7 @@ public class RedirectController {
     }
     @RequestMapping(value = "/adminToFeePage",method = {RequestMethod.GET})
     public String adminToFeePage() throws Exception{
-        return "redirect:admin/fee";
+        return "redirect:admin/fee-list";
     }
 
 }

@@ -32,6 +32,25 @@ public class FeeServiceImpl implements FeeService {
         return feeMapper.selectByExample(feeExample);
     }
 
+    @Override
+    public int UpdateByUserName(Integer name, Integer feeAmount, String feePaymentMethod, String feeOnlineOrOffline) throws Exception {
+        Fee fee = new Fee();
+//        fee.setFeepayerusername(name);
+//        Integer oldamount=fee.getFeeamount();
+        fee.setFeeamount(feeAmount);
+        fee.setFeepaymentmethod(feePaymentMethod);
+        if(feeOnlineOrOffline=="Online"){
+            fee.setFeeonlineoroffline(1);
+        }else if (feeOnlineOrOffline=="Offline"){
+            fee.setFeeonlineoroffline(2);
+        }
+        FeeExample feeExample = new FeeExample();
+        FeeExample.Criteria criteria = feeExample.createCriteria();
+        criteria.andFeepayerusernameEqualTo(name);
+
+        return feeMapper.updateByExampleSelective(fee,feeExample);
+    }
+
     public Fee findFeeById(Integer id) throws Exception{
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();
@@ -39,4 +58,5 @@ public class FeeServiceImpl implements FeeService {
 
         return feeMapper.selectByExample(feeExample).get(0);
     }
+
 }

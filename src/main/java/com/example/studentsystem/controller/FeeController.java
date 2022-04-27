@@ -20,7 +20,7 @@ public class FeeController {
     @Resource(name = "feeServiceImpl")
     private FeeServiceImpl FeeService;
 
-    @RequestMapping(value = "/fee")
+    @RequestMapping(value = "/fee-list")
     public String toFee(Model model) throws Exception{
         List<Fee> fee_list = FeeService.findAllFee();
 //        Fee personfee=fee_list.get(0);
@@ -49,7 +49,9 @@ public class FeeController {
 
 //        model.addAttribute("personfee",personfee);
 //        model.addAttribute("list",fee_list);
-        return "admin/fee";
+
+        return "admin/fee-list";
     }
+
 
 }
