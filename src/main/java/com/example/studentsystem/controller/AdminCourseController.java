@@ -106,12 +106,12 @@ public class AdminCourseController {
         return "admin/addcourse";
     }
 
+    //TODO Factory Method
     @RequestMapping("/addNewCourse")
     public String addNewCourse(@RequestParam Integer courseid,@RequestParam String coursename,@RequestParam Integer teacherid,
                                @RequestParam String coursetime,@RequestParam String classroom,@RequestParam Integer courseweek,
                                @RequestParam String coursetype,@RequestParam String majorname,@RequestParam Integer credit,
                                @RequestParam String coursestart,@RequestParam String courseend) throws Exception {
-
 
         Course newCourse = new Course();
         newCourse.setCourseid(courseService.indexNewCourse()+1);

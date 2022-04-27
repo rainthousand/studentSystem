@@ -45,4 +45,9 @@ public class RedirectController {
     public String adminToAddCoursePage() throws Exception {
         return "redirect:admin/toAddCoursePage";
     }
+
+    @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
+    public String studentToCalendarPage() throws Exception {
+        return "student/calendar";
+    }
 }

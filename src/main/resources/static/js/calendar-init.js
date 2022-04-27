@@ -59,51 +59,27 @@ $(function() {
             day: 'day'
         },
         //Random default events
-        events: [{
-                title: 'All Day Event',
-                start: new Date(y, m, 1),
-                backgroundColor: '#ff4040', //bg-calander-8
-                borderColor: '#ff4040' //bg-calander-8
-            },
-            {
-                title: 'Long Event',
-                start: new Date(y, m, d - 5),
-                end: new Date(y, m, d - 2),
-                backgroundColor: '#ffbb3b', //bg-calander-7
-                borderColor: '#ffbb3b' //bg-calander-7
-            },
-            {
-                title: 'Meeting',
-                start: new Date(y, m, d, 10, 30),
-                allDay: false,
-                backgroundColor: '#9e5fff', //bg-calander-1
-                borderColor: '#9e5fff' //bg-calander-1
-            },
-            {
-                title: 'Lunch',
-                start: new Date(y, m, d, 12, 0),
-                end: new Date(y, m, d, 14, 0),
-                allDay: false,
-                backgroundColor: '#00a9ff', //bg-calander-2
-                borderColor: '#00a9ff' //bg-calander-2
-            },
-            {
-                title: 'Birthday Party',
-                start: new Date(y, m, d + 1, 19, 0),
-                end: new Date(y, m, d + 1, 22, 30),
-                allDay: false,
-                backgroundColor: '#bbdc00', //bg-calander-5
-                borderColor: '#bbdc00' //bg-calander-5
-            },
-            {
-                title: 'Click for Google',
-                start: new Date(y, m, 28),
-                end: new Date(y, m, 29),
-                url: 'http://google.com/',
-                backgroundColor: '#9d9d9d', //bg-calander-6
-                borderColor: '#9d9d9d' //bg-calander-6
-            }
-        ],
+        events: function(start, end, timezone, callback) {//ajax请求数据并显示在响应时间段内
+            $.ajax({
+                url: "/student/scheduleData",
+                type: 'POST',
+                dataType: 'json',
+                success: function (data) {
+                    // alert("hahahahah");
+                    callback(data);
+                },
+                error: function (data) {
+                    alert('Error!');
+                }
+            });
+        },
+        eventDrop:function(event) {
+            alert(event.start)
+            alert(event.end)
+        },
+        eventResize: function(event) {
+            alert(event.end)
+        },
 		eventClick: function(calEvent, jsEvent, view) {
 		$('#calendar').fullCalendar('removeEvents' , function(ev){  
 		return (ev._id == calEvent._id);})

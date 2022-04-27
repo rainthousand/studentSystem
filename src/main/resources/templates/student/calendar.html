@@ -1,11 +1,14 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tabib Apps web | Admin Dashboard Template</title>
+    <!-- calendar -->
+    <link rel="stylesheet" href="../css/fullcalendar.min.css">
+    <link rel="stylesheet" href="../css/fullcalendar.print.min.css" media="print">
     <!-- Base Styling  -->
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" href="../css/style.css">
@@ -46,14 +49,14 @@
                             <li> <a href="doctor-profile.html">Doctors Profile</a> </li>
                         </ul>
                     </li>
-                    <li class="has-submenu active">
+                    <li class="has-submenu">
                         <a href="#" class="has-arrow mm-collapsed">
                             <i class="fas fa-users"></i>
                             <span class="nav-label">Patients</span>
                         </a>
                         <ul class="list-unstyled mm-collapse">
-                            <li><a href="">Student Selected</a></li>
-                            <li><a href="/studentToCourse">All Courses</a></li>
+                            <li><a href="new-patient.html">New Patient</a></li>
+                            <li><a href="all-patients.html">All Patients</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
@@ -88,8 +91,8 @@
                             <li><a href="all-tests.html">All Tests</a></li>
                         </ul>
                     </li>
-                    <li class="has-submenu">
-                        <a href="/studentToCalendar">
+                    <li class="has-submenu active">
+                        <a href="">
                             <i class="fas fa-calendar-alt"></i>
                             <span class="nav-label">calendar</span>
                         </a>
@@ -212,7 +215,6 @@
                                             <li>
                                                 <div class="timeline-panel">
                                                     <div class="media mr-2 media-info">
-                                                        <!-- KG -->
                                                         <img alt="image" src="picture/1.jpg">
                                                     </div>
                                                     <div class="media-body">
@@ -313,94 +315,115 @@
         <!-- start section content -->
         <div class="content-body">
             <div class="warper container-fluid">
-                <div class="all-patients main_container">
+                <div class="new_appointment main_container">
                     <div class="row page-titles mx-0">
                         <div class="col-sm-6 p-md-0">
                             <div class="welcome-text">
-                                <h4 class="text-primary">New Patient</h4>
+                                <h4 class="text-primary">Calender</h4>
                             </div>
-                        </div>
-                        <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active"><a href="javascript:;">New Patient</a></li>
-                            </ol>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="card">
-                                <div class="card-header fix-card">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            <h4 class="card-title"> All Patients </h4>
-                                        </div>
-                                        <div class="col-4 float-end">
-                                            <a href="javascript:;" class="btn btn-primary float-end">New
-                                                Patient</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card shadow">
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table id="example2" class="display nowrap">
-                                            <thead>
-                                            <tr>
-                                                <th>Course ID</th>
-                                                <th>Course Name</th>
-                                                <th>Teacher Name</th>
-                                                <th>Course Time</th>
-                                                <th>Classroom</th>
-                                                <th>Course Week</th>
-                                                <th>Type</th>
-                                                <th>Major</th>
-                                                <th>Credit</th>
-                                                <th>Course Start</th>
-                                                <th>Course End</th>
-                                                <th>Action</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <tr th:each="course : ${selectedCourseList}">
-                                                <td th:text="${course.courseid}"></td>
-                                                <td th:text="${course.coursename}"></td>
-                                                <td th:text="${course.teacherid}"></td>
-                                                <td th:text="${course.coursetime}"></td>
-                                                <td th:text="${course.classroom}"></td>
-                                                <td th:text="${course.courseweek}"></td>
-                                                <td th:text="${course.coursetype}"></td>
-                                                <td th:text="${course.majorid}"></td>
-                                                <td th:text="${course.credit}"></td>
-                                                <td th:text="${course.coursestart}"></td>
-                                                <td th:text="${course.courseend}"></td>
-                                                <td>
-                                                    <a class='mr-4 delet' th:href="@{/student/deleteSelected/}+${course.courseid}">
-                                                        <span class='fas fa-trash-alt'></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        ...
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                    <div class="row">
+
+                                        <!-- start draggable events -->
+                                        <div class="col-lg-3">
+                                            <div class="draggable-events">
+                                                <h4 class="box-title">Draggable Events</h4>
+                                                <div class="box-body bottom-event">
+                                                    <!-- the events -->
+                                                    <div id="external-events" class="external-events">
+                                                        <div class="external-event bg-calander-1 btn">My Calendar</div>
+                                                        <div class="external-event bg-calander-2 btn">Company</div>
+                                                        <div class="external-event bg-calander-3 btn">Family</div>
+                                                        <div class="external-event bg-calander-4 btn">Friend</div>
+                                                        <div class="external-event bg-calander-5 btn">Travel</div>
+                                                        <div class="external-event bg-calander-6 btn">etc</div>
+                                                        <div class="external-event bg-calander-7 btn">Birthdays</div>
+                                                        <div class="external-event bg-calander-8 btn">National Holidays</div>
+                                                        <div class="checkbox">
+                                                            <label for="drop-remove">
+                                                                <input type="checkbox" id="drop-remove">
+                                                                remove after drop
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="create-event">
+                                                <div class="event-header">
+                                                    <h3 class="box-title">Create Event</h3>
+                                                </div>
+                                                <div class="event-body">
+                                                    <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                                                        <ul class="fc-color-picker" id="color-chooser">
+                                                            <li>
+                                                                <a class="text-aqua" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-blue" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-light-blue" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-teal" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-yellow" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-orange" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-green" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="text-lime" href="#">
+                                                                    <i class="fa fa-square"></i>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="input-group add-event">
+                                                        <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+                                                        <div class="input-group-btn">
+                                                            <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- start draggable events -->
+
+
+                                        <!-- The Calendar -->
+                                        <div class="col-lg-9 m-t-2">
+                                            <div class="col-bor box box-primary">
+                                                <div class="box-body no-padding">
+                                                    <div id="calendar"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End The Calendar -->
+
                                     </div>
                                 </div>
                             </div>
@@ -413,8 +436,8 @@
 
 
         <!-- start section footer -->
-        <div class="footer ">
-            <div class="copyright ">
+        <div class="footer">
+            <div class="copyright">
                 <p class="mb-0">Copyright &copy; 2021.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
             </div>
         </div>
@@ -424,172 +447,8 @@
     </div>
 
 
-    <!-- Show data patient -->
-    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-        <!-- <div > -->
-        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel"><img class="rounded-circle" width="35" src="picture/user1.jpg" alt=""> Tiger Nixon </h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="insertHere"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Show data patient -->
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-title-edit-row" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modal-title-edit-row">Angelica Ramos</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="basic-form">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-xl-4">
-                                            <div class="form-group row widget-3">
-                                                <div class="col-lg-12">
-                                                    <div class="form-input">
-                                                        <label class="labeltest" for="file-ip-1">
-                                                            <span> Drop image here or click to upload. </span>
-                                                        </label>
-                                                        <input type="file" id="file-ip-1" accept="image/*" onchange="showPreview(event);">
-                                                        <div class="preview">
-                                                            <img id="file-ip-1-preview" src="https://www.17sucai.com/preview/776298/2021-08-30/tabib/all-patients.html" alt="img">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4">
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <input type="text" class="form-control" placeholder="First Name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <input type="text" class="form-control" placeholder="Last name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <input type="email" class="form-control" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <input type="text" class="form-control" placeholder="Mobile No.">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4">
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" placeholder="Birthday">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <select class="form-control form-select">
-                                                        <option> Marital status </option>
-                                                        <option>Married</option>
-                                                        <option>Unmarried</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <select class="form-control form-select">
-                                                        <option>Sex</option>
-                                                        <option>Male</option>
-                                                        <option>Female</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <select class="form-control form-select">
-                                                        <option>Blood Group</option>
-                                                        <option>A+</option>
-                                                        <option>A-</option>
-                                                        <option>B+</option>
-                                                        <option>B-</option>
-                                                        <option>O+</option>
-                                                        <option>O-</option>
-                                                        <option>AB+</option>
-                                                        <option>AB-</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-4"></div>
-                                        <div class="col-xl-4">
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <input type="text" class="form-control" placeholder="Patient Weight">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-4">
-                                            <div class="form-group row">
-                                                <div class="col-lg-12">
-                                                    <input type="text" class="form-control" placeholder="Patient Height">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-4">
-                                            <div class="form-group">
-                                                <div class="col-lg-12">
-                                                </div>
-                                                <textarea class="form-control" placeholder="Address" rows="4"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-8">
-                                            <div class="form-group">
-                                                <textarea class="form-control" placeholder="Patient History" rows="4"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--End Modal -->
-
-
-    <!-- JQuery v3.5.1 -->
-    <script src="../js/jquery.min.js"></script>
+    <!-- JQuery v3.2.1 -->
+    <script src="../js/jquery3-2.1.min.js"></script>
 
     <!-- popper js -->
     <script src="../js/popper.min.js"></script>
@@ -603,9 +462,12 @@
     <!-- Date Range Picker -->
     <script src="../js/daterangepicker.min.js"></script>
 
-    <!-- Datatable -->
-    <script src="../js/jquery.dataTables.min.js"></script>
-    <script src="../js/init-tdatatable.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../js/jquery-ui.min.js"></script>
+
+    <!-- Calendar -->
+    <script src="../js/fullcalendar.min.js"></script>
+    <script src="../js/calendar-init.js"></script>
 
     <!-- Main Custom JQuery -->
     <script src="../js/toggleFullScreen.js"></script>
