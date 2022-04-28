@@ -4,9 +4,23 @@ package com.example.studentsystem.entity;
 import java.util.Date;
 
 public class Event {
+    //id为区分是Course还是Activity,格式为Course-courseid或者Activity-acitivityid,如:Course-2,代表Course表的id为2的课程
+    private String id;
     private String Title;
 //    private Integer Id;
     private String backgroundColor;
+    private String borderColor;
+    private Date Start;
+    private Date End;
+    private boolean AllDay;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getBackgroundColor() {
         return backgroundColor;
@@ -24,9 +38,6 @@ public class Event {
         this.borderColor = borderColor;
     }
 
-    private String borderColor;
-    private Date Start;
-    private Date End;
 
     public boolean isAllDay() {
         return AllDay;
@@ -36,7 +47,7 @@ public class Event {
         AllDay = allDay;
     }
 
-    private boolean AllDay;
+
 
     public String getTitle() {
         return Title;
