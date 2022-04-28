@@ -64,7 +64,7 @@ public class StudentFeeController {
 //        System.out.println(feeAmount);
 //        System.out.println(feePaymentMethod);
 //        System.out.println(feeOnlineOrOffline);
-        FeeService.UpdateByUserName(studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,feeOnlineOrOffline);
+        FeeService.UpdateByUserName(session,studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,feeOnlineOrOffline);
         return "redirect:fee";
     }
 }

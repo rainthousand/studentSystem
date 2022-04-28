@@ -1,10 +1,15 @@
 package com.example.studentsystem.pattern.state;
-
+//
 public class Demo {
-    public static void main(String[] args){
-        Context context = new Context();
-        Registered registered = new Registered();
-        registered.doAction(context);
-        System.out.println(context.getState().toString());
+
+    public static void main(String[] args) {
+        // 初始化上下文
+        Context fanContext = new Context();
+        // 调到高
+        fanContext.shiftPending();
+        // 调到低挡
+        fanContext.shiftNotRegistered();
+        // 关闭
+        fanContext.shiftPending();
     }
 }
