@@ -53,6 +53,7 @@ public class AdminCourseController {
         List<Course> courseList = courseService.findAllCourse();
         List<Student> studentList = studentService.findAllStudent();
 
+        //TODO studentid 的 Iterator模式
         for(Student stu:studentList){
             iterator.add(stu.getStudentid());
         }
@@ -123,7 +124,7 @@ public class AdminCourseController {
         return "admin/addcourse";
     }
 
-    //TODO Factory Method
+    //TODO Factory Method done
     @RequestMapping("/addNewCourse")
     public String addNewCourse(@RequestParam String coursename,@RequestParam Integer teacherid,
                                @RequestParam String coursetime,@RequestParam String classroom,@RequestParam Integer courseweek,

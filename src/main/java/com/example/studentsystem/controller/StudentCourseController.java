@@ -21,7 +21,7 @@ public class StudentCourseController {
     @Resource(name = "courseServiceImpl")
     private CourseService courseService;
 
-    //TODO Course 的 Iterator模式
+
     @RequestMapping(value = "/course")
     public String studentAllCourse(Model model) throws Exception {
         List<Course> courseList = courseService.findAllCourse();

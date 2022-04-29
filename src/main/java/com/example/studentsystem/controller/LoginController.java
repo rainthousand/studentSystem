@@ -6,6 +6,7 @@ import com.example.studentsystem.pattern.visitor.*;
 import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.UserLoginService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -34,6 +35,7 @@ public class LoginController {
     // login request handling
     @RequestMapping(value = "/login")
     public String login(UserLogin userlogin) throws Exception {
+//        model.addAttribute("test","test");
 
 //        System.out.println("user::::::::::::::::::::::::::::::");
 //        System.out.println(userlogin.getUsername());
@@ -56,10 +58,11 @@ public class LoginController {
                 .getRequestAttributes())).getRequest().getSession();
 
 
+
         //different roles go to different paths and pages
         //√需要修改为visitor模式，此处仅用于测试
         //已使用visitor模式提取不同的URL
-        //TODO 修改为state模式存储状态
+        //TODO 修改为state模式存储状态done
         if (currUser.getRole().equals(0)) {
             Integer status = 0;
 
