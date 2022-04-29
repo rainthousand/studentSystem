@@ -119,6 +119,26 @@ $(function() {
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
+            $.ajax({
+                url: "/student/deleteAttend",
+                type: 'POST',
+                dataType: 'json',
+                contentType:'application/json;charset=utf-8',
+                data:JSON.stringify({Start:calEvent.start, End:calEvent.end,
+                    Title:calEvent.title, backgroundColor:calEvent.backgroundColor,
+                    borderColor:calEvent.borderColor,
+                    AllDay:calEvent.allDay,id:calEvent.id}),
+                success: function (data) {
+                    // alert("hahahahah");
+                    // callback(data);
+                    // alert(data)
+                    alert("Success!");
+                },
+                error: function (data) {
+                    // alert(data)
+                    alert('Error!');
+                }
+            });
             $('#calendar').fullCalendar('removeEvents' , function(ev){
                 return (ev._id == calEvent._id);})
         },

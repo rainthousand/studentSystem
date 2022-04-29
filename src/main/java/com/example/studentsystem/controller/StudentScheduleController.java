@@ -126,4 +126,23 @@ public class StudentScheduleController {
         return event;
     }
 
+    @RequestMapping(value = "/deleteAttend")
+    @ResponseBody
+    public Event deleteAttendedActivity(@RequestBody JSONObject object){
+        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        System.out.println(object);
+        Event event = new Event();
+        event.setTitle(object.getString("Title"));
+        event.setStart(object.getDate("Start"));
+        event.setEnd(object.getDate("End"));
+        event.setBackgroundColor(object.getString("backgroundColor"));
+        event.setBorderColor(object.getString("borderColor"));
+        event.setAllDay(object.getBoolean("AllDay"));
+        event.setId(object.getString("id"));
+        System.out.println(JSON.toJSONString(event));
+
+//        System.out.println(event.getId());
+        return event;
+    }
+
 }
