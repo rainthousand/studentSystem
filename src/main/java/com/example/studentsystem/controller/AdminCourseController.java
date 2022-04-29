@@ -7,6 +7,9 @@ import com.example.studentsystem.entity.Student;
 import com.example.studentsystem.pattern.decorator.BasicCourse;
 import com.example.studentsystem.pattern.decorator.CSCourse;
 import com.example.studentsystem.pattern.decorator.MathCourse;
+import com.example.studentsystem.pattern.iterator.Collection;
+import com.example.studentsystem.pattern.iterator.Iterator;
+import com.example.studentsystem.pattern.iterator.StudentList;
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.StudentService;
@@ -42,11 +45,24 @@ public class AdminCourseController {
     //TODO 前端需要修改出填学生号的地方done
     @RequestMapping(value = "/course")
     public String adminAllCourse(Model model) throws Exception {
+
+        Collection collection = new StudentList();
+        Iterator iterator = collection.createIterator();
+
         List<Course> courseList = courseService.findAllCourse();
         List<Student> studentList = studentService.findAllStudent();
 
+        for(Student stu:studentList){
+            iterator.add(stu.getStudentid());
+        }
+        List<Integer> studentidList = new ArrayList<>();
+
+        for(int k=0;k<iterator.size();k++){
+            studentidList.add((Integer) iterator.next());
+        }
+
         model.addAttribute("courseList",courseList);
-        model.addAttribute("studentList",studentList);
+        model.addAttribute("studentList",studentidList);
         model.addAttribute("selectedcourse",new SelectedCourse());
 
         return "admin/course";
@@ -114,7 +130,7 @@ public class AdminCourseController {
                                @RequestParam String coursestart,@RequestParam String courseend) throws Exception {
 
         Course newCourse = new Course();
-        newCourse.setCourseid(courseService.indexNewCourse()+1);
+        newCourse.setCourseid(courseService.indexNewCourse());
         newCourse.setCoursename(coursename);
         newCourse.setTeacherid(teacherid);
         newCourse.setCoursetime(coursetime);

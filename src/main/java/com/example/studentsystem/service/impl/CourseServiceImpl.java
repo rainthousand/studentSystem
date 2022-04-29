@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service("courseServiceImpl")
@@ -88,8 +89,13 @@ public class CourseServiceImpl implements CourseService {
         CourseExample courseExample = new CourseExample();
         CourseExample.Criteria criteria = courseExample.createCriteria();
         criteria.andCourseidIsNotNull();
+        List<Integer> templist = new ArrayList<>();
+        List<Course> clist = courseMapper.selectByExample(courseExample);
+        for(Course course:clist){
+            templist.add(course.getCourseid());
+        }
 
-        return courseMapper.countByExample(courseExample);
+        return Collections.max(templist)+1;
     }
 
     @Override
