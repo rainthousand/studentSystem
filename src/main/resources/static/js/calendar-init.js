@@ -167,6 +167,18 @@ $(function() {
             if ($(this).css('background-color') === "#00c0ef"){
                 copiedEventObject.title = "Meeting"
             }
+            if ($(this).css('background-color') === "#bbdc00"){//calendar-5
+                copiedEventObject.title = "Travel"
+            }
+            if ($(this).css('background-color') === "#ff5583"){//calendar-3
+                copiedEventObject.title = "Leisure"
+            }
+            if ($(this).css('background-color') === "#9d9d9d"){//calendar-6
+                copiedEventObject.title = "Volunteer"
+            }
+            if ($(this).css('background-color') === "#ffbb3b"){//calendar-6
+                copiedEventObject.title = "Birthdays"
+            }
             // alert(copiedEventObject.id)
             // alert(copiedEventObject.title)
             $.ajax({
@@ -183,6 +195,7 @@ $(function() {
                     // callback(data);
                     // alert(data)
                     // alert("Success!");
+                    copiedEventObject.id = data;
                 },
                 error: function (data) {
                     // alert(data)

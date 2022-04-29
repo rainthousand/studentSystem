@@ -73,6 +73,8 @@ public class StudentScheduleController {
         return events;
     }
 
+    //当拖动事件的时候，用于更新的接口
+    //TODO 将composite模式融合，更新数据库
     @RequestMapping(value = "/updateDragging")
     @ResponseBody
     public Event updateDraggingStartandEnd(@RequestBody JSONObject object){
@@ -91,6 +93,8 @@ public class StudentScheduleController {
         return event;
     }
 
+    //当重新设置事件size的时候，用于更新的接口
+    //TODO 将composite模式融合，更新数据库
     @RequestMapping(value = "/updateResizing")
     @ResponseBody
     public Event updateResizingEnd(@RequestBody JSONObject object){
@@ -108,9 +112,11 @@ public class StudentScheduleController {
         return event;
     }
 
+    //当从左侧备选事件栏拖动一个新事件到日程表的时候，用于增加的接口
+    //TODO 将composite模式融合，插入到数据库，并返回“Activity-”+"Activity数据库中的ID",用于前端回调更新当前新事件在前端的id
     @RequestMapping(value = "/addNewActivity")
     @ResponseBody
-    public Event addNewActivity(@RequestBody JSONObject object){
+    public String addNewActivity(@RequestBody JSONObject object){
 //        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         Event event = new Event();
         event.setTitle(object.getString("Title"));
@@ -123,9 +129,11 @@ public class StudentScheduleController {
         System.out.println(JSON.toJSONString(event));
 
 //        System.out.println(event.getId());
-        return event;
+        return "newID";
     }
 
+    //删除参加的事件的接口
+    //TODO 将composite模式融合，删除数据库记录
     @RequestMapping(value = "/deleteAttend")
     @ResponseBody
     public Event deleteAttendedActivity(@RequestBody JSONObject object){
