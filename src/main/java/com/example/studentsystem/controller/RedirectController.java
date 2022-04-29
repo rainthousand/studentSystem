@@ -35,4 +35,9 @@ public class RedirectController {
     public String adminToMainPage() throws Exception {
         return "admin/index";
     }
+
+    @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
+    public String studentToCalendarPage() throws Exception {
+        return "student/calendar";
+    }
 }
