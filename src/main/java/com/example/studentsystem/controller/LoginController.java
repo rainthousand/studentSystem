@@ -2,6 +2,7 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.UserLogin;
 import com.example.studentsystem.entity.UserSessionInfo;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.pattern.visitor.*;
 import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.UserLoginService;
@@ -40,6 +41,8 @@ public class LoginController {
 //        System.out.println("user::::::::::::::::::::::::::::::");
 //        System.out.println(userlogin.getUsername());
 //        System.out.println(userlogin.getPassword());
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Login");
         UnitVisitor baseVisitor = new BaseVisitor();
         UnitVisitor mainPageVisitor = new MainPageVisitor();
         Unit adminUnit = new AdminUnit();
@@ -67,6 +70,7 @@ public class LoginController {
             Integer status = 0;
 
             UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
+            System.out.println(session.getId());
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
@@ -80,10 +84,12 @@ public class LoginController {
             Integer status = 0;
 
             UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
+
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
             session.setAttribute("registerstatus", 0);
+            System.out.println(session.getId());
             //设置session过期时间为7200s 默认是1800s，指的是在不进行任何操作的情况下，超时时间，（即若    处于操作时间期间的话，则自动延长超时时间）
             session.setMaxInactiveInterval(7200);
 //            System.out.println(session.getAttribute("registerstatus"));
@@ -93,10 +99,12 @@ public class LoginController {
             Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
 
             UserSessionInfo userSessionInfo = new UserSessionInfo(currUser.getUsername(),currUser.getPassword(),status);
+            System.out.println(session.getId());
             // 在sesssion 中存储用户信息
             session.setAttribute("username", userSessionInfo.getUsername());
             session.setAttribute("password", userSessionInfo.getPassword());
             session.setAttribute("registerstatus", userSessionInfo.getRegisterStatus());
+            System.out.println(session.getId());
             //设置session过期时间为7200s 默认是1800s，指的是在不进行任何操作的情况下，超时时间，（即若    处于操作时间期间的话，则自动延长超时时间）
             session.setMaxInactiveInterval(7200);
 //            System.out.println(session.getAttribute("registerstatus"));

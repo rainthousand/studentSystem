@@ -57,6 +57,7 @@ public class StudentCourseController {
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
         Integer status = (Integer) session.getAttribute("registerstatus");
+        //TODO 选课Error处理
         if(status.equals(1)){
             courseService.addSelectedCourse(sid,cid);
             return "redirect:/student/course";
