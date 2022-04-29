@@ -6,7 +6,11 @@ import com.example.studentsystem.entity.SelectedCourse;
 import com.example.studentsystem.entity.Student;
 import com.example.studentsystem.pattern.decorator.BasicCourse;
 import com.example.studentsystem.pattern.decorator.CSCourse;
+import com.example.studentsystem.pattern.decorator.CourseInterface;
 import com.example.studentsystem.pattern.decorator.MathCourse;
+import com.example.studentsystem.pattern.factorymethod.CSCourseFactory;
+import com.example.studentsystem.pattern.factorymethod.CourseFactory;
+import com.example.studentsystem.pattern.factorymethod.MathCourseFactory;
 import com.example.studentsystem.pattern.iterator.Collection;
 import com.example.studentsystem.pattern.iterator.Iterator;
 import com.example.studentsystem.pattern.iterator.StudentList;
@@ -22,10 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.annotation.Resource;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -124,37 +125,55 @@ public class AdminCourseController {
 
     //TODO Factory Method
     @RequestMapping("/addNewCourse")
-    public String addNewCourse(@RequestParam Integer courseid,@RequestParam String coursename,@RequestParam Integer teacherid,
+    public String addNewCourse(@RequestParam String coursename,@RequestParam Integer teacherid,
                                @RequestParam String coursetime,@RequestParam String classroom,@RequestParam Integer courseweek,
                                @RequestParam String coursetype,@RequestParam String majorname,@RequestParam Integer credit,
                                @RequestParam String coursestart,@RequestParam String courseend) throws Exception {
 
         Course newCourse = new Course();
-        newCourse.setCourseid(courseService.indexNewCourse());
-        newCourse.setCoursename(coursename);
-        newCourse.setTeacherid(teacherid);
-        newCourse.setCoursetime(coursetime);
-        newCourse.setClassroom(classroom);
-        newCourse.setCourseweek(courseweek);
-        newCourse.setCredit(credit);
-        newCourse.setCoursetype(coursetype);
+        Integer courseid = courseService.indexNewCourse();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date newcoursestart = format.parse(coursestart);
+        Date newcourseend = format.parse(courseend);
+//        newCourse.setCourseid(courseService.indexNewCourse());
+//        newCourse.setCoursename(coursename);
+//        newCourse.setTeacherid(teacherid);
+//        newCourse.setCoursetime(coursetime);
+//        newCourse.setClassroom(classroom);
+//        newCourse.setCourseweek(courseweek);
+//        newCourse.setCredit(credit);
+//        newCourse.setCoursetype(coursetype);
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        String tempCoursestart = "2022-03-02 12:17:33";
 //        String tempCourseend = "2022-03-02 14:17:33";
-        System.out.println("course start end---------------");
-        System.out.println(format.parse(coursestart));
-        System.out.println(format.parse(courseend));
-        newCourse.setCoursestart(format.parse(coursestart));
-        newCourse.setCourseend(format.parse(courseend));
+//        System.out.println("course start end---------------");
+//        System.out.println(format.parse(coursestart));
+//        System.out.println(format.parse(courseend));
+//        Date newcoursestart = format.parse(coursestart);
+//        Date newcourseend = format.parse(courseend);
+//        newCourse.setCoursestart(format.parse(coursestart));
+//        newCourse.setCourseend(format.parse(courseend));
 
-        BasicCourse basicCourse = new BasicCourse();
+//        BasicCourse basicCourse = new BasicCourse();
+//        if(Objects.equals(majorname, "CS")){
+//            CSCourse csCourse = new CSCourse(basicCourse);
+//            newCourse = csCourse.courseMajor(newCourse);
+//        }else if(Objects.equals(majorname, "Math")){
+//            MathCourse mathCourse = new MathCourse(basicCourse);
+//            newCourse = mathCourse.courseMajor(newCourse);
+//        }
         if(Objects.equals(majorname, "CS")){
-            CSCourse csCourse = new CSCourse(basicCourse);
+            CourseFactory csCourseFactory = new CSCourseFactory();
+            CourseInterface csCourse = csCourseFactory.createCourse(courseid, coursename, teacherid,
+                    coursetime, classroom, courseweek, coursetype, credit, newcoursestart, newcourseend);
             newCourse = csCourse.courseMajor(newCourse);
         }else if(Objects.equals(majorname, "Math")){
-            MathCourse mathCourse = new MathCourse(basicCourse);
+            CourseFactory mathCourseFactory = new MathCourseFactory();
+            CourseInterface mathCourse = mathCourseFactory.createCourse(courseid, coursename, teacherid,
+                    coursetime, classroom, courseweek, coursetype, credit, newcoursestart, newcourseend);
             newCourse = mathCourse.courseMajor(newCourse);
         }
+
         courseService.addNewCourse(newCourse);
 
 
