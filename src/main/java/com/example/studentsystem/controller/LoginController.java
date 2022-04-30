@@ -2,6 +2,7 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.entity.Teacher;
+import com.example.studentsystem.entity.Teacher;
 import com.example.studentsystem.entity.UserLogin;
 import com.example.studentsystem.entity.UserSessionInfo;
 import com.example.studentsystem.pattern.template.AdminLogin;
