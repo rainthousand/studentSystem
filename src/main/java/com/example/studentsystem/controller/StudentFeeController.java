@@ -3,9 +3,8 @@ package com.example.studentsystem.controller;
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
 import com.example.studentsystem.mapper.FeeMapper;
-import com.example.studentsystem.pattern.strategy.Context;
-import com.example.studentsystem.pattern.strategy.Offline;
-import com.example.studentsystem.pattern.strategy.Online;
+//import com.example.studentsystem.pattern.strategy.Context;
+import com.example.studentsystem.pattern.strategy.*;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,8 +36,8 @@ public class StudentFeeController {
 //
 //        Fee studentfee = FeeService.findFeeByUserName(10001);
 
-        Context contextOff = new Context(new Offline());
-        Context contextOn = new Context(new Online());
+        Context_onlineOrOffline contextOff = new Context_onlineOrOffline(new Offline());
+        Context_onlineOrOffline contextOn = new Context_onlineOrOffline(new Online());
 
         studentfee_temp.setFeeonlineoroffline(contextOn.executeStrategy());
 
@@ -49,6 +48,14 @@ public class StudentFeeController {
         if(studentfee_temp.getFeestatus()==1) status+="Registered";
         else if(studentfee_temp.getFeestatus()==2) status+="Pending";
         else if(studentfee_temp.getFeestatus()==3) status+="Not Registered";
+        Context_payment visa_payment = new Context_payment(new Visa_Card());
+        Context_payment master_payment = new Context_payment(new Master_Card());
+        Context_payment alipay_payment = new Context_payment(new Alipay());
+        Context_payment apple_payment = new Context_payment(new ApplePay());
+//        if(studentfee_temp.getFeepaymentmethod()==1) studentfee_temp.setFeepaymentmethod(visa_payment.executeStrategy_payment());
+
+
+//        if(studentfee_temp.getFeepaymentmethod()==1)
         List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
         Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,studentfee_temp.getFeepaymentmethod());
 

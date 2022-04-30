@@ -370,23 +370,10 @@
                                             <th>Status</th>
                                             <th>Online or Offline</th>
                                             <th>Payment Method</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-<!--                                        <tr>-->
-<!--                                            <td>1</td>-->
-<!--                                            <td>Michael R Sheets </td>-->
-<!--                                            <td>01 Jun 2021 </td>-->
-<!--                                            <td>123 MAD</td>-->
-<!--                                            <td>-->
-<!--                                                <span class="text badge badge-primary">Paid</span>-->
-<!--                                            </td>-->
-<!--                                            <td>-->
-<!--                                                <a class='mr-4'><span class='fa fa-eye'></span></a>-->
-<!--                                                <a class='mr-4'><span class='fas fa-pencil-alt'></span></a>-->
-<!--                                                <a class='mr-4 delet'><span class='fas fa-trash-alt'></span></a>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
                                         <tr th:each="student : ${fee_list}">
                                             <td th:text="${student.feeid}"></td>
                                             <td th:text="${student.feepayerusername}"></td>
@@ -403,6 +390,22 @@
                                                 <span th:if="${student.feeonlineoroffline} eq 'Offline'" th:text="${student.feeonlineoroffline}" class="badge badge-secondary" ></span>
                                             </td>
                                             <td th:text="${student.feepaymentmethod}" class="badge badge-dark"></td>
+<!--                                            <td>-->
+<!--                                                <a class='mr-4 vue' th:href="@{/student/confirmPending(feeid=${student.feeid},username=${student.feepayerusername},amount=${student.feeamount},status=${student.feestatus},onOrOff=${student.feeonlineorline},payment=${student.feepaymentmethod})}">-->
+<!--                                                    <span class='fas fa-trash-alt'></span>-->
+<!--                                                </a>-->
+<!--                                            </td>-->
+                                            <td>
+                                                <a class='mr-4 vue' th:href="@{/admin/confirmPending(feeid=${student.feeid},username=${student.feepayerusername},amount=${student.feeamount},status=${student.feestatus},onOrOff=${student.feeonlineoroffline},payment=${student.feepaymentmethod})}">
+                                                    <span class='fa fa-eye' aria-hidden='true' ></span>
+                                                </a>
+<!--                                                <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>-->
+<!--                                                    <span class='fas fa-pencil-alt'></span>-->
+<!--                                                </a>-->
+<!--                                                <a class='mr-4 delet'>-->
+<!--                                                    <span class='fas fa-trash-alt'></span>-->
+<!--                                                </a>-->
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>

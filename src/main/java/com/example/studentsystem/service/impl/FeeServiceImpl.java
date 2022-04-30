@@ -4,14 +4,13 @@ import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.FeeExample;
 import com.example.studentsystem.mapper.FeeMapper;
 import com.example.studentsystem.pattern.state.Context;
-import com.example.studentsystem.pattern.state.NotRegistered;
-import com.example.studentsystem.pattern.state.Pending;
 import com.example.studentsystem.service.FeeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Objects;
 
 @Service("feeServiceImpl")
 public class FeeServiceImpl implements FeeService {
@@ -44,11 +43,10 @@ public class FeeServiceImpl implements FeeService {
     @Override
     public int UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, String feeOnlineOrOffline) throws Exception {
         Fee fee = new Fee();
-//        fee.setFeepayerusername(name);
-//        Integer oldamount=fee.getFeeamount();
 //        TODO:如果有此处的amount为0，则需要更改注册状态
         fee.setFeeamount(feeAmount);
         fee.setFeepaymentmethod(feePaymentMethod);
+//        Context
         if(feeOnlineOrOffline=="Online"){
             fee.setFeeonlineoroffline(1);
         }else if (feeOnlineOrOffline=="Offline"){
@@ -65,13 +63,34 @@ public class FeeServiceImpl implements FeeService {
 
         return feeMapper.updateByExampleSelective(fee,feeExample);
     }
+//    @Override
+//    public Fee findFeeById(Integer id) throws Exception{
+//        FeeExample feeExample = new FeeExample();
+//        FeeExample.Criteria criteria = feeExample.createCriteria();
+//        criteria.andFeeidEqualTo(id);
+//
+//        return feeMapper.selectByExample(feeExample).get(0);
+//    }
+    @Override
+    public Integer confirmPending(Integer feeid, Integer feepayerusername, Integer feeamount, String feestatus, String feeonlineorline, String feepaymentmethod){
+        Fee fee = new Fee();
+        fee.setFeeid(feeid);
+        fee.setFeepayerusername(feepayerusername);
+        fee.setFeestatus(1);
+        fee.setFeeamount(feeamount);
+        if(Objects.equals(feeonlineorline, "Online")){
+            fee.setFeeonlineoroffline(1);
+        }
+        else{
+            fee.setFeeonlineoroffline(2);
+        }
+//        fee.setFeeonlineoroffline(feeonlineorline);
+        fee.setFeepaymentmethod(feepaymentmethod);
 
-    public Fee findFeeById(Integer id) throws Exception{
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();
-        criteria.andFeeidEqualTo(id);
-
-        return feeMapper.selectByExample(feeExample).get(0);
+        criteria.andFeeidEqualTo(feeid);
+        return feeMapper.updateByExampleSelective(fee,feeExample);
     }
 
 }

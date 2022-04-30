@@ -2,17 +2,16 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
-import com.example.studentsystem.pattern.strategy.Context;
-import com.example.studentsystem.pattern.strategy.Offline;
-import com.example.studentsystem.pattern.strategy.Online;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -52,6 +51,25 @@ public class FeeController {
 
         return "admin/fee-list";
     }
+    @RequestMapping("/confirmPending")
+    public String confirmPending(@RequestParam("feeid") Integer feeid,@RequestParam("username") Integer feepayerusername,
+                                 @RequestParam("amount") Integer feeamount,@RequestParam("status") String feestatus,
+                                 @RequestParam("onOrOff") String feeonlineoroffline,
+                                 @RequestParam("payment") String feepaymentmethod){
+        System.out.println(feeid);
+        System.out.println(feepayerusername);
+        System.out.println(feeamount);
+        System.out.println(feestatus);
+        System.out.println(feeonlineoroffline);
+        System.out.println(feepaymentmethod);
 
 
+
+        if (Objects.equals(feestatus, "Pending")){
+            System.out.println(feestatus);
+            FeeService.confirmPending(feeid,feepayerusername,feeamount,feestatus,feeonlineoroffline,feepaymentmethod);
+        }
+
+        return "redirect:/admin/fee-list";
+    }
 }
