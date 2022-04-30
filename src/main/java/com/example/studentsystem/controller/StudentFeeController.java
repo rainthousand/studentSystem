@@ -52,12 +52,17 @@ public class StudentFeeController {
         Context_payment master_payment = new Context_payment(new Master_Card());
         Context_payment alipay_payment = new Context_payment(new Alipay());
         Context_payment apple_payment = new Context_payment(new ApplePay());
+        String payment="";
+        if(studentfee_temp.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
+        else if(studentfee_temp.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
+        else if(studentfee_temp.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
+        else payment=apple_payment.executeStrategy_payment();
 //        if(studentfee_temp.getFeepaymentmethod()==1) studentfee_temp.setFeepaymentmethod(visa_payment.executeStrategy_payment());
 
 
 //        if(studentfee_temp.getFeepaymentmethod()==1)
         List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
-        Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,studentfee_temp.getFeepaymentmethod());
+        Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,payment);
 
 
         model.addAttribute("student_fee",studentfee);
@@ -68,10 +73,11 @@ public class StudentFeeController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
-//        System.out.println(feeAmount);
-//        System.out.println(feePaymentMethod);
-//        System.out.println(feeOnlineOrOffline);
-        FeeService.UpdateByUserName(session,studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,feeOnlineOrOffline);
+        //TODO 费用削减失败时页面导航
+        if((studentfee_temp.getFeeamount()-feeAmount)>=0){
+            FeeService.UpdateByUserName(session,studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,feeOnlineOrOffline);
+        }else{
+        }
         return "redirect:fee";
     }
 }

@@ -45,8 +45,10 @@ public class FeeServiceImpl implements FeeService {
         Fee fee = new Fee();
 //        TODO:如果有此处的amount为0，则需要更改注册状态
         fee.setFeeamount(feeAmount);
-        fee.setFeepaymentmethod(feePaymentMethod);
-//        Context
+        if(feePaymentMethod=="Visa card") fee.setFeepaymentmethod(1);
+        else if(feePaymentMethod=="Master card") fee.setFeepaymentmethod(2);
+        else if(feePaymentMethod=="Alipay") fee.setFeepaymentmethod(3);
+        else fee.setFeepaymentmethod(4);
         if(feeOnlineOrOffline=="Online"){
             fee.setFeeonlineoroffline(1);
         }else if (feeOnlineOrOffline=="Offline"){
@@ -84,8 +86,10 @@ public class FeeServiceImpl implements FeeService {
         else{
             fee.setFeeonlineoroffline(2);
         }
-//        fee.setFeeonlineoroffline(feeonlineorline);
-        fee.setFeepaymentmethod(feepaymentmethod);
+        if(feepaymentmethod=="Visa card") fee.setFeepaymentmethod(1);
+        else if(feepaymentmethod=="Master card") fee.setFeepaymentmethod(2);
+        else if(feepaymentmethod=="Alipay") fee.setFeepaymentmethod(3);
+        else fee.setFeepaymentmethod(4);
 
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();

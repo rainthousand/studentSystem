@@ -7,5 +7,5 @@ public class Context_payment {
         this.strategyPayment = strategyPayment;
     }
 
-    public Integer executeStrategy_payment(){return strategyPayment.paymentMethod();}
+    public String executeStrategy_payment(){return strategyPayment.paymentMethod();}
 }

@@ -2,6 +2,7 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
+import com.example.studentsystem.pattern.strategy.*;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +23,6 @@ public class FeeController {
     @RequestMapping(value = "/fee-list")
     public String toFee(Model model) throws Exception{
         List<Fee> fee_list = FeeService.findAllFee();
-//        Fee personfee=fee_list.get(0);
-//        List<Feeforshow> newfee_list = new ArrayList(fee_list);
-//        Online or Offline
-//        Context contextOff = new Context(new Offline());
-//        Context contextOn = new Context(new Online());
-//        System.out.println(contextOff.executeStrategy());
-
 
         List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
         for(Fee fee:fee_list){
@@ -39,7 +33,16 @@ public class FeeController {
             if(fee.getFeestatus()==1) status+="Registered";
             else if(fee.getFeestatus()==2) status+="Pending";
             else if(fee.getFeestatus()==3) status+="Not Registered";
-            Feeforshow temp=new Feeforshow(fee.getFeeid(),fee.getFeeamount(),fee.getFeepayerusername(),status,str,fee.getFeepaymentmethod());
+            String payment;
+            Context_payment visa_payment = new Context_payment(new Visa_Card());
+            Context_payment master_payment = new Context_payment(new Master_Card());
+            Context_payment alipay_payment = new Context_payment(new Alipay());
+            Context_payment apple_payment = new Context_payment(new ApplePay());
+            if(fee.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
+            else if(fee.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
+            else if(fee.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
+            else payment=apple_payment.executeStrategy_payment();
+            Feeforshow temp=new Feeforshow(fee.getFeeid(),fee.getFeeamount(),fee.getFeepayerusername(),status,str,payment);
             newfee_list.add(temp);
 
         }
