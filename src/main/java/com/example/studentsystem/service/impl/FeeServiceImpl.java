@@ -6,7 +6,7 @@ import com.example.studentsystem.mapper.FeeMapper;
 import com.example.studentsystem.pattern.state.Context;
 import com.example.studentsystem.service.FeeService;
 import org.springframework.stereotype.Service;
-
+import com.example.studentsystem.mapper.SubscribeNewsMapper;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -34,11 +34,6 @@ public class FeeServiceImpl implements FeeService {
 
         return feeMapper.selectByExample(feeExample);
     }
-//    @Override
-//    public int UpdateByStatus(HttpSession session,Integer name, Integer feeStatus){
-//        Fee fee = new Fee();
-//
-//    }
 
     @Override
     public int UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, String feeOnlineOrOffline) throws Exception {
@@ -61,18 +56,11 @@ public class FeeServiceImpl implements FeeService {
             Context context = new Context();
             context.shiftPending();
             fee.setFeestatus(2);
+            //TODO subscribe newsletter部分的更新与删除
         }
 
         return feeMapper.updateByExampleSelective(fee,feeExample);
     }
-//    @Override
-//    public Fee findFeeById(Integer id) throws Exception{
-//        FeeExample feeExample = new FeeExample();
-//        FeeExample.Criteria criteria = feeExample.createCriteria();
-//        criteria.andFeeidEqualTo(id);
-//
-//        return feeMapper.selectByExample(feeExample).get(0);
-//    }
     @Override
     public Integer confirmPending(Integer feeid, Integer feepayerusername, Integer feeamount, String feestatus, String feeonlineorline, String feepaymentmethod){
         Fee fee = new Fee();

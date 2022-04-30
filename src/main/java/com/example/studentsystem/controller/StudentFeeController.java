@@ -33,8 +33,6 @@ public class StudentFeeController {
                 .getRequestAttributes())).getRequest().getSession();
 //
         Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
-//
-//        Fee studentfee = FeeService.findFeeByUserName(10001);
 
         Context_onlineOrOffline contextOff = new Context_onlineOrOffline(new Offline());
         Context_onlineOrOffline contextOn = new Context_onlineOrOffline(new Online());
