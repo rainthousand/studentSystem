@@ -344,184 +344,21 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table id="example1" class="display nowrap">
+                                    <table id="example2" class="display nowrap">
                                         <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Patient Name</th>
-                                            <th>Date</th>
-                                            <th>Content</th>
-                                            <th>Actions</th>
+                                            <th>Your Newsletter</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>Pr-0001</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
+                                        <tr th:each="subscribedNewsletter : ${subscribedNewsletterList}">
+                                            <td th:text="${subscribedNewsletter.newsname}"></td>
+                                            <td th:text="${subscribedNewsletter.subject}"></td>
+                                            <td th:text="${subscribedNewsletter.publisher}"></td>
+                                            <td th:text="${subscribedNewsletter.publishtime}"></td>
+                                            <td th:text="${subscribedNewsletter.newsmessage}"></td>
                                             <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0002</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0003</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0004</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0005</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0006</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0007</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0008</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0009</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Pr-0010</td>
-                                            <td>Airi Satou</td>
-                                            <td>01 Apr 2021</td>
-                                            <td> 3 Drugs | 1 Tests</td>
-                                            <td>
-                                                <a href='#' class='mr-4'>
-                                                    <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                                <a class='mr-4'>
-                                                    <span class='fas fa-print'></span>
-                                                </a>
-                                                <a class='mr-4 delet'>
-                                                    <span class='fas fa-trash-alt'></span>
+                                                <span class='fa fa-eye' aria-hidden='true'></span>
                                                 </a>
                                             </td>
                                         </tr>

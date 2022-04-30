@@ -35,25 +35,25 @@
                         <span class="nav-label">Dashboard</span>
                     </a>
                 </li>
-                <li class="has-submenu">
+                <li class="has-submenu active">
                     <a href="#" class="has-arrow mm-collapsed">
                         <i class="fas fa-user-md"></i>
                         <span class="nav-label">Doctors</span>
                     </a>
                     <ul class="list-unstyled mm-collapse">
-                        <li><a href="add-doctor.html">Add Doctor</a></li>
+                        <li><a href="">Add Doctor</a></li>
                         <li><a href="doctor-list.html">All Doctors</a></li>
                         <li><a href="doctor-profile.html">Doctors Profile</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu active">
+                <li class="has-submenu">
                     <a href="#" class="has-arrow mm-collapsed">
                         <i class="fas fa-users"></i>
                         <span class="nav-label">Patients</span>
                     </a>
                     <ul class="list-unstyled mm-collapse">
-                        <li><a href="/studentToSelectedCourse">Student Selected</a></li>
-                        <li><a href="">All Courses</a></li>
+                        <li><a href="new-patient.html">New Patient</a></li>
+                        <li><a href="all-patients.html">All Patients</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
@@ -212,7 +212,6 @@
                                         <li>
                                             <div class="timeline-panel">
                                                 <div class="media mr-2 media-info">
-                                                    <!-- KG -->
                                                     <img alt="image" src="picture/1.jpg">
                                                 </div>
                                                 <div class="media-body">
@@ -246,7 +245,6 @@
                                         <li>
                                             <div class="timeline-panel">
                                                 <div class="media mr-2 media-danger">
-                                                    <!-- KG -->
                                                     <img alt="image" src="picture/1.jpg">
                                                 </div>
                                                 <div class="media-body">
@@ -313,71 +311,96 @@
     <!-- start section content -->
     <div class="content-body">
         <div class="warper container-fluid">
-            <div class="all-patients main_container">
+            <div class="new-patients main_container">
                 <div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4 class="text-primary">New Patient</h4>
+                            <h4 class="text-primary">Add a newsletter</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:;">Newsletters</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:;">Add a newsletter</a></li>
                         </ol>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-md-12">
                         <div class="card">
-                            <div class="card-header fix-card">
-                                <div class="row">
-                                    <div class="col-8">
-                                        <h4 class="card-title"> All Newsletters </h4>
-                                    </div>
-                                </div>
+                            <div class="card-header">
+                                <h4 class="card-title">Newsletter Information</h4>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table id="example2" class="display nowrap">
-                                        <thead>
-                                        <tr>
-                                            <th>Newsletter Subject</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="newsSubject : ${newsSubjectList}">
-                                            <td th:text="${newsSubject.subject}"></td>
-                                            <td>
-                                                <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                         aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
-                                    </button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                <div class="basic-form">
+                                    <form action="/admin/publish" method="post">
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                                <div class="form-group row widget-3">
+                                                    <div class="col-lg-10">
+                                                        <div class="form-input">
+                                                            <label class="labeltest" for="file-ip-1">
+                                                                <span> Drop image here or click to upload. </span>
+                                                            </label>
+                                                            <input type="file" id="file-ip-1" accept="image/*"
+                                                                   onchange="showPreview(event);">
+                                                            <div class="preview">
+                                                                <img id="file-ip-1-preview"
+                                                                     src="https://www.17sucai.com/preview/776298/2021-08-30/tabib/add-doctor.html"
+                                                                     alt="img">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-8">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control"
+                                                           placeholder="Newsletter Name"
+                                                           name="newslettername">
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control form-select" name="publishertype">
+                                                        <option>Publisher Type</option>
+                                                        <option>Student Union</option>
+                                                        <option>Admission Office</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control form-select" name="subject">
+                                                        <option>Newsletter Subject</option>
+                                                        <option>Arts</option>
+                                                        <option>Science</option>
+                                                        <option>Student Centre</option>
+                                                        <option>Student-made</option>
+                                                        <option>German</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control form-select" name="newstype">
+                                                        <option>Newsletter Type</option>
+                                                        <option>Normal message</option>
+                                                        <option>Fee message</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-4">
+                                            </div>
+                                            <div class="col-xl-8">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" placeholder="Newsletter message:"
+                                                              rows="4"
+                                                              name="newsdetail"></textarea>
+                                                </div>
+                                                <div class="form-group text-right">
+                                                    <button type="submit" class="btn btn-primary float-end">publish
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -390,8 +413,8 @@
 
 
     <!-- start section footer -->
-    <div class="footer ">
-        <div class="copyright ">
+    <div class="footer">
+        <div class="copyright">
             <p class="mb-0">Copyright &copy; 2021.Company name All rights reserved.<a target="_blank"
                                                                                       href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
             </p>
@@ -403,198 +426,28 @@
 </div>
 
 
-<!-- Show data patient -->
-<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-    <!-- <div > -->
-    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel"><img class="rounded-circle" width="35" src="picture/user1.jpg"
-                                                               alt=""> Tiger Nixon </h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="insertHere"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Show data patient -->
-
-
-<!-- Modal -->
-<div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-title-edit-row" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modal-title-edit-row">Angelica Ramos</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="basic-form">
-                            <form>
-                                <div class="row">
-                                    <div class="col-xl-4">
-                                        <div class="form-group row widget-3">
-                                            <div class="col-lg-12">
-                                                <div class="form-input">
-                                                    <label class="labeltest" for="file-ip-1">
-                                                        <span> Drop image here or click to upload. </span>
-                                                    </label>
-                                                    <input type="file" id="file-ip-1" accept="image/*"
-                                                           onchange="showPreview(event);">
-                                                    <div class="preview">
-                                                        <img id="file-ip-1-preview"
-                                                             src="https://www.17sucai.com/preview/776298/2021-08-30/tabib/all-patients.html"
-                                                             alt="img">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4">
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <input type="text" class="form-control" placeholder="First Name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <input type="text" class="form-control" placeholder="Last name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <input type="email" class="form-control" placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <input type="text" class="form-control" placeholder="Mobile No.">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4">
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" placeholder="Birthday">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <select class="form-control form-select">
-                                                    <option> Marital status</option>
-                                                    <option>Married</option>
-                                                    <option>Unmarried</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <select class="form-control form-select">
-                                                    <option>Sex</option>
-                                                    <option>Male</option>
-                                                    <option>Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <select class="form-control form-select">
-                                                    <option>Blood Group</option>
-                                                    <option>A+</option>
-                                                    <option>A-</option>
-                                                    <option>B+</option>
-                                                    <option>B-</option>
-                                                    <option>O+</option>
-                                                    <option>O-</option>
-                                                    <option>AB+</option>
-                                                    <option>AB-</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-4"></div>
-                                    <div class="col-xl-4">
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <input type="text" class="form-control" placeholder="Patient Weight">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4">
-                                        <div class="form-group row">
-                                            <div class="col-lg-12">
-                                                <input type="text" class="form-control" placeholder="Patient Height">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-4">
-                                        <div class="form-group">
-                                            <div class="col-lg-12">
-                                            </div>
-                                            <textarea class="form-control" placeholder="Address" rows="4"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-8">
-                                        <div class="form-group">
-                                            <textarea class="form-control" placeholder="Patient History"
-                                                      rows="4"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--End Modal -->
-
-
 <!-- JQuery v3.5.1 -->
-<script src="../js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 
 <!-- popper js -->
-<script src="../js/popper.min.js"></script>
+<script src="js/popper.min.js"></script>
 
 <!-- Bootstrap -->
-<script src="../js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 
 <!-- Moment -->
-<script src="../js/moment.min.js"></script>
+<script src="js/moment.min.js"></script>
 
 <!-- Date Range Picker -->
-<script src="../js/daterangepicker.min.js"></script>
+<script src="js/daterangepicker.min.js"></script>
 
 <!-- Datatable -->
-<script src="../js/jquery.dataTables.min.js"></script>
-<script src="../js/init-tdatatable.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/init-tdatatable.js"></script>
 
 <!-- Main Custom JQuery -->
-<script src="../js/toggleFullScreen.js"></script>
-<script src="../js/main.js"></script>
+<script src="js/toggleFullScreen.js"></script>
+<script src="js/main.js"></script>
 
 </body>
 

@@ -1,6 +1,7 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.NewsLetter;
+import com.example.studentsystem.entity.NewsSubject;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,16 +17,27 @@ import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "/student")
-public class NewsletterController {
+public class StudentNewsletterController {
     @Resource(name = "newsletterServiceImpl")
     private NewsletterService newsletterService;
 
     @RequestMapping(value = "/newsletter")
-    public String studentAllCourse(Model model) throws Exception {
-        List<NewsLetter> newsletterList = newsletterService.findAllNewsletter();
-        model.addAttribute("newsletterList", newsletterList);
+    public String studentAllSubject(Model model) throws Exception {
+        List<NewsSubject> newsSubjectList = newsletterService.findAllSubject();
+        model.addAttribute("newsSubjectList", newsSubjectList);
 
         return "student/newsletter";
+    }
+
+    @RequestMapping(value = "/subscribesubject")
+    public String studentAllSubscribedSubject(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsSubject> subscribedSubjectList = newsletterService.findAllSubjectByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("subscribedSubjectList", subscribedSubjectList);
+
+        return "student/subscribesubject";
     }
 
     @RequestMapping(value = "/subscribedNewsletter")
@@ -34,7 +46,7 @@ public class NewsletterController {
                 .getRequestAttributes())).getRequest().getSession();
         System.out.println(session.getAttribute("username"));
         List<NewsLetter> subscribedNewsletterList = newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
-        model.addAttribute("subscribedNewsletter", subscribedNewsletterList);
+        model.addAttribute("subscribedNewsletterList", subscribedNewsletterList);
 
         return "student/subscribedNewsletter";
     }
@@ -51,14 +63,14 @@ public class NewsletterController {
         return "redirect:/student/subscribedNewsletter";
     }
 
-    @RequestMapping("/subscribe/{nid}")
-    public String subscribeNewsletter(@PathVariable("nid") Integer nid) {
+    @RequestMapping("/subscribe/{subject}")
+    public String subscribeNewsletter(@PathVariable("subject") String subject) {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
         System.out.println("nid");
-        System.out.println(nid);
-        newsletterService.SubscribeNewsLetter(sid, nid);
+        System.out.println(subject);
+        newsletterService.SubscribeNewsLetterSubject(sid, subject);
 
         return "redirect:/student/newsletter";
     }

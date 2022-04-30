@@ -1,5 +1,6 @@
 package com.example.studentsystem.controller;
 
+import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.entity.Teacher;
 import com.example.studentsystem.entity.UserLogin;
 import com.example.studentsystem.entity.UserSessionInfo;
@@ -8,8 +9,10 @@ import com.example.studentsystem.pattern.template.StudentLogin;
 import com.example.studentsystem.pattern.template.TeacherLogin;
 import com.example.studentsystem.pattern.visitor.*;
 import com.example.studentsystem.service.FeeService;
+import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.UserLoginService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -30,6 +33,9 @@ public class LoginController {
     @Resource(name = "feeServiceImpl")
     private FeeService feeService;
 
+    @Resource(name = "newsletterServiceImpl")
+    private NewsletterService newsletterService;
+
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String toLogin() throws Exception {
         return "page-login";
@@ -37,7 +43,7 @@ public class LoginController {
 
     // login request handling
     @RequestMapping(value = "/login")
-    public String login(UserLogin userlogin) throws Exception {
+    public String login(UserLogin userlogin, Model model) throws Exception {
 
 //        System.out.println("user::::::::::::::::::::::::::::::");
 //        System.out.println(userlogin.getUsername());
@@ -78,11 +84,24 @@ public class LoginController {
                 // student login
                 Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
                 StudentLogin student = new StudentLogin();
+//                List<NewsLetter> notificationList =
+//                        newsletterService.findAllNewsLetterByStudentid(Integer.valueOf(userlogin.getUsername()));
+//                model.addAttribute("notificationList", notificationList);
                 return student.Login(currUser, session, URLs, status);
             }
         }
 
         return "/page-login";
     }
-
+//    @RequestMapping(value = "/index")
+//    public String studentNotifySubscribedNewsletter(Model model) throws Exception {
+//        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+//                .getRequestAttributes())).getRequest().getSession();
+//        System.out.println(session.getAttribute("username"));
+//        List<NewsLetter> notificationList =
+//                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+//        model.addAttribute("notificationList", notificationList);
+//
+//        return "student/index";
+//    }
 }
