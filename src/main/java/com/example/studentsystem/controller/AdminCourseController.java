@@ -133,7 +133,13 @@ public class AdminCourseController {
 
         Course newCourse = new Course();
         Integer courseid = courseService.indexNewCourse();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        coursestart = coursestart.split("T")[0]+" "+coursestart.split("T")[1];
+        courseend = courseend.split("T")[0]+" "+courseend.split("T")[1];
+//        coursestart+=":00";
+//        courseend+=".00";
+        System.out.println(coursestart);
+        System.out.println(courseend);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date newcoursestart = format.parse(coursestart);
         Date newcourseend = format.parse(courseend);
 //        newCourse.setCourseid(courseService.indexNewCourse());
