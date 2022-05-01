@@ -363,7 +363,8 @@
                                                 <td th:text="${course.studentname}"></td>
                                                 <td th:text="${course.mark}"></td>
                                                 <td>
-                                                    <a class='mr-4 delet' th:href="@{/admin/deleteSelected(cid=${course.getCourseid()},sid=${course.getStudentid()})}">
+                                                    <input type="hidden" th:value= "admin" name="judge"/>
+                                                    <a class='mr-4 delet' th:href="@{/admin/deleteSelected(cid=${course.getCourseid()},sid=${course.getStudentid()},judge=${judge})}">
                                                         <span class='fas fa-trash-alt'></span>
                                                     </a>
                                                 </td>

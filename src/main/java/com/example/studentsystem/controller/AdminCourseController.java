@@ -82,26 +82,27 @@ public class AdminCourseController {
             adminSelectedCourseList.add(adminSelectedCourse);
         }
         model.addAttribute("adminSelectedCourseList",adminSelectedCourseList);
+        model.addAttribute("judge","admin");
 
         return "admin/selectedcourse";
     }
 
     @RequestMapping("/deleteSelected")
-    public String deleteSelectedCourse(@RequestParam("sid") Integer sid, @RequestParam("cid") Integer cid){
+    public String deleteSelectedCourse(@RequestParam("sid") Integer sid,@RequestParam("cid") Integer cid,@RequestParam("judge") String judge){
 
         courseService.deleteSelectedCourse(sid,cid);
-        return "redirect:/admin/selectedCourse";
+        return "redirect:/"+judge+"/selectedCourse";
     }
 
     @RequestMapping("/addSelected")
-    public String addSelectedCourse(@RequestParam Integer studentid,@RequestParam Integer courseid) throws Exception {
+    public String addSelectedCourse(@RequestParam Integer studentid,@RequestParam Integer courseid,@RequestParam String judge) throws Exception {
         //TODO 选课else处理
         Integer status = feeService.findFeeByUserName(studentid).getFeestatus();
         if(status.equals(1)){
             courseService.addSelectedCourse(studentid,courseid);
-            return "redirect:/admin/course";
+            return "redirect:/"+judge+"/course";
         }else{
-            return "redirect:/admin/course";
+            return "redirect:/"+judge+"/course";
         }
     }
 
