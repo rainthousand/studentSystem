@@ -36,10 +36,10 @@
 <!--        <table schema="" tableName="subscribenews" domainObjectName="SubscribeNews"/>-->
 <!--        <table schema="" tableName="teacher" domainObjectName="Teacher"/>-->
 <!--        <table schema="" tableName="userlogin" domainObjectName="UserLogin"/>-->
-        <table schema="" tableName="student" domainObjectName="Student"/>
-        <table schema="" tableName="subscribenews" domainObjectName="SubscribeNews"/>
-        <table schema="" tableName="teacher" domainObjectName="Teacher"/>
-        <table schema="" tableName="userlogin" domainObjectName="UserLogin"/>
+        <table schema="" tableName="newsletter" domainObjectName="Newsletter"/>
+        <table schema="" tableName="newssubject" domainObjectName="NewsSubject"/>
+        <table schema="" tableName="subscribednewsletter" domainObjectName="SubscribedNewsletter"/>
+        <table schema="" tableName="subscribedsubject" domainObjectName="SubscribedSubject"/>
 
 
     </context>
