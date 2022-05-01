@@ -2,6 +2,8 @@ package com.example.studentsystem.service.impl;
 
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.FeeExample;
+import com.example.studentsystem.entity.SubscribeNewsExample;
+import com.example.studentsystem.entity.SubscribeNewsKey;
 import com.example.studentsystem.mapper.FeeMapper;
 import com.example.studentsystem.pattern.state.Context;
 import com.example.studentsystem.service.FeeService;
@@ -16,6 +18,9 @@ import java.util.Objects;
 public class FeeServiceImpl implements FeeService {
     @Resource
     private FeeMapper feeMapper;
+    @Resource
+    private SubscribeNewsMapper subscribeNewsMapper;
+
 
     @Override
     public Fee findFeeByUserName(Integer name) throws Exception {
@@ -57,6 +62,7 @@ public class FeeServiceImpl implements FeeService {
             context.shiftPending();
             fee.setFeestatus(2);
             //TODO subscribe newsletter部分的更新与删除
+            updateSubNews(name);
         }
 
         return feeMapper.updateByExampleSelective(fee,feeExample);
@@ -83,6 +89,18 @@ public class FeeServiceImpl implements FeeService {
         FeeExample.Criteria criteria = feeExample.createCriteria();
         criteria.andFeeidEqualTo(feeid);
         return feeMapper.updateByExampleSelective(fee,feeExample);
+    }
+
+    @Override
+    public int updateSubNews(Integer studentId) {
+        SubscribeNewsKey subscribeNewsKey=new SubscribeNewsKey();
+        subscribeNewsKey.setNewsletterid(1001);
+        SubscribeNewsExample subscribeNewsExample = new SubscribeNewsExample();
+        SubscribeNewsExample.Criteria criteria = subscribeNewsExample.createCriteria();
+        criteria.andStudentidEqualTo(studentId);
+//        System.out.println("yes:1001");
+//        return 1;
+        return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribeNewsExample);
     }
 
 }
