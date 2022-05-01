@@ -26,7 +26,7 @@
 <!--        <table schema="" tableName="attendactivity" domainObjectName="AttendActivity"/>-->
 <!--        <table schema="" tableName="college" domainObjectName="College"/>-->
 <!--        <table schema="" tableName="course" domainObjectName="Course"/>-->
-        <table schema="" tableName="fee" domainObjectName="Fee"/>
+<!--        <table schema="" tableName="fee" domainObjectName="Fee"/>-->
 <!--        <table schema="" tableName="fee" domainObjectName="Fee"/>-->
 <!--        <table schema="" tableName="newsletter" domainObjectName="NewsLetter"/>-->
 <!--        <table schema="" tableName="role" domainObjectName="Role"/>-->
@@ -36,6 +36,11 @@
 <!--        <table schema="" tableName="subscribenews" domainObjectName="SubscribeNews"/>-->
 <!--        <table schema="" tableName="teacher" domainObjectName="Teacher"/>-->
 <!--        <table schema="" tableName="userlogin" domainObjectName="UserLogin"/>-->
+        <table schema="" tableName="newsletter" domainObjectName="Newsletter"/>
+        <table schema="" tableName="newssubject" domainObjectName="NewsSubject"/>
+        <table schema="" tableName="subscribednewsletter" domainObjectName="SubscribedNewsletter"/>
+        <table schema="" tableName="subscribedsubject" domainObjectName="SubscribedSubject"/>
+
 
     </context>
 </generatorConfiguration>
