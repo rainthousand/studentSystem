@@ -53,19 +53,27 @@ public class StudentScheduleController {
             events1.setBackgroundColor("#ff4040");
             events1.setBorderColor("#ff4040");
             //id设置为Course-(Courseid)
+            //"-"后是数据库里的ID
             events1.setId("Course-"+Integer.toString(course.getCourseid()));
             events.add(events1);
         }
 
         for(SchoolActivity activity : schoolActivityList){
             Event events1 = new Event();
+            //Event.Title对应Activity.name
             events1.setTitle(activity.getActivityname());
+            //Event.Start对应Activity.start
             events1.setStart(activity.getActivitystart());
+            //Event.End对应Activity.end
             events1.setEnd(activity.getActivityend());
+            //Event.AllDay
             events1.setAllDay(false);
+            //Event.BackgroundColor
             events1.setBackgroundColor("#9e5fff");
+            //Event.BorderColor
             events1.setBorderColor("#9e5fff");
             //id 设置为Activity-(ActivityId)
+            //"-"后是数据库里的ID
             events1.setId("Activity-"+Integer.toString(activity.getActivityid()));
             events.add(events1);
         }
@@ -107,7 +115,7 @@ public class StudentScheduleController {
         event.setBorderColor(object.getString("borderColor"));
         event.setAllDay(object.getBoolean("AllDay"));
         event.setId(object.getString("id"));
-        //TODO 插入数据库时需要递增ID
+
 //        System.out.println(event.getId());
         return event;
     }
@@ -127,8 +135,9 @@ public class StudentScheduleController {
         event.setAllDay(object.getBoolean("AllDay"));
         event.setId(object.getString("id"));
         System.out.println(JSON.toJSONString(event));
-
+        //TODO 插入数据库时需要递增ID
 //        System.out.println(event.getId());
+        //TODO return: object.getString("Title")+"-"+newID
         return "newID";
     }
 
@@ -148,7 +157,7 @@ public class StudentScheduleController {
         event.setAllDay(object.getBoolean("AllDay"));
         event.setId(object.getString("id"));
         System.out.println(JSON.toJSONString(event));
-
+        //TODO 删除数据库对应的参加记录
 //        System.out.println(event.getId());
         return event;
     }
