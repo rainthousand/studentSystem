@@ -16,10 +16,21 @@ public class ErrorPageConfig implements ErrorPageRegistrar {
     @Override
     public void registerErrorPages(ErrorPageRegistry errorPageRegistry) {
         //1、Distinguish by error type
-        //404 Not Found
-        ErrorPage e404 = new ErrorPage(HttpStatus.NOT_FOUND, "/error/404");
+
         //500 Internal Server Error
         ErrorPage e500 = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/error/500");
+        //503 Service Unavailable
+        ErrorPage e503 = new ErrorPage(HttpStatus.SERVICE_UNAVAILABLE, "/error/503");
+        //400 Bad Request
+        ErrorPage e400 = new ErrorPage(HttpStatus.BAD_REQUEST, "/error/400");
+        //401 Unauthorized
+        ErrorPage e401 = new ErrorPage(HttpStatus.UNAUTHORIZED, "/error/401");
+        //403 Forbidden
+        ErrorPage e403 = new ErrorPage(HttpStatus.FORBIDDEN, "/error/403");
+        //404 Not Found
+        ErrorPage e404 = new ErrorPage(HttpStatus.NOT_FOUND, "/error/404");
+
+
         errorPageRegistry.addErrorPages(e404, e500);
     }
 
