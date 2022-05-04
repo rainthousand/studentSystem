@@ -29,8 +29,8 @@
     <aside class="left-panel nicescroll-box">
         <nav class="navigation">
             <ul class="list-unstyled main-menu">
-                <li class="has-submenu">
-                    <a href="index.html">
+                <li class="has-submenu active">
+                    <a href="">
                         <i class="fas fa-th-large"></i>
                         <span class="nav-label">Dashboard</span>
                     </a>
@@ -46,14 +46,14 @@
                         <li><a href="doctor-profile.html">Doctors Profile</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu active">
+                <li class="has-submenu">
                     <a href="#" class="has-arrow mm-collapsed">
                         <i class="fas fa-users"></i>
                         <span class="nav-label">Patients</span>
                     </a>
                     <ul class="list-unstyled mm-collapse">
                         <li><a href="/studentToSelectedCourse">Student Selected</a></li>
-                        <li><a href="">All Courses</a></li>
+                        <li><a href="/studentToCourse">All Courses</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
@@ -65,11 +65,12 @@
                 <li class="has-submenu">
                     <a href="#" class="has-arrow mm-collapsed">
                         <i class="fas fa-book-medical"></i>
-                        <span class="nav-label">Prescriptions</span>
+                        <span class="nav-label">Newsletters</span>
                     </a>
                     <ul class="list-unstyled mm-collapse">
-                        <li><a href="new-prescription.html">New Prescription</a></li>
-                        <li><a href="all-prescriptions.html">All Prescriptions</a></li>
+                        <li><a href="">All Newsletter</a></li>
+                        <li><a href="/studentToManageSubscription">Manage Subscription</a></li>
+                        <li><a href="/studentToSubscribe">To Subscribe</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
@@ -268,7 +269,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <a class="all-notification btn btn-primary" href="#">
+                                <a class="all-notification btn btn-primary" href="/studentToSubscribedNewsletter">
                                     See all notifications
                                 </a>
                             </div>
@@ -334,7 +335,7 @@
                             <div class="card-header fix-card">
                                 <div class="row">
                                     <div class="col-8">
-                                        <h4 class="card-title"> All Prescriptions </h4>
+                                        <h4 class="card-title"> Your Newsletter </h4>
                                     </div>
                                     <div class="col-4">
                                         <a href="javascript:;" class="btn btn-primary float-end">New
@@ -347,7 +348,11 @@
                                     <table id="example2" class="display nowrap">
                                         <thead>
                                         <tr>
-                                            <th>Your Newsletter</th>
+                                            <th>Newsletter Name</th>
+                                            <th>Subject</th>
+                                            <th>Publisher</th>
+                                            <th>Publish Time</th>
+                                            <th>Message</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -357,10 +362,10 @@
                                             <td th:text="${subscribedNewsletter.publisher}"></td>
                                             <td th:text="${subscribedNewsletter.publishtime}"></td>
                                             <td th:text="${subscribedNewsletter.newsmessage}"></td>
-                                            <td>
-                                                <span class='fa fa-eye' aria-hidden='true'></span>
-                                                </a>
-                                            </td>
+                                            <!--                                            <td>-->
+                                            <!--                                                <span class='fa fa-eye' aria-hidden='true'></span>-->
+                                            <!--                                                </a>-->
+                                            <!--                                            </td>-->
                                         </tr>
                                         </tbody>
                                     </table>

@@ -1,5 +1,6 @@
 package com.example.studentsystem.pattern.observer;
 
 public interface Observer {
-    public void update(String message);
+
+    public void update(Integer newsid);
 }

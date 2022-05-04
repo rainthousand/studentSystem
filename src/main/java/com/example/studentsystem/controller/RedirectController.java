@@ -41,19 +41,20 @@ public class RedirectController {
         return "redirect:student/selectedCourse";
     }
 
-    @RequestMapping(value = "/studentToNewsletter", method = {RequestMethod.GET})
-    public String studentToNewsletterPage() throws Exception {
-        return "redirect:student/newsletter";
-    }
 
     @RequestMapping(value = "/studentToSubscribedNewsletter", method = {RequestMethod.GET})
     public String studentToSubscribeNewsletterPage() throws Exception {
         return "redirect:student/subscribedNewsletter";
     }
 
-    @RequestMapping(value = "/studentToSubscribedSubject", method = {RequestMethod.GET})
-    public String studentToSubscribedSubjectPage() throws Exception {
-        return "redirect:student/subscribesubject";
+    @RequestMapping(value = "/studentToSubscribe", method = {RequestMethod.GET})
+    public String studentToSubscribePage() throws Exception {
+        return "redirect:student/tosubscribe";
+    }
+
+    @RequestMapping(value = "/studentToManageSubscription", method = {RequestMethod.GET})
+    public String studentToManageSubscriptionPage() throws Exception {
+        return "redirect:student/managesubscription";
     }
 
     @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})

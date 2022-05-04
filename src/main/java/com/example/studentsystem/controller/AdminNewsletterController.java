@@ -1,6 +1,8 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.NewsLetter;
+import com.example.studentsystem.pattern.observer.Newsletter;
+import com.example.studentsystem.pattern.observer.Student;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,6 +44,15 @@ public class AdminNewsletterController {
                 typeInt = 1;
         }
         newsletterService.AddNewsletter(newsid, newslettername, publishertype, subject, newsdetail, new Date(), typeInt);
+        List<Integer> subscribedStudentList = newsletterService.findAllStudentidBySubject(subject);
+//
+//        Newsletter newsletter=new Newsletter(newsid,subject);
+        for (Integer studentid : subscribedStudentList) {
+//            newsletter.attach(new Student(studentid));
+            newsletterService.AddNewsletterKey(newsid, studentid);
+
+        }
+//        newsletter.notifySubscription();
         return "admin/addnewsletter";
     }
 }

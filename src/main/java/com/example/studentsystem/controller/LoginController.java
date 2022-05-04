@@ -85,24 +85,10 @@ public class LoginController {
                 // student login
                 Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
                 StudentLogin student = new StudentLogin();
-//                List<NewsLetter> notificationList =
-//                        newsletterService.findAllNewsLetterByStudentid(Integer.valueOf(userlogin.getUsername()));
-//                model.addAttribute("notificationList", notificationList);
                 return student.Login(currUser, session, URLs, status);
             }
         }
 
         return "/page-login";
     }
-//    @RequestMapping(value = "/index")
-//    public String studentNotifySubscribedNewsletter(Model model) throws Exception {
-//        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-//                .getRequestAttributes())).getRequest().getSession();
-//        System.out.println(session.getAttribute("username"));
-//        List<NewsLetter> notificationList =
-//                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
-//        model.addAttribute("notificationList", notificationList);
-//
-//        return "student/index";
-//    }
 }

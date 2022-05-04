@@ -21,15 +21,15 @@ public class StudentNewsletterController {
     @Resource(name = "newsletterServiceImpl")
     private NewsletterService newsletterService;
 
-    @RequestMapping(value = "/newsletter")
+    @RequestMapping(value = "/tosubscribe")
     public String studentAllSubject(Model model) throws Exception {
         List<NewsSubject> newsSubjectList = newsletterService.findAllSubject();
         model.addAttribute("newsSubjectList", newsSubjectList);
 
-        return "student/newsletter";
+        return "student/tosubscribe";
     }
 
-    @RequestMapping(value = "/subscribesubject")
+    @RequestMapping(value = "/managesubscription")
     public String studentAllSubscribedSubject(Model model) throws Exception {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
@@ -37,7 +37,7 @@ public class StudentNewsletterController {
         List<NewsSubject> subscribedSubjectList = newsletterService.findAllSubjectByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("subscribedSubjectList", subscribedSubjectList);
 
-        return "student/subscribesubject";
+        return "student/managesubscription";
     }
 
     @RequestMapping(value = "/subscribedNewsletter")
@@ -51,16 +51,17 @@ public class StudentNewsletterController {
         return "student/subscribedNewsletter";
     }
 
-    @RequestMapping("/unsubscribe/{nid}")
-    public String unsubscribeNewsletter(@PathVariable("nid") Integer nid) {
+    @RequestMapping("/unsubscribe/{subject}")
+    public String unsubscribeNewsletter(@PathVariable("subject") String subject) {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
 //        System.out.println("siddddddddddddddddddddddddddd");
 //        System.out.println(sid);
-        newsletterService.deleteSubscribedNewsLetter(sid, nid);
 
-        return "redirect:/student/subscribedNewsletter";
+        newsletterService.deleteSubscribedSubject(sid, subject);
+
+        return "redirect:/student/managesubscription";
     }
 
     @RequestMapping("/subscribe/{subject}")
@@ -72,6 +73,6 @@ public class StudentNewsletterController {
         System.out.println(subject);
         newsletterService.SubscribeNewsLetterSubject(sid, subject);
 
-        return "redirect:/student/newsletter";
+        return "redirect:/student/tosubscribe";
     }
 }

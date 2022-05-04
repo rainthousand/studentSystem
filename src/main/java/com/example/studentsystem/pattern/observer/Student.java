@@ -1,15 +1,22 @@
 package com.example.studentsystem.pattern.observer;
 
-public class Student implements Observer {
-    private String name;
+import com.example.studentsystem.service.NewsletterService;
 
-    public Student(String name) {
-        this.name = name;
+import javax.annotation.Resource;
+
+public class Student implements Observer {
+    @Resource(name = "newsletterServiceImpl")
+    private NewsletterService newsletterService;
+
+    private Integer studentID;
+
+    public Student(Integer studentID) {
+        this.studentID = studentID;
     }
 
     @Override
-    public void update(String message) {
-        System.out.println(name + "-" + message);
+    public void update(Integer newsid) {
+//        newsletterService.AddNewsletterKey(newsid,studentID);
     }
 
 }

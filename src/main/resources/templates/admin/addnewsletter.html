@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
-<body>
+<body data-typography="rubik" data-sidebar-position="fixed" data-header-position="fixed">
 <div id="main-wrapper" class="show">
 
 
@@ -413,7 +413,7 @@
 
 
     <!-- start section footer -->
-    <div class="footer">
+    <div class="footer ">
         <div class="copyright">
             <p class="mb-0">Copyright &copy; 2021.Company name All rights reserved.<a target="_blank"
                                                                                       href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
@@ -424,6 +424,176 @@
 
 
 </div>
+
+
+<!-- Show data patient -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <!-- <div > -->
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel"><img class="rounded-circle" width="35" src="picture/user1.jpg"
+                                                               alt=""> Tiger Nixon </h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="insertHere"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Show data patient -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-title-edit-row" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title-edit-row">Angelica Ramos</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="basic-form">
+                            <form>
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="form-group row widget-3">
+                                            <div class="col-lg-12">
+                                                <div class="form-input">
+                                                    <label class="labeltest" for="file-ip-1">
+                                                        <span> Drop image here or click to upload. </span>
+                                                    </label>
+                                                    <input type="file" id="file-ip-1" accept="image/*"
+                                                           onchange="showPreview(event);">
+                                                    <div class="preview">
+                                                        <img id="file-ip-1-preview"
+                                                             src="https://www.17sucai.com/preview/776298/2021-08-30/tabib/all-patients.html"
+                                                             alt="img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <input type="text" class="form-control" placeholder="First Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <input type="text" class="form-control" placeholder="Last name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <input type="email" class="form-control" placeholder="Email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <input type="text" class="form-control" placeholder="Mobile No.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" placeholder="Birthday">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <select class="form-control form-select">
+                                                    <option> Marital status</option>
+                                                    <option>Married</option>
+                                                    <option>Unmarried</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <select class="form-control form-select">
+                                                    <option>Sex</option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <select class="form-control form-select">
+                                                    <option>Blood Group</option>
+                                                    <option>A+</option>
+                                                    <option>A-</option>
+                                                    <option>B+</option>
+                                                    <option>B-</option>
+                                                    <option>O+</option>
+                                                    <option>O-</option>
+                                                    <option>AB+</option>
+                                                    <option>AB-</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4"></div>
+                                    <div class="col-xl-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <input type="text" class="form-control" placeholder="Patient Weight">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="form-group row">
+                                            <div class="col-lg-12">
+                                                <input type="text" class="form-control" placeholder="Patient Height">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                            </div>
+                                            <textarea class="form-control" placeholder="Address" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8">
+                                        <div class="form-group">
+                                            <textarea class="form-control" placeholder="Patient History"
+                                                      rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal -->
 
 
 <!-- JQuery v3.5.1 -->

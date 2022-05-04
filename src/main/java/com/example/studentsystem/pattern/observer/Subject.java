@@ -18,6 +18,6 @@ public interface Subject {
     /**
      * notify observers their updates
      */
-    public void notify(String message);
+    public void notifySubscription();
 
 }

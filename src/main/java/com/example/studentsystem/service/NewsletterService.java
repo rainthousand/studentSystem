@@ -2,6 +2,7 @@ package com.example.studentsystem.service;
 
 import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.entity.NewsSubject;
+import com.example.studentsystem.entity.Student;
 
 import java.util.Date;
 import java.util.List;
@@ -23,4 +24,9 @@ public interface NewsletterService {
 
     Integer AddNewsletter(Integer newsid, String newsname, String publisher, String subject, String newsmsg,
                           Date publishtime, Integer newstype);
+
+    Integer AddNewsletterKey(Integer newsid, Integer studentid);
+
+    List<Integer> findAllStudentidBySubject(String subject);
+
 }

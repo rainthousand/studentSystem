@@ -130,4 +130,28 @@ public class NewsletterServiceImpl implements NewsletterService {
 
         return newsLetterMapper.insert(newsletterObj);
     }
+
+    @Override
+    public Integer AddNewsletterKey(Integer newsid, Integer studentid) {
+        SubscribedNewsletterKey subscribedNewsletterKey = new SubscribedNewsletterKey();
+        subscribedNewsletterKey.setNewsid(newsid);
+        subscribedNewsletterKey.setStudentid(studentid);
+
+        return subscribedNewsletterMapper.insert(subscribedNewsletterKey);
+    }
+
+    @Override
+    public List<Integer> findAllStudentidBySubject(String subject) {
+        SubscribedSubjectExample subscribedSubjectExample = new SubscribedSubjectExample();
+        SubscribedSubjectExample.Criteria criteria1 = subscribedSubjectExample.createCriteria();
+        criteria1.andSubjectEqualTo(subject);
+
+        List<SubscribedSubject> allSubscribed = subscribedSubjectMapper.selectByExample(subscribedSubjectExample);
+        List<Integer> forCriteria2 = new ArrayList<Integer>();
+        for (SubscribedSubject subscribed : allSubscribed) {
+            forCriteria2.add(subscribed.getStudentid());
+        }
+        return forCriteria2;
+
+    }
 }
