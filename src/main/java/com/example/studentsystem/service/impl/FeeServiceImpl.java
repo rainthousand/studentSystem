@@ -2,13 +2,13 @@ package com.example.studentsystem.service.impl;
 
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.FeeExample;
-import com.example.studentsystem.entity.SubscribeNewsExample;
-import com.example.studentsystem.entity.SubscribeNewsKey;
+import com.example.studentsystem.entity.SubscribedNewsletterKey;
+import com.example.studentsystem.entity.SubscribedNewsletterExample;
 import com.example.studentsystem.mapper.FeeMapper;
 import com.example.studentsystem.pattern.state.Context;
 import com.example.studentsystem.service.FeeService;
 import org.springframework.stereotype.Service;
-import com.example.studentsystem.mapper.SubscribeNewsMapper;
+import com.example.studentsystem.mapper.SubscribedNewsletterMapper;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -19,7 +19,7 @@ public class FeeServiceImpl implements FeeService {
     @Resource
     private FeeMapper feeMapper;
     @Resource
-    private SubscribeNewsMapper subscribeNewsMapper;
+    private SubscribedNewsletterMapper subscribeNewsMapper;
 
 
     @Override
@@ -73,6 +73,7 @@ public class FeeServiceImpl implements FeeService {
         fee.setFeeid(feeid);
         fee.setFeepayerusername(feepayerusername);
         fee.setFeestatus(1);
+        deleteSubNews(feepayerusername);
         fee.setFeeamount(feeamount);
         if(Objects.equals(feeonlineorline, "Online")){
             fee.setFeeonlineoroffline(1);
@@ -93,14 +94,22 @@ public class FeeServiceImpl implements FeeService {
 
     @Override
     public int updateSubNews(Integer studentId) {
-        SubscribeNewsKey subscribeNewsKey=new SubscribeNewsKey();
-        subscribeNewsKey.setNewsletterid(1001);
-        SubscribeNewsExample subscribeNewsExample = new SubscribeNewsExample();
-        SubscribeNewsExample.Criteria criteria = subscribeNewsExample.createCriteria();
+        SubscribedNewsletterKey subscribeNewsKey=new SubscribedNewsletterKey();
+        subscribeNewsKey.setNewsid(1001);
+        SubscribedNewsletterExample subscribedNewsletterExample = new SubscribedNewsletterExample();
+        SubscribedNewsletterExample.Criteria criteria = subscribedNewsletterExample.createCriteria();
         criteria.andStudentidEqualTo(studentId);
 //        System.out.println("yes:1001");
 //        return 1;
-        return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribeNewsExample);
+        return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribedNewsletterExample);
+    }
+
+    @Override
+    public int deleteSubNews(Integer studentId) {
+        SubscribedNewsletterExample subscribedNewsletterExample = new SubscribedNewsletterExample();
+        SubscribedNewsletterExample.Criteria criteria = subscribedNewsletterExample.createCriteria();
+        criteria.andStudentidEqualTo(studentId);
+        return subscribeNewsMapper.deleteByExample(subscribedNewsletterExample);
     }
 
 }

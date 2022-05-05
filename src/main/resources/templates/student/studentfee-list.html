@@ -459,13 +459,19 @@
                       <div class="form-group row">
 <!--                        <label for="feeAmount" class="col-sm-2 control-label">feeAmount</label>-->
                         <div class="col-lg-12">
-                          <input type="text" class="form-control" name="feeAmount" id="feeAmount" placeholder="Amount">
+                          <h5>Amount</h5>
+                          <div class="input-group ">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">$</span>
+                            </div>
+                            <input type="number" class="form-control" name="feeAmount" id="feeAmount" placeholder="Amount">
+                          </div>
                         </div>
                       </div>
                       <div class="form-group row">
                         <div class="col-lg-12">
+                          <h5>Payment Method (Online payments available)</h5>
                           <select class="form-control form-select" name="feePaymentMethod" id="feePaymentMethod">
-                            <option>Payment Method</option>
                             <option>visa card</option>
                             <option>master card</option>
                             <option>Alipay</option>
@@ -477,8 +483,8 @@
                     <div class="col-xl-4">
                       <div class="form-group row">
                         <div class="col-lg-12">
+                          <h5>Online or Offline</h5>
                           <select class="form-control form-select" name="feeOnlineOrOffline" id="feeOnlineOrOffline">
-                            <option>Online or Offline</option>
                             <option>Online</option>
                             <option>Offline</option>
                           </select>

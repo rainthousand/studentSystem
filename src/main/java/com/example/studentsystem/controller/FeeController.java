@@ -26,31 +26,32 @@ public class FeeController {
 
         List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
         for(Fee fee:fee_list){
-            String str="";
-            if(fee.getFeeonlineoroffline()==1) str+="Online";
-            else if(fee.getFeeonlineoroffline()==2) str+="Offline";
+
             String status="";
             if(fee.getFeestatus()==1) status+="Registered";
             else if(fee.getFeestatus()==2) status+="Pending";
             else if(fee.getFeestatus()==3) status+="Not Registered";
-            String payment;
-            Context_payment visa_payment = new Context_payment(new Visa_Card());
-            Context_payment master_payment = new Context_payment(new Master_Card());
-            Context_payment alipay_payment = new Context_payment(new Alipay());
-            Context_payment apple_payment = new Context_payment(new ApplePay());
-            if(fee.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
-            else if(fee.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
-            else if(fee.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
-            else payment=apple_payment.executeStrategy_payment();
+            String str="";
+            String payment="";
+            if(fee.getFeeonlineoroffline()==1) {
+                str+="Online";
+                Context_payment visa_payment = new Context_payment(new Visa_Card());
+                Context_payment master_payment = new Context_payment(new Master_Card());
+                Context_payment alipay_payment = new Context_payment(new Alipay());
+                Context_payment apple_payment = new Context_payment(new ApplePay());
+                if(fee.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
+                else if(fee.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
+                else if(fee.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
+                else payment=apple_payment.executeStrategy_payment();
+            }
+            else if(fee.getFeeonlineoroffline()==2) str+="Offline";
+
+
             Feeforshow temp=new Feeforshow(fee.getFeeid(),fee.getFeeamount(),fee.getFeepayerusername(),status,str,payment);
             newfee_list.add(temp);
 
         }
         model.addAttribute("fee_list",newfee_list);
-//        model.addAllAttributes("person",person);
-
-//        model.addAttribute("personfee",personfee);
-//        model.addAttribute("list",fee_list);
 
         return "admin/fee-list";
     }
