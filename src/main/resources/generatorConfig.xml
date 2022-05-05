@@ -5,16 +5,19 @@
     <!-- 配置mysql-connector-java的jar包地址 -->
     <classPathEntry location="E:\ideajar\mysql-connector-java-5.1.48.jar"/> <!--E:/java/maven/repository/mysql/mysql-connector-java/5.1.38/-->
     <context id="context1">
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://124.222.50.222:3306/student_system?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;rewriteBatchedStatements=true"
-                        userId="root" password="123456"/><!--数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://124.222.50.222:3306/student_system?characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;rewriteBatchedStatements=true"
+                        userId="root" password="alvinserver"/><!--数据库连接-->
         <!--生成Model类存放位置-->
         <javaModelGenerator targetPackage="com.example.studentsystem.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaModelGenerator>
-        <sqlMapGenerator targetPackage="com.example.studentsystem.mapper" targetProject="src/main/java"><!--生成的mapper文件-->
+        <sqlMapGenerator targetPackage="com.example.studentsystem.mapper"
+                         targetProject="src/main/java"><!--生成的mapper文件-->
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
-        <javaClientGenerator targetPackage="com.example.studentsystem.mapper" targetProject="src/main/java" type="XMLMAPPER"><!--生成的dao层接口）-->
+        <javaClientGenerator targetPackage="com.example.studentsystem.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"><!--生成的dao层接口）-->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 <!--        <table schema="" tableName="testTable" domainObjectName="TestTable"-->
