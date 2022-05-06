@@ -2,20 +2,17 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
-import com.example.studentsystem.mapper.FeeMapper;
 //import com.example.studentsystem.pattern.strategy.Context;
 import com.example.studentsystem.pattern.strategy.*;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +31,17 @@ public class StudentFeeController {
 //
         Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
 
-        Context_onlineOrOffline contextOff = new Context_onlineOrOffline(new Offline());
-        Context_onlineOrOffline contextOn = new Context_onlineOrOffline(new Online());
 
-        studentfee_temp.setFeeonlineoroffline(contextOn.executeStrategy());
+
+//        studentfee_temp.setFeeonlineoroffline(contextNot.executeStrategy());
 
         String str="";
-        if(studentfee_temp.getFeeonlineoroffline()==1) str+="Online";
+        if(studentfee_temp.getFeeonlineoroffline()==3) str+="Not Select";
+        else if(studentfee_temp.getFeeonlineoroffline()==1) str+="Online";
         else if(studentfee_temp.getFeeonlineoroffline()==2) str+="Offline";
+
+
+
         String status="";
         if(studentfee_temp.getFeestatus()==1) status+="Registered";
         else if(studentfee_temp.getFeestatus()==2) status+="Pending";
@@ -71,11 +71,47 @@ public class StudentFeeController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
-        //TODO 费用削减失败时页面导航
-        if((studentfee_temp.getFeeamount()-feeAmount)>=0){
-            FeeService.UpdateByUserName(session,studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,feeOnlineOrOffline);
-        }else{
+        Context_onlineOrOffline contextOff = new Context_onlineOrOffline(new Offline());
+        Context_onlineOrOffline contextOn = new Context_onlineOrOffline(new Online());
+        Context_onlineOrOffline contextNot = new Context_onlineOrOffline(new Not_select());
+
+        if(studentfee_temp.getFeeonlineoroffline()!=3){
+            if(feeOnlineOrOffline=="Online" & studentfee_temp.getFeeonlineoroffline()==1){
+                if((studentfee_temp.getFeeamount()-feeAmount)>=0){
+                    FeeService.UpdateByUserName(session,studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,studentfee_temp.getFeeonlineoroffline());
+                }else{
+                    return "student/Exception_fee";
+                }
+                return "redirect:fee";
+            }
+            else if(feeOnlineOrOffline=="Offline" & studentfee_temp.getFeeonlineoroffline()==2){
+                if((studentfee_temp.getFeeamount()-feeAmount)>=0){
+                    FeeService.UpdateByUserName(session,studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,studentfee_temp.getFeeonlineoroffline());
+                }else{
+                    return "student/Exception_fee";
+                }
+                return "redirect:fee";
+            }
+            else{
+                return "student/Exception_online";
+            }
+
         }
-        return "redirect:fee";
+        else{
+            if(Objects.equals(feeOnlineOrOffline, "Online")){
+                studentfee_temp.setFeeonlineoroffline(contextOn.executeStrategy());
+            }
+            else{
+                studentfee_temp.setFeeonlineoroffline(contextOff.executeStrategy());
+            }
+            //TODO 费用削减失败时页面导航
+            if((studentfee_temp.getFeeamount()-feeAmount)>=0){
+                FeeService.UpdateByUserName(session,studentfee_temp.getFeepayerusername(),studentfee_temp.getFeeamount()-feeAmount,feePaymentMethod,studentfee_temp.getFeeonlineoroffline());
+            }else{
+                return "student/Exception_fee";
+            }
+            return "redirect:fee";
+        }
+
     }
 }

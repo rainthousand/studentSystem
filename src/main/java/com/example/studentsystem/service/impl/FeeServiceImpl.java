@@ -41,7 +41,7 @@ public class FeeServiceImpl implements FeeService {
     }
 
     @Override
-    public int UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, String feeOnlineOrOffline) throws Exception {
+    public int UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, Integer feeOnlineOrOffline) throws Exception {
         Fee fee = new Fee();
 //        TODO:如果有此处的amount为0，则需要更改注册状态
         fee.setFeeamount(feeAmount);
@@ -49,11 +49,12 @@ public class FeeServiceImpl implements FeeService {
         else if(feePaymentMethod=="Master card") fee.setFeepaymentmethod(2);
         else if(feePaymentMethod=="Alipay") fee.setFeepaymentmethod(3);
         else fee.setFeepaymentmethod(4);
-        if(feeOnlineOrOffline=="Online"){
-            fee.setFeeonlineoroffline(1);
-        }else if (feeOnlineOrOffline=="Offline"){
-            fee.setFeeonlineoroffline(2);
-        }
+        fee.setFeeonlineoroffline(feeOnlineOrOffline);
+//        if(feeOnlineOrOffline=="Online"){
+//            fee.setFeeonlineoroffline(1);
+//        }else if (feeOnlineOrOffline=="Offline"){
+//            fee.setFeeonlineoroffline(2);
+//        }
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();
         criteria.andFeepayerusernameEqualTo(name);
@@ -100,9 +101,8 @@ public class FeeServiceImpl implements FeeService {
         SubscribedNewsletterExample.Criteria criteria = subscribedNewsletterExample.createCriteria();
         criteria.andStudentidEqualTo(studentId);
         criteria.andNewsidEqualTo(1000);
-//        System.out.println("yes:1001");
-//        return 1;
-        return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribedNewsletterExample);
+        return 1;
+//        return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribedNewsletterExample);
     }
 
     @Override

@@ -11,7 +11,7 @@ import java.util.List;
 public interface FeeService {
     Fee findFeeByUserName(Integer name) throws Exception;
     List<Fee> findAllFee();
-    int UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, String feeOnlineOrOffline) throws Exception;
+    int UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, Integer feeOnlineOrOffline) throws Exception;
     Integer confirmPending(Integer feeid, Integer feepayerusername, Integer feeamount, String feestatus, String feeonlineorline, String feepaymentmethod);
     int updateSubNews(Integer studentId);
     int deleteSubNews(Integer studentId);
