@@ -29,87 +29,38 @@
     <aside class="left-panel nicescroll-box">
         <nav class="navigation">
             <ul class="list-unstyled main-menu">
-                <li class="has-submenu">
-                    <a href="index.html">
+                <li class="has-submenu active">
+                    <a href="">
                         <i class="fas fa-th-large"></i>
                         <span class="nav-label">Dashboard</span>
                     </a>
                 </li>
                 <li class="has-submenu">
                     <a href="#" class="has-arrow mm-collapsed">
-                        <i class="fas fa-user-md"></i>
-                        <span class="nav-label">Doctors</span>
-                    </a>
-                    <ul class="list-unstyled mm-collapse">
-                        <li><a href="add-doctor.html">Add Doctor</a></li>
-                        <li><a href="doctor-list.html">All Doctors</a></li>
-                        <li> <a href="doctor-profile.html">Doctors Profile</a> </li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="#" class="has-arrow mm-collapsed">
                         <i class="fas fa-users"></i>
-                        <span class="nav-label">Patients</span>
+                        <span class="nav-label">Course</span>
                     </a>
                     <ul class="list-unstyled mm-collapse">
-                        <li><a href="new-patient.html">New Patient</a></li>
-                        <li><a href="all-patients.html">All Patients</a></li>
+                        <li><a href="/adminToSelectedCourse">Student Selected</a></li>
+                        <li><a href="/adminToCourse">All Courses</a></li>
+                        <li><a href="/adminToAddCourse">Add Course</a></li>
                     </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="new-appointment.html">
-                        <i class="fas fa-calendar-plus"></i>
-                        <span class="nav-label">Appointment</span>
-                    </a>
                 </li>
                 <li class="has-submenu">
                     <a href="#" class="has-arrow mm-collapsed">
                         <i class="fas fa-book-medical"></i>
-                        <span class="nav-label">Prescriptions</span>
+                        <span class="nav-label">Fee</span>
                     </a>
                     <ul class="list-unstyled mm-collapse">
-                        <li><a href="new-prescription.html">New Prescription</a></li>
-                        <li><a href="all-prescriptions.html">All Prescriptions</a></li>
+                        <li><a href="/adminToFeePage">All Students' Fee</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu">
-                    <a href="add-drug.html">
-                        <i class="fas fa-pills"></i>
-                        <span class="nav-label">Add Drug</span>
-                    </a>
-                </li>
-                <li class="has-submenu">
-                    <a href="#" class="has-arrow mm-collapsed">
-                        <i class="fas fa-heartbeat"></i>
-                        <span class="nav-label">Tests</span>
-                    </a>
-                    <ul class="list-unstyled mm-collapse">
-                        <li><a href="add-test.html">Add Test</a></li>
-                        <li><a href="all-tests.html">All Tests</a></li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="calendar.html">
-                        <i class="fas fa-calendar-alt"></i>
-                        <span class="nav-label">calendar</span>
-                    </a>
-                </li>
-                <li class="has-submenu">
-                    <a href="reports.html">
-                        <i class="fas fa-chart-pie"></i>
-                        <span class="nav-label">Reports</span>
-                    </a>
-                </li>
-                <li class="has-submenu active">
-                    <a href="#" class="has-arrow mm-collapsed">
-                        <i class="fas fa-file-invoice"></i>
-                        <span class="nav-label">Billing</span>
-                    </a>
-                    <ul class="list-unstyled mm-collapse">
-                        <li><a href="create-invoice.html">Create Invoice</a></li>
-                        <li><a href="">Billing List</a></li>
-                    </ul>
-                </li>
+<!--                <li class="has-submenu">-->
+<!--                    <a href="calendar.html">-->
+<!--                        <i class="fas fa-calendar-alt"></i>-->
+<!--                        <span class="nav-label">calendar</span>-->
+<!--                    </a>-->
+<!--                </li>-->
                 <li class="has-submenu">
                     <a href="#" class="has-arrow mm-collapsed">
                         <i class="fas fa-cog"></i>
@@ -388,8 +339,12 @@
                                             <td>
                                                 <span th:if="${student.feeonlineoroffline} eq 'Online'" th:text="${student.feeonlineoroffline}" class="badge badge-success" ></span>
                                                 <span th:if="${student.feeonlineoroffline} eq 'Offline'" th:text="${student.feeonlineoroffline}" class="badge badge-secondary" ></span>
+                                                <span th:if="${student.feeonlineoroffline} eq 'Not Select'" th:text="${student.feeonlineoroffline}" class="badge badge-success"></span>
                                             </td>
-                                            <td th:text="${student.feepaymentmethod}" class="badge badge-dark"></td>
+                                            <td th:text="${student.feepaymentmethod} "class="badge badge-warning"></td>
+<!--                                            <td>-->
+<!--                                                <span th:text="${student.feepayerusername}" class="badge badge-dark"></span>-->
+<!--                                            </td>-->
 <!--                                            <td>-->
 <!--                                                <a class='mr-4 vue' th:href="@{/student/confirmPending(feeid=${student.feeid},username=${student.feepayerusername},amount=${student.feeamount},status=${student.feestatus},onOrOff=${student.feeonlineorline},payment=${student.feepaymentmethod})}">-->
 <!--                                                    <span class='fas fa-trash-alt'></span>-->

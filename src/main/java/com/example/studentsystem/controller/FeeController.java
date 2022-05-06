@@ -1,5 +1,6 @@
 package com.example.studentsystem.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
 import com.example.studentsystem.pattern.strategy.*;
@@ -39,18 +40,29 @@ public class FeeController {
                 Context_payment master_payment = new Context_payment(new Master_Card());
                 Context_payment alipay_payment = new Context_payment(new Alipay());
                 Context_payment apple_payment = new Context_payment(new ApplePay());
+
                 if(fee.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
                 else if(fee.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
                 else if(fee.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
-                else payment=apple_payment.executeStrategy_payment();
+                else if(fee.getFeepaymentmethod()==4) payment=apple_payment.executeStrategy_payment();
             }
-            else if(fee.getFeeonlineoroffline()==2) str+="Offline";
+            else if(fee.getFeeonlineoroffline()==2){
+                str+="Offline";
+                Context_payment no_need=new Context_payment(new offline_no_method());
+                payment=no_need.executeStrategy_payment();
+            }
+            else if(fee.getFeeonlineoroffline()==3){
+                str+="Not Select";
+                Context_payment no_need=new Context_payment(new offline_no_method());
+                payment=no_need.executeStrategy_payment();
+            }
 
 
             Feeforshow temp=new Feeforshow(fee.getFeeid(),fee.getFeeamount(),fee.getFeepayerusername(),status,str,payment);
             newfee_list.add(temp);
 
         }
+//        System.out.println(JSON.toJSONString(newfee_list));
         model.addAttribute("fee_list",newfee_list);
 
         return "admin/fee-list";
@@ -60,13 +72,6 @@ public class FeeController {
                                  @RequestParam("amount") Integer feeamount,@RequestParam("status") String feestatus,
                                  @RequestParam("onOrOff") String feeonlineoroffline,
                                  @RequestParam("payment") String feepaymentmethod){
-        System.out.println(feeid);
-        System.out.println(feepayerusername);
-        System.out.println(feeamount);
-        System.out.println(feestatus);
-        System.out.println(feeonlineoroffline);
-        System.out.println(feepaymentmethod);
-
 
 
         if (Objects.equals(feestatus, "Pending")){
