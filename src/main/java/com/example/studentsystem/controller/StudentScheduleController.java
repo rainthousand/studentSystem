@@ -171,8 +171,8 @@ public class StudentScheduleController {
                 schoolActivityEvent.setActivityname(object.getString("Title"));
                 schoolActivityEvent.setStart(object.getDate("Start"));
                 schoolActivityEvent.setEnd(object.getDate("End"));
-                schoolActivityEvent.setBackgroundColor("#ff4040");
-                schoolActivityEvent.setBorderColor("#ff4040");
+                schoolActivityEvent.setBackgroundColor("#9e5fff");
+                schoolActivityEvent.setBorderColor("#9e5fff");
                 schoolActivityEvent.setAllDay(object.getBoolean("AllDay"));
                 schoolActivityEvent.setId(object.getString("id"));
                 return schoolActivityEvent.toEvent();
@@ -287,8 +287,8 @@ public class StudentScheduleController {
                 schoolActivityEvent.setActivityname(object.getString("Title"));
                 schoolActivityEvent.setStart(object.getDate("Start"));
                 schoolActivityEvent.setEnd(object.getDate("End"));
-                schoolActivityEvent.setBackgroundColor("#ff4040");
-                schoolActivityEvent.setBorderColor("#ff4040");
+                schoolActivityEvent.setBackgroundColor("#9e5fff");
+                schoolActivityEvent.setBorderColor("#9e5fff");
                 schoolActivityEvent.setAllDay(object.getBoolean("AllDay"));
                 schoolActivityEvent.setId(object.getString("id"));
                 return schoolActivityEvent.toEvent();

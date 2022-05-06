@@ -110,8 +110,5 @@ public class RedirectController {
     }
 
 
-    @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
-    public String studentToCalendarPage() throws Exception {
-        return "student/calendar";
-    }
+
 }
