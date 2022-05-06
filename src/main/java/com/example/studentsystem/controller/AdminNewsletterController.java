@@ -1,11 +1,7 @@
 package com.example.studentsystem.controller;
 
-import com.example.studentsystem.entity.NewsLetter;
-import com.example.studentsystem.pattern.observer.Newsletter;
-import com.example.studentsystem.pattern.observer.Student;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
