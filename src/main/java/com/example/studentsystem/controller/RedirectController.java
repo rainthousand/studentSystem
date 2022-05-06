@@ -32,7 +32,7 @@ public class RedirectController {
     @Resource(name = "newsletterServiceImpl")
     private NewsletterService newsletterService;
 
-
+    //TODO Strategy Pattern to Redirect
     @RequestMapping(value = "/student/index", method = {RequestMethod.GET})
     public String studentToMainPage(Model model) throws Exception {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
@@ -109,6 +109,28 @@ public class RedirectController {
         return "redirect:student/managesubscription";
     }
 
+    @RequestMapping(value = "/notRegistered/index", method = {RequestMethod.GET})
+    public String notRegitsteredToMainPage() throws Exception {
+        return "notRegistered/index";
+    }
 
+    @RequestMapping(value = "/notRegisteredToSelectedCourse", method = {RequestMethod.GET})
+    public String notRegitsteredToSelectedCourse() throws Exception {
+        return "redirect:notRegistered/selectedCourse";
+    }
 
+    @RequestMapping(value = "/notRegisteredToCourse", method = {RequestMethod.GET})
+    public String notRegitsteredToCourse() throws Exception {
+        return "redirect:notRegistered/course";
+    }
+
+    @RequestMapping(value = "/notRegisteredToFeePage", method = {RequestMethod.GET})
+    public String notRegitsteredToFeePage() throws Exception {
+        return "redirect:notRegistered/fee";
+    }
+
+    @RequestMapping(value = "/notRegisteredToSubscribedNewsletter", method = {RequestMethod.GET})
+    public String notRegitsteredToSubscribedNewsletter() throws Exception {
+        return "redirect:notRegistered/subscribedNewsletter";
+    }
 }

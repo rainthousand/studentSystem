@@ -19,13 +19,17 @@ public abstract class LoginProcess {
         UserSessionInfo userSessionInfo = getUserSessInfo(currUser, status);
         setSessionAttribute(session, userSessionInfo);
         String URL;
-        switch (status){
-            case 0:URL = getURL(URLs);
-            case 1:URL = getURL(URLs);
-            case 2:URL="";//todo pending student URL
-            case 3:URL="";//TODO not registered URL
-            default:URL=getURL(URLs);
-        }
+        System.out.println("LLLLLLLLLLLLLLLLLLLLLLL");
+        System.out.println(status);
+        URL = switch (status) {
+            case 0 -> getURL(URLs);
+            case 1 -> getURL(URLs);
+            case 2 -> "/notRegistered/index";//TODO pending student URL
+            case 3 -> "/notRegistered/index";//TODO not registered URL
+            default -> getURL(URLs);
+        };
+        System.out.println(URL);
+        System.out.println("LLLLLLLLLLLLLLLLLLLLLLL");
 //        String URL = getURL(URLs);
         return "redirect:" + URL;
     }

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tabib Apps web | Admin Dashboard Template</title>
+  <!-- Base Styling  -->
+  <link rel="stylesheet" href="../css/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+<div id="main-wrapper" class="show">
+
+
+  <!-- start logo components -->
+  <div class="nav-header">
+    <div class="brand-logo">
+      <a href="index.html"> <img class="logo-tabib" src="picture/download.png" alt=""></a>
+      <a href="index.html"><img class="brand-title" src="picture/logo.png" alt=""></a>
+    </div>
+  </div>
+  <!-- End logo components -->
+
+
+  <!-- start section sidebar -->
+  <aside class="left-panel nicescroll-box">
+    <nav class="navigation">
+      <ul class="list-unstyled main-menu">
+        <li class="has-submenu">
+          <a href="index.html">
+            <i class="fas fa-th-large"></i>
+            <span class="nav-label">Dashboard</span>
+          </a>
+        </li>
+        <li class="has-submenu">
+          <a href="#" class="has-arrow mm-collapsed">
+            <i class="fas fa-users"></i>
+            <span class="nav-label">Course</span>
+          </a>
+          <ul class="list-unstyled mm-collapse">
+            <li><a href="/notRegisteredToSelectedCourse">Student Courses</a></li>
+            <li><a href="/notRegisteredToCourse">All Courses</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="#" class="has-arrow mm-collapsed">
+            <i class="fas fa-book-medical"></i>
+            <span class="nav-label">Fee</span>
+          </a>
+          <ul class="list-unstyled mm-collapse">
+            <li><a href="/notRegisteredToFeePage">Fee Status</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="#" class="has-arrow mm-collapsed">
+            <i class="fas fa-heartbeat"></i>
+            <span class="nav-label">Newsletters</span>
+          </a>
+          <ul class="list-unstyled mm-collapse">
+            <li><a href="/notRegisteredToSubscribedNewsletter">All Newsletter</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="sidebar-widgets">
+      <div class="copyright text-center">
+        <p class="mb-0"> Group 9</p>
+        <p class="mb-0"> © 2022 </p>
+      </div>
+    </div>
+  </aside>
+  <!-- End section sidebar -->
+
+
+  <!-- start section header -->
+  <div class="header">
+    <header class="top-head container-fluid">
+      <div class="nav-control">
+        <div class="hamburger">
+          <span class="line"></span><span class="line"></span><span class="line"></span>
+        </div>
+        <div class="left-header content-header__menu">
+          <ul class="list-unstyled">
+            <li class="nav-link btn">
+              <a href="#"><i class="far fa-calendar-check"></i> <span> Make an appointment</span></a>
+            </li>
+            <li class="nav-link btn">
+              <a href="#"><i class="far fa-file-alt"></i> <span> Write a prescription</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="fullscreen notification_dropdown">
+          <div class="full">
+            <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">
+              <i class="fas fa-expand"></i>
+            </a>
+          </div>
+        </div>
+        <div class="notification_dropdown">
+          <div class="cart-wrapper">
+            <div class="cart-icon">
+              <a class="cart-control" href="#">
+                <i class="fas fa-bell"></i>
+                <div class="pulse-css"></div>
+              </a>
+            </div>
+            <div class="cart-dropdown-form dropdown-container">
+              <div class="form-content">
+                <div class="widget-media main-scroll nicescroll-box">
+                  <ul class="timeline">
+                    <li>
+                      <h6 class="mb-0">Notitications</h6>
+                    </li>
+                    <li>
+                      <div class="timeline-panel">
+                        <div class="media mr-2">
+                          <img alt="image" src="picture/1.jpg">
+                        </div>
+                        <div class="media-body">
+                          <h6 class="mb-1 ">Incoming Message</h6>
+                          <small class="d-block">29 July 2020 - 02:26 PM</small>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-panel">
+                        <div class="media mr-2 media-info">
+                          <img alt="image" src="picture/1.jpg">
+                        </div>
+                        <div class="media-body">
+                          <h6 class="mb-1">You got a new email</h6>
+                          <small class="d-block">29 July 2020 - 02:26 PM</small>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-panel">
+                        <div class="media mr-2 media-success">
+                          <img alt="image" src="picture/1.jpg">
+                        </div>
+                        <div class="media-body">
+                          <h6 class="mb-1">Hello world!</h6>
+                          <small class="d-block">29 July 2020 - 02:26 PM</small>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-panel">
+                        <div class="media mr-2">
+                          <img alt="image" src="picture/1.jpg">
+                        </div>
+                        <div class="media-body">
+                          <h6 class="mb-1">Beep Boop. Beee...</h6>
+                          <small class="d-block">29 July 2020 - 02:26 PM</small>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-panel">
+                        <div class="media mr-2 media-danger">
+                          <img alt="image" src="picture/1.jpg">
+                        </div>
+                        <div class="media-body">
+                          <h6 class="mb-1">Hello world!</h6>
+                          <small class="d-block">29 July 2020 - 02:26 PM</small>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="timeline-panel">
+                        <div class="media mr-2 media-primary">
+                          <img alt="image" src="picture/1.jpg">
+                        </div>
+                        <div class="media-body">
+                          <h6 class="mb-1">Incoming Message</h6>
+                          <small class="d-block">29 July 2020 - 02:26 PM</small>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <a class="all-notification btn btn-primary" href="#">
+                  See all notifications
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="my-account-wrapper">
+          <div class="account-wrapper">
+            <div class="account-control">
+              <a class="login header-profile" href="#" title="Sign in">
+                <div class="header-info">
+                  <span>Dr Roberts</span>
+                  <small>Admin</small>
+                </div>
+                <img src="picture/client.jpg" alt="people">
+              </a>
+              <div class="account-dropdown-form dropdown-container">
+                <div class="form-content">
+                  <a href="doctor-settings.html">
+                    <i class="far fa-user"></i>
+                    <span class="ml-2">Profile</span>
+                  </a>
+                  <a href="#">
+                    <i class="far fa-envelope"></i>
+                    <span class="ml-2">Inbox</span>
+                  </a>
+                  <a href="../page-login.html">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span class="ml-2">Logout </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <!-- End section header -->
+
+
+  <!-- start section content -->
+  <div class="content-body">
+    <div class="warper container-fluid">
+      <div class="all_appointments main_container">
+        <div class="row page-titles mx-0">
+          <div class="col-sm-6 p-md-0">
+            <div class="welcome-text">
+              <h4 class="text-primary">Billing list</h4>
+            </div>
+          </div>
+          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+              <li class="breadcrumb-item active"><a href="javascript:;">Billing list</a>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table id="example3" class="display nowrap">
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      <th>Online or Offline</th>
+                      <th>Payment Method</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <td th:text="${student_fee.getFeeid()}"></td>
+                    <td th:text="${student_fee.getFeepayerusername()}"></td>
+                    <td th:text="${student_fee.getFeeamount()}"></td>
+                    <!--                    <td th:text="${student_fee.feestatus}"></td>-->
+                    <td>
+                      <span th:if="${student_fee.getFeestatus()} eq 'Registered'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-primary"></span>
+                      <span th:if="${student_fee.getFeestatus()} eq 'Pending'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-dark"></span>
+                      <span th:if="${student_fee.getFeestatus()} eq 'Not Registered'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-danger"></span>
+                    </td>
+                    <td>
+                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Online'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-success" ></span>
+                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Offline'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-secondary" ></span>
+                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Not Select'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-secondary" ></span>
+                    </td>
+                    <td th:text="${student_fee.getFeepaymentmethod()}" class="badge badge-dark"></td>
+                    <td>
+                      <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                        <span class='fas fa-pencil-alt'></span>
+                      </a>
+                    </td>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End section content -->
+
+
+  <!-- start section footer -->
+  <div class="footer">
+    <div class="copyright">
+      <p class="mb-0">Copyright &copy; 2022.Group9 All rights reserved.</p>
+    </div>
+  </div>
+  <!-- End section footer -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-title-edit-row" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title-edit-row">Student fee home</h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="basic-form">
+                <form action="/student/updateByUsername" method="post">
+                  <div class="row">
+                    <div class="col-xl-4">
+<!--                      <div class="form-group row">-->
+<!--                        <div class="col-lg-12">-->
+<!--                          <input type="text" class="form-control" placeholder="First Name">-->
+<!--                        </div>-->
+<!--                      </div>-->
+                      <div class="form-group row">
+<!--                        <label for="feeAmount" class="col-sm-2 control-label">feeAmount</label>-->
+                        <div class="col-lg-12">
+                          <h5>Amount</h5>
+                          <div class="input-group ">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">$</span>
+                            </div>
+                            <input type="number" class="form-control" name="feeAmount" id="feeAmount" placeholder="Amount" oninput="if(value>100000)value=100000">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-lg-12">
+                          <h5>Payment Method (Online payments available)</h5>
+                          <select class="form-control form-select" name="feePaymentMethod" id="feePaymentMethod">
+                            <option>visa card</option>
+                            <option>master card</option>
+                            <option>Alipay</option>
+                            <option>Applepay</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xl-4">
+                      <div class="form-group row">
+                        <div class="col-lg-12">
+                          <h5>Online or Offline</h5>
+                          <select class="form-control form-select" name="feeOnlineOrOffline" id="feeOnlineOrOffline">
+                            <option>Online</option>
+                            <option>Offline</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>>
+                    <input type="submit" class="btn btn-primary">Save changes</input>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--End Modal -->
+
+
+
+</div>
+
+
+<!-- JQuery v3.5.1 -->
+<script src="../js/jquery.min.js"></script>
+
+<!-- popper js -->
+<script src="../js/popper.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="../js/bootstrap.min.js"></script>
+
+<!-- Moment -->
+<script src="../js/moment.min.js"></script>
+
+<!-- Date Range Picker -->
+<script src="../js/daterangepicker.min.js"></script>
+
+<!-- Datatable -->
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/init-tdatatable.js"></script>
+
+<!-- Main Custom JQuery -->
+<script src="../js/toggleFullScreen.js"></script>
+<script src="../js/main.js"></script>
+
+</body>
+
+</html>
