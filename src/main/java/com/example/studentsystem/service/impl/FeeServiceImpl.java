@@ -99,6 +99,7 @@ public class FeeServiceImpl implements FeeService {
         SubscribedNewsletterExample subscribedNewsletterExample = new SubscribedNewsletterExample();
         SubscribedNewsletterExample.Criteria criteria = subscribedNewsletterExample.createCriteria();
         criteria.andStudentidEqualTo(studentId);
+        criteria.andNewsidEqualTo(1000);
 //        System.out.println("yes:1001");
 //        return 1;
         return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribedNewsletterExample);

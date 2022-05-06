@@ -29,6 +29,8 @@ public class ErrorPageConfig implements ErrorPageRegistrar {
         ErrorPage e403 = new ErrorPage(HttpStatus.FORBIDDEN, "/error/403");
         //404 Not Found
         ErrorPage e404 = new ErrorPage(HttpStatus.NOT_FOUND, "/error/404");
+        //405 Method Not Allowed
+        ErrorPage e405 = new ErrorPage(HttpStatus.METHOD_NOT_ALLOWED, "/error/405");
 
 
         errorPageRegistry.addErrorPages(e404, e500);

@@ -359,6 +359,7 @@
                                                     <th>Course Start</th>
                                                     <th>Course End</th>
                                                     <th>Student ID</th>
+                                                    <th>Select</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -377,7 +378,7 @@
                                                     <td th:text="${course.coursestart}"></td>
                                                     <td th:text="${course.courseend}"></td>
 
-                                                    <td><label for="sid">testlabel</label>
+                                                    <td>
                                                         <select class="" id="sid" name="studentid">
                                                         <!--                                                        <option   value=""   selected>Please select</option>-->
                                                         <option
@@ -395,8 +396,12 @@
                                                         <input type="hidden" th:value= "${course.courseid}" name="courseid"/>
                                                         <input type="hidden" th:value= "admin" name="judge"/>
                                                         <button class="btn btn-primary" type="submit" value="test">Select</button>
-
                                                     </td>
+                                                        <td>
+                                                            <a class='mr-4 delet' th:href="@{/admin/deleteCourse(cid=${course.getCourseid()})}">
+                                                                <span class='fas fa-trash-alt'></span>
+                                                            </a>
+                                                        </td>
                                                     </form>
                                                 </tr>
                                                 </tbody>

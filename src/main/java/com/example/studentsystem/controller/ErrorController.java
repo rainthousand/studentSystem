@@ -41,6 +41,14 @@ public class ErrorController {
     }
 
     /**
+     * 405
+     */
+    @GetMapping(value = "/405")
+    public String error_405() {
+        return "common/page-error-405";
+    }
+
+    /**
      * 500
      */
     @GetMapping(value = "/500")

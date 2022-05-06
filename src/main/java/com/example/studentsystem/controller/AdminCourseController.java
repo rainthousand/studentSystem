@@ -187,4 +187,13 @@ public class AdminCourseController {
 
         return "admin/addcourse";
     }
+
+    //TODO visitor 模式
+    @RequestMapping("/deleteCourse")
+    public String deleteCourse(@RequestParam("cid") Integer cid){
+
+//        courseService.deleteSelectedCourse(sid,cid);
+        courseService.deleteACourse(cid);
+        return "redirect:/admin/course";
+    }
 }

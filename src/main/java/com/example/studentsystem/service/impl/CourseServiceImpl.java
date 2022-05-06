@@ -102,4 +102,9 @@ public class CourseServiceImpl implements CourseService {
     public Integer addNewCourse(Course course) {
         return courseMapper.insert(course);
     }
+
+    @Override
+    public Integer deleteACourse(Integer courseid) {
+        return courseMapper.deleteByPrimaryKey(courseid);
+    }
 }

@@ -14,4 +14,5 @@ public interface CourseService {
     Course findCourseByCourseID(Integer courseid);
     Integer indexNewCourse();
     Integer addNewCourse(Course course);
+    Integer deleteACourse(Integer courseid);
 }
