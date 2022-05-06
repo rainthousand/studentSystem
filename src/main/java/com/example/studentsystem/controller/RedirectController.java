@@ -80,7 +80,13 @@ public class RedirectController {
     }
 
     @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
-    public String studentToCalendarPage() throws Exception {
+    public String studentToCalendarPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/calendar";
     }
 
@@ -109,6 +115,22 @@ public class RedirectController {
         return "redirect:student/managesubscription";
     }
 
+    @RequestMapping(value = "/adminToNewsletter", method = {RequestMethod.GET})
+    public String adminToNewsletter() throws Exception {
+        return "redirect:admin/addnewsletter";
+    }
+
+    @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
+    public String adminToIndex() throws Exception {
+        return "admin/index";
+    }
+
+    @RequestMapping(value = "/studentToIndex", method = {RequestMethod.GET})
+    public String studentToIndex() throws Exception {
+        return "student/index";
+    }
+
+    //Not Registered
     @RequestMapping(value = "/notRegistered/index", method = {RequestMethod.GET})
     public String notRegitsteredToMainPage() throws Exception {
         return "notRegistered/index";

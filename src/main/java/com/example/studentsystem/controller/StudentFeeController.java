@@ -3,7 +3,9 @@ package com.example.studentsystem.controller;
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
 //import com.example.studentsystem.pattern.strategy.Context;
+import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.pattern.strategy.*;
+import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,8 @@ import java.util.Objects;
 public class StudentFeeController {
     @Resource(name = "feeServiceImpl")
     private FeeServiceImpl FeeService;
+    @Resource(name = "newsletterServiceImpl")
+    private NewsletterService newsletterService;
 
     @RequestMapping(value = "/fee")
     public String toFee(Model model) throws Exception{
@@ -31,8 +35,10 @@ public class StudentFeeController {
 //
         Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
 
-
-
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
 //        studentfee_temp.setFeeonlineoroffline(contextNot.executeStrategy());
 
         String str="";

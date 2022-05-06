@@ -24,8 +24,8 @@ public abstract class LoginProcess {
         URL = switch (status) {
             case 0 -> getURL(URLs);
             case 1 -> getURL(URLs);
-            case 2 -> "/notRegistered/index";//TODO pending student URL
-            case 3 -> "/notRegistered/index";//TODO not registered URL
+            case 2 -> "/notRegistered/index";//TODO pending student URL done
+            case 3 -> "/notRegistered/index";//TODO not registered URL done
             default -> getURL(URLs);
         };
         System.out.println(URL);

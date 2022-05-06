@@ -1,8 +1,10 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.Course;
+import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.pattern.adapter.StudentSelectCourseAdpater;
 import com.example.studentsystem.service.CourseService;
+import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,12 +24,19 @@ public class StudentCourseController {
     @Resource(name = "courseServiceImpl")
     private CourseService courseService;
 
+    @Resource(name = "newsletterServiceImpl")
+    private NewsletterService newsletterService;
 
     @RequestMapping(value = "/course")
     public String studentAllCourse(Model model) throws Exception {
         List<Course> courseList = courseService.findAllCourse();
         model.addAttribute("courseList",courseList);
-
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/course";
     }
 
@@ -39,6 +48,9 @@ public class StudentCourseController {
         List<Course> selectedCourseList = courseService.findAllCourseByStudentid(Integer.valueOf((String) session.getAttribute("username")) );
         model.addAttribute("selectedCourseList",selectedCourseList);
 
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/selectedcourse";
     }
 
@@ -61,7 +73,7 @@ public class StudentCourseController {
 //        Integer status = (Integer) session.getAttribute("registerstatus");
         StudentSelectCourseAdpater adapter = new StudentSelectCourseAdpater();
         return adapter.studentToAdminAddSelectCourse(sid,cid,"student");
-        //TODO 选课Error处理
+        //TODO Error Handling
 //        if(status.equals(1)){
 //            courseService.addSelectedCourse(sid,cid);
 //

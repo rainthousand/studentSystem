@@ -53,7 +53,7 @@ public class AdminCourseController {
         List<Course> courseList = courseService.findAllCourse();
         List<Student> studentList = studentService.findAllStudent();
 
-        //TODO studentid 的 Iterator模式
+        //TODO studentid 的 Iterator模式 done
         for(Student stu:studentList){
             iterator.add(stu.getStudentid());
         }
@@ -96,7 +96,7 @@ public class AdminCourseController {
 
     @RequestMapping("/addSelected")
     public String addSelectedCourse(@RequestParam Integer studentid,@RequestParam Integer courseid,@RequestParam String judge) throws Exception {
-        //TODO 选课else处理
+        //TODO 选课else处理 done
         Integer status = feeService.findFeeByUserName(studentid).getFeestatus();
         if(status.equals(1)){
             courseService.addSelectedCourse(studentid,courseid);

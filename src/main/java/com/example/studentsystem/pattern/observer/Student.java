@@ -1,8 +1,10 @@
 package com.example.studentsystem.pattern.observer;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class StudentOb implements Observer {
+public class Student implements Observer {
     private Integer studentid;
     private String realname;
     private String sex;
@@ -10,6 +12,10 @@ public class StudentOb implements Observer {
     private Date grade;
     private Integer collegeid;
     private Integer majorid;
+
+    public Student(Integer studentid) {
+        this.studentid = studentid;
+    }
 
     public Integer getStudentid() {
         return studentid;
@@ -68,8 +74,11 @@ public class StudentOb implements Observer {
     }
 
     @Override
-    public void update(Integer newsid) {
-//        newsletterService.AddNewsletterKey(newsid,studentid);
+    public List<Integer> update(Integer newsid) {
+        List<Integer> idKey=new ArrayList<>();
+        idKey.add(newsid);
+        idKey.add(studentid);
+        return idKey;
     }
 
 }

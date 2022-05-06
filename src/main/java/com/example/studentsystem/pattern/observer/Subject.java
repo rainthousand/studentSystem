@@ -1,5 +1,8 @@
 package com.example.studentsystem.pattern.observer;
 
+import java.util.HashMap;
+import java.util.List;
+
 public interface Subject {
     /**
      * add new observer
@@ -17,7 +20,9 @@ public interface Subject {
 
     /**
      * notify observers their updates
+     *
+     * @return
      */
-    public void notifySubscription();
 
+    List<List<Integer>> publishAndNotify(Integer newsid);
 }

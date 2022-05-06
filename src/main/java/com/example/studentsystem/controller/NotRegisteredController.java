@@ -37,7 +37,12 @@ public class NotRegisteredController {
     public String studentAllCourse(Model model) throws Exception {
         List<Course> courseList = courseService.findAllCourse();
         model.addAttribute("courseList",courseList);
-
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "notRegistered/course";
     }
 
@@ -48,7 +53,9 @@ public class NotRegisteredController {
         System.out.println(session.getAttribute("username"));
         List<Course> selectedCourseList = courseService.findAllCourseByStudentid(Integer.valueOf((String) session.getAttribute("username")) );
         model.addAttribute("selectedCourseList",selectedCourseList);
-
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "notRegistered/selectedcourse";
     }
 
@@ -56,6 +63,10 @@ public class NotRegisteredController {
     public String toFee(Model model) throws Exception{
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
 
         String str="";
@@ -67,15 +78,18 @@ public class NotRegisteredController {
         if(studentfee_temp.getFeestatus()==1) status+="Registered";
         else if(studentfee_temp.getFeestatus()==2) status+="Pending";
         else if(studentfee_temp.getFeestatus()==3) status+="Not Registered";
+
         Context_payment visa_payment = new Context_payment(new Visa_Card());
         Context_payment master_payment = new Context_payment(new Master_Card());
         Context_payment alipay_payment = new Context_payment(new Alipay());
         Context_payment apple_payment = new Context_payment(new ApplePay());
+
         String payment="";
         if(studentfee_temp.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
         else if(studentfee_temp.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
         else if(studentfee_temp.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
         else payment=apple_payment.executeStrategy_payment();
+
         List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
         Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,payment);
 
@@ -88,9 +102,10 @@ public class NotRegisteredController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         System.out.println(session.getAttribute("username"));
+
         List<NewsLetter> subscribedNewsletterList = newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("subscribedNewsletterList", subscribedNewsletterList);
-
+        model.addAttribute("notificationList", subscribedNewsletterList);
         return "notRegistered/subscribedNewsletter";
     }
 }

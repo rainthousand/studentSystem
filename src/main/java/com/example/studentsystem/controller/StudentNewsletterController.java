@@ -25,7 +25,12 @@ public class StudentNewsletterController {
     public String studentAllSubject(Model model) throws Exception {
         List<NewsSubject> newsSubjectList = newsletterService.findAllSubject();
         model.addAttribute("newsSubjectList", newsSubjectList);
-
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/tosubscribe";
     }
 
@@ -36,7 +41,9 @@ public class StudentNewsletterController {
         System.out.println(session.getAttribute("username"));
         List<NewsSubject> subscribedSubjectList = newsletterService.findAllSubjectByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("subscribedSubjectList", subscribedSubjectList);
-
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/managesubscription";
     }
 
@@ -47,7 +54,9 @@ public class StudentNewsletterController {
         System.out.println(session.getAttribute("username"));
         List<NewsLetter> subscribedNewsletterList = newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("subscribedNewsletterList", subscribedNewsletterList);
-
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/subscribedNewsletter";
     }
 

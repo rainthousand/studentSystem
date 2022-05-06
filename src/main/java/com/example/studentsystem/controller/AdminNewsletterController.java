@@ -1,14 +1,14 @@
 package com.example.studentsystem.controller;
 
+import com.example.studentsystem.pattern.observer.NewsSubject;
+import com.example.studentsystem.pattern.observer.Student;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -25,7 +25,11 @@ public class AdminNewsletterController {
     public String adminPublishNewsletter(@RequestParam String newslettername, @RequestParam String publishertype,
                                          @RequestParam String subject, @RequestParam String newstype,
                                          @RequestParam String newsdetail) throws Exception {
-
+        List<Integer> subscribedStudentList = newsletterService.findAllStudentidBySubject(subject);
+        NewsSubject newsSubject=new NewsSubject();
+        for (Integer studentid : subscribedStudentList){
+            newsSubject.attach(new Student(studentid));
+        }
         Random random = new Random();
 
         Integer newsid = random.nextInt(100000);
@@ -40,15 +44,17 @@ public class AdminNewsletterController {
                 typeInt = 1;
         }
         newsletterService.AddNewsletter(newsid, newslettername, publishertype, subject, newsdetail, new Date(), typeInt);
-        List<Integer> subscribedStudentList = newsletterService.findAllStudentidBySubject(subject);
-//
-//        Newsletter newsletter=new Newsletter(newsid,subject);
-        for (Integer studentid : subscribedStudentList) {
-//            newsletter.attach(new Student(studentid));
-            newsletterService.AddNewsletterKey(newsid, studentid);
-
+        List<List<Integer>> KeyList=new ArrayList<>();
+        KeyList=newsSubject.publishAndNotify(newsid);
+        for (List<Integer> Key : KeyList) {
+            newsletterService.AddNewsletterKey(Key.get(0), Key.get(1));
         }
-//        newsletter.notifySubscription();
+
+//        for (Integer studentid : subscribedStudentList) {
+////            newsletter.attach(new Student(studentid));
+//            newsletterService.AddNewsletterKey(newsid, studentid);
+//
+//        }
         return "admin/addnewsletter";
     }
 }

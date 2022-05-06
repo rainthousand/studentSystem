@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.Event;
+import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.entity.SchoolActivity;
 import com.example.studentsystem.pattern.composite.CourseEvent;
 import com.example.studentsystem.pattern.composite.SchoolActivityEvent;
 import com.example.studentsystem.service.CourseService;
+import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.ScheduleService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping(value = "/student")
@@ -29,6 +35,9 @@ public class StudentScheduleController {
 
     @Resource(name = "scheduleServiceImpl")
     private ScheduleService scheduleService;
+    @Resource(name = "newsletterServiceImpl")
+    private NewsletterService newsletterService;
+
 
     @RequestMapping(value = "/scheduleData")
     @ResponseBody
@@ -81,7 +90,12 @@ public class StudentScheduleController {
             events1.setId("Activity-" + Integer.toString(activity.getActivityid()));
             events.add(events1);
         }
-
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return events;
     }
 
