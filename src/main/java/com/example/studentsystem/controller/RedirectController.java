@@ -108,7 +108,10 @@ public class RedirectController {
     public String studentToManageSubscriptionPage() throws Exception {
         return "redirect:student/managesubscription";
     }
-
+    @RequestMapping(value = "/adminToNewsletter", method = {RequestMethod.GET})
+    public String adminToNewsletter() throws Exception {
+        return "redirect:admin/addnewsletter";
+    }
     @RequestMapping(value = "/notRegistered/index", method = {RequestMethod.GET})
     public String notRegitsteredToMainPage() throws Exception {
         return "notRegistered/index";
