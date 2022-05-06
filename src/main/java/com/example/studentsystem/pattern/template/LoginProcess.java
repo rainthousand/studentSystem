@@ -18,7 +18,15 @@ public abstract class LoginProcess {
     public String Login(UserLogin currUser, HttpSession session, List<String> URLs, Integer status) {
         UserSessionInfo userSessionInfo = getUserSessInfo(currUser, status);
         setSessionAttribute(session, userSessionInfo);
-        String URL = getURL(URLs);
+        String URL;
+        switch (status){
+            case 0:URL = getURL(URLs);
+            case 1:URL = getURL(URLs);
+            case 2:URL="";//todo pending student URL
+            case 3:URL="";//TODO not registered URL
+            default:URL=getURL(URLs);
+        }
+//        String URL = getURL(URLs);
         return "redirect:" + URL;
     }
 }
