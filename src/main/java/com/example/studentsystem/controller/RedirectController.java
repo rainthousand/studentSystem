@@ -121,7 +121,13 @@ public class RedirectController {
     }
 
     @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
-    public String adminToIndex() throws Exception {
+    public String adminToIndex(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "admin/index";
     }
 
