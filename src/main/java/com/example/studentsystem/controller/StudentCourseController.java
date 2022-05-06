@@ -61,7 +61,7 @@ public class StudentCourseController {
 //        Integer status = (Integer) session.getAttribute("registerstatus");
         StudentSelectCourseAdpater adapter = new StudentSelectCourseAdpater();
         return adapter.studentToAdminAddSelectCourse(sid,cid,"student");
-        //TODO 选课Error处理
+        //TODO Error Handling
 //        if(status.equals(1)){
 //            courseService.addSelectedCourse(sid,cid);
 //
