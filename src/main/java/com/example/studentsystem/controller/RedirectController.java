@@ -132,7 +132,13 @@ public class RedirectController {
     }
 
     @RequestMapping(value = "/studentToIndex", method = {RequestMethod.GET})
-    public String studentToIndex() throws Exception {
+    public String studentToIndex(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/index";
     }
 
