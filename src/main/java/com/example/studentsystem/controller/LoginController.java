@@ -12,6 +12,7 @@ import com.example.studentsystem.service.UserLoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -60,6 +61,11 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET})
     public String toLogin() throws Exception {
+        return "page-login";
+    }
+
+    @RequestMapping(value = "/toLogin", method = {RequestMethod.GET})
+    public String LogouttoLogin() throws Exception {
         return "page-login";
     }
 
@@ -113,4 +119,10 @@ public class LoginController {
         return "/page-login";
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpSession session, SessionStatus sessionStatus){
+        session.invalidate();
+        sessionStatus.setComplete();
+        return "redirect:/toLogin";
+    }
 }
