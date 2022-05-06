@@ -3,9 +3,12 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.TestTable;
 import com.example.studentsystem.service.testfileservice;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -59,5 +62,14 @@ public class testController {
         model.addAttribute("person", person);
         model.addAttribute("list", list);
         return "index2";
+    }
+
+    @RequestMapping(value = "/getJson")
+    @ResponseBody
+    public String getJson () throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code",0);
+        jsonObject.put("msg","成功");
+        return jsonObject.toString();
     }
 }

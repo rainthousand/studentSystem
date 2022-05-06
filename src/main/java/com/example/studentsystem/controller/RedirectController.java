@@ -35,13 +35,34 @@ public class RedirectController {
     public String adminToMainPage() throws Exception {
         return "admin/index";
     }
+
+    @RequestMapping(value = "/adminToCourse", method = {RequestMethod.GET})
+    public String adminToCoursePage() throws Exception {
+        return "redirect:admin/course";
+    }
+
+    @RequestMapping(value = "/adminToSelectedCourse", method = {RequestMethod.GET})
+    public String adminToSelectedCoursePage() throws Exception {
+        return "redirect:admin/selectedCourse";
+    }
+
+    @RequestMapping(value = "/adminToAddCourse", method = {RequestMethod.GET})
+    public String adminToAddCoursePage() throws Exception {
+        return "redirect:admin/toAddCoursePage";
+    }
+
+    @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
+    public String studentToCalendarPage() throws Exception {
+        return "student/calendar";
+    }
+
     @RequestMapping(value = "/studentToFeePage",method = {RequestMethod.GET})
     public String studentToFeePage() throws Exception{
         return "redirect:student/fee";
     }
+
     @RequestMapping(value = "/adminToFeePage",method = {RequestMethod.GET})
     public String adminToFeePage() throws Exception{
         return "redirect:admin/fee-list";
     }
-
 }

@@ -52,8 +52,9 @@
                             <span class="nav-label">Course</span>
                         </a>
                         <ul class="list-unstyled mm-collapse">
-                            <li><a href="">Student Selected</a></li>
-                            <li><a href="/studentToCourse">All Courses</a></li>
+                            <li><a href="/adminToSelectedCourse">Student Selected</a></li>
+                            <li><a href="">All Courses</a></li>
+                            <li><a href="/adminToAddCourse">Add Course</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
@@ -89,7 +90,7 @@
                         </ul>
                     </li>
                     <li class="has-submenu">
-                        <a href="/studentToCalendar">
+                        <a href="calendar.html">
                             <i class="fas fa-calendar-alt"></i>
                             <span class="nav-label">calendar</span>
                         </a>
@@ -333,11 +334,11 @@
                                 <div class="card-header fix-card">
                                     <div class="row">
                                         <div class="col-8">
-                                            <h4 class="card-title"> All Courses </h4>
+                                            <h4 class="card-title"> All Patients </h4>
                                         </div>
                                         <div class="col-4 float-end">
                                             <a href="javascript:;" class="btn btn-primary float-end">New
-                                                Course</a>
+                                                Patient</a>
                                         </div>
                                     </div>
                                 </div>
@@ -345,41 +346,60 @@
                                     <div class="table-responsive">
                                         <table id="example2" class="display nowrap">
                                             <thead>
-                                            <tr>
-                                                <th>Course ID</th>
-                                                <th>Course Name</th>
-                                                <th>Teacher Name</th>
-                                                <th>Course Time</th>
-                                                <th>Classroom</th>
-                                                <th>Course Week</th>
-                                                <th>Type</th>
-                                                <th>Major</th>
-                                                <th>Credit</th>
-                                                <th>Course Start</th>
-                                                <th>Course End</th>
-                                                <th>Action</th>
-                                            </tr>
+                                                <tr>
+                                                    <th>Course ID</th>
+                                                    <th>Course Name</th>
+                                                    <th>Teacher Name</th>
+                                                    <th>Course Time</th>
+                                                    <th>Classroom</th>
+                                                    <th>Phone Number</th>
+                                                    <th>Type</th>
+                                                    <th>Major</th>
+                                                    <th>Credit</th>
+                                                    <th>Course Start</th>
+                                                    <th>Course End</th>
+                                                    <th>Student ID</th>
+                                                    <th>Action</th>
+                                                </tr>
                                             </thead>
-                                            <tbody>
-                                            <tr th:each="course : ${selectedCourseList}">
-                                                <td th:text="${course.courseid}"></td>
-                                                <td th:text="${course.coursename}"></td>
-                                                <td th:text="${course.teacherid}"></td>
-                                                <td th:text="${course.coursetime}"></td>
-                                                <td th:text="${course.classroom}"></td>
-                                                <td th:text="${course.courseweek}"></td>
-                                                <td th:text="${course.coursetype}"></td>
-                                                <td th:text="${course.majorid}"></td>
-                                                <td th:text="${course.credit}"></td>
-                                                <td th:text="${course.coursestart}"></td>
-                                                <td th:text="${course.courseend}"></td>
-                                                <td>
-                                                    <a class='mr-4 delet' th:href="@{/student/deleteSelected/}+${course.courseid}">
-                                                        <span class='fas fa-trash-alt'></span>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
+                                                <tbody>
+                                                <tr th:each="course : ${courseList}">
+                                                    <form class="theme-form" action="/admin/addSelected" method="post">
+                                                    <td th:text="${course.courseid}"></td>
+                                                    <td th:text="${course.coursename}"></td>
+                                                    <td th:text="${course.teacherid}"></td>
+                                                    <td th:text="${course.coursetime}"></td>
+                                                    <td th:text="${course.classroom}"></td>
+                                                    <td th:text="${course.courseweek}"></td>
+                                                    <td th:text="${course.coursetype}"></td>
+                                                    <td th:text="${course.majorid}"></td>
+                                                    <td th:text="${course.credit}"></td>
+                                                    <td th:text="${course.coursestart}"></td>
+                                                    <td th:text="${course.courseend}"></td>
+
+                                                    <td><label for="sid">testlabel</label>
+                                                        <select class="" id="sid" name="studentid">
+                                                        <!--                                                        <option   value=""   selected>Please select</option>-->
+                                                        <option
+                                                                th:each="student:${studentList}"
+                                                                th:value="${student}"
+                                                                th:text="${student}"
+                                                        >
+                                                        </option>
+                                                    </select></td>
+                                                    <td>
+<!--                                                        <a class='mr-4 vue' href="@{/admin/addSelected}">-->
+<!--                                                            <span class='fa fa-eye' aria-hidden='true'></span>-->
+<!--                                                        </a>-->
+<!--                                                        <input type="text" th:value="${course.courseid}" name="courseid"/>-->
+                                                        <input type="hidden" th:value= "${course.courseid}" name="courseid"/>
+                                                        <input type="hidden" th:value= "admin" name="judge"/>
+                                                        <button class="btn btn-primary" type="submit" value="test">Select</button>
+
+                                                    </td>
+                                                    </form>
+                                                </tr>
+                                                </tbody>
                                         </table>
                                     </div>
                                 </div>

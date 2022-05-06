@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service("courseServiceImpl")
@@ -67,5 +68,38 @@ public class CourseServiceImpl implements CourseService {
         selectedCourse.setMark(0);
 
         return selectedCourseMapper.insert(selectedCourse);
+    }
+
+    @Override
+    public List<SelectedCourse> findAllSelectedCourse() {
+        SelectedCourseExample selectedCourseExample = new SelectedCourseExample();
+        SelectedCourseExample.Criteria criteria = selectedCourseExample.createCriteria();
+        criteria.andStudentidIsNotNull();
+        criteria.andCourseidIsNotNull();
+        return selectedCourseMapper.selectByExample(selectedCourseExample);
+    }
+
+    @Override
+    public Course findCourseByCourseID(Integer courseid) {
+        return courseMapper.selectByPrimaryKey(courseid);
+    }
+
+    @Override
+    public Integer indexNewCourse() {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andCourseidIsNotNull();
+        List<Integer> templist = new ArrayList<>();
+        List<Course> clist = courseMapper.selectByExample(courseExample);
+        for(Course course:clist){
+            templist.add(course.getCourseid());
+        }
+
+        return Collections.max(templist)+1;
+    }
+
+    @Override
+    public Integer addNewCourse(Course course) {
+        return courseMapper.insert(course);
     }
 }

@@ -49,11 +49,12 @@
                     <li class="has-submenu active">
                         <a href="#" class="has-arrow mm-collapsed">
                             <i class="fas fa-users"></i>
-                            <span class="nav-label">Course</span>
+                            <span class="nav-label">Patients</span>
                         </a>
                         <ul class="list-unstyled mm-collapse">
                             <li><a href="">Student Selected</a></li>
-                            <li><a href="/studentToCourse">All Courses</a></li>
+                            <li><a href="/adminToCourse">All Courses</a></li>
+                            <li><a href="/adminToAddCourse">Add Course</a></li>
                         </ul>
                     </li>
                     <li class="has-submenu">
@@ -89,7 +90,7 @@
                         </ul>
                     </li>
                     <li class="has-submenu">
-                        <a href="/studentToCalendar">
+                        <a href="calendar.html">
                             <i class="fas fa-calendar-alt"></i>
                             <span class="nav-label">calendar</span>
                         </a>
@@ -333,11 +334,11 @@
                                 <div class="card-header fix-card">
                                     <div class="row">
                                         <div class="col-8">
-                                            <h4 class="card-title"> All Courses </h4>
+                                            <h4 class="card-title"> All Patients </h4>
                                         </div>
                                         <div class="col-4 float-end">
                                             <a href="javascript:;" class="btn btn-primary float-end">New
-                                                Course</a>
+                                                Patient</a>
                                         </div>
                                     </div>
                                 </div>
@@ -348,33 +349,22 @@
                                             <tr>
                                                 <th>Course ID</th>
                                                 <th>Course Name</th>
-                                                <th>Teacher Name</th>
-                                                <th>Course Time</th>
-                                                <th>Classroom</th>
-                                                <th>Course Week</th>
-                                                <th>Type</th>
-                                                <th>Major</th>
-                                                <th>Credit</th>
-                                                <th>Course Start</th>
-                                                <th>Course End</th>
+                                                <th>Student ID</th>
+                                                <th>Student Name</th>
+                                                <th>Marks</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr th:each="course : ${selectedCourseList}">
+                                            <tr th:each="course : ${adminSelectedCourseList}">
                                                 <td th:text="${course.courseid}"></td>
                                                 <td th:text="${course.coursename}"></td>
-                                                <td th:text="${course.teacherid}"></td>
-                                                <td th:text="${course.coursetime}"></td>
-                                                <td th:text="${course.classroom}"></td>
-                                                <td th:text="${course.courseweek}"></td>
-                                                <td th:text="${course.coursetype}"></td>
-                                                <td th:text="${course.majorid}"></td>
-                                                <td th:text="${course.credit}"></td>
-                                                <td th:text="${course.coursestart}"></td>
-                                                <td th:text="${course.courseend}"></td>
+                                                <td th:text="${course.studentid}"></td>
+                                                <td th:text="${course.studentname}"></td>
+                                                <td th:text="${course.mark}"></td>
                                                 <td>
-                                                    <a class='mr-4 delet' th:href="@{/student/deleteSelected/}+${course.courseid}">
+                                                    <input type="hidden" th:value= "admin" name="judge"/>
+                                                    <a class='mr-4 delet' th:href="@{/admin/deleteSelected(cid=${course.getCourseid()},sid=${course.getStudentid()},judge=${judge})}">
                                                         <span class='fas fa-trash-alt'></span>
                                                     </a>
                                                 </td>

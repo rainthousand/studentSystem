@@ -1,6 +1,7 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.Course;
+import com.example.studentsystem.pattern.adapter.StudentSelectCourseAdpater;
 import com.example.studentsystem.service.CourseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.util.Objects;
 public class StudentCourseController {
     @Resource(name = "courseServiceImpl")
     private CourseService courseService;
+
 
     @RequestMapping(value = "/course")
     public String studentAllCourse(Model model) throws Exception {
@@ -45,22 +47,26 @@ public class StudentCourseController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
-//        System.out.println("siddddddddddddddddddddddddddd");
-//        System.out.println(sid);
-        courseService.deleteSelectedCourse(sid,cid);
-
-        return "redirect:/student/selectedCourse";
+//        courseService.deleteSelectedCourse(sid,cid);
+        StudentSelectCourseAdpater adapter = new StudentSelectCourseAdpater();
+//        return "redirect:/student/selectedCourse";
+        return adapter.studentToAdminDeleteSelectCourse(sid,cid,"student");
     }
 
     @RequestMapping("/addSelected/{cid}")
-    public String addSelectedCourse(@PathVariable("cid")Integer cid){
+    public String addSelectedCourse(@PathVariable("cid") Integer cid){
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
-        System.out.println("cidddddddddddddddd");
-        System.out.println(cid);
-        courseService.addSelectedCourse(sid,cid);
-
-        return "redirect:/student/course";
+//        Integer status = (Integer) session.getAttribute("registerstatus");
+        StudentSelectCourseAdpater adapter = new StudentSelectCourseAdpater();
+        return adapter.studentToAdminAddSelectCourse(sid,cid,"student");
+        //TODO 选课Error处理
+//        if(status.equals(1)){
+//            courseService.addSelectedCourse(sid,cid);
+//
+//        }else{
+//            return "redirect:/student/course";
+//        }
     }
 }

@@ -12,7 +12,6 @@ public class decorator implements CourseInterface{
 
     @Override
     public Course courseMajor(Course course) {
-
-        return courseInterface.courseMajor(course);
+        return course;
     }
 }
