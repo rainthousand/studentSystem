@@ -195,79 +195,22 @@
                             <div class="cart-dropdown-form dropdown-container">
                                 <div class="form-content">
                                     <div class="widget-media main-scroll nicescroll-box">
-                                        <ul class="timeline">
-                                            <li>
-                                                <h6 class="mb-0">Notitications</h6>
-                                            </li>
-                                            <li>
-                                                <div class="timeline-panel">
-                                                    <div class="media mr-2">
-                                                        <img alt="image" src="picture/1.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1 ">Incoming Message</h6>
-                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                        <li>
+                                            <h6 class="mb-0">Notitications</h6>
+                                        </li>
+                                        <ul class="timeline" th:each="newsletter: ${notificationList}">
                                             <li>
                                                 <div class="timeline-panel">
-                                                    <div class="media mr-2 media-info">
-                                                        <img alt="image" src="picture/1.jpg">
-                                                    </div>
                                                     <div class="media-body">
-                                                        <h6 class="mb-1">You got a new email</h6>
-                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="timeline-panel">
-                                                    <div class="media mr-2 media-success">
-                                                        <img alt="image" src="picture/1.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Hello world!</h6>
-                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="timeline-panel">
-                                                    <div class="media mr-2">
-                                                        <img alt="image" src="picture/1.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Beep Boop. Beee...</h6>
-                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="timeline-panel">
-                                                    <div class="media mr-2 media-danger">
-                                                        <img alt="image" src="picture/1.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Hello world!</h6>
-                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="timeline-panel">
-                                                    <div class="media mr-2 media-primary">
-                                                        <img alt="image" src="picture/1.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6 class="mb-1">Incoming Message</h6>
-                                                        <small class="d-block">29 July 2020 - 02:26 PM</small>
+                                                        <h6 class="mb-1 " th:text="${newsletter.newsname}"></h6>
+                                                        <small class="d-block"
+                                                               th:text="${newsletter.publishtime}"></small>
                                                     </div>
                                                 </div>
                                             </li>
                                         </ul>
                                     </div>
-                                    <a class="all-notification btn btn-primary" href="#">
+                                    <a class="all-notification btn btn-primary" href="/studentToSubscribedNewsletter">
                                         See all notifications
                                     </a>
                                 </div>
