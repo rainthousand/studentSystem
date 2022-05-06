@@ -37,7 +37,12 @@ public class NotRegisteredController {
     public String studentAllCourse(Model model) throws Exception {
         List<Course> courseList = courseService.findAllCourse();
         model.addAttribute("courseList",courseList);
-
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "notRegistered/course";
     }
 
@@ -48,7 +53,9 @@ public class NotRegisteredController {
         System.out.println(session.getAttribute("username"));
         List<Course> selectedCourseList = courseService.findAllCourseByStudentid(Integer.valueOf((String) session.getAttribute("username")) );
         model.addAttribute("selectedCourseList",selectedCourseList);
-
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "notRegistered/selectedcourse";
     }
 
@@ -56,6 +63,10 @@ public class NotRegisteredController {
     public String toFee(Model model) throws Exception{
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         Fee studentfee_temp = FeeService.findFeeByUserName(Integer.valueOf((String) session.getAttribute("username")));
 
         String str="";
@@ -91,9 +102,10 @@ public class NotRegisteredController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         System.out.println(session.getAttribute("username"));
+
         List<NewsLetter> subscribedNewsletterList = newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("subscribedNewsletterList", subscribedNewsletterList);
-
+        model.addAttribute("notificationList", subscribedNewsletterList);
         return "notRegistered/subscribedNewsletter";
     }
 }

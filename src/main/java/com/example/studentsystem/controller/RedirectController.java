@@ -80,7 +80,13 @@ public class RedirectController {
     }
 
     @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
-    public String studentToCalendarPage() throws Exception {
+    public String studentToCalendarPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "student/calendar";
     }
 
