@@ -121,13 +121,7 @@ public class RedirectController {
     }
 
     @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
-    public String adminToIndex(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        List<NewsLetter> notificationList =
-                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
-        model.addAttribute("notificationList", notificationList);
+    public String adminToIndex() throws Exception {
         return "admin/index";
     }
 
@@ -143,8 +137,14 @@ public class RedirectController {
     }
 
     //Not Registered
-    @RequestMapping(value = "/notRegistered/index", method = {RequestMethod.GET})
-    public String notRegitsteredToMainPage() throws Exception {
+    @RequestMapping(value = "/notRegisteredToIndex", method = {RequestMethod.GET})
+    public String notRegitsteredToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("notificationList", notificationList);
         return "notRegistered/index";
     }
 

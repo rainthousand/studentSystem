@@ -2,358 +2,378 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Student System | Fee</title>
-  <!-- Base Styling  -->
-  <link rel="stylesheet" href="../css/fonts.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <meta name="referrer" content="no-referrer">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Student System | Fee</title>
+    <!-- Base Styling  -->
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <meta name="referrer" content="no-referrer">
 </head>
 
 <body>
 <div id="main-wrapper" class="show">
 
 
-  <!-- start logo components -->
-  <div class="nav-header">
-    <div class="brand-logo">
-      <a href=""><img src="https://i.ibb.co/TW465Jk/Brandpic.png" alt=""></a>
-    </div>
-  </div>
-  <!-- End logo components -->
-
-
-  <!-- start section sidebar -->
-  <aside class="left-panel nicescroll-box">
-    <nav class="navigation">
-      <ul class="list-unstyled main-menu">
-        <li class="has-submenu active">
-          <a href="/studentToIndex">
-            <i class="fas fa-th-large"></i>
-            <span class="nav-label">Dashboard</span>
-          </a>
-        </li>
-        <li class="has-submenu">
-          <a href="#" class="has-arrow mm-collapsed">
-            <i class="fas fa-users"></i>
-            <span class="nav-label">Course</span>
-          </a>
-          <ul class="list-unstyled mm-collapse">
-            <li><a href="/studentToSelectedCourse">Student Selected</a></li>
-            <li><a href="/studentToCourse">All Courses</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu active">
-          <a href="#" class="has-arrow mm-collapsed">
-            <i class="fas fa-book-medical"></i>
-            <span class="nav-label">Fee</span>
-          </a>
-          <ul class="list-unstyled mm-collapse active">
-            <li><a href="/studentToFeePage">New Fee</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu">
-          <a href="#" class="has-arrow mm-collapsed">
-            <i class="fas fa-heartbeat"></i>
-            <span class="nav-label">Newsletter</span>
-          </a>
-          <ul class="list-unstyled mm-collapse">
-            <li><a href="/studentToSubscribedNewsletter">All Newsletter</a></li>
-            <li><a href="/studentToManageSubscription">Manage Subscription</a></li>
-            <li><a href="/studentToSubscribe">To Subscribe</a></li>
-          </ul>
-        </li>
-        <li class="has-submenu">
-          <a href="/studentToCalendar">
-            <i class="fas fa-calendar-alt"></i>
-            <span class="nav-label">calendar</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="sidebar-widgets">
-      <div class="top-sidebar box-shadow mx-25 m-b-30 p-b-20 text-center">
-        <a href="new-appointment.html">
-          <img src="picture/appointement.svg" class="side-img" alt="img">
-        </a>
-        <a href="#">
-          <h4 class="text-primary mb-0">Make an Appointments</h4>
-        </a>
-      </div>
-      <div class="copyright text-center">
-        <p class="mb-0"> Tabib Dashboard</p>
-        <p class="mb-0"> © 2021 </p>
-      </div>
-    </div>
-  </aside>
-  <!-- End section sidebar -->
-
-
-  <!-- start section header -->
-  <div class="header">
-    <header class="top-head container-fluid">
-      <div class="nav-control">
-        <div class="hamburger">
-          <span class="line"></span><span class="line"></span><span class="line"></span>
+    <!-- start logo components -->
+    <div class="nav-header">
+        <div class="brand-logo">
+            <a href=""><img src="https://i.ibb.co/TW465Jk/Brandpic.png" alt=""></a>
         </div>
-        <!--                    <div class="left-header content-header__menu">-->
-        <!--                        <ul class="list-unstyled">-->
-        <!--                            <li class="nav-link btn">-->
-        <!--                                <a href="#"><i class="far fa-calendar-check"></i> <span> Make an appointment</span></a>-->
-        <!--                            </li>-->
-        <!--                            <li class="nav-link btn">-->
-        <!--                                <a href="#"><i class="far fa-file-alt"></i> <span> Write a prescription</span></a>-->
-        <!--                            </li>-->
-        <!--                        </ul>-->
-        <!--                    </div>-->
-      </div>
-      <div class="header-right">
-        <div class="fullscreen notification_dropdown">
-          <div class="full">
-            <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">
-              <i class="fas fa-expand"></i>
-            </a>
-          </div>
-        </div>
-        <div class="notification_dropdown">
-          <div class="cart-wrapper">
-            <div class="cart-icon">
-              <a class="cart-control" href="#">
-                <i class="fas fa-bell"></i>
-                <div class="pulse-css"></div>
-              </a>
+    </div>
+    <!-- End logo components -->
+
+
+    <!-- start section sidebar -->
+    <aside class="left-panel nicescroll-box">
+        <nav class="navigation">
+            <ul class="list-unstyled main-menu">
+                <li class="has-submenu active">
+                    <a href="/studentToIndex">
+                        <i class="fas fa-th-large"></i>
+                        <span class="nav-label">Dashboard</span>
+                    </a>
+                </li>
+                <li class="has-submenu">
+                    <a href="#" class="has-arrow mm-collapsed">
+                        <i class="fas fa-users"></i>
+                        <span class="nav-label">Course</span>
+                    </a>
+                    <ul class="list-unstyled mm-collapse">
+                        <li><a href="/studentToSelectedCourse">Student Selected</a></li>
+                        <li><a href="/studentToCourse">All Courses</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu active">
+                    <a href="#" class="has-arrow mm-collapsed">
+                        <i class="fas fa-book-medical"></i>
+                        <span class="nav-label">Fee</span>
+                    </a>
+                    <ul class="list-unstyled mm-collapse active">
+                        <li><a href="/studentToFeePage">New Fee</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#" class="has-arrow mm-collapsed">
+                        <i class="fas fa-heartbeat"></i>
+                        <span class="nav-label">Newsletter</span>
+                    </a>
+                    <ul class="list-unstyled mm-collapse">
+                        <li><a href="/studentToSubscribedNewsletter">All Newsletter</a></li>
+                        <li><a href="/studentToManageSubscription">Manage Subscription</a></li>
+                        <li><a href="/studentToSubscribe">To Subscribe</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="/studentToCalendar">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="nav-label">calendar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-widgets">
+            <div class="div1">
+                <img src="https://i0.hdslb.com/bfs/article/b3469b725efd104ac3af76c8e199ce027a47250a.gif" alt="">
             </div>
-            <div class="cart-dropdown-form dropdown-container" style="right: -100px;">
-              <div class="form-content">
-                <div class="widget-media main-scroll nicescroll-box">
-                  <li>
-                    <h6 class="mb-0">Notitications</h6>
-                  </li>
-                  <ul class="timeline" th:each="newsletter: ${notificationList}">
-                    <li>
-                      <div class="timeline-panel">
-                        <div class="media-body">
-                          <h6 class="mb-1 " th:text="${newsletter.newsname}"></h6>
-                          <small class="d-block"
-                                 th:text="${newsletter.publishtime}"></small>
+        </div>
+    </aside>
+    <!-- End section sidebar -->
+
+
+    <!-- start section header -->
+    <div class="header">
+        <header class="top-head container-fluid">
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+                <!--                    <div class="left-header content-header__menu">-->
+                <!--                        <ul class="list-unstyled">-->
+                <!--                            <li class="nav-link btn">-->
+                <!--                                <a href="#"><i class="far fa-calendar-check"></i> <span> Make an appointment</span></a>-->
+                <!--                            </li>-->
+                <!--                            <li class="nav-link btn">-->
+                <!--                                <a href="#"><i class="far fa-file-alt"></i> <span> Write a prescription</span></a>-->
+                <!--                            </li>-->
+                <!--                        </ul>-->
+                <!--                    </div>-->
+            </div>
+            <div class="header-right">
+                <div class="fullscreen notification_dropdown">
+                    <div class="full">
+                        <a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()">
+                            <i class="fas fa-expand"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="notification_dropdown">
+                    <div class="cart-wrapper">
+                        <div class="cart-icon">
+                            <a class="cart-control" href="#">
+                                <i class="fas fa-bell"></i>
+                                <div class="pulse-css"></div>
+                            </a>
                         </div>
-                      </div>
-                    </li>
-                  </ul>
+                        <div class="cart-dropdown-form dropdown-container" style="right: -100px;">
+                            <div class="form-content">
+                                <div class="widget-media main-scroll nicescroll-box">
+                                    <li>
+                                        <h6 class="mb-0">Notitications</h6>
+                                    </li>
+                                    <ul class="timeline" th:each="newsletter: ${notificationList}">
+                                        <li>
+                                            <div class="timeline-panel">
+                                                <div class="media-body">
+                                                    <h6 class="mb-1 " th:text="${newsletter.newsname}"></h6>
+                                                    <small class="d-block"
+                                                           th:text="${newsletter.publishtime}"></small>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <a class="all-notification btn btn-primary" href="/studentToSubscribedNewsletter">
+                                    See all newsletters
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a class="all-notification btn btn-primary" href="/studentToSubscribedNewsletter">
-                  See all newsletters
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="my-account-wrapper">
-          <div class="account-wrapper">
-            <div class="account-control">
-              <a class="login header-profile" href="#" title="Sign in">
-                <!--                                    <div class="header-info">-->
-                <!--                                        <span>Dr Roberts</span>-->
-                <!--                                        <small>Admin</small>-->
-                <!--                                    </div>-->
-                <img src="https://i0.hdslb.com/bfs/article/2eb0b4b5a2fcc35288e39c63fb1834b413b45e18.gif" alt="">
-              </a>
-              <div class="account-dropdown-form dropdown-container">
-                <div class="form-content">
-                  <a href="#">
-                    <i class="far fa-user"></i>
-                    <span class="ml-2">Profile</span>
-                  </a>
-                  <!--                                        <a href="#">-->
-                  <!--                                            <i class="far fa-envelope"></i>-->
-                  <!--                                            <span class="ml-2">Inbox</span>-->
-                  <!--                                        </a>-->
-                  <a href="/logout">
-                    <i class="fas fa-sign-in-alt"></i>
-                    <span class="ml-2">Logout </span>
-                  </a>
+                <div class="my-account-wrapper">
+                    <div class="account-wrapper">
+                        <div class="account-control">
+                            <a class="login header-profile" href="#" title="Sign in">
+                                <!--                                    <div class="header-info">-->
+                                <!--                                        <span>Dr Roberts</span>-->
+                                <!--                                        <small>Admin</small>-->
+                                <!--                                    </div>-->
+                                <img src="https://i0.hdslb.com/bfs/article/2eb0b4b5a2fcc35288e39c63fb1834b413b45e18.gif"
+                                     alt="">
+                            </a>
+                            <div class="account-dropdown-form dropdown-container">
+                                <div class="form-content">
+                                    <a href="#">
+                                        <i class="far fa-user"></i>
+                                        <span class="ml-2">Profile</span>
+                                    </a>
+                                    <!--                                        <a href="#">-->
+                                    <!--                                            <i class="far fa-envelope"></i>-->
+                                    <!--                                            <span class="ml-2">Inbox</span>-->
+                                    <!--                                        </a>-->
+                                    <a href="/logout">
+                                        <i class="fas fa-sign-in-alt"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </header>
-  </div>
-  <!-- End section header -->
+        </header>
+    </div>
+    <!-- End section header -->
 
 
-  <!-- start section content -->
-  <div class="content-body">
-    <div class="warper container-fluid">
-      <div class="all_appointments main_container">
-        <div class="row page-titles mx-0">
-          <div class="col-sm-6 p-md-0">
-            <div class="welcome-text">
-              <h4 class="text-primary">Billing list</h4>
-            </div>
-          </div>
-          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/studentToIndex">Home</a></li>
-              <li class="breadcrumb-item active"><a href="javascript:;">Billing list</a>
-              </li>
-            </ol>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="example3" class="display nowrap">
-                    <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Amount</th>
-                      <th>Status</th>
-                      <th>Online or Offline</th>
-                      <th>Payment Method</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <td th:text="${student_fee.getFeeid()}"></td>
-                    <td th:text="${student_fee.getFeepayerusername()}"></td>
-                    <td th:text="${student_fee.getFeeamount()}"></td>
-                    <!--                    <td th:text="${student_fee.feestatus}"></td>-->
-                    <td>
-                      <span th:if="${student_fee.getFeestatus()} eq 'Registered'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-primary"></span>
-                      <span th:if="${student_fee.getFeestatus()} eq 'Pending'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-dark"></span>
-                      <span th:if="${student_fee.getFeestatus()} eq 'Not Registered'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-danger"></span>
-                    </td>
-                    <td>
-                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Online'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-success" ></span>
-                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Offline'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-secondary" ></span>
-                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Not Select'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-secondary" ></span>
-                    </td>
-                    <td th:text="${student_fee.getFeepaymentmethod()}" class="badge badge-dark"></td>
-                    <td>
-                      <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
-                        <span class='fas fa-pencil-alt'></span>
-                      </a>
-                    </td>
-                    </tbody>
-                  </table>
+    <!-- start section content -->
+    <div class="content-body">
+        <div class="warper container-fluid">
+            <div class="all_appointments main_container">
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4 class="text-primary">Fee</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/studentToIndex">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:;">Fee</a>
+                            </li>
+                        </ol>
+                    </div>
                 </div>
-              </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header fix-card">
+                                <div class="row">
+                                    <div class="col-8">
+                                        <h4 class="card-title"> Billing List </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="display nowrap">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Online or Offline</th>
+                                            <th>Payment Method</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <td th:text="${student_fee.getFeeid()}"></td>
+                                        <td th:text="${student_fee.getFeepayerusername()}"></td>
+                                        <td th:text="${student_fee.getFeeamount()}"></td>
+                                        <!--                    <td th:text="${student_fee.feestatus}"></td>-->
+                                        <td>
+                                            <span th:if="${student_fee.getFeestatus()} eq 'Registered'"
+                                                  th:text="${student_fee.feestatus}"
+                                                  class="badge badge-pill badge-primary"></span>
+                                            <span th:if="${student_fee.getFeestatus()} eq 'Pending'"
+                                                  th:text="${student_fee.feestatus}"
+                                                  class="badge badge-pill badge-dark"></span>
+                                            <span th:if="${student_fee.getFeestatus()} eq 'Not Registered'"
+                                                  th:text="${student_fee.feestatus}"
+                                                  class="badge badge-pill badge-danger"></span>
+                                        </td>
+                                        <td>
+                                            <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Online'"
+                                                  th:text="${student_fee.feeonlineoroffline}"
+                                                  class="badge badge-success"></span>
+                                            <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Offline'"
+                                                  th:text="${student_fee.feeonlineoroffline}"
+                                                  class="badge badge-secondary"></span>
+                                            <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Not Select'"
+                                                  th:text="${student_fee.feeonlineoroffline}"
+                                                  class="badge badge-secondary"></span>
+                                        </td>
+                                        <td th:text="${student_fee.getFeepaymentmethod()}"
+                                            class="badge badge-dark"></td>
+                                        <td>
+                                            <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
+                                                <span class='fas fa-pencil-alt'></span>
+                                            </a>
+                                        </td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                    </button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="row">
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
+    </div>
+    <!-- End section content -->
+
+
+    <!-- start section footer -->
+    <div class="footer ">
+        <div class="copyright ">
+            <p class="mb-0">Copyright &copy; 2021. Group 9 All rights reserved.</p>
+        </div>
+    </div>
+    <!-- End section footer -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-title-edit-row" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="modal-title-edit-row">Student fee home</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
-                  ...
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="basic-form">
+                                <form action="/student/updateByUsername" method="post">
+                                    <div class="row">
+                                        <div class="col-xl-4">
+                                            <!--                      <div class="form-group row">-->
+                                            <!--                        <div class="col-lg-12">-->
+                                            <!--                          <input type="text" class="form-control" placeholder="First Name">-->
+                                            <!--                        </div>-->
+                                            <!--                      </div>-->
+                                            <div class="form-group row">
+                                                <!--                        <label for="feeAmount" class="col-sm-2 control-label">feeAmount</label>-->
+                                                <div class="col-lg-12">
+                                                    <h5>Amount</h5>
+                                                    <div class="input-group ">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">$</span>
+                                                        </div>
+                                                        <input type="number" class="form-control" name="feeAmount"
+                                                               id="feeAmount" placeholder="Amount"
+                                                               oninput="if(value>100000)value=100000">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    <h5>Payment Method (Online payments available)</h5>
+                                                    <select class="form-control form-select" name="feePaymentMethod"
+                                                            id="feePaymentMethod">
+                                                        <option>visa card</option>
+                                                        <option>master card</option>
+                                                        <option>Alipay</option>
+                                                        <option>Applepay</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4">
+                                            <div class="form-group row">
+                                                <div class="col-lg-12">
+                                                    <h5>Online or Offline</h5>
+                                                    <select class="form-control form-select" name="feeOnlineOrOffline"
+                                                            id="feeOnlineOrOffline">
+                                                        <option>Online</option>
+                                                        <option>Offline</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close
+                                        </button>
+                                        >
+                                        <input type="submit" class="btn btn-primary">Save changes</input>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
+
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-  <!-- End section content -->
-
-
-  <!-- start section footer -->
-  <div class="footer ">
-    <div class="copyright ">
-      <p class="mb-0">Copyright &copy; 2021. Group 9 All rights reserved.</p>
-    </div>
-  </div>
-  <!-- End section footer -->
-
-  <!-- Modal -->
-  <div class="modal fade" id="modal-edit" tabindex="-1" aria-labelledby="modal-title-edit-row" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal-title-edit-row">Student fee home</h5>
-          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="basic-form">
-                <form action="/student/updateByUsername" method="post">
-                  <div class="row">
-                    <div class="col-xl-4">
-<!--                      <div class="form-group row">-->
-<!--                        <div class="col-lg-12">-->
-<!--                          <input type="text" class="form-control" placeholder="First Name">-->
-<!--                        </div>-->
-<!--                      </div>-->
-                      <div class="form-group row">
-<!--                        <label for="feeAmount" class="col-sm-2 control-label">feeAmount</label>-->
-                        <div class="col-lg-12">
-                          <h5>Amount</h5>
-                          <div class="input-group ">
-                            <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1">$</span>
-                            </div>
-                            <input type="number" class="form-control" name="feeAmount" id="feeAmount" placeholder="Amount" oninput="if(value>100000)value=100000">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <div class="col-lg-12">
-                          <h5>Payment Method (Online payments available)</h5>
-                          <select class="form-control form-select" name="feePaymentMethod" id="feePaymentMethod">
-                            <option>visa card</option>
-                            <option>master card</option>
-                            <option>Alipay</option>
-                            <option>Applepay</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xl-4">
-                      <div class="form-group row">
-                        <div class="col-lg-12">
-                          <h5>Online or Offline</h5>
-                          <select class="form-control form-select" name="feeOnlineOrOffline" id="feeOnlineOrOffline">
-                            <option>Online</option>
-                            <option>Offline</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>>
-                    <input type="submit" class="btn btn-primary">Save changes</input>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--End Modal -->
-
+    <!--End Modal -->
 
 
 </div>
