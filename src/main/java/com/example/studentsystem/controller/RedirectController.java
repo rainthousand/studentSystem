@@ -109,4 +109,9 @@ public class RedirectController {
         return "redirect:student/managesubscription";
     }
 
+
+    @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
+    public String studentToCalendarPage() throws Exception {
+        return "student/calendar";
+    }
 }

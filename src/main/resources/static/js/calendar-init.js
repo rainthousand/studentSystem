@@ -118,10 +118,30 @@ $(function() {
                 }
             });
         },
-		eventClick: function(calEvent, jsEvent, view) {
-		$('#calendar').fullCalendar('removeEvents' , function(ev){
-            return (ev._id == calEvent._id);})
-		},
+        eventClick: function(calEvent, jsEvent, view) {
+            $.ajax({
+                url: "/student/deleteAttend",
+                type: 'POST',
+                dataType: 'json',
+                contentType:'application/json;charset=utf-8',
+                data:JSON.stringify({Start:calEvent.start, End:calEvent.end,
+                    Title:calEvent.title, backgroundColor:calEvent.backgroundColor,
+                    borderColor:calEvent.borderColor,
+                    AllDay:calEvent.allDay,id:calEvent.id}),
+                success: function (data) {
+                    // alert("hahahahah");
+                    // callback(data);
+                    // alert(data)
+                    alert("Success!");
+                },
+                error: function (data) {
+                    // alert(data)
+                    alert('Error!');
+                }
+            });
+            $('#calendar').fullCalendar('removeEvents' , function(ev){
+                return (ev._id == calEvent._id);})
+        },
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar !!!
         drop: function(date, allDay) { // this function is called when something is dropped
@@ -147,6 +167,18 @@ $(function() {
             if ($(this).css('background-color') === "#00c0ef"){
                 copiedEventObject.title = "Meeting"
             }
+            if ($(this).css('background-color') === "#bbdc00"){//calendar-5
+                copiedEventObject.title = "Travel"
+            }
+            if ($(this).css('background-color') === "#ff5583"){//calendar-3
+                copiedEventObject.title = "Leisure"
+            }
+            if ($(this).css('background-color') === "#9d9d9d"){//calendar-6
+                copiedEventObject.title = "Volunteer"
+            }
+            if ($(this).css('background-color') === "#ffbb3b"){//calendar-6
+                copiedEventObject.title = "Birthdays"
+            }
             // alert(copiedEventObject.id)
             // alert(copiedEventObject.title)
             $.ajax({
@@ -163,6 +195,7 @@ $(function() {
                     // callback(data);
                     // alert(data)
                     // alert("Success!");
+                    copiedEventObject.id = data;
                 },
                 error: function (data) {
                     // alert(data)
@@ -185,13 +218,13 @@ $(function() {
 
     /* ADDING EVENTS */
     var currColor = '#3c8dbc' //Red by default
-        //Color chooser button
+    //Color chooser button
     var colorChooser = $('#color-chooser-btn')
     $('#color-chooser > li > a').on('click', function(e) {
         e.preventDefault()
-            //Save color
+        //Save color
         currColor = $(this).css('color')
-            //Add color effect to button
+        //Add color effect to button
         $('#add-new-event').css({
             'background-color': currColor,
             'border-color': currColor
@@ -199,7 +232,7 @@ $(function() {
     })
     $('#add-new-event').on('click', function(e) {
         e.preventDefault()
-            //Get value and make sure it is not null
+        //Get value and make sure it is not null
         var val = $('#new-event').val()
         if (val.length == 0) {
             return
@@ -247,11 +280,11 @@ $('#calendar1').fullCalendar({
     },
     //Random default events
     events: [{
-            title: 'All Day Event',
-            start: new Date(y, m, 1),
-            backgroundColor: '#f56954', //red
-            borderColor: '#f56954' //red
-        },
+        title: 'All Day Event',
+        start: new Date(y, m, 1),
+        backgroundColor: '#f56954', //red
+        borderColor: '#f56954' //red
+    },
         {
             title: 'Long Event',
             start: new Date(y, m, d - 5),
@@ -291,10 +324,10 @@ $('#calendar1').fullCalendar({
             borderColor: '#3c8dbc' //Primary (light-blue)
         }
     ],
-	eventClick: function(calEvent, jsEvent, view) {
-		$('#calendar').fullCalendar('removeEvents' , function(ev){  
-		return (ev._id == calEvent._id);})
-		},
+    eventClick: function(calEvent, jsEvent, view) {
+        $('#calendar').fullCalendar('removeEvents' , function(ev){
+            return (ev._id == calEvent._id);})
+    },
     editable: true,
     droppable: true, // this allows things to be dropped onto the calendar !!!
     drop: function(date, allDay) { // this function is called when something is dropped
@@ -326,13 +359,13 @@ $('#calendar1').fullCalendar({
 
 /* ADDING EVENTS */
 var currColor = '#3c8dbc' //Red by default
-    //Color chooser button
+//Color chooser button
 var colorChooser = $('#color-chooser-btn')
 $('#color-chooser > li > a').on('click', function(e) {
     e.preventDefault()
-        //Save color
+    //Save color
     currColor = $(this).css('color')
-        //Add color effect to button
+    //Add color effect to button
     $('#add-new-event').css({
         'background-color': currColor,
         'border-color': currColor
@@ -340,7 +373,7 @@ $('#color-chooser > li > a').on('click', function(e) {
 })
 $('#add-new-event').on('click', function(e) {
     e.preventDefault()
-        //Get value and make sure it is not null
+    //Get value and make sure it is not null
     var val = $('#new-event').val()
     if (val.length == 0) {
         return
