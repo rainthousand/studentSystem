@@ -93,4 +93,20 @@ public class RedirectController {
     public String adminToFeePage() throws Exception{
         return "redirect:admin/fee-list";
     }
+
+    @RequestMapping(value = "/studentToSubscribedNewsletter", method = {RequestMethod.GET})
+    public String studentToSubscribeNewsletterPage() throws Exception {
+        return "redirect:student/subscribedNewsletter";
+    }
+
+    @RequestMapping(value = "/studentToSubscribe", method = {RequestMethod.GET})
+    public String studentToSubscribePage() throws Exception {
+        return "redirect:student/tosubscribe";
+    }
+
+    @RequestMapping(value = "/studentToManageSubscription", method = {RequestMethod.GET})
+    public String studentToManageSubscriptionPage() throws Exception {
+        return "redirect:student/managesubscription";
+    }
+
 }
