@@ -88,7 +88,7 @@ public class LoginController {
                 AdminLogin admin = new AdminLogin();
                 FileLogger obj=FileLogger.getFileLogger();
                 obj.write("admin login");
-                obj.close();
+                
                 Context_Role context_role = new Context_Role();
                 context_role.shiftAdmin();
                 session.setAttribute("Role",context_role.to_String());
@@ -100,7 +100,7 @@ public class LoginController {
                 TeacherLogin teacher = new TeacherLogin();
                 FileLogger obj=FileLogger.getFileLogger();
                 obj.write("teacher login");
-                obj.close();
+                
                 Context_Role context_role = new Context_Role();
                 context_role.shiftTeacher();
                 session.setAttribute("Role",context_role.to_String());
@@ -114,7 +114,7 @@ public class LoginController {
                     StudentLogin student = new StudentLogin();
                     FileLogger obj=FileLogger.getFileLogger();
                     obj.write("registered student login");
-                    obj.close();
+                    
                     context_role.shiftStudent();
                     session.setAttribute("Role",context_role.to_String());
                     return student.Login(currUser, session, URLs, status);
@@ -122,7 +122,7 @@ public class LoginController {
                     NotRegisteredLogin notRegistered = new NotRegisteredLogin();
                     FileLogger obj=FileLogger.getFileLogger();
                     obj.write("not registered student login");
-                    obj.close();
+                    
                     context_role.shiftNotReg();
                     session.setAttribute("Role",context_role.to_String());
                     return notRegistered.Login(currUser, session, URLs, status);
