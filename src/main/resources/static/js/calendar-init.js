@@ -197,7 +197,7 @@ $(function() {
                     alert(data.id);
                     // alert(data.test);
                     // alert("Success!");
-                    copiedEventObject.id = data.id;
+                    copiedEventObject.id = null;
                     alert(copiedEventObject.id);
                 },
                 error: function (data) {
