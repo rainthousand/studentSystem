@@ -59,8 +59,8 @@ public class StudentScheduleController {
 //                    "#ff4040","#ff4040",false,"Course-"+Integer.toString(course.getCourseid()));
             Event events1 = new Event();
             events1.setTitle(course.getCoursename());
-            events1.setStart(course.getCoursestart());
-            events1.setEnd(course.getCourseend());
+            events1.setStart(new Date(course.getCoursestart().getTime()+3600*1000));
+            events1.setEnd(new Date(course.getCourseend().getTime()+3600*1000));
             events1.setAllDay(false);
             events1.setBackgroundColor("#ff4040");
             events1.setBorderColor("#ff4040");
