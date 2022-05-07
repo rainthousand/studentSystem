@@ -4,13 +4,10 @@ import com.example.studentsystem.entity.AdminSelectedCourse;
 import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.SelectedCourse;
 import com.example.studentsystem.entity.Student;
-import com.example.studentsystem.pattern.decorator.BasicCourse;
-import com.example.studentsystem.pattern.decorator.CSCourse;
 import com.example.studentsystem.pattern.decorator.CourseInterface;
-import com.example.studentsystem.pattern.decorator.MathCourse;
-import com.example.studentsystem.pattern.factorymethod.CSCourseFactory;
-import com.example.studentsystem.pattern.factorymethod.CourseFactory;
-import com.example.studentsystem.pattern.factorymethod.MathCourseFactory;
+import com.example.studentsystem.pattern.factorymethod_course.CSCourseFactory;
+import com.example.studentsystem.pattern.factorymethod_course.CourseFactory;
+import com.example.studentsystem.pattern.factorymethod_course.MathCourseFactory;
 import com.example.studentsystem.pattern.iterator.Collection;
 import com.example.studentsystem.pattern.iterator.Iterator;
 import com.example.studentsystem.pattern.iterator.StudentList;
@@ -24,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

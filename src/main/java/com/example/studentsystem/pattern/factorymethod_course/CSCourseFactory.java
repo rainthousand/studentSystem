@@ -1,13 +1,10 @@
-package com.example.studentsystem.pattern.factorymethod;
+package com.example.studentsystem.pattern.factorymethod_course;
 
-import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.pattern.decorator.BasicCourse;
 import com.example.studentsystem.pattern.decorator.CSCourse;
 import com.example.studentsystem.pattern.decorator.CourseInterface;
-import com.example.studentsystem.pattern.decorator.MathCourse;
 
 import java.util.Date;
-import java.util.Objects;
 
 public class CSCourseFactory implements CourseFactory{
     @Override
