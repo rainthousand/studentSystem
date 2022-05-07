@@ -9,7 +9,7 @@ public class NotReg_State extends State_Role{
     }
     @Override
     public void shiftNotReg(){
-        System.out.println("NotReg");
+        System.out.println("notRegistered");
 //        super.context_role.setState_role(context_role.NotReg);
 //        super.context_role.getState_role().shiftNotReg();
 //        return "NotReg";
@@ -28,7 +28,7 @@ public class NotReg_State extends State_Role{
     }
 
     public String to_String(){
-        return "NotReg";
+        return "notRegistered";
     }
 
 }

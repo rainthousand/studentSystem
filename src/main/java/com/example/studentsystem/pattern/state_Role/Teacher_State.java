@@ -15,7 +15,7 @@ public class Teacher_State extends State_Role{
     }
     @Override
     public void shiftTeacher(){
-        System.out.println("Teacher");
+        System.out.println("teacher");
 //        return "Teacher";
     }
     @Override
@@ -26,6 +26,6 @@ public class Teacher_State extends State_Role{
     }
     @Override
     public String to_String(){
-        return "Teacher";
+        return "teacher";
     }
 }

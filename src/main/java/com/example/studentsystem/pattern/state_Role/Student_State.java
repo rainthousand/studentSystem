@@ -22,11 +22,11 @@ public class Student_State extends State_Role{
     }
     @Override
     public void shiftStudent(){
-        System.out.println("Student");
+        System.out.println("student");
 //        return "Student";
     }
 
     public String to_String(){
-        return "Student";
+        return "student";
     }
 }

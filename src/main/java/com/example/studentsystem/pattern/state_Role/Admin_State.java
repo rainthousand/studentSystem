@@ -33,6 +33,6 @@ public class Admin_State extends State_Role{
     }
     @Override
     public String to_String(){
-        return "Admin";
+        return "admin";
     }
 }

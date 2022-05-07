@@ -2,6 +2,7 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.UserLogin;
 import com.example.studentsystem.pattern.singleton.FileLogger;
+import com.example.studentsystem.pattern.state_Role.Context_Role;
 import com.example.studentsystem.pattern.template.*;
 import com.example.studentsystem.pattern.visitor.*;
 import com.example.studentsystem.pattern.visitor.unitClasses.AdminUnit;
@@ -87,7 +88,11 @@ public class LoginController {
                 AdminLogin admin = new AdminLogin();
                 FileLogger obj=FileLogger.getFileLogger();
                 obj.write("admin login");
-                
+                obj.close();
+                Context_Role context_role = new Context_Role();
+                context_role.shiftAdmin();
+                session.setAttribute("Role",context_role.to_String());
+
                 return admin.Login(currUser, session, URLs, 0);
             }
             case 1: {
@@ -95,23 +100,31 @@ public class LoginController {
                 TeacherLogin teacher = new TeacherLogin();
                 FileLogger obj=FileLogger.getFileLogger();
                 obj.write("teacher login");
-                
+                obj.close();
+                Context_Role context_role = new Context_Role();
+                context_role.shiftTeacher();
+                session.setAttribute("Role",context_role.to_String());
                 return teacher.Login(currUser, session, URLs, 0);
             }
             case 2: {
                 // student login
                 Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
+                Context_Role context_role = new Context_Role();
                 if(status == 1){
                     StudentLogin student = new StudentLogin();
                     FileLogger obj=FileLogger.getFileLogger();
                     obj.write("registered student login");
-                    
+                    obj.close();
+                    context_role.shiftStudent();
+                    session.setAttribute("Role",context_role.to_String());
                     return student.Login(currUser, session, URLs, status);
                 }else{
                     NotRegisteredLogin notRegistered = new NotRegisteredLogin();
                     FileLogger obj=FileLogger.getFileLogger();
                     obj.write("not registered student login");
-                    
+                    obj.close();
+                    context_role.shiftNotReg();
+                    session.setAttribute("Role",context_role.to_String());
                     return notRegistered.Login(currUser, session, URLs, status);
                 }
             }

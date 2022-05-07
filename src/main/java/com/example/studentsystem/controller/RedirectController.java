@@ -1,6 +1,9 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.NewsLetter;
+import com.example.studentsystem.pattern.state_Role.Context_Role;
+import com.example.studentsystem.pattern.strategy_redirect.Context_Redirect;
+import com.example.studentsystem.pattern.strategy_redirect.Redirect;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -59,12 +62,15 @@ public class RedirectController {
 
     @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
     public String studentToCoursePage() throws Exception {
-        return "redirect:student/course";
+        Context_Redirect context_redirect=new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("course");
     }
 
     @RequestMapping(value = "/studentToSelectedCourse", method = {RequestMethod.GET})
     public String studentToSelectedCoursePage() throws Exception {
-        return "redirect:student/selectedCourse";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+//        return "redirect:student/selectedCourse";
+        return context_redirect.executeStrategy_Redirect("selectedCourse");
     }
 
     @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
@@ -87,17 +93,23 @@ public class RedirectController {
 
     @RequestMapping(value = "/adminToCourse", method = {RequestMethod.GET})
     public String adminToCoursePage() throws Exception {
-        return "redirect:admin/course";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("course");
+//        return "redirect:admin/course";
     }
 
     @RequestMapping(value = "/adminToSelectedCourse", method = {RequestMethod.GET})
     public String adminToSelectedCoursePage() throws Exception {
-        return "redirect:admin/selectedCourse";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("selectedCourse");
+//        return "redirect:admin/selectedCourse";
     }
 
     @RequestMapping(value = "/adminToAddCourse", method = {RequestMethod.GET})
     public String adminToAddCoursePage() throws Exception {
-        return "redirect:admin/toAddCoursePage";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("toAddCoursePage");
+//        return "redirect:admin/toAddCoursePage";
     }
 
     @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
@@ -113,32 +125,44 @@ public class RedirectController {
 
     @RequestMapping(value = "/studentToFeePage",method = {RequestMethod.GET})
     public String studentToFeePage() throws Exception{
-        return "redirect:student/fee";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("fee");
+//        return "redirect:student/fee";
     }
 
     @RequestMapping(value = "/adminToFeePage",method = {RequestMethod.GET})
     public String adminToFeePage() throws Exception{
-        return "redirect:admin/fee-list";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("fee-list");
+//        return "redirect:admin/fee-list";
     }
 
     @RequestMapping(value = "/studentToSubscribedNewsletter", method = {RequestMethod.GET})
     public String studentToSubscribeNewsletterPage() throws Exception {
-        return "redirect:student/subscribedNewsletter";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("subscribedNewsletter");
+//        return "redirect:student/subscribedNewsletter";
     }
 
     @RequestMapping(value = "/studentToSubscribe", method = {RequestMethod.GET})
     public String studentToSubscribePage() throws Exception {
-        return "redirect:student/tosubscribe";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("tosubscribe");
+//        return "redirect:student/tosubscribe";
     }
 
     @RequestMapping(value = "/studentToManageSubscription", method = {RequestMethod.GET})
     public String studentToManageSubscriptionPage() throws Exception {
-        return "redirect:student/managesubscription";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("managesubscription");
+//        return "redirect:student/managesubscription";
     }
 
     @RequestMapping(value = "/adminToNewsletter", method = {RequestMethod.GET})
     public String adminToNewsletter() throws Exception {
-        return "redirect:admin/addnewsletter";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("addnewsletter");
+//        return "redirect:admin/addnewsletter";
     }
 
     @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
@@ -177,21 +201,29 @@ public class RedirectController {
 
     @RequestMapping(value = "/notRegisteredToSelectedCourse", method = {RequestMethod.GET})
     public String notRegitsteredToSelectedCourse() throws Exception {
-        return "redirect:notRegistered/selectedCourse";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("selectedCourse");
+//        return "redirect:notRegistered/selectedCourse";
     }
 
     @RequestMapping(value = "/notRegisteredToCourse", method = {RequestMethod.GET})
     public String notRegitsteredToCourse() throws Exception {
-        return "redirect:notRegistered/course";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("course");
+//        return "redirect:notRegistered/course";
     }
 
     @RequestMapping(value = "/notRegisteredToFeePage", method = {RequestMethod.GET})
     public String notRegitsteredToFeePage() throws Exception {
-        return "redirect:notRegistered/fee";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("fee");
+//        return "redirect:notRegistered/fee";
     }
 
     @RequestMapping(value = "/notRegisteredToSubscribedNewsletter", method = {RequestMethod.GET})
     public String notRegitsteredToSubscribedNewsletter() throws Exception {
-        return "redirect:notRegistered/subscribedNewsletter";
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("subscribedNewsletter");
+//        return "redirect:notRegistered/subscribedNewsletter";
     }
 }
