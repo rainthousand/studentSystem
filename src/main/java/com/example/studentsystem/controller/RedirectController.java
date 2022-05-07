@@ -52,6 +52,7 @@ public class RedirectController {
     @Resource(name = "newsletterServiceImpl")
     private NewsletterService newsletterService;
 
+    //index
     //TODO Strategy Pattern to Redirect
     @RequestMapping(value = "/student/index", method = {RequestMethod.GET})
     public String studentToMainPage(Model model) throws Exception {
@@ -75,6 +76,24 @@ public class RedirectController {
         model.addAttribute("name",session.getAttribute("username"));
         model.addAttribute("notificationList", notificationList);
         return "notRegistered/index";
+    }
+
+    @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
+    public String teacherToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
+        return "teacher/index";
+    }
+
+    @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
+    public String adminToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
+        return "admin/index";
     }
 
     @RequestMapping(value = "/toCourse", method = {RequestMethod.GET})
@@ -192,52 +211,7 @@ public class RedirectController {
         return context_redirect.executeStrategy_Redirect(url.get(0));
     }
 
-
-//    @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
-//    public String studentToCoursePage() throws Exception {
-//        Context_Redirect context_redirect=new Context_Redirect(new Redirect());
-//        return context_redirect.executeStrategy_Redirect("course");
-//    }
-
-//    @RequestMapping(value = "/studentToSelectedCourse", method = {RequestMethod.GET})
-//    public String studentToSelectedCoursePage() throws Exception {
-//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-////        return "redirect:student/selectedCourse";
-//        return context_redirect.executeStrategy_Redirect("selectedCourse");
-//    }
-
-    @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
-    public String teacherToMainPage(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        model.addAttribute("name",session.getAttribute("username"));
-        return "teacher/index";
-    }
-
-    @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
-    public String adminToMainPage(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        model.addAttribute("name",session.getAttribute("username"));
-        return "admin/index";
-    }
-
-//    @RequestMapping(value = "/adminToCourse", method = {RequestMethod.GET})
-//    public String adminToCoursePage() throws Exception {
-//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-//        return context_redirect.executeStrategy_Redirect("course");
-////        return "redirect:admin/course";
-//    }
-
-//    @RequestMapping(value = "/adminToSelectedCourse", method = {RequestMethod.GET})
-//    public String adminToSelectedCoursePage() throws Exception {
-//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-//        return context_redirect.executeStrategy_Redirect("selectedCourse");
-////        return "redirect:admin/selectedCourse";
-//    }
-
+    //admin
     @RequestMapping(value = "/adminToAddCourse", method = {RequestMethod.GET})
     public String adminToAddCoursePage() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
@@ -245,6 +219,23 @@ public class RedirectController {
 //        return "redirect:admin/toAddCoursePage";
     }
 
+    @RequestMapping(value = "/adminToNewsletter", method = {RequestMethod.GET})
+    public String adminToNewsletter() throws Exception {
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("addnewsletter");
+//        return "redirect:admin/addnewsletter";
+    }
+
+    @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
+    public String adminToIndex(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
+        return "admin/index";
+    }
+
+    //student
     @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
     public String studentToCalendarPage(Model model) throws Exception {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
@@ -255,20 +246,6 @@ public class RedirectController {
         model.addAttribute("notificationList", notificationList);
         return "student/calendar";
     }
-
-//    @RequestMapping(value = "/studentToFeePage",method = {RequestMethod.GET})
-//    public String studentToFeePage() throws Exception{
-//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-//        return context_redirect.executeStrategy_Redirect("fee");
-////        return "redirect:student/fee";
-//    }
-
-//    @RequestMapping(value = "/adminToFeePage",method = {RequestMethod.GET})
-//    public String adminToFeePage() throws Exception{
-//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-//        return context_redirect.executeStrategy_Redirect("fee-list");
-////        return "redirect:admin/fee-list";
-//    }
 
     @RequestMapping(value = "/studentToSubscribedNewsletter", method = {RequestMethod.GET})
     public String studentToSubscribeNewsletterPage() throws Exception {
@@ -291,21 +268,6 @@ public class RedirectController {
 //        return "redirect:student/managesubscription";
     }
 
-    @RequestMapping(value = "/adminToNewsletter", method = {RequestMethod.GET})
-    public String adminToNewsletter() throws Exception {
-        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("addnewsletter");
-//        return "redirect:admin/addnewsletter";
-    }
-
-    @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
-    public String adminToIndex(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        model.addAttribute("name",session.getAttribute("username"));
-        return "admin/index";
-    }
 
     @RequestMapping(value = "/studentToIndex", method = {RequestMethod.GET})
     public String studentToIndex(Model model) throws Exception {
@@ -332,6 +294,61 @@ public class RedirectController {
         return "notRegistered/index";
     }
 
+    @RequestMapping(value = "/notRegisteredToSubscribedNewsletter", method = {RequestMethod.GET})
+    public String notRegitsteredToSubscribedNewsletter() throws Exception {
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("subscribedNewsletter");
+//        return "redirect:notRegistered/subscribedNewsletter";
+    }
+
+
+//    @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
+//    public String studentToCoursePage() throws Exception {
+//        Context_Redirect context_redirect=new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("course");
+//    }
+
+//    @RequestMapping(value = "/studentToSelectedCourse", method = {RequestMethod.GET})
+//    public String studentToSelectedCoursePage() throws Exception {
+//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+////        return "redirect:student/selectedCourse";
+//        return context_redirect.executeStrategy_Redirect("selectedCourse");
+//    }
+
+
+
+//    @RequestMapping(value = "/adminToCourse", method = {RequestMethod.GET})
+//    public String adminToCoursePage() throws Exception {
+//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("course");
+////        return "redirect:admin/course";
+//    }
+
+//    @RequestMapping(value = "/adminToSelectedCourse", method = {RequestMethod.GET})
+//    public String adminToSelectedCoursePage() throws Exception {
+//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("selectedCourse");
+////        return "redirect:admin/selectedCourse";
+//    }
+
+
+
+//    @RequestMapping(value = "/studentToFeePage",method = {RequestMethod.GET})
+//    public String studentToFeePage() throws Exception{
+//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("fee");
+////        return "redirect:student/fee";
+//    }
+
+//    @RequestMapping(value = "/adminToFeePage",method = {RequestMethod.GET})
+//    public String adminToFeePage() throws Exception{
+//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("fee-list");
+////        return "redirect:admin/fee-list";
+//    }
+
+
+
 //    @RequestMapping(value = "/notRegisteredToSelectedCourse", method = {RequestMethod.GET})
 //    public String notRegitsteredToSelectedCourse() throws Exception {
 //        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
@@ -353,10 +370,4 @@ public class RedirectController {
 ////        return "redirect:notRegistered/fee";
 //    }
 
-    @RequestMapping(value = "/notRegisteredToSubscribedNewsletter", method = {RequestMethod.GET})
-    public String notRegitsteredToSubscribedNewsletter() throws Exception {
-        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("subscribedNewsletter");
-//        return "redirect:notRegistered/subscribedNewsletter";
-    }
 }
