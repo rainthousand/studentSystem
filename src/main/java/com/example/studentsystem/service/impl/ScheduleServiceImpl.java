@@ -1,8 +1,6 @@
 package com.example.studentsystem.service.impl;
 
-import com.example.studentsystem.entity.AttendActivityExample;
-import com.example.studentsystem.entity.AttendActivityKey;
-import com.example.studentsystem.entity.SchoolActivity;
+import com.example.studentsystem.entity.*;
 import com.example.studentsystem.mapper.AttendActivityMapper;
 import com.example.studentsystem.mapper.SchoolActivityMapper;
 import com.example.studentsystem.service.ScheduleService;
@@ -10,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service("scheduleServiceImpl")
@@ -36,5 +35,23 @@ public class ScheduleServiceImpl implements ScheduleService {
         return res;
     }
 
+    @Override
+    public Integer add(SchoolActivity schoolActivity){
+        return schoolActivityMapper.insert(schoolActivity);
 
+    }
+
+    @Override
+    public Integer IndexNewActivity(){
+        SchoolActivityExample schoolActivityExample = new SchoolActivityExample();
+        SchoolActivityExample.Criteria criteria = schoolActivityExample.createCriteria();
+        criteria.andActivityidIsNotNull();
+        List<Integer> templist = new ArrayList<>();
+        List<SchoolActivity> clist = schoolActivityMapper.selectByExample(schoolActivityExample);
+        for(SchoolActivity schoolActivity:clist){
+            templist.add(schoolActivity.getActivityid());
+        }
+
+        return Collections.max(templist)+1;
+    }
 }

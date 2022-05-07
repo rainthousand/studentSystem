@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface ScheduleService {
     List<SchoolActivity> findAllActivityByStudentID(Integer studentid);
+
+    Integer add(SchoolActivity schoolActivity);
+
+    Integer IndexNewActivity();
 }

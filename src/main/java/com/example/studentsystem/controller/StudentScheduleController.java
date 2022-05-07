@@ -1,13 +1,14 @@
 package com.example.studentsystem.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.Event;
 import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.entity.SchoolActivity;
-import com.example.studentsystem.pattern.composite.CourseEvent;
-import com.example.studentsystem.pattern.composite.SchoolActivityEvent;
+import com.example.studentsystem.pattern.composite.BasicEvent;
+import com.example.studentsystem.pattern.composite.CourseEventFactory;
+import com.example.studentsystem.pattern.composite.Schedule;
+import com.example.studentsystem.pattern.composite.SchoolActivityFactory;
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.ScheduleService;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -38,7 +38,7 @@ public class StudentScheduleController {
     @Resource(name = "newsletterServiceImpl")
     private NewsletterService newsletterService;
 
-
+    private Schedule schedule=new Schedule();
     @RequestMapping(value = "/scheduleData")
     @ResponseBody
     public List<Event> studentAllCourse(Model model) throws Exception {
@@ -100,42 +100,25 @@ public class StudentScheduleController {
     }
 
     //当拖动事件的时候，用于更新的接口
-    //TODO 将composite模式融合，更新数据库
+    //将composite模式融合，更新数据库
     @RequestMapping(value = "/updateDragging")
     @ResponseBody
     public Event updateDraggingStartandEnd(@RequestBody JSONObject object) {
-//        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-//        Event event = new Event();
-//        event.setTitle(object.getString("Title"));
-//        event.setStart(object.getDate("Start"));
-//        event.setEnd(object.getDate("End"));
-//        event.setBackgroundColor(object.getString("backgroundColor"));
-//        event.setBorderColor(object.getString("borderColor"));
-//        event.setAllDay(object.getBoolean("AllDay"));
-//        event.setId(object.getString("id"));
 
         switch (object.getString("backgroundColor")) {
             case "#ff4040" -> {
-                CourseEvent courseEvent = new CourseEvent();
-                courseEvent.setCoursename(object.getString("Title"));
-                courseEvent.setStart(object.getDate("Start"));
-                courseEvent.setEnd(object.getDate("End"));
-                courseEvent.setBackgroundColor("#ff4040");
-                courseEvent.setBorderColor("#ff4040");
-                courseEvent.setAllDay(object.getBoolean("AllDay"));
-                courseEvent.setId(object.getString("id"));
+                CourseEventFactory courseEventFactory = new CourseEventFactory();
+                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(courseEvent);
                 return courseEvent.toEvent();
             }
             case "#9e5fff" -> {
-                SchoolActivityEvent schoolActivityEvent = new SchoolActivityEvent();
-                schoolActivityEvent.setActivityname(object.getString("Title"));
-                schoolActivityEvent.setStart(object.getDate("Start"));
-                schoolActivityEvent.setEnd(object.getDate("End"));
-                schoolActivityEvent.setBackgroundColor("#9e5fff");
-                schoolActivityEvent.setBorderColor("#9e5fff");
-                schoolActivityEvent.setAllDay(object.getBoolean("AllDay"));
-                schoolActivityEvent.setId(object.getString("id"));
-                return schoolActivityEvent.toEvent();
+                SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
+                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(schoolActivity);
+                return schoolActivity.toEvent();
             }
             default -> {
                 Event event = new Event();
@@ -170,26 +153,18 @@ public class StudentScheduleController {
 //        return event;
         switch (object.getString("backgroundColor")) {
             case "#ff4040" -> {
-                CourseEvent courseEvent = new CourseEvent();
-                courseEvent.setCoursename(object.getString("Title"));
-                courseEvent.setStart(object.getDate("Start"));
-                courseEvent.setEnd(object.getDate("End"));
-                courseEvent.setBackgroundColor("#ff4040");
-                courseEvent.setBorderColor("#ff4040");
-                courseEvent.setAllDay(object.getBoolean("AllDay"));
-                courseEvent.setId(object.getString("id"));
+                CourseEventFactory courseEventFactory = new CourseEventFactory();
+                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(courseEvent);
                 return courseEvent.toEvent();
             }
             case "#9e5fff" -> {
-                SchoolActivityEvent schoolActivityEvent = new SchoolActivityEvent();
-                schoolActivityEvent.setActivityname(object.getString("Title"));
-                schoolActivityEvent.setStart(object.getDate("Start"));
-                schoolActivityEvent.setEnd(object.getDate("End"));
-                schoolActivityEvent.setBackgroundColor("#9e5fff");
-                schoolActivityEvent.setBorderColor("#9e5fff");
-                schoolActivityEvent.setAllDay(object.getBoolean("AllDay"));
-                schoolActivityEvent.setId(object.getString("id"));
-                return schoolActivityEvent.toEvent();
+                SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
+                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(schoolActivity);
+                return schoolActivity.toEvent();
             }
             default -> {
                 Event event = new Event();
@@ -206,10 +181,10 @@ public class StudentScheduleController {
     }
 
     //当从左侧备选事件栏拖动一个新事件到日程表的时候，用于增加的接口
-    //TODO 将composite模式融合，插入到数据库，并返回“Activity-”+"Activity数据库中的ID",用于前端回调更新当前新事件在前端的id
+    //将composite模式融合，插入到数据库，并返回“Activity-”+"Activity数据库中的ID",用于前端回调更新当前新事件在前端的id
     @RequestMapping(value = "/addNewActivity")
     @ResponseBody
-    public String addNewActivity(@RequestBody JSONObject object) {
+    public JSONObject addNewActivity(@RequestBody JSONObject object) {
 //        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
 //        Event event = new Event();
 //        event.setTitle(object.getString("Title"));
@@ -231,42 +206,43 @@ public class StudentScheduleController {
                     int courseID = course.getCourseid();
                     if (courseID > tempID) tempID = courseID;
                 }
-                CourseEvent courseEvent = new CourseEvent();
-                courseEvent.setCoursename(object.getString("Title"));
-                courseEvent.setStart(object.getDate("Start"));
-                courseEvent.setEnd(object.getDate("End"));
-                courseEvent.setBackgroundColor("#ff4040");
-                courseEvent.setBorderColor("#ff4040");
-                courseEvent.setAllDay(object.getBoolean("AllDay"));
-                courseEvent.setId(object.getString("Title") + "-" + String.valueOf(tempID + 1));
-                courseEvent.toEvent();
-                return object.getString("Title") + "-" + String.valueOf(tempID + 1);
+                CourseEventFactory courseEventFactory = new CourseEventFactory();
+                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"),  object.getString("Title") + "-" + String.valueOf(tempID + 1),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(courseEvent);
+//                return object.getString("Title") + "-" + String.valueOf(tempID + 1);
+                return null;
             }
-            case "#9e5fff" -> {
-                List<SchoolActivity> schoolActivityList = scheduleService.findAllActivityByStudentID(currUsername);
-                for (SchoolActivity schoolActivity : schoolActivityList) {
-                    int schoolActivityID = schoolActivity.getActivityid();
-                    if (schoolActivityID > tempID) tempID = schoolActivityID;
-                }
-                SchoolActivityEvent schoolActivityEvent = new SchoolActivityEvent();
-                schoolActivityEvent.setActivityname(object.getString("Title"));
-                schoolActivityEvent.setStart(object.getDate("Start"));
-                schoolActivityEvent.setEnd(object.getDate("End"));
-                schoolActivityEvent.setBackgroundColor("#9e5fff");
-                schoolActivityEvent.setBorderColor("#9e5fff");
-                schoolActivityEvent.setAllDay(object.getBoolean("AllDay"));
-                schoolActivityEvent.setId(object.getString("Title") + "-" + String.valueOf(tempID + 1));
-                schoolActivityEvent.toEvent();
-                return object.getString("Title") + "-" + String.valueOf(tempID + 1);
+            case "rgb(158, 95, 255)" -> {
+//                List<SchoolActivity> schoolActivityList = scheduleService.findAllActivity();
+//                for (SchoolActivity schoolActivity : schoolActivityList) {
+//                    int schoolActivityID = schoolActivity.getActivityid();
+//                    if (schoolActivityID > tempID) tempID = schoolActivityID;
+//                }
+                JSONObject jsonObject=new JSONObject();
+                int newID=scheduleService.IndexNewActivity();
+                SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
+                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("Title") + "-" + String.valueOf(newID),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(schoolActivity);
+
+                scheduleService.add(schoolActivity.toSchoolActivity());
+                System.out.println(object.getString("Title") + "-" + String.valueOf(newID));
+                String idToSet=object.getString("Title") + "-" + String.valueOf(newID);
+                jsonObject.put("id",idToSet);
+                System.out.println(jsonObject);
+                return jsonObject;
             }
             default -> {
+                System.out.println(object.getString("backgroundColor"));
+                System.out.println("ttttttttttt");
                 return null;
             }
         }
     }
 
     //删除参加的事件的接口
-    //TODO 将composite模式融合，删除数据库记录
+    //将composite模式融合，删除数据库记录
     @RequestMapping(value = "/deleteAttend")
     @ResponseBody
     public Event deleteAttendedActivity(@RequestBody JSONObject object) {
@@ -286,26 +262,18 @@ public class StudentScheduleController {
 //        return event;
         switch (object.getString("backgroundColor")) {
             case "#ff4040" -> {
-                CourseEvent courseEvent = new CourseEvent();
-                courseEvent.setCoursename(object.getString("Title"));
-                courseEvent.setStart(object.getDate("Start"));
-                courseEvent.setEnd(object.getDate("End"));
-                courseEvent.setBackgroundColor("#ff4040");
-                courseEvent.setBorderColor("#ff4040");
-                courseEvent.setAllDay(object.getBoolean("AllDay"));
-                courseEvent.setId(object.getString("id"));
+                CourseEventFactory courseEventFactory = new CourseEventFactory();
+                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"),object.getString("id"),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(courseEvent);
                 return courseEvent.toEvent();
             }
             case "#9e5fff" -> {
-                SchoolActivityEvent schoolActivityEvent = new SchoolActivityEvent();
-                schoolActivityEvent.setActivityname(object.getString("Title"));
-                schoolActivityEvent.setStart(object.getDate("Start"));
-                schoolActivityEvent.setEnd(object.getDate("End"));
-                schoolActivityEvent.setBackgroundColor("#9e5fff");
-                schoolActivityEvent.setBorderColor("#9e5fff");
-                schoolActivityEvent.setAllDay(object.getBoolean("AllDay"));
-                schoolActivityEvent.setId(object.getString("id"));
-                return schoolActivityEvent.toEvent();
+                SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
+                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                this.schedule.add(schoolActivity);
+                return schoolActivity.toEvent();
             }
             default -> {
                 Event event = new Event();

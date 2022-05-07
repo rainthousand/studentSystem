@@ -3,26 +3,30 @@ package com.example.studentsystem.pattern.composite;
 import com.example.studentsystem.entity.Event;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Schedule extends Event {
-    private String name;
-    private List<Event> eventList = new ArrayList<Event>();
-
-    Schedule(String name) {
-        this.name = name;
+public class Schedule extends ScheduleEvent{
+    List<ScheduleEvent> scheduleEventList=new ArrayList<>();
+    @Override
+    public Event toEvent() {
+        return null;
+    }
+    public void show() {
+        for (ScheduleEvent s: scheduleEventList) {
+//            s.toEvent();
+        }
     }
 
-    public void addEvent(Event event) {
-
+    public void add(ScheduleEvent b) {
+        this.scheduleEventList.add(b);
     }
 
-    public void removeEvent(Event event) {
-
+    public void remove(ScheduleEvent b) {
+        this.scheduleEventList.remove(b);
     }
 
-    public void clear() {
-
+    public ScheduleEvent get(int idx) {
+        return this.scheduleEventList.get(idx);
     }
-
 }
