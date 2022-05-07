@@ -120,28 +120,32 @@ $(function() {
             });
         },
         eventClick: function(calEvent, jsEvent, view) {
-            $.ajax({
-                url: "/student/deleteAttend",
-                type: 'POST',
-                dataType: 'json',
-                contentType:'application/json;charset=utf-8',
-                data:JSON.stringify({Start:calEvent.start, End:calEvent.end,
-                    Title:calEvent.title, backgroundColor:calEvent.backgroundColor,
-                    borderColor:calEvent.borderColor,
-                    AllDay:calEvent.allDay,id:calEvent.id}),
-                success: function (data) {
-                    // alert("hahahahah");
-                    // callback(data);
-                    // alert(data)
-                    alert("Success!");
-                },
-                error: function (data) {
-                    // alert(data)
-                    alert('Error!');
-                }
-            });
-            $('#calendar').fullCalendar('removeEvents' , function(ev){
-                return (ev._id == calEvent._id);})
+            if(calEvent.backgroundColor === "ff4040"){
+
+            }else{
+                $.ajax({
+                    url: "/student/deleteAttend",
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType:'application/json;charset=utf-8',
+                    data:JSON.stringify({Start:calEvent.start, End:calEvent.end,
+                        Title:calEvent.title, backgroundColor:calEvent.backgroundColor,
+                        borderColor:calEvent.borderColor,
+                        AllDay:calEvent.allDay,id:calEvent.id}),
+                    success: function (data) {
+                        // alert("hahahahah");
+                        // callback(data);
+                        // alert(data)
+                        alert("Success!");
+                    },
+                    error: function (data) {
+                        // alert(data)
+                        alert('Error!');
+                    }
+                });
+                $('#calendar').fullCalendar('removeEvents' , function(ev){
+                    return (ev._id == calEvent._id);})
+            }
         },
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar !!!
@@ -162,24 +166,25 @@ $(function() {
             copiedEventObject.backgroundColor = $(this).css('background-color')
             copiedEventObject.borderColor = $(this).css('border-color')
             // copiedEventObject.id = "newActivity"
-            if ($(this).css('background-color') === "#9e5fff"){
-                copiedEventObject.title = "Tutorial"
-            }
-            if ($(this).css('background-color') === "#00c0ef"){
-                copiedEventObject.title = "Meeting"
-            }
-            if ($(this).css('background-color') === "#bbdc00"){//calendar-5
-                copiedEventObject.title = "Travel"
-            }
-            if ($(this).css('background-color') === "#ff5583"){//calendar-3
-                copiedEventObject.title = "Leisure"
-            }
-            if ($(this).css('background-color') === "#9d9d9d"){//calendar-6
-                copiedEventObject.title = "Volunteer"
-            }
-            if ($(this).css('background-color') === "#ffbb3b"){//calendar-6
-                copiedEventObject.title = "Birthdays"
-            }
+            // alert(copiedEventObject.title)
+            // if ($(this).css('background-color') === "#9e5fff"){
+            //     copiedEventObject.title = "Tutorial"
+            // }
+            // if ($(this).css('background-color') === "#00c0ef"){
+            //     copiedEventObject.title = "Meeting"
+            // }
+            // if ($(this).css('background-color') === "#bbdc00"){//calendar-5
+            //     copiedEventObject.title = "Travel"
+            // }
+            // if ($(this).css('background-color') === "#ff5583"){//calendar-3
+            //     copiedEventObject.title = "Leisure"
+            // }
+            // if ($(this).css('background-color') === "#9d9d9d"){//calendar-6
+            //     copiedEventObject.title = "Volunteer"
+            // }
+            // if ($(this).css('background-color') === "#ffbb3b"){//calendar-6
+            //     copiedEventObject.title = "Birthdays"
+            // }
             // alert(copiedEventObject.id)
             // alert(copiedEventObject.title)
             $.ajax({
