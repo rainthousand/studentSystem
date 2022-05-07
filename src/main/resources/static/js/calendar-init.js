@@ -161,8 +161,8 @@ $(function() {
                 success: function (data) {
                     // alert("hahahahah");
                     // callback(data);
-                    // alert(data)
-                    // alert("Success!");
+                    alert(data.test)
+                    alert("Success!");
                 },
                 error: function (data) {
                     // alert(data)

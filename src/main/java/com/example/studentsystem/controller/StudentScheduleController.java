@@ -110,7 +110,7 @@ public class StudentScheduleController {
 
     @RequestMapping(value = "/addNewActivity")
     @ResponseBody
-    public Event addNewActivity(@RequestBody JSONObject object){
+    public JSONObject addNewActivity(@RequestBody JSONObject object){
 //        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         Event event = new Event();
         event.setTitle(object.getString("Title"));
@@ -123,7 +123,9 @@ public class StudentScheduleController {
         System.out.println(JSON.toJSONString(event));
 
 //        System.out.println(event.getId());
-        return event;
+        JSONObject res = new JSONObject();
+        res.put("test","test");
+        return res;
     }
 
 }
