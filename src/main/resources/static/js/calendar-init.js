@@ -109,12 +109,12 @@ $(function() {
                 success: function (data) {
                     // alert("hahahahah");
                     // callback(data);
-                    alert(event.id);
-                    // alert("Success!");
+                    alert(event._id);
+                    alert("Success!");
                 },
                 error: function (data) {
                     // alert(data)
-                    alert(event.id);
+                    alert(event._id);
                     alert('Error!');
                 }
             });
@@ -145,13 +145,13 @@ $(function() {
         },
         editable: true,
         droppable: true, // this allows things to be dropped onto the calendar !!!
-        drop: function(date, allDay) { // this function is called when something is dropped
+        drop: function(date, allDay,dateStr) { // this function is called when something is dropped
 
             // retrieve the dropped element's stored Event Object
             var originalEventObject = $(this).data('eventObject')
 
             // we need to copy it, so that multiple events don't have a reference to the same object
-            var copiedEventObject = $.extend({}, originalEventObject)
+            var copiedEventObject = $.extend(true,{}, originalEventObject)
 
             // assign it the date that was reported
             copiedEventObject.start = date
@@ -197,7 +197,8 @@ $(function() {
                     alert(data.id);
                     // alert(data.test);
                     // alert("Success!");
-                    copiedEventObject.id = null;
+                    // copiedEventObject.id = data.id;
+                    copiedEventObject.id = data.id;
                     alert(copiedEventObject.id);
                 },
                 error: function (data) {

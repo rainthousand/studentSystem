@@ -1,5 +1,6 @@
 package com.example.studentsystem.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.Event;
@@ -22,10 +23,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/student")
@@ -77,9 +75,9 @@ public class StudentScheduleController {
             //Event.Title对应Activity.name
             events1.setTitle(activity.getActivityname());
             //Event.Start对应Activity.start
-            events1.setStart(activity.getActivitystart());
+            events1.setStart(new Date(activity.getActivitystart().getTime()+3600*1000));
             //Event.End对应Activity.end
-            events1.setEnd(activity.getActivityend());
+            events1.setEnd(new Date(activity.getActivityend().getTime()+3600*1000));
             //Event.AllDay
             events1.setAllDay(false);
             //Event.BackgroundColor
@@ -97,6 +95,7 @@ public class StudentScheduleController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
         return events;
     }
 
@@ -249,7 +248,7 @@ public class StudentScheduleController {
 //        event.setBorderColor(object.getString("borderColor"));
 //        event.setAllDay(object.getBoolean("AllDay"));
 //        event.setId(object.getString("id"));
-//        System.out.println(JSON.toJSONString(event));
+        System.out.println(object);
 //        //TODO 删除数据库对应的参加记录
 ////        System.out.println(event.getId());
 //        return event;
