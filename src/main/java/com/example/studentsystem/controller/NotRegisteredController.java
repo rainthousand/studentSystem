@@ -4,6 +4,7 @@ import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
 import com.example.studentsystem.entity.NewsLetter;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.pattern.strategy.*;
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.NewsletterService;
@@ -43,6 +44,11 @@ public class NotRegisteredController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Not Registered student get all courses but can't modify. studentid:"+session.getAttribute("username"));
+        obj.close();
+
         return "notRegistered/course";
     }
 
@@ -56,6 +62,11 @@ public class NotRegisteredController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Not Registered student get selected courses but can't modify. studentid:"+session.getAttribute("username"));
+        obj.close();
+
         return "notRegistered/selectedcourse";
     }
 
@@ -94,6 +105,12 @@ public class NotRegisteredController {
         Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,payment);
 
         model.addAttribute("student_fee",studentfee);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Not Registered student get self fee information. studentid:"
+                +session.getAttribute("username")+";feeid:"+studentfee.getFeeid());
+        obj.close();
+
         return "notRegistered/studentfee-list";
     }
 
@@ -106,6 +123,12 @@ public class NotRegisteredController {
         List<NewsLetter> subscribedNewsletterList = newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("subscribedNewsletterList", subscribedNewsletterList);
         model.addAttribute("notificationList", subscribedNewsletterList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Not Registered student get Reminder Newsletter. studentid:"
+                +session.getAttribute("username"));
+        obj.close();
+
         return "notRegistered/subscribedNewsletter";
     }
 }

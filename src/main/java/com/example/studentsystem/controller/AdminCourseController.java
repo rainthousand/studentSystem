@@ -97,7 +97,7 @@ public class AdminCourseController {
 
         courseService.deleteSelectedCourse(sid,cid);
         FileLogger obj=FileLogger.getFileLogger();
-        obj.write("Admin deleted a selected course. studentid:"+sid+";courseid:"+cid);
+        obj.write(judge+" deleted a selected course. studentid:"+sid+";courseid:"+cid);
         obj.close();
 
         return "redirect:/"+judge+"/selectedCourse";
@@ -110,12 +110,12 @@ public class AdminCourseController {
         if(status.equals(1)){
             courseService.addSelectedCourse(studentid,courseid);
             FileLogger obj=FileLogger.getFileLogger();
-            obj.write("Admin selected a course. studentid:"+studentid+";courseid:"+courseid);
+            obj.write(judge+" selected a course. studentid:"+studentid+";courseid:"+courseid);
             obj.close();
             return "redirect:/"+judge+"/course";
         }else{
             FileLogger obj=FileLogger.getFileLogger();
-            obj.write("Admin failed selecting a course. Reason:student not registered. studentid:"+studentid+";courseid:"+courseid);
+            obj.write(judge+" failed selecting a course. Reason:student not registered. studentid:"+studentid+";courseid:"+courseid);
             obj.close();
             return "redirect:/"+judge+"/course";
         }

@@ -3,6 +3,7 @@ package com.example.studentsystem.controller;
 import com.alibaba.fastjson.JSON;
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.pattern.strategy.*;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -65,6 +66,10 @@ public class FeeController {
 //        System.out.println(JSON.toJSONString(newfee_list));
         model.addAttribute("fee_list",newfee_list);
 
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin get all fee information.");
+        obj.close();
+
         return "admin/fee-list";
     }
     @RequestMapping("/confirmPending")
@@ -78,6 +83,10 @@ public class FeeController {
             System.out.println(feestatus);
             FeeService.confirmPending(feeid,feepayerusername,feeamount,feestatus,feeonlineoroffline,feepaymentmethod);
         }
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin confirmed a Pending message. feeid:"+feeid);
+        obj.close();
 
         return "redirect:/admin/fee-list";
     }

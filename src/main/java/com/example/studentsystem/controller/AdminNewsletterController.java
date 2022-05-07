@@ -2,6 +2,7 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.pattern.observer.NewsSubject;
 import com.example.studentsystem.pattern.observer.Student;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,6 +56,11 @@ public class AdminNewsletterController {
 //            newsletterService.AddNewsletterKey(newsid, studentid);
 //
 //        }
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin published a newsletter. newsletterid:"+newsid);
+        obj.close();
+
         return "admin/addnewsletter";
     }
 }

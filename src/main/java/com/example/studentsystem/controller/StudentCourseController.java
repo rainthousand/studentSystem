@@ -3,6 +3,7 @@ package com.example.studentsystem.controller;
 import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.pattern.adapter.StudentSelectCourseAdpater;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,12 @@ public class StudentCourseController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student get all courses. studentid:"
+                +session.getAttribute("username")+".");
+        obj.close();
+
         return "student/course";
     }
 
@@ -51,6 +58,12 @@ public class StudentCourseController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student get all self selected courses. studentid:"
+                +session.getAttribute("username")+".");
+        obj.close();
+
         return "student/selectedcourse";
     }
 
@@ -62,6 +75,7 @@ public class StudentCourseController {
 //        courseService.deleteSelectedCourse(sid,cid);
         StudentSelectCourseAdpater adapter = new StudentSelectCourseAdpater();
 //        return "redirect:/student/selectedCourse";
+
         return adapter.studentToAdminDeleteSelectCourse(sid,cid,"student");
     }
 

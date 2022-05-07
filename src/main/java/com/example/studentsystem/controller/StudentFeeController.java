@@ -4,6 +4,7 @@ import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
 //import com.example.studentsystem.pattern.strategy.Context;
 import com.example.studentsystem.entity.NewsLetter;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.pattern.strategy.*;
 import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
@@ -63,13 +64,18 @@ public class StudentFeeController {
         else payment=apple_payment.executeStrategy_payment();
 //        if(studentfee_temp.getFeepaymentmethod()==1) studentfee_temp.setFeepaymentmethod(visa_payment.executeStrategy_payment());
 
-
 //        if(studentfee_temp.getFeepaymentmethod()==1)
         List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
         Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,payment);
 
 
         model.addAttribute("student_fee",studentfee);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student get fee information. studentid:"
+                +studentfee.getFeepayerusername());
+        obj.close();
+
         return "student/studentfee-list";
     }
     @RequestMapping("updateByUsername")
@@ -116,6 +122,12 @@ public class StudentFeeController {
             }else{
                 return "student/Exception_fee";
             }
+
+            FileLogger obj=FileLogger.getFileLogger();
+            obj.write("student update self fee information. studentid:"
+                    +session.getAttribute("username"));
+            obj.close();
+
             return "redirect:fee";
         }
 

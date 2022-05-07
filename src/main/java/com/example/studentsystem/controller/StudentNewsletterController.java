@@ -2,6 +2,7 @@ package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.entity.NewsSubject;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,12 @@ public class StudentNewsletterController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student get subscription information. studentid:"
+                +session.getAttribute("username"));
+        obj.close();
+
         return "student/tosubscribe";
     }
 
@@ -44,6 +51,12 @@ public class StudentNewsletterController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student all self subscription information. studentid:"
+                +session.getAttribute("username"));
+        obj.close();
+
         return "student/managesubscription";
     }
 
@@ -57,6 +70,12 @@ public class StudentNewsletterController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student get all subscribed information. studentid:"
+                +session.getAttribute("username"));
+        obj.close();
+
         return "student/subscribedNewsletter";
     }
 
@@ -67,6 +86,11 @@ public class StudentNewsletterController {
         Integer sid = Integer.valueOf((String) session.getAttribute("username"));
 //        System.out.println("siddddddddddddddddddddddddddd");
 //        System.out.println(sid);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student unsubscribed a subject. studentid:"
+                +session.getAttribute("username")+";subject:"+subject+".");
+        obj.close();
 
         newsletterService.deleteSubscribedSubject(sid, subject);
 
@@ -81,6 +105,11 @@ public class StudentNewsletterController {
         System.out.println("nid");
         System.out.println(subject);
         newsletterService.SubscribeNewsLetterSubject(sid, subject);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("student subscribed a subject. studentid:"
+                +session.getAttribute("username")+";subject:"+subject+".");
+        obj.close();
 
         return "redirect:/student/tosubscribe";
     }
