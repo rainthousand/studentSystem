@@ -40,6 +40,7 @@ public class RedirectController {
         System.out.println(session.getAttribute("username"));
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("name",session.getAttribute("username"));
         model.addAttribute("notificationList", notificationList);
         return "student/index";
     }
@@ -55,12 +56,20 @@ public class RedirectController {
     }
 
     @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
-    public String teacherToMainPage() throws Exception {
+    public String teacherToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
         return "teacher/index";
     }
 
     @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
-    public String adminToMainPage() throws Exception {
+    public String adminToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
         return "admin/index";
     }
 
@@ -121,7 +130,11 @@ public class RedirectController {
     }
 
     @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
-    public String adminToIndex() throws Exception {
+    public String adminToIndex(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
         return "admin/index";
     }
 
@@ -132,6 +145,7 @@ public class RedirectController {
         System.out.println(session.getAttribute("username"));
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("name",session.getAttribute("username"));
         model.addAttribute("notificationList", notificationList);
         return "student/index";
     }
@@ -144,6 +158,7 @@ public class RedirectController {
         System.out.println(session.getAttribute("username"));
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("name",session.getAttribute("username"));
         model.addAttribute("notificationList", notificationList);
         return "notRegistered/index";
     }
