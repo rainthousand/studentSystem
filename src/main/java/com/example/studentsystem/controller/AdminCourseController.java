@@ -66,7 +66,7 @@ public class AdminCourseController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Admin get all courses");
-        obj.close();
+        
 
         return "admin/course";
     }
@@ -87,7 +87,7 @@ public class AdminCourseController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Admin get all selected courses");
-        obj.close();
+        
 
         return "admin/selectedcourse";
     }
@@ -98,7 +98,7 @@ public class AdminCourseController {
         courseService.deleteSelectedCourse(sid,cid);
         FileLogger obj=FileLogger.getFileLogger();
         obj.write(judge+" deleted a selected course. studentid:"+sid+";courseid:"+cid);
-        obj.close();
+        
 
         return "redirect:/"+judge+"/selectedCourse";
     }
@@ -111,12 +111,12 @@ public class AdminCourseController {
             courseService.addSelectedCourse(studentid,courseid);
             FileLogger obj=FileLogger.getFileLogger();
             obj.write(judge+" selected a course. studentid:"+studentid+";courseid:"+courseid);
-            obj.close();
+            
             return "redirect:/"+judge+"/course";
         }else{
             FileLogger obj=FileLogger.getFileLogger();
             obj.write(judge+" failed selecting a course. Reason:student not registered. studentid:"+studentid+";courseid:"+courseid);
-            obj.close();
+            
             return "redirect:/"+judge+"/course";
         }
     }
@@ -201,7 +201,7 @@ public class AdminCourseController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Admin added a new course. courseid:"+newCourse.getCourseid());
-        obj.close();
+        
 
         return "admin/addcourse";
     }
@@ -215,7 +215,7 @@ public class AdminCourseController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Admin deleted a course. courseid:"+cid);
-        obj.close();
+        
 
         return "redirect:/admin/course";
     }

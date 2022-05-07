@@ -47,7 +47,7 @@ public class NotRegisteredController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Not Registered student get all courses but can't modify. studentid:"+session.getAttribute("username"));
-        obj.close();
+        
 
         return "notRegistered/course";
     }
@@ -65,7 +65,7 @@ public class NotRegisteredController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Not Registered student get selected courses but can't modify. studentid:"+session.getAttribute("username"));
-        obj.close();
+        
 
         return "notRegistered/selectedcourse";
     }
@@ -109,7 +109,7 @@ public class NotRegisteredController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Not Registered student get self fee information. studentid:"
                 +session.getAttribute("username")+";feeid:"+studentfee.getFeeid());
-        obj.close();
+        
 
         return "notRegistered/studentfee-list";
     }
@@ -127,7 +127,7 @@ public class NotRegisteredController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Not Registered student get Reminder Newsletter. studentid:"
                 +session.getAttribute("username"));
-        obj.close();
+        
 
         return "notRegistered/subscribedNewsletter";
     }

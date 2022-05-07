@@ -42,7 +42,7 @@ public class StudentCourseController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("student get all courses. studentid:"
                 +session.getAttribute("username")+".");
-        obj.close();
+        
 
         return "student/course";
     }
@@ -62,7 +62,7 @@ public class StudentCourseController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("student get all self selected courses. studentid:"
                 +session.getAttribute("username")+".");
-        obj.close();
+        
 
         return "student/selectedcourse";
     }

@@ -36,7 +36,7 @@ public class StudentNewsletterController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("student get subscription information. studentid:"
                 +session.getAttribute("username"));
-        obj.close();
+        
 
         return "student/tosubscribe";
     }
@@ -55,7 +55,7 @@ public class StudentNewsletterController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("student all self subscription information. studentid:"
                 +session.getAttribute("username"));
-        obj.close();
+        
 
         return "student/managesubscription";
     }
@@ -74,7 +74,7 @@ public class StudentNewsletterController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("student get all subscribed information. studentid:"
                 +session.getAttribute("username"));
-        obj.close();
+        
 
         return "student/subscribedNewsletter";
     }
@@ -90,7 +90,7 @@ public class StudentNewsletterController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("student unsubscribed a subject. studentid:"
                 +session.getAttribute("username")+";subject:"+subject+".");
-        obj.close();
+        
 
         newsletterService.deleteSubscribedSubject(sid, subject);
 
@@ -109,7 +109,7 @@ public class StudentNewsletterController {
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("student subscribed a subject. studentid:"
                 +session.getAttribute("username")+";subject:"+subject+".");
-        obj.close();
+        
 
         return "redirect:/student/tosubscribe";
     }

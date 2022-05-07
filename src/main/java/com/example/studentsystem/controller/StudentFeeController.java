@@ -96,7 +96,7 @@ public class StudentFeeController {
 //        FileLogger obj=FileLogger.getFileLogger();
 //        obj.write("student get fee information. studentid:"
 //                +studentfee.getFeepayerusername());
-//        obj.close();
+//        
 
         return "student/studentfee-list";
     }
@@ -203,7 +203,7 @@ public class StudentFeeController {
 //            FileLogger obj=FileLogger.getFileLogger();
 //            obj.write("student update self fee information. studentid:"
 //                    +session.getAttribute("username"));
-//            obj.close();
+//            
 
             return "redirect:fee";
         }

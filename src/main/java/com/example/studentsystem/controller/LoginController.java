@@ -87,7 +87,7 @@ public class LoginController {
                 AdminLogin admin = new AdminLogin();
                 FileLogger obj=FileLogger.getFileLogger();
                 obj.write("admin login");
-                obj.close();
+                
                 return admin.Login(currUser, session, URLs, 0);
             }
             case 1: {
@@ -95,7 +95,7 @@ public class LoginController {
                 TeacherLogin teacher = new TeacherLogin();
                 FileLogger obj=FileLogger.getFileLogger();
                 obj.write("teacher login");
-                obj.close();
+                
                 return teacher.Login(currUser, session, URLs, 0);
             }
             case 2: {
@@ -105,13 +105,13 @@ public class LoginController {
                     StudentLogin student = new StudentLogin();
                     FileLogger obj=FileLogger.getFileLogger();
                     obj.write("registered student login");
-                    obj.close();
+                    
                     return student.Login(currUser, session, URLs, status);
                 }else{
                     NotRegisteredLogin notRegistered = new NotRegisteredLogin();
                     FileLogger obj=FileLogger.getFileLogger();
                     obj.write("not registered student login");
-                    obj.close();
+                    
                     return notRegistered.Login(currUser, session, URLs, status);
                 }
             }

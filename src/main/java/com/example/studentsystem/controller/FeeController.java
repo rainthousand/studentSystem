@@ -85,7 +85,7 @@ public class FeeController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Admin get all fee information.");
-        obj.close();
+        
 
         return "admin/fee-list";
     }
@@ -103,7 +103,7 @@ public class FeeController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Admin confirmed a Pending message. feeid:"+feeid);
-        obj.close();
+        
 
         return "redirect:/admin/fee-list";
     }

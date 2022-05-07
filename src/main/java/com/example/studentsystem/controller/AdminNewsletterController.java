@@ -59,7 +59,7 @@ public class AdminNewsletterController {
 
         FileLogger obj=FileLogger.getFileLogger();
         obj.write("Admin published a newsletter. newsletterid:"+newsid);
-        obj.close();
+        
 
         return "admin/addnewsletter";
     }
