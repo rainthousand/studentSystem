@@ -9,4 +9,6 @@ public class Context_onlineOrOffline {
     public Integer executeStrategy(){
         return strategyOnlineOffline.OnlineOrOffline();
     }
+    public Integer to_Int(){return strategyOnlineOffline.to_int();}
+    public String to_String(){return strategyOnlineOffline.to_String();}
 }

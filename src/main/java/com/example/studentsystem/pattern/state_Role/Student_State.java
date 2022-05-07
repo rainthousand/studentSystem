@@ -26,7 +26,7 @@ public class Student_State extends State_Role{
 //        return "Student";
     }
 
-    public String toString(){
+    public String to_String(){
         return "Student";
     }
 }

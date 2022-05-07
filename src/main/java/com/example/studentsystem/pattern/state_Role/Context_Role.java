@@ -22,6 +22,7 @@ public class Context_Role {
     public void shiftNotReg(){state_role.shiftNotReg();}
     public void shiftTeacher(){state_role.shiftTeacher();}
     public void shiftStudent(){state_role.shiftStudent();}
+    public String to_String(){return state_role.to_String();};
 
 
 }

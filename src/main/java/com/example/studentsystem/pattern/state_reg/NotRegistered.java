@@ -23,7 +23,10 @@ public class NotRegistered extends studentState{
 //        context.setState(this);
 //    }
 //
-    public String toString(){
+    @Override
+    public String to_String(){
         return "Not Registered";
     }
+    @Override
+    public Integer to_Int(){return 3;}
 }

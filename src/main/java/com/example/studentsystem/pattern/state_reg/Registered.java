@@ -15,9 +15,11 @@ public class Registered extends studentState{
     public void shiftRegistered(){
         System.out.println("Registered");
     }
-
-    public String toString(){
+    @Override
+    public String to_String(){
         return "Registered";
     }
+    @Override
+    public Integer to_Int(){return 1;}
 
 }

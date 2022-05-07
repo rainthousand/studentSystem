@@ -8,4 +8,6 @@ public abstract class studentState {
     abstract void shiftRegistered();
     abstract void shiftPending();
     abstract void shiftNotRegistered();
+    abstract String to_String();
+    abstract Integer to_Int();
 }

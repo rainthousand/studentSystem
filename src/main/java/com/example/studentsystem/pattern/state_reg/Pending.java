@@ -22,7 +22,10 @@ public class Pending extends studentState{
 //
 //    }
 //
-    public String toString(){
+    @Override
+    public String to_String(){
         return "Pending";
     }
+    @Override
+    public Integer to_Int(){return 2;}
 }

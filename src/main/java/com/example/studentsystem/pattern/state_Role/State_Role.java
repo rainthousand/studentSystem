@@ -9,5 +9,5 @@ public abstract class   State_Role {
     abstract void shiftNotReg();
     abstract void shiftTeacher();
     abstract void shiftStudent();
-
+    abstract String to_String();
 }

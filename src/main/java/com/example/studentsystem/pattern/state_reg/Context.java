@@ -29,4 +29,6 @@ public class Context {
     public void shiftRegistered(){
         state.shiftRegistered();
     }
+    public String to_String(){return state.to_String();}
+    public Integer to_Int(){return state.to_Int();}
 }

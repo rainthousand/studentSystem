@@ -24,4 +24,8 @@ public class Teacher_State extends State_Role{
         super.context_role.getState_role().shiftStudent();
 //        return "Student";
     }
+    @Override
+    public String to_String(){
+        return "Teacher";
+    }
 }

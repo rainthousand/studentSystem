@@ -7,4 +7,12 @@ public class Offline implements StrategyOnlineOffline {
         strOnline = 2;
         return strOnline;
     }
+    @Override
+    public Integer to_int() {
+        return 2;
+    }
+    @Override
+    public String to_String(){
+        return "Offline";
+    }
 }

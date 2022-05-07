@@ -3,15 +3,19 @@ package com.example.studentsystem.controller;
 import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
 import com.example.studentsystem.pattern.singleton.FileLogger;
+import com.example.studentsystem.pattern.state_reg.Context;
 import com.example.studentsystem.pattern.strategy_payment.*;
-import com.example.studentsystem.pattern.strategy_online.offline_no_method;
+import com.example.studentsystem.pattern.strategy_payment.offline_no_method;
 import com.example.studentsystem.service.impl.FeeServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -30,9 +34,22 @@ public class FeeController {
         for(Fee fee:fee_list){
 
             String status="";
-            if(fee.getFeestatus()==1) status+="Registered";
-            else if(fee.getFeestatus()==2) status+="Pending";
-            else if(fee.getFeestatus()==3) status+="Not Registered";
+            Context fee_context = new Context();
+            if(fee.getFeestatus()==1) {
+//            status+="Registered";
+                fee_context.shiftRegistered();
+                status+=fee_context.to_String();
+            }
+            else if(fee.getFeestatus()==2){
+//            status+="Pending";
+                fee_context.shiftPending();
+                status+=fee_context.to_String();
+            }
+            else if(fee.getFeestatus()==3){
+//            status+="Not Registered";
+                fee_context.shiftNotRegistered();
+                status+=fee_context.to_String();
+            }
             String str="";
             String payment="";
             if(fee.getFeeonlineoroffline()==1) {
@@ -76,10 +93,10 @@ public class FeeController {
     public String confirmPending(@RequestParam("feeid") Integer feeid,@RequestParam("username") Integer feepayerusername,
                                  @RequestParam("amount") Integer feeamount,@RequestParam("status") String feestatus,
                                  @RequestParam("onOrOff") String feeonlineoroffline,
-                                 @RequestParam("payment") String feepaymentmethod){
-
+                                 @RequestParam("payment") String feepaymentmethod) throws Exception {
 
         if (Objects.equals(feestatus, "Pending")){
+
             System.out.println(feestatus);
             FeeService.confirmPending(feeid,feepayerusername,feeamount,feestatus,feeonlineoroffline,feepaymentmethod);
         }

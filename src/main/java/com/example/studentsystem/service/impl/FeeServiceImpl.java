@@ -41,7 +41,7 @@ public class FeeServiceImpl implements FeeService {
     }
 
     @Override
-    public int UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, Integer feeOnlineOrOffline) throws Exception {
+    public String UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, Integer feeOnlineOrOffline,Integer feeStatus) throws Exception {
         Fee fee = new Fee();
 //        TODO:如果有此处的amount为0，则需要更改注册状态
         fee.setFeeamount(feeAmount);
@@ -58,21 +58,25 @@ public class FeeServiceImpl implements FeeService {
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();
         criteria.andFeepayerusernameEqualTo(name);
+        Context context = new Context();
         if(feeAmount==0){
-            Context context = new Context();
             context.shiftPending();
-            fee.setFeestatus(2);
+            fee.setFeestatus(feeStatus-1);
+
             //TODO subscribe newsletter部分的更新与删除
             updateSubNews(name);
         }
 
-        return feeMapper.updateByExampleSelective(fee,feeExample);
+        feeMapper.updateByExampleSelective(fee,feeExample);
+        return context.to_String();
     }
     @Override
-    public Integer confirmPending(Integer feeid, Integer feepayerusername, Integer feeamount, String feestatus, String feeonlineorline, String feepaymentmethod){
+    public String confirmPending(Integer feeid, Integer feepayerusername, Integer feeamount, String feestatus, String feeonlineorline, String feepaymentmethod){
         Fee fee = new Fee();
         fee.setFeeid(feeid);
         fee.setFeepayerusername(feepayerusername);
+        Context context = new Context();
+        context.shiftRegistered();
         fee.setFeestatus(1);
         deleteSubNews(feepayerusername);
         fee.setFeeamount(feeamount);
@@ -90,7 +94,8 @@ public class FeeServiceImpl implements FeeService {
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();
         criteria.andFeeidEqualTo(feeid);
-        return feeMapper.updateByExampleSelective(fee,feeExample);
+        feeMapper.updateByExampleSelective(fee,feeExample);
+        return context.to_String();
     }
 
     @Override
@@ -101,8 +106,8 @@ public class FeeServiceImpl implements FeeService {
         SubscribedNewsletterExample.Criteria criteria = subscribedNewsletterExample.createCriteria();
         criteria.andStudentidEqualTo(studentId);
         criteria.andNewsidEqualTo(1000);
-        return 1;
-//        return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribedNewsletterExample);
+//        return 1;
+        return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribedNewsletterExample);
     }
 
     @Override
