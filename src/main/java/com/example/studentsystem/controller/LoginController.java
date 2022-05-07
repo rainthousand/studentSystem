@@ -60,6 +60,10 @@ public class LoginController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
 
+        System.out.println("urlllllllllllllllllllllllllll");
+        for(String url: URLs){
+            System.out.println(url);
+        }
 
 
         //different roles go to different paths and pages
