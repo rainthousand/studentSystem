@@ -38,7 +38,8 @@ public class StudentScheduleController {
     @Resource(name = "newsletterServiceImpl")
     private NewsletterService newsletterService;
 
-    private Schedule schedule=new Schedule();
+    private Schedule schedule = new Schedule();
+
     @RequestMapping(value = "/scheduleData")
     @ResponseBody
     public List<Event> studentAllCourse(Model model) throws Exception {
@@ -108,15 +109,15 @@ public class StudentScheduleController {
         switch (object.getString("backgroundColor")) {
             case "#ff4040" -> {
                 CourseEventFactory courseEventFactory = new CourseEventFactory();
-                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"), object.getString("id"),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent courseEvent = courseEventFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(courseEvent);
                 return courseEvent.toEvent();
             }
             case "#9e5fff" -> {
                 SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
-                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent schoolActivity = schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(schoolActivity);
                 return schoolActivity.toEvent();
             }
@@ -156,15 +157,15 @@ public class StudentScheduleController {
         switch (object.getString("backgroundColor")) {
             case "#ff4040" -> {
                 CourseEventFactory courseEventFactory = new CourseEventFactory();
-                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"), object.getString("id"),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent courseEvent = courseEventFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(courseEvent);
                 return courseEvent.toEvent();
             }
             case "#9e5fff" -> {
                 SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
-                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent schoolActivity = schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(schoolActivity);
                 return schoolActivity.toEvent();
             }
@@ -187,16 +188,9 @@ public class StudentScheduleController {
     @RequestMapping(value = "/addNewActivity")
     @ResponseBody
     public JSONObject addNewActivity(@RequestBody JSONObject object) {
-//        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
-//        Event event = new Event();
-//        event.setTitle(object.getString("Title"));
-//        event.setStart(object.getDate("Start"));
-//        event.setEnd(object.getDate("End"));
-//        event.setBackgroundColor(object.getString("backgroundColor"));
-//        event.setBorderColor(object.getString("borderColor"));
-//        event.setAllDay(object.getBoolean("AllDay"));
-//        event.setId(object.getString("id"));
-//        System.out.println(JSON.toJSONString(event));
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
         //todo get from session
         Integer currUsername = 10001;
         int tempID = -1;
@@ -209,29 +203,24 @@ public class StudentScheduleController {
                     if (courseID > tempID) tempID = courseID;
                 }
                 CourseEventFactory courseEventFactory = new CourseEventFactory();
-                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"),  object.getString("Title") + "-" + String.valueOf(tempID + 1),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent courseEvent = courseEventFactory.newEvent(object.getString("Title"), object.getString("Title") + "-" + String.valueOf(tempID + 1),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(courseEvent);
 //                return object.getString("Title") + "-" + String.valueOf(tempID + 1);
                 return null;
             }
             case "rgb(158, 95, 255)" -> {
-//                List<SchoolActivity> schoolActivityList = scheduleService.findAllActivity();
-//                for (SchoolActivity schoolActivity : schoolActivityList) {
-//                    int schoolActivityID = schoolActivity.getActivityid();
-//                    if (schoolActivityID > tempID) tempID = schoolActivityID;
-//                }
-                JSONObject jsonObject=new JSONObject();
-                int newID=scheduleService.IndexNewActivity();
+                JSONObject jsonObject = new JSONObject();
+                int newID = scheduleService.IndexNewActivity();
                 SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
-                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("Title") + "-" + String.valueOf(newID),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent schoolActivity = schoolActivityFactory.newEvent(object.getString("Title"), object.getString("Title") + "-" + String.valueOf(newID),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(schoolActivity);
 
                 scheduleService.add(schoolActivity.toSchoolActivity());
-                System.out.println(object.getString("Title") + "-" + String.valueOf(newID));
-                String idToSet=object.getString("Title") + "-" + String.valueOf(newID);
-                jsonObject.put("id",idToSet);
+                scheduleService.addNewKey(Integer.valueOf((String) session.getAttribute("username")), newID);
+                String idToSet = object.getString("Title") + "-" + String.valueOf(newID);
+                jsonObject.put("id", idToSet);
                 System.out.println(jsonObject);
                 return jsonObject;
             }
@@ -239,7 +228,7 @@ public class StudentScheduleController {
                 System.out.println(object.getString("backgroundColor"));
                 System.out.println("ttttttttttt");
                 JSONObject res = new JSONObject();
-                res.put("test","test");
+                res.put("test", "test");
                 return res;
             }
         }
@@ -267,15 +256,15 @@ public class StudentScheduleController {
         switch (object.getString("backgroundColor")) {
             case "#ff4040" -> {
                 CourseEventFactory courseEventFactory = new CourseEventFactory();
-                BasicEvent courseEvent=courseEventFactory.newEvent(object.getString("Title"),object.getString("id"),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent courseEvent = courseEventFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(courseEvent);
                 return courseEvent.toEvent();
             }
             case "#9e5fff" -> {
                 SchoolActivityFactory schoolActivityFactory = new SchoolActivityFactory();
-                BasicEvent schoolActivity=schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
-                        object.getDate("Start"),object.getDate("End"),object.getBoolean("AllDay"));
+                BasicEvent schoolActivity = schoolActivityFactory.newEvent(object.getString("Title"), object.getString("id"),
+                        object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
                 this.schedule.add(schoolActivity);
                 return schoolActivity.toEvent();
             }

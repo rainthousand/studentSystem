@@ -5,7 +5,7 @@ import com.example.studentsystem.entity.Event;
 import java.util.Date;
 
 public class SchoolActivityFactory implements EventFactory {
-    private final String COLOR="9e5fff";
+    private final String COLOR="rgb(158, 95, 255)";
     public BasicEvent newEvent(String name,String id, Date start, Date end, Boolean isAllDay) {
         BasicEvent basicEvent=new BasicEvent();
         basicEvent.setName(name);

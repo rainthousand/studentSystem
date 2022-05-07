@@ -10,4 +10,6 @@ public interface ScheduleService {
     Integer add(SchoolActivity schoolActivity);
 
     Integer IndexNewActivity();
+
+    Integer addNewKey(Integer studentid, Integer activityid);
 }

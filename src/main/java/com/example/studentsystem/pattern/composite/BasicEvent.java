@@ -33,18 +33,20 @@ public class BasicEvent extends ScheduleEvent {
         event.setId(id);
         return event;
     }
-public SchoolActivity toSchoolActivity(){
-        SchoolActivity schoolActivity=new SchoolActivity();
-    schoolActivity.setActivityname(id);
-    schoolActivity.setActivitystart(start);
-    schoolActivity.setActivityend(end);
-    schoolActivity.setActivitydescription(name);
-    schoolActivity.setActivityday(1);
+
+    public SchoolActivity toSchoolActivity() {
+        SchoolActivity schoolActivity = new SchoolActivity();
+        schoolActivity.setActivityname(id);
+        schoolActivity.setActivitystart(start);
+        schoolActivity.setActivityend(end);
+        schoolActivity.setActivitydescription(name);
+        schoolActivity.setActivityday(1);
 //    if (name.length()==1)
-    Integer aid= Integer.valueOf(id.split("-")[1]);
-    schoolActivity.setActivityid(aid);
-    return schoolActivity;
-}
+        Integer aid = Integer.valueOf(id.split("-")[1]);
+        schoolActivity.setActivityid(aid);
+        return schoolActivity;
+    }
+
     public String getName() {
         return name;
     }

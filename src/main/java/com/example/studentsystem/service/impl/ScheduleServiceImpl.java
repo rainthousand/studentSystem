@@ -54,4 +54,13 @@ public class ScheduleServiceImpl implements ScheduleService {
 
         return Collections.max(templist)+1;
     }
+
+    @Override
+    public Integer addNewKey(Integer studentid,Integer activityid){
+        AttendActivityKey activityKey=new AttendActivityKey();
+        activityKey.setStudentid(studentid);
+        activityKey.setActivityid(activityid);
+        return attendActivityMapper.insert(activityKey);
+
+    }
 }
