@@ -1,4 +1,4 @@
-package com.example.studentsystem.pattern.strategy;
+package com.example.studentsystem.pattern.strategy_online;
 
 import com.example.studentsystem.entity.Fee;
 

@@ -1,7 +1,4 @@
-package com.example.studentsystem.pattern.strategy;
-
-import com.example.studentsystem.entity.Fee;
-import com.example.studentsystem.entity.FeeExample;
+package com.example.studentsystem.pattern.strategy_online;
 
 public class Online implements StrategyOnlineOffline {
     @Override

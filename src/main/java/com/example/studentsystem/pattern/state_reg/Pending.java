@@ -1,9 +1,4 @@
-package com.example.studentsystem.pattern.state;
-
-import com.example.studentsystem.entity.Fee;
-import com.example.studentsystem.service.FeeService;
-
-import javax.servlet.http.HttpSession;
+package com.example.studentsystem.pattern.state_reg;
 
 public class Pending extends studentState{
     @Override
@@ -27,7 +22,7 @@ public class Pending extends studentState{
 //
 //    }
 //
-//    public String toString(){
-//        return "Pending";
-//    }
+    public String toString(){
+        return "Pending";
+    }
 }

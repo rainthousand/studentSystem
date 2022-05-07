@@ -1,8 +1,4 @@
-package com.example.studentsystem.pattern.state;
-
-import com.example.studentsystem.pattern.state.Context;
-
-import javax.servlet.http.HttpSession;
+package com.example.studentsystem.pattern.state_reg;
 
 public abstract class studentState {
     protected Context state;

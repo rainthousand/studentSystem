@@ -1,4 +1,4 @@
-package com.example.studentsystem.pattern.strategy;
+package com.example.studentsystem.pattern.strategy_online;
 
 public class Context_onlineOrOffline {
     private StrategyOnlineOffline strategyOnlineOffline;

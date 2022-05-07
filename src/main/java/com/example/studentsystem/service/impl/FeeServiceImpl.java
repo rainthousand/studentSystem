@@ -5,7 +5,7 @@ import com.example.studentsystem.entity.FeeExample;
 import com.example.studentsystem.entity.SubscribedNewsletterKey;
 import com.example.studentsystem.entity.SubscribedNewsletterExample;
 import com.example.studentsystem.mapper.FeeMapper;
-import com.example.studentsystem.pattern.state.Context;
+import com.example.studentsystem.pattern.state_reg.Context;
 import com.example.studentsystem.service.FeeService;
 import org.springframework.stereotype.Service;
 import com.example.studentsystem.mapper.SubscribedNewsletterMapper;

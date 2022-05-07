@@ -1,4 +1,4 @@
-package com.example.studentsystem.pattern.strategy;
+package com.example.studentsystem.pattern.strategy_payment;
 
 public class demo_payment {
     public static void main(String[] args){

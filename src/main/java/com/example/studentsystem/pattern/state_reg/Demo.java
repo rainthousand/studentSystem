@@ -1,4 +1,4 @@
-package com.example.studentsystem.pattern.state;
+package com.example.studentsystem.pattern.state_reg;
 //
 public class Demo {
 

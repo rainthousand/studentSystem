@@ -1,4 +1,4 @@
-package com.example.studentsystem.pattern.strategy;
+package com.example.studentsystem.pattern.strategy_payment;
 
 public class Visa_Card implements StrategyPayment{
     @Override

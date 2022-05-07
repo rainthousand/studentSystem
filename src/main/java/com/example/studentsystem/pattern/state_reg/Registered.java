@@ -1,9 +1,4 @@
-package com.example.studentsystem.pattern.state;
-
-import com.example.studentsystem.pattern.state.Context;
-
-import javax.servlet.http.HttpSession;
-import javax.swing.*;
+package com.example.studentsystem.pattern.state_reg;
 
 public class Registered extends studentState{
     @Override
@@ -19,6 +14,10 @@ public class Registered extends studentState{
     @Override
     public void shiftRegistered(){
         System.out.println("Registered");
+    }
+
+    public String toString(){
+        return "Registered";
     }
 
 }

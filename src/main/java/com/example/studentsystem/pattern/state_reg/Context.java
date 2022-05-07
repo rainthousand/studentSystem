@@ -1,6 +1,4 @@
-package com.example.studentsystem.pattern.state;
-
-import javax.servlet.http.HttpSession;
+package com.example.studentsystem.pattern.state_reg;
 
 public class Context {
     public final static studentState NotR=new NotRegistered();
@@ -13,9 +11,6 @@ public class Context {
         state=NotR;
         state.doAction(this);
     }
-//    public void setState(studentState state){
-//        this.state = state;
-//    }
     public void setState(studentState state){
 
         this.state = state;

@@ -1,8 +1,7 @@
 package com.example.studentsystem.pattern.template;
 
 import com.example.studentsystem.entity.UserSessionInfo;
-import com.example.studentsystem.pattern.state.Context;
-import com.example.studentsystem.pattern.state.NotRegistered;
+import com.example.studentsystem.pattern.state_reg.Context;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;

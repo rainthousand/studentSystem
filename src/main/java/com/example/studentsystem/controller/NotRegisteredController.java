@@ -5,7 +5,7 @@ import com.example.studentsystem.entity.Fee;
 import com.example.studentsystem.entity.Feeforshow;
 import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.pattern.singleton.FileLogger;
-import com.example.studentsystem.pattern.strategy.*;
+import com.example.studentsystem.pattern.strategy_payment.*;
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.impl.FeeServiceImpl;

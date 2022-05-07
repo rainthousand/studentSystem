@@ -1,6 +1,4 @@
-package com.example.studentsystem.pattern.state;
-
-import javax.servlet.http.HttpSession;
+package com.example.studentsystem.pattern.state_reg;
 
 public class NotRegistered extends studentState{
     @Override
@@ -25,7 +23,7 @@ public class NotRegistered extends studentState{
 //        context.setState(this);
 //    }
 //
-//    public String toString(){
-//        return "Not Registered";
-//    }
+    public String toString(){
+        return "Not Registered";
+    }
 }
