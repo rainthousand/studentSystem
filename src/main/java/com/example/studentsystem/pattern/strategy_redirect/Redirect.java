@@ -8,13 +8,13 @@ import java.util.Objects;
 
 public class Redirect implements StrategyRedirect{
     @Override
-    public String RedirectMethod(String method){
+    public String RedirectMethod(String URL){
 //        String state="Student";
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        String state =(String) session.getAttribute("Role");
-        String visitor=method;
-        return "redirect:"+state+"/"+visitor;
+//        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+//                .getRequestAttributes())).getRequest().getSession();
+//        String state =(String) session.getAttribute("Role");
+//        String visitor=method;
+        return "redirect:"+URL;
     }
 //    @Override
 //    public String RedirectIndex(){

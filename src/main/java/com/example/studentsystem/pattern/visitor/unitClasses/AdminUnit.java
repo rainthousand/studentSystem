@@ -24,16 +24,16 @@ public class AdminUnit implements Unit {
 
     //course route
     public String adminCourseRoute(){
-        return "redirect:admin/course";
+        return "admin/course";
     }
 
     //selected course route
     public String adminSelectedRoute(){
-        return "redirect:admin/selectedCourse";
+        return "admin/selectedCourse";
     }
 
     //student fee route
     public String adminFeeRoute(){
-        return "redirect:admin/fee-list";
+        return "admin/fee-list";
     }
 }

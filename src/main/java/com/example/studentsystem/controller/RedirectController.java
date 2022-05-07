@@ -1,9 +1,24 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.NewsLetter;
+import com.example.studentsystem.pattern.factorymethod_visitor.UnitFactories.AdminUnitFactory;
+import com.example.studentsystem.pattern.factorymethod_visitor.UnitFactories.NotRegisteredUnitFactory;
+import com.example.studentsystem.pattern.factorymethod_visitor.UnitFactories.StudentUnitFactory;
+import com.example.studentsystem.pattern.factorymethod_visitor.UnitFactories.TeacherUnitFactory;
+import com.example.studentsystem.pattern.factorymethod_visitor.UnitFactory;
+import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.CoursePageVisitorFactory;
+import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactory;
 import com.example.studentsystem.pattern.state_Role.Context_Role;
 import com.example.studentsystem.pattern.strategy_redirect.Context_Redirect;
 import com.example.studentsystem.pattern.strategy_redirect.Redirect;
+import com.example.studentsystem.pattern.visitor.MainPageVisitor;
+import com.example.studentsystem.pattern.visitor.ObjectStructure;
+import com.example.studentsystem.pattern.visitor.Unit;
+import com.example.studentsystem.pattern.visitor.UnitVisitor;
+import com.example.studentsystem.pattern.visitor.unitClasses.AdminUnit;
+import com.example.studentsystem.pattern.visitor.unitClasses.NotRegisteredUnit;
+import com.example.studentsystem.pattern.visitor.unitClasses.StudentUnit;
+import com.example.studentsystem.pattern.visitor.unitClasses.TeacherUnit;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +29,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
+
 import com.example.studentsystem.entity.NewsLetter;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
@@ -60,11 +75,50 @@ public class RedirectController {
         return "notRegistered/index";
     }
 
-    @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
-    public String studentToCoursePage() throws Exception {
+    @RequestMapping(value = "/toCourse", method = {RequestMethod.GET})
+    public String toCoursePage() throws Exception {
         Context_Redirect context_redirect=new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("course");
+                HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        String role =(String) session.getAttribute("Role");
+        VisitorFactory visitorFactory = new CoursePageVisitorFactory();
+        ObjectStructure units = new ObjectStructure();
+        List<String> url = new ArrayList<>();
+
+        UnitVisitor mainPageVisitor = visitorFactory.createVisitor();
+        switch (role){
+            case "admin" -> {
+                UnitFactory unitFactory = new AdminUnitFactory();
+                Unit adminUnit = unitFactory.createUnit();
+                units.add(adminUnit);
+                url = units.accept(mainPageVisitor);
+            }case "student" -> {
+                UnitFactory unitFactory = new StudentUnitFactory();
+                Unit studentUnit = unitFactory.createUnit();
+                units.add(studentUnit);
+                url = units.accept(mainPageVisitor);
+            }case "notRegistered" -> {
+                UnitFactory unitFactory = new NotRegisteredUnitFactory();
+                Unit notRegisteredUnit = unitFactory.createUnit();
+                units.add(notRegisteredUnit);
+                url = units.accept(mainPageVisitor);
+            }case "teacher" -> {
+                UnitFactory unitFactory = new TeacherUnitFactory();
+                Unit teacherUnit = unitFactory.createUnit();
+                units.add(teacherUnit);
+                url = units.accept(mainPageVisitor);
+            }
+        }
+
+        return context_redirect.executeStrategy_Redirect(url.get(0));
     }
+
+
+//    @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
+//    public String studentToCoursePage() throws Exception {
+//        Context_Redirect context_redirect=new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("course");
+//    }
 
     @RequestMapping(value = "/studentToSelectedCourse", method = {RequestMethod.GET})
     public String studentToSelectedCoursePage() throws Exception {
@@ -91,12 +145,12 @@ public class RedirectController {
         return "admin/index";
     }
 
-    @RequestMapping(value = "/adminToCourse", method = {RequestMethod.GET})
-    public String adminToCoursePage() throws Exception {
-        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("course");
-//        return "redirect:admin/course";
-    }
+//    @RequestMapping(value = "/adminToCourse", method = {RequestMethod.GET})
+//    public String adminToCoursePage() throws Exception {
+//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("course");
+////        return "redirect:admin/course";
+//    }
 
     @RequestMapping(value = "/adminToSelectedCourse", method = {RequestMethod.GET})
     public String adminToSelectedCoursePage() throws Exception {
@@ -206,12 +260,12 @@ public class RedirectController {
 //        return "redirect:notRegistered/selectedCourse";
     }
 
-    @RequestMapping(value = "/notRegisteredToCourse", method = {RequestMethod.GET})
-    public String notRegitsteredToCourse() throws Exception {
-        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("course");
-//        return "redirect:notRegistered/course";
-    }
+//    @RequestMapping(value = "/notRegisteredToCourse", method = {RequestMethod.GET})
+//    public String notRegitsteredToCourse() throws Exception {
+//        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+//        return context_redirect.executeStrategy_Redirect("course");
+////        return "redirect:notRegistered/course";
+//    }
 
     @RequestMapping(value = "/notRegisteredToFeePage", method = {RequestMethod.GET})
     public String notRegitsteredToFeePage() throws Exception {

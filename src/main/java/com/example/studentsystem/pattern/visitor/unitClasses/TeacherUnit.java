@@ -24,16 +24,16 @@ public class TeacherUnit implements Unit {
 
     //course route
     public String teacherCourseRoute(){
-        return "redirect:teacher/course";
+        return "teacher/course";
     }
 
     //selected course route
     public String teacherSelectedRoute(){
-        return "redirect:teacher/selectedCourse";
+        return "teacher/selectedCourse";
     }
 
     //student fee route
     public String teacherFeeRoute(){
-        return "redirect:teacher/fee";
+        return "teacher/fee";
     }
 }

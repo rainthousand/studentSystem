@@ -2,10 +2,10 @@ package com.example.studentsystem.pattern.strategy_redirect;
 
 public class Direct implements StrategyRedirect{
     @Override
-    public String RedirectMethod(String method){
+    public String RedirectMethod(String URL){
 
-        String state="Student";
-        return state+"/"+method;
+//        String state="Student";
+        return URL;
     }
 //    @Override
 //    public String RedirectIndex(){

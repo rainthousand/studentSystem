@@ -6,8 +6,8 @@ public class Context_Redirect {
     public Context_Redirect(StrategyRedirect strategyRedirect){
         this.strategyRedirect=strategyRedirect;
     }
-    public String executeStrategy_Redirect(String method){
-        return strategyRedirect.RedirectMethod(method);
+    public String executeStrategy_Redirect(String URL){
+        return strategyRedirect.RedirectMethod(URL);
     }
 //    public String executeStrategy_Index(){
 //        return strategyRedirect.RedirectIndex();

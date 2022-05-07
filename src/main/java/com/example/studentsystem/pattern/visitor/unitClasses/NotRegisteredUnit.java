@@ -24,16 +24,16 @@ public class NotRegisteredUnit implements Unit {
 
     //course route
     public String notRegisteredCourseRoute(){
-        return "redirect:notRegistered/course";
+        return "notRegistered/course";
     }
 
     //selected course route
     public String notRegisteredSelectedRoute(){
-        return "redirect:notRegistered/selectedCourse";
+        return "notRegistered/selectedCourse";
     }
 
     //student fee route
     public String notRegisteredFeeRoute(){
-        return "redirect:notRegistered/fee";
+        return "notRegistered/fee";
     }
 }

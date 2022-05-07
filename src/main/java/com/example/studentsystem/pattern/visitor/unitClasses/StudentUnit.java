@@ -26,16 +26,16 @@ public class StudentUnit implements Unit {
 
     //course route
     public String studentCourseRoute(){
-        return "redirect:student/course";
+        return "student/course";
     }
 
     //selected course route
     public String studentSelectedRoute(){
-        return "redirect:student/selectedCourse";
+        return "student/selectedCourse";
     }
 
     //student fee route
     public String studentFeeRoute(){
-        return "redirect:student/fee";
+        return "student/fee";
     }
 }
