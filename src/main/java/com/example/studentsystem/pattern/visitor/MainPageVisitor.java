@@ -18,6 +18,6 @@ public class MainPageVisitor implements UnitVisitor{
 
     @Override
     public String visit(NotRegisteredUnit notRegisteredUnit) {
-        return notRegisteredUnit.notRegisteredURL1();
+        return notRegisteredUnit.notRegisteredURL2();
     }
 }

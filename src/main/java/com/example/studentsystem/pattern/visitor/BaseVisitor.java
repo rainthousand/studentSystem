@@ -18,6 +18,6 @@ public class BaseVisitor implements UnitVisitor{
 
     @Override
     public String visit(NotRegisteredUnit notRegisteredUnit) {
-        return notRegisteredUnit.adminURL1();
+        return notRegisteredUnit.notRegisteredURL1();
     }
 }

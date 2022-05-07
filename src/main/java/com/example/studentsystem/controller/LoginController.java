@@ -3,9 +3,7 @@ package com.example.studentsystem.controller;
 import com.example.studentsystem.entity.Teacher;
 import com.example.studentsystem.entity.UserLogin;
 import com.example.studentsystem.entity.UserSessionInfo;
-import com.example.studentsystem.pattern.template.AdminLogin;
-import com.example.studentsystem.pattern.template.StudentLogin;
-import com.example.studentsystem.pattern.template.TeacherLogin;
+import com.example.studentsystem.pattern.template.*;
 import com.example.studentsystem.pattern.visitor.*;
 import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.UserLoginService;
@@ -81,10 +79,12 @@ public class LoginController {
         Unit adminUnit = new AdminUnit();
         Unit studentUnit = new StudentUnit();
         Unit teacherUnit = new TeacherUnit();
+        Unit notRegisteredUnit = new NotRegisteredUnit();
         ObjectStructure units = new ObjectStructure();
         units.add(adminUnit);
         units.add(teacherUnit);
         units.add(studentUnit);
+        units.add(notRegisteredUnit);
         List<String> URLs = units.accept(mainPageVisitor);
 //        System.out.println(URLs);
 
@@ -112,8 +112,13 @@ public class LoginController {
             case 2: {
                 // student login
                 Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
-                StudentLogin student = new StudentLogin();
-                return student.Login(currUser, session, URLs, status);
+                if(status == 1){
+                    StudentLogin student = new StudentLogin();
+                    return student.Login(currUser, session, URLs, status);
+                }else{
+                    NotRegisteredLogin notRegistered = new NotRegisteredLogin();
+                    return notRegistered.Login(currUser, session, URLs, status);
+                }
             }
         }
 

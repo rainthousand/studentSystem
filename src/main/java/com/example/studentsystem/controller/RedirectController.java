@@ -45,6 +45,18 @@ public class RedirectController {
         return "student/index";
     }
 
+    @RequestMapping(value = "/notRegistered/index", method = {RequestMethod.GET})
+    public String notRegisteredToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("name",session.getAttribute("username"));
+        model.addAttribute("notificationList", notificationList);
+        return "notRegistered/index";
+    }
+
     @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
     public String studentToCoursePage() throws Exception {
         return "redirect:student/course";
