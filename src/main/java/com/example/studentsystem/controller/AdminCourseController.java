@@ -11,6 +11,7 @@ import com.example.studentsystem.pattern.factorymethod_course.MathCourseFactory;
 import com.example.studentsystem.pattern.iterator.Collection;
 import com.example.studentsystem.pattern.iterator.Iterator;
 import com.example.studentsystem.pattern.iterator.StudentList;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.StudentService;
@@ -63,6 +64,10 @@ public class AdminCourseController {
         model.addAttribute("studentList",studentidList);
         model.addAttribute("selectedcourse",new SelectedCourse());
 
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin get all courses");
+        obj.close();
+
         return "admin/course";
     }
 
@@ -80,6 +85,10 @@ public class AdminCourseController {
         model.addAttribute("adminSelectedCourseList",adminSelectedCourseList);
         model.addAttribute("judge","admin");
 
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin get all selected courses");
+        obj.close();
+
         return "admin/selectedcourse";
     }
 
@@ -87,6 +96,10 @@ public class AdminCourseController {
     public String deleteSelectedCourse(@RequestParam("sid") Integer sid,@RequestParam("cid") Integer cid,@RequestParam("judge") String judge){
 
         courseService.deleteSelectedCourse(sid,cid);
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin deleted a selected course. studentid:"+sid+";courseid:"+cid);
+        obj.close();
+
         return "redirect:/"+judge+"/selectedCourse";
     }
 
@@ -96,8 +109,14 @@ public class AdminCourseController {
         Integer status = feeService.findFeeByUserName(studentid).getFeestatus();
         if(status.equals(1)){
             courseService.addSelectedCourse(studentid,courseid);
+            FileLogger obj=FileLogger.getFileLogger();
+            obj.write("Admin selected a course. studentid:"+studentid+";courseid:"+courseid);
+            obj.close();
             return "redirect:/"+judge+"/course";
         }else{
+            FileLogger obj=FileLogger.getFileLogger();
+            obj.write("Admin failed selecting a course. Reason:student not registered. studentid:"+studentid+";courseid:"+courseid);
+            obj.close();
             return "redirect:/"+judge+"/course";
         }
     }
@@ -180,6 +199,9 @@ public class AdminCourseController {
 
         courseService.addNewCourse(newCourse);
 
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin added a new course. courseid:"+newCourse.getCourseid());
+        obj.close();
 
         return "admin/addcourse";
     }
@@ -190,6 +212,11 @@ public class AdminCourseController {
 
 //        courseService.deleteSelectedCourse(sid,cid);
         courseService.deleteACourse(cid);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin deleted a course. courseid:"+cid);
+        obj.close();
+
         return "redirect:/admin/course";
     }
 }
