@@ -1,6 +1,7 @@
 package com.example.studentsystem.controller;
 
 import com.example.studentsystem.entity.UserLogin;
+import com.example.studentsystem.pattern.singleton.FileLogger;
 import com.example.studentsystem.pattern.template.*;
 import com.example.studentsystem.pattern.visitor.*;
 import com.example.studentsystem.pattern.visitor.unitClasses.AdminUnit;
@@ -84,11 +85,17 @@ public class LoginController {
             case 0: {
                 // admin login
                 AdminLogin admin = new AdminLogin();
+                FileLogger obj=FileLogger.getFileLogger();
+                obj.write("admin login");
+                obj.close();
                 return admin.Login(currUser, session, URLs, 0);
             }
             case 1: {
                 // teacher login
                 TeacherLogin teacher = new TeacherLogin();
+                FileLogger obj=FileLogger.getFileLogger();
+                obj.write("teacher login");
+                obj.close();
                 return teacher.Login(currUser, session, URLs, 0);
             }
             case 2: {
@@ -96,9 +103,15 @@ public class LoginController {
                 Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
                 if(status == 1){
                     StudentLogin student = new StudentLogin();
+                    FileLogger obj=FileLogger.getFileLogger();
+                    obj.write("registered student login");
+                    obj.close();
                     return student.Login(currUser, session, URLs, status);
                 }else{
                     NotRegisteredLogin notRegistered = new NotRegisteredLogin();
+                    FileLogger obj=FileLogger.getFileLogger();
+                    obj.write("not registered student login");
+                    obj.close();
                     return notRegistered.Login(currUser, session, URLs, status);
                 }
             }
