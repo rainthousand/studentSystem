@@ -4,4 +4,5 @@ public interface UnitVisitor {
     public String visit(AdminUnit adminUnit);
     public String visit(StudentUnit studentUnit);
     public String visit(TeacherUnit teacherUnit);
+    public String visit(NotRegisteredUnit notRegisteredUnit);
 }

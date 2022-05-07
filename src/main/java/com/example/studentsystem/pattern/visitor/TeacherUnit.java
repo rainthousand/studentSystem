@@ -13,4 +13,24 @@ public class TeacherUnit implements Unit{
     public String teacherURL2(){
         return "/teacher/index";
     }
+
+    //course route
+    public String teacherIndexRoute(){
+        return "teacher/index";
+    }
+
+    //course route
+    public String teacherCourseRoute(){
+        return "redirect:teacher/course";
+    }
+
+    //selected course route
+    public String teacherSelectedRoute(){
+        return "redirect:teacher/selectedCourse";
+    }
+
+    //student fee route
+    public String teacherFeeRoute(){
+        return "redirect:teacher/fee";
+    }
 }

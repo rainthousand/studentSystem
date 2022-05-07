@@ -15,4 +15,9 @@ public class MainPageVisitor implements UnitVisitor{
     public String visit(TeacherUnit teacherUnit) {
         return teacherUnit.teacherURL2();
     }
+
+    @Override
+    public String visit(NotRegisteredUnit notRegisteredUnit) {
+        return notRegisteredUnit.notRegisteredURL1();
+    }
 }

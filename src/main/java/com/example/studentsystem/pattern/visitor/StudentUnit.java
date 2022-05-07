@@ -16,18 +16,23 @@ public class StudentUnit implements Unit{
         return "/student/index";
     }
 
-    //main page route
-    public String studentURL3(){
-        return "/student/course";
+    //Index route
+    public String studentIndexRoute(){
+        return "student/index";
     }
 
-    //main page route
-    public String studentURL4(){
-        return "/student/selectedcourse";
+    //course route
+    public String studentCourseRoute(){
+        return "redirect:student/course";
     }
 
-    //main page route
-    public String studentURL5(){
-        return "student/studentfee-list";
+    //selected course route
+    public String studentSelectedRoute(){
+        return "redirect:student/selectedCourse";
+    }
+
+    //student fee route
+    public String studentFeeRoute(){
+        return "redirect:student/fee";
     }
 }

@@ -1,23 +1,23 @@
 package com.example.studentsystem.pattern.visitor;
 
-public class BaseVisitor implements UnitVisitor{
+public class SelectedCoursePageVisitor implements UnitVisitor{
     @Override
     public String visit(AdminUnit adminUnit) {
-        return adminUnit.adminURL1();
+        return adminUnit.adminSelectedRoute();
     }
 
     @Override
     public String visit(StudentUnit studentUnit) {
-        return studentUnit.studentURL1();
+        return studentUnit.studentSelectedRoute();
     }
 
     @Override
     public String visit(TeacherUnit teacherUnit) {
-        return teacherUnit.teacherURL1();
+        return teacherUnit.teacherSelectedRoute();
     }
 
     @Override
     public String visit(NotRegisteredUnit notRegisteredUnit) {
-        return notRegisteredUnit.adminURL1();
+        return notRegisteredUnit.notRegisteredSelectedRoute();
     }
 }

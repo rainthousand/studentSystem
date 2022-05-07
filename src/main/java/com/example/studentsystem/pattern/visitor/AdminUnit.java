@@ -13,4 +13,24 @@ public class AdminUnit implements Unit{
     public String adminURL2(){
         return "/admin/index";
     }
+
+    //course route
+    public String adminIndexRoute(){
+        return "admin/index";
+    }
+
+    //course route
+    public String adminCourseRoute(){
+        return "redirect:admin/course";
+    }
+
+    //selected course route
+    public String adminSelectedRoute(){
+        return "redirect:admin/selectedCourse";
+    }
+
+    //student fee route
+    public String adminFeeRoute(){
+        return "redirect:admin/fee-list";
+    }
 }
