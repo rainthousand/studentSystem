@@ -12,4 +12,8 @@ public interface ScheduleService {
     Integer IndexNewActivity();
 
     Integer addNewKey(Integer studentid, Integer activityid);
+
+    Integer deleteKey(Integer studentid, Integer activityid);
+
+    void updateByName(String name, SchoolActivity newSchoolActivity);
 }

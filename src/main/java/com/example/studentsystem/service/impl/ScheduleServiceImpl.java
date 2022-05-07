@@ -63,4 +63,21 @@ public class ScheduleServiceImpl implements ScheduleService {
         return attendActivityMapper.insert(activityKey);
 
     }
+
+    @Override
+    public Integer deleteKey(Integer studentid, Integer activityid){
+        AttendActivityExample attendActivityExample=new AttendActivityExample();
+        AttendActivityExample.Criteria criteria = attendActivityExample.createCriteria();
+        criteria.andActivityidEqualTo(activityid);
+        criteria.andStudentidEqualTo(studentid);
+
+        return attendActivityMapper.deleteByExample(attendActivityExample);
+    }
+    @Override
+    public void updateByName(String name, SchoolActivity newSchoolActivity) {
+        SchoolActivityExample schoolActivityExample = new SchoolActivityExample();
+        SchoolActivityExample.Criteria criteria = schoolActivityExample.createCriteria();
+        criteria.andActivitynameEqualTo(name);
+        schoolActivityMapper.updateByExampleSelective(newSchoolActivity,schoolActivityExample);
+    }
 }

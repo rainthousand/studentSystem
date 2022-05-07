@@ -1,5 +1,6 @@
 package com.example.studentsystem.pattern.composite;
 
+import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.Event;
 import com.example.studentsystem.entity.SchoolActivity;
 
@@ -41,12 +42,24 @@ public class BasicEvent extends ScheduleEvent {
         schoolActivity.setActivityend(end);
         schoolActivity.setActivitydescription(name);
         schoolActivity.setActivityday(1);
-//    if (name.length()==1)
+        System.out.println(this.id);
         Integer aid = Integer.valueOf(id.split("-")[1]);
         schoolActivity.setActivityid(aid);
         return schoolActivity;
     }
 
+//    public Course toCourse(){
+//        Course course=new Course();
+//        course.setCoursename(id);
+//        course.setCoursestart(start);
+//        course.setCourseend(end);
+//        course.se(name);
+//        course.setActivityday(1);
+////    if (name.length()==1)
+//        Integer aid = Integer.valueOf(id.split("-")[1]);
+//        course.setActivityid(aid);
+//        return course;
+//    }
     public String getName() {
         return name;
     }

@@ -9,24 +9,29 @@ import java.util.List;
 public class Schedule extends ScheduleEvent{
     List<ScheduleEvent> scheduleEventList=new ArrayList<>();
     @Override
-    public Event toEvent() {
+    public Event toEvent(){
         return null;
     }
-    public void show() {
-        for (ScheduleEvent s: scheduleEventList) {
-//            s.toEvent();
+    public List<Event> toEventList() {
+        List<Event> eventList = new ArrayList<>();
+        for (ScheduleEvent event: scheduleEventList) {
+            eventList.add(event.toEvent());
         }
+        return eventList;
     }
 
-    public void add(ScheduleEvent b) {
-        this.scheduleEventList.add(b);
+    public void add(ScheduleEvent e) {
+        this.scheduleEventList.add(e);
     }
 
-    public void remove(ScheduleEvent b) {
-        this.scheduleEventList.remove(b);
+    public void remove(String name) {
+        scheduleEventList.removeIf(event -> event.getName().equals(name));
     }
 
     public ScheduleEvent get(int idx) {
         return this.scheduleEventList.get(idx);
+    }
+    public void clear(){
+        scheduleEventList.clear();
     }
 }
