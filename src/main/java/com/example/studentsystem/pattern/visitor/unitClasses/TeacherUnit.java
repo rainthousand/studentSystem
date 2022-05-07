@@ -1,6 +1,9 @@
-package com.example.studentsystem.pattern.visitor;
+package com.example.studentsystem.pattern.visitor.unitClasses;
 
-public class TeacherUnit implements Unit{
+import com.example.studentsystem.pattern.visitor.Unit;
+import com.example.studentsystem.pattern.visitor.UnitVisitor;
+
+public class TeacherUnit implements Unit {
     @Override
     public String accept(UnitVisitor visitor) {
         return visitor.visit(this);

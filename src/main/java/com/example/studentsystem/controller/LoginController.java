@@ -1,10 +1,12 @@
 package com.example.studentsystem.controller;
 
-import com.example.studentsystem.entity.Teacher;
 import com.example.studentsystem.entity.UserLogin;
-import com.example.studentsystem.entity.UserSessionInfo;
 import com.example.studentsystem.pattern.template.*;
 import com.example.studentsystem.pattern.visitor.*;
+import com.example.studentsystem.pattern.visitor.unitClasses.AdminUnit;
+import com.example.studentsystem.pattern.visitor.unitClasses.NotRegisteredUnit;
+import com.example.studentsystem.pattern.visitor.unitClasses.StudentUnit;
+import com.example.studentsystem.pattern.visitor.unitClasses.TeacherUnit;
 import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.UserLoginService;
 import org.springframework.stereotype.Controller;
@@ -16,34 +18,14 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 //import com.example.studentsystem.entity.NewsLetter;
 
-import com.example.studentsystem.entity.Teacher;
-import com.example.studentsystem.entity.Teacher;
-import com.example.studentsystem.entity.UserLogin;
-import com.example.studentsystem.entity.UserSessionInfo;
 import com.example.studentsystem.pattern.template.AdminLogin;
 import com.example.studentsystem.pattern.template.StudentLogin;
 import com.example.studentsystem.pattern.template.TeacherLogin;
-import com.example.studentsystem.pattern.visitor.*;
-import com.example.studentsystem.service.FeeService;
 import com.example.studentsystem.service.NewsletterService;
-import com.example.studentsystem.service.UserLoginService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 @Controller
 public class LoginController {
