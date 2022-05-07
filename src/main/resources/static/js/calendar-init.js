@@ -109,11 +109,12 @@ $(function() {
                 success: function (data) {
                     // alert("hahahahah");
                     // callback(data);
-                    // alert(data)
+                    alert(event.id);
                     // alert("Success!");
                 },
                 error: function (data) {
                     // alert(data)
+                    alert(event.id);
                     alert('Error!');
                 }
             });
@@ -160,7 +161,7 @@ $(function() {
             copiedEventObject.allDay = false
             copiedEventObject.backgroundColor = $(this).css('background-color')
             copiedEventObject.borderColor = $(this).css('border-color')
-            copiedEventObject.id = "newActivity"
+            // copiedEventObject.id = "newActivity"
             if ($(this).css('background-color') === "#9e5fff"){
                 copiedEventObject.title = "Tutorial"
             }
@@ -193,9 +194,11 @@ $(function() {
                 success: function (data) {
                     // alert("hahahahah");
                     // callback(data);
-                    // alert(data)
+                    alert(data.id);
+                    // alert(data.test);
                     // alert("Success!");
-                    copiedEventObject.id = data;
+                    copiedEventObject.id = data.id;
+                    alert(copiedEventObject.id);
                 },
                 error: function (data) {
                     // alert(data)
@@ -207,11 +210,11 @@ $(function() {
             // the last `true` argument determines if the event "sticks" (http://arshaw.com/fullcalendar/docs/event_rendering/renderEvent/)
             $('#calendar').fullCalendar('renderEvent', copiedEventObject, true)
 
-            // is the "remove after drop" checkbox checked?
-            if ($('#drop-remove').is(':checked')) {
-                // if so, remove the element from the "Draggable Events" list
-                $(this).remove()
-            }
+            // // is the "remove after drop" checkbox checked?
+            // if ($('#drop-remove').is(':checked')) {
+            //     // if so, remove the element from the "Draggable Events" list
+            //     $(this).remove()
+            // }
 
         }
     })

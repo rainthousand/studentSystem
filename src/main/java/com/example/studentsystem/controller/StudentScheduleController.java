@@ -151,6 +151,8 @@ public class StudentScheduleController {
 //
 ////        System.out.println(event.getId());
 //        return event;
+        System.out.println("testtttttttttttttttt");
+        System.out.println(object.getString("id"));
         switch (object.getString("backgroundColor")) {
             case "#ff4040" -> {
                 CourseEventFactory courseEventFactory = new CourseEventFactory();
@@ -236,7 +238,9 @@ public class StudentScheduleController {
             default -> {
                 System.out.println(object.getString("backgroundColor"));
                 System.out.println("ttttttttttt");
-                return null;
+                JSONObject res = new JSONObject();
+                res.put("test","test");
+                return res;
             }
         }
     }
