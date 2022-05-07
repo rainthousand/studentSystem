@@ -86,6 +86,7 @@ public class LoginController {
         units.add(teacherUnit);
         units.add(studentUnit);
         List<String> URLs = units.accept(mainPageVisitor);
+        System.out.println(URLs);
 
         UserLogin currUser = userloginService.findByUserName(userlogin.getUsername());
 
