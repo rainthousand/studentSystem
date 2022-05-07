@@ -70,3 +70,66 @@ registered student login
 time:2022-04-08 00-02-56
 content:
 registered student login
+time:2022-04-08 00-47-09
+content:
+admin login
+time:2022-04-08 00-47-13
+time:2022-04-08 00-47-13
+content:
+Admin get all courses
+content:
+Admin get all courses
+time:2022-04-08 00-47-17
+content:
+Admin get all courses
+time:2022-04-08 00-48-13
+content:
+Admin get all courses
+time:2022-04-08 00-48-17
+content:
+Admin get all courses
+time:2022-04-08 00-48-20
+content:
+Admin get all courses
+time:2022-04-08 00-48-20
+content:
+Admin get all courses
+time:2022-04-08 00-48-25
+content:
+registered student login
+time:2022-04-08 00-48-26
+content:
+500 Error
+time:2022-04-08 00-48-31
+content:
+registered student login
+time:2022-04-08 00-48-32
+content:
+500 Error
+time:2022-04-08 00-48-39
+content:
+not registered student login
+time:2022-04-08 00-48-43
+content:
+Not Registered student get all courses but can't modify. studentid:10003
+time:2022-04-08 00-48-43
+content:
+Not Registered student get all courses but can't modify. studentid:10003
+time:2022-04-08 00-54-26
+content:
+admin login
+time:2022-04-08 00-54-28
+content:
+Admin get all fee information.
+time:2022-04-08 00-54-28
+content:
+Admin get all fee information.
+time:2022-04-08 00-54-35
+content:
+not registered student login
+time:2022-04-08 00-54-38
+time:2022-04-08 00-54-38
+content:
+Not Registered student get self fee information. studentid:10003;feeid:3
+content:
+Not Registered student get self fee information. studentid:10003;feeid:3
