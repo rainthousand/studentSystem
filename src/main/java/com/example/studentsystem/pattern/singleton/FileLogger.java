@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
+// static block initialization
 public class FileLogger
 {
     private String path="log.txt";//目的路径

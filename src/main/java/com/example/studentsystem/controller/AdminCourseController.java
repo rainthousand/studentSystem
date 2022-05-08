@@ -48,9 +48,9 @@ public class AdminCourseController {
         Iterator iterator = collection.createIterator();
 
         List<Course> courseList = courseService.findAllCourse();
-        List<Student> studentList = studentService.findAllStudent();
+        List<Student> studentList = studentService.findAllRegisteredStudent();
 
-        //TODO studentid 的 Iterator模式 done
+        //TODO studentid Iterator Pattern done
         for(Student stu:studentList){
             iterator.add(stu.getStudentid());
         }
