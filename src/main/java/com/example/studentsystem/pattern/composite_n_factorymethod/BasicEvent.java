@@ -1,6 +1,5 @@
-package com.example.studentsystem.pattern.composite;
+package com.example.studentsystem.pattern.composite_n_factorymethod;
 
-import com.example.studentsystem.entity.Course;
 import com.example.studentsystem.entity.Event;
 import com.example.studentsystem.entity.SchoolActivity;
 

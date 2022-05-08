@@ -1,10 +1,16 @@
 package com.example.studentsystem.controller;
 
+import com.example.studentsystem.entity.Course;
+import com.example.studentsystem.entity.NewsLetter;
+import com.example.studentsystem.entity.SelectedCourse;
+import com.example.studentsystem.pattern.iterator.Iterator;
+import com.example.studentsystem.pattern.iterator.StudentList;
 import com.example.studentsystem.pattern.observer.NewsSubject;
 import com.example.studentsystem.pattern.observer.Student;
 import com.example.studentsystem.pattern.singleton.FileLogger;
-import com.example.studentsystem.service.NewsletterService;
+import com.example.studentsystem.service.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,6 +23,29 @@ public class AdminNewsletterController {
     @Resource(name = "newsletterServiceImpl")
     private NewsletterService newsletterService;
 
+    @Resource(name = "courseServiceImpl")
+    private CourseService courseService;
+
+    @Resource(name = "studentServiceImpl")
+    private StudentService studentService;
+
+    @Resource(name = "feeServiceImpl")
+    private FeeService feeService;
+
+    @Resource(name = "teacherServiceImpl")
+    private TeacherService teacherService;
+
+    @RequestMapping(value = "/adminallnewsletter")
+    public String adminAllNewsletter(Model model) throws Exception {
+        System.out.println("yyyyyyy");
+        List<NewsLetter> newsletterList = newsletterService.findAllNewsletter();
+        model.addAttribute("newsletterList",newsletterList);
+
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin get all newsletters");
+
+        return "admin/adminallnewsletter";
+    }
     @RequestMapping(value = "/addnewsletter")
     public String adminAddNewsletter() throws Exception {
         return "admin/addnewsletter";
@@ -67,5 +96,14 @@ public class AdminNewsletterController {
 
         return "admin/addnewsletter";
 //        return "admin/add_newsletter";
+    }
+    @RequestMapping("/deleteNewsletter")
+    public String deleteNewsletter(@RequestParam("nid") Integer nid){
+        newsletterService.deleteAnewsLetter(nid);
+        FileLogger obj=FileLogger.getFileLogger();
+        obj.write("Admin deleted a newsletter. newsid: "+nid);
+
+
+        return "redirect:/admin/adminallnewsletter";
     }
 }

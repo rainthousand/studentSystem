@@ -219,4 +219,5 @@ public class AdminCourseController {
 
         return "redirect:/admin/course";
     }
+
 }

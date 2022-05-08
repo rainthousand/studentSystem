@@ -44,8 +44,9 @@ public class RedirectController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         System.out.println(session.getAttribute("username"));
-        List<NewsLetter> notificationList =
-                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        List<NewsLetter> notificationList =new ArrayList<>();
+        for (NewsLetter n:newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")))){
+        notificationList.add(n);}
         model.addAttribute("name",session.getAttribute("username"));
         model.addAttribute("notificationList", notificationList);
         return "student/index";
@@ -56,8 +57,9 @@ public class RedirectController {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         System.out.println(session.getAttribute("username"));
-        List<NewsLetter> notificationList =
-                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        List<NewsLetter> notificationList =new ArrayList<>();
+        for (NewsLetter n:newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")))){
+            notificationList.add(n);}
         model.addAttribute("name",session.getAttribute("username"));
         model.addAttribute("notificationList", notificationList);
         return "notRegistered/index";
@@ -282,7 +284,12 @@ public class RedirectController {
         return context_redirect.executeStrategy_Redirect("admin/adminToNewsletterUpdate");
 //        return "admin/adminToNewsletterUpdate";
     }
-
+    @RequestMapping(value = "/adminToAllNewsletter", method = {RequestMethod.GET})
+    public String adminToAllNewsletter() throws Exception {
+        Context_Redirect context_redirect = new Context_Redirect(new Redirect());
+        return context_redirect.executeStrategy_Redirect("admin/adminallnewsletter");
+//        return "admin/adminToNewsletterUpdate";
+    }
     //student
     @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
     public String studentToCalendarPage(Model model) throws Exception {

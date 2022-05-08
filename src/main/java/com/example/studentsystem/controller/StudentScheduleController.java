@@ -2,10 +2,10 @@ package com.example.studentsystem.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.studentsystem.entity.*;
-import com.example.studentsystem.pattern.composite.BasicEvent;
-import com.example.studentsystem.pattern.composite.CourseEventFactory;
-import com.example.studentsystem.pattern.composite.Schedule;
-import com.example.studentsystem.pattern.composite.SchoolActivityFactory;
+import com.example.studentsystem.pattern.composite_n_factorymethod.BasicEvent;
+import com.example.studentsystem.pattern.composite_n_factorymethod.CourseEventFactory;
+import com.example.studentsystem.pattern.composite_n_factorymethod.Schedule;
+import com.example.studentsystem.pattern.composite_n_factorymethod.SchoolActivityFactory;
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.ScheduleService;

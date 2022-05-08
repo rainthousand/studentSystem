@@ -1,9 +1,8 @@
-package com.example.studentsystem.pattern.composite;
+package com.example.studentsystem.pattern.composite_n_factorymethod;
 
 import com.example.studentsystem.entity.Event;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Schedule extends ScheduleEvent{

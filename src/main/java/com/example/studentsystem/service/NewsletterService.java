@@ -19,6 +19,8 @@ public interface NewsletterService {
 
     Integer deleteSubscribedSubject(Integer studentid, String subject);
 
+    Integer deleteAnewsLetter(Integer newsid);
+
     Integer SubscribeNewsLetterSubject(Integer studentid, String subject);
 
     Integer AddNewsletter(Integer newsid, String newsname, String publisher, String subject, String newsmsg,

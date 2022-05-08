@@ -1,6 +1,4 @@
-package com.example.studentsystem.pattern.composite;
-
-import com.example.studentsystem.entity.Event;
+package com.example.studentsystem.pattern.composite_n_factorymethod;
 
 import java.util.Date;
 

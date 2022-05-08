@@ -83,48 +83,48 @@ public class LoginController {
         //√需要修改为visitor模式，此处仅用于测试
         //已使用visitor模式提取不同的URL
         switch (currUser.getRole()) {
-            case 0: {
+            case 0 -> {
                 // admin login
                 AdminLogin admin = new AdminLogin();
-                FileLogger obj=FileLogger.getFileLogger();
+                FileLogger obj = FileLogger.getFileLogger();
                 obj.write("admin login");
-                
+
                 Context_Role context_role = new Context_Role();
                 context_role.shiftAdmin();
-                session.setAttribute("Role",context_role.to_String());
+                session.setAttribute("Role", context_role.to_String());
 
                 return admin.Login(currUser, session, URLs, 0);
             }
-            case 1: {
+            case 1 -> {
                 // teacher login
                 TeacherLogin teacher = new TeacherLogin();
-                FileLogger obj=FileLogger.getFileLogger();
+                FileLogger obj = FileLogger.getFileLogger();
                 obj.write("teacher login");
-                
+
                 Context_Role context_role = new Context_Role();
                 context_role.shiftTeacher();
-                session.setAttribute("Role",context_role.to_String());
+                session.setAttribute("Role", context_role.to_String());
                 return teacher.Login(currUser, session, URLs, 0);
             }
-            case 2: {
+            case 2 -> {
                 // student login
                 Integer status = feeService.findFeeByUserName(Integer.valueOf(userlogin.getUsername())).getFeestatus();
                 Context_Role context_role = new Context_Role();
-                if(status == 1){
+                if (status == 1) {
                     StudentLogin student = new StudentLogin();
-                    FileLogger obj=FileLogger.getFileLogger();
+                    FileLogger obj = FileLogger.getFileLogger();
                     obj.write("registered student login");
-                    
+
                     context_role.shiftStudent();
-                    session.setAttribute("Role",context_role.to_String());
+                    session.setAttribute("Role", context_role.to_String());
                     return student.Login(currUser, session, URLs, status);
-                }else{
+                } else {
                     NotRegisteredLogin notRegistered = new NotRegisteredLogin();
-                    FileLogger obj=FileLogger.getFileLogger();
+                    FileLogger obj = FileLogger.getFileLogger();
                     obj.write("not registered student login");
-                    
+
                     context_role.shiftNotReg();
-                    session.setAttribute("Role",context_role.to_String());
+                    session.setAttribute("Role", context_role.to_String());
                     return notRegistered.Login(currUser, session, URLs, status);
                 }
             }

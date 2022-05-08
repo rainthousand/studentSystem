@@ -63,7 +63,6 @@ public class NewsletterServiceImpl implements NewsletterService {
         NewsLetterExample newsLetterExample = new NewsLetterExample();
         NewsLetterExample.Criteria criteria2 = newsLetterExample.createCriteria();
         criteria2.andNewsidIn(forCriteria2);
-
         return newsLetterMapper.selectByExample(newsLetterExample);
 
     }
@@ -109,7 +108,15 @@ public class NewsletterServiceImpl implements NewsletterService {
         return subscribedSubjectMapper.deleteByExample(subscribedSubjectExample);
 
     }
+    @Override
+    public Integer deleteAnewsLetter(Integer newsid) {
+        NewsLetterExample newsLetterExample=new NewsLetterExample();
+        SubscribedNewsletterExample subscribedNewsletterExample = new SubscribedNewsletterExample();
+        NewsLetterExample.Criteria criteria = newsLetterExample.createCriteria();
+        criteria.andNewsidEqualTo(newsid);
 
+        return subscribedNewsletterMapper.deleteByExample(subscribedNewsletterExample);
+    }
     @Override
     public Integer SubscribeNewsLetterSubject(Integer studentid, String subject) {
         SubscribedSubject subscribedSubject = new SubscribedSubject();

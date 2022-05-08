@@ -1,11 +1,9 @@
-package com.example.studentsystem.pattern.composite;
-
-import com.example.studentsystem.entity.Event;
+package com.example.studentsystem.pattern.composite_n_factorymethod;
 
 import java.util.Date;
 
-public class CourseEventFactory implements EventFactory {
-    private final String COLOR="ff4040";
+public class SchoolActivityFactory implements EventFactory {
+    private final String COLOR="rgb(158, 95, 255)";
     public BasicEvent newEvent(String name,String id, Date start, Date end, Boolean isAllDay) {
         BasicEvent basicEvent=new BasicEvent();
         basicEvent.setName(name);
