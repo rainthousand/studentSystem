@@ -80,6 +80,25 @@ public class RedirectController {
         return "notRegistered/index";
     }
 
+    @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
+    public String teacherToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
+        return "teacher/index";
+    }
+
+    @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
+    public String adminToMainPage(Model model) throws Exception {
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        System.out.println(session.getAttribute("username"));
+        model.addAttribute("name",session.getAttribute("username"));
+        return "admin/index";
+    }
+
+    //student and nor registered student to index
     @RequestMapping(value = "/allStudentToIndex", method = {RequestMethod.GET})
     public String toIndex(Model model) throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Direct());
@@ -113,24 +132,7 @@ public class RedirectController {
         return context_redirect.executeStrategy_Redirect(url.get(0));
     }
 
-    @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
-    public String teacherToMainPage(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        model.addAttribute("name",session.getAttribute("username"));
-        return "teacher/index";
-    }
-
-    @RequestMapping(value = "/admin/index", method = {RequestMethod.GET})
-    public String adminToMainPage(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        model.addAttribute("name",session.getAttribute("username"));
-        return "admin/index";
-    }
-
+    //admin and teacher(possible) to index
     @RequestMapping(value = "/adminAndTeacherToIndex", method = {RequestMethod.GET})
     public String toIndex2(Model model) throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Direct());
@@ -144,14 +146,14 @@ public class RedirectController {
         UnitVisitor indexPageVisitor = visitorFactory.createVisitor();
         switch (role){
             case "admin" -> {
-                UnitFactory unitFactory = new StudentUnitFactory();
-                Unit studentUnit = unitFactory.createUnit();
-                units.add(studentUnit);
+                UnitFactory unitFactory = new AdminUnitFactory();
+                Unit adminUnit = unitFactory.createUnit();
+                units.add(adminUnit);
                 url = units.accept(indexPageVisitor);
             }case "teacher" -> {
-                UnitFactory unitFactory = new NotRegisteredUnitFactory();
-                Unit notRegisteredUnit = unitFactory.createUnit();
-                units.add(notRegisteredUnit);
+                UnitFactory unitFactory = new TeacherUnitFactory();
+                Unit teacherUnit = unitFactory.createUnit();
+                units.add(teacherUnit);
                 url = units.accept(indexPageVisitor);
             }
         }
@@ -159,7 +161,7 @@ public class RedirectController {
         return context_redirect.executeStrategy_Redirect(url.get(0));
     }
 
-
+    //all roles to course page
     @RequestMapping(value = "/toCourse", method = {RequestMethod.GET})
     public String toCoursePage() throws Exception {
         Context_Redirect context_redirect=new Context_Redirect(new Redirect());
@@ -198,6 +200,7 @@ public class RedirectController {
         return context_redirect.executeStrategy_Redirect(url.get(0));
     }
 
+    //all roles to fee page
     @RequestMapping(value = "/toFeePage",method = {RequestMethod.GET})
     public String ToFeePage() throws Exception{
         Context_Redirect context_redirect=new Context_Redirect(new Redirect());
@@ -237,6 +240,7 @@ public class RedirectController {
 //        return "redirect:student/fee";
     }
 
+    //all roles to selected course page
     @RequestMapping(value = "/toSelectedCourse", method = {RequestMethod.GET})
     public String toSelectedCourse() throws Exception {
         Context_Redirect context_redirect=new Context_Redirect(new Redirect());
@@ -290,15 +294,6 @@ public class RedirectController {
 //        return "redirect:admin/addnewsletter";
     }
 
-    @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
-    public String adminToIndex(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        model.addAttribute("name",session.getAttribute("username"));
-        return "admin/index";
-    }
-
     //student
     @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
     public String studentToCalendarPage(Model model) throws Exception {
@@ -332,32 +327,7 @@ public class RedirectController {
 //        return "redirect:student/managesubscription";
     }
 
-
-    @RequestMapping(value = "/studentToIndex", method = {RequestMethod.GET})
-    public String studentToIndex(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        List<NewsLetter> notificationList =
-                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
-        model.addAttribute("name",session.getAttribute("username"));
-        model.addAttribute("notificationList", notificationList);
-        return "student/index";
-    }
-
     //Not Registered
-    @RequestMapping(value = "/notRegisteredToIndex", method = {RequestMethod.GET})
-    public String notRegitsteredToMainPage(Model model) throws Exception {
-        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
-                .getRequestAttributes())).getRequest().getSession();
-        System.out.println(session.getAttribute("username"));
-        List<NewsLetter> notificationList =
-                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
-        model.addAttribute("name",session.getAttribute("username"));
-        model.addAttribute("notificationList", notificationList);
-        return "notRegistered/index";
-    }
-
     @RequestMapping(value = "/notRegisteredToSubscribedNewsletter", method = {RequestMethod.GET})
     public String notRegitsteredToSubscribedNewsletter() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
@@ -365,6 +335,39 @@ public class RedirectController {
 //        return "redirect:notRegistered/subscribedNewsletter";
     }
 
+
+//    @RequestMapping(value = "/adminToIndex", method = {RequestMethod.GET})
+//    public String adminToIndex(Model model) throws Exception {
+//        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+//                .getRequestAttributes())).getRequest().getSession();
+//        System.out.println(session.getAttribute("username"));
+//        model.addAttribute("name",session.getAttribute("username"));
+//        return "admin/index";
+//    }
+
+//    @RequestMapping(value = "/notRegisteredToIndex", method = {RequestMethod.GET})
+//    public String notRegitsteredToMainPage(Model model) throws Exception {
+//        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+//                .getRequestAttributes())).getRequest().getSession();
+//        System.out.println(session.getAttribute("username"));
+//        List<NewsLetter> notificationList =
+//                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+//        model.addAttribute("name",session.getAttribute("username"));
+//        model.addAttribute("notificationList", notificationList);
+//        return "notRegistered/index";
+//    }
+
+//    @RequestMapping(value = "/studentToIndex", method = {RequestMethod.GET})
+//    public String studentToIndex(Model model) throws Exception {
+//        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+//                .getRequestAttributes())).getRequest().getSession();
+//        System.out.println(session.getAttribute("username"));
+//        List<NewsLetter> notificationList =
+//                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+//        model.addAttribute("name",session.getAttribute("username"));
+//        model.addAttribute("notificationList", notificationList);
+//        return "student/index";
+//    }
 
 //    @RequestMapping(value = "/studentToCourse", method = {RequestMethod.GET})
 //    public String studentToCoursePage() throws Exception {
