@@ -8,10 +8,12 @@ import com.example.studentsystem.pattern.factorymethod_visitor.UnitFactories.Tea
 import com.example.studentsystem.pattern.factorymethod_visitor.UnitFactory;
 import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.CoursePageVisitorFactory;
 import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.FeePageVisitorFactory;
+import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.IndexPageVisitorFactory;
 import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.SelectedCoursePageVisitorFactory;
 import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactory;
 import com.example.studentsystem.pattern.state_Role.Context_Role;
 import com.example.studentsystem.pattern.strategy_redirect.Context_Redirect;
+import com.example.studentsystem.pattern.strategy_redirect.Direct;
 import com.example.studentsystem.pattern.strategy_redirect.Redirect;
 import com.example.studentsystem.pattern.visitor.MainPageVisitor;
 import com.example.studentsystem.pattern.visitor.ObjectStructure;
@@ -78,6 +80,39 @@ public class RedirectController {
         return "notRegistered/index";
     }
 
+    @RequestMapping(value = "/allStudentToIndex", method = {RequestMethod.GET})
+    public String toIndex(Model model) throws Exception {
+        Context_Redirect context_redirect = new Context_Redirect(new Direct());
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        String role =(String) session.getAttribute("Role");
+        VisitorFactory visitorFactory = new IndexPageVisitorFactory();
+        ObjectStructure units = new ObjectStructure();
+        List<String> url = new ArrayList<>();
+
+        UnitVisitor indexPageVisitor = visitorFactory.createVisitor();
+        switch (role){
+            case "student" -> {
+                UnitFactory unitFactory = new StudentUnitFactory();
+                Unit studentUnit = unitFactory.createUnit();
+                units.add(studentUnit);
+                url = units.accept(indexPageVisitor);
+            }case "notRegistered" -> {
+                UnitFactory unitFactory = new NotRegisteredUnitFactory();
+                Unit notRegisteredUnit = unitFactory.createUnit();
+                units.add(notRegisteredUnit);
+                url = units.accept(indexPageVisitor);
+            }
+        }
+        List<NewsLetter> notificationList =
+                newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
+        model.addAttribute("name",session.getAttribute("username"));
+        model.addAttribute("notificationList", notificationList);
+//        return "student/index";
+
+        return context_redirect.executeStrategy_Redirect(url.get(0));
+    }
+
     @RequestMapping(value = "/teacher/index", method = {RequestMethod.GET})
     public String teacherToMainPage(Model model) throws Exception {
         HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
@@ -96,10 +131,39 @@ public class RedirectController {
         return "admin/index";
     }
 
+    @RequestMapping(value = "/adminAndTeacherToIndex", method = {RequestMethod.GET})
+    public String toIndex2(Model model) throws Exception {
+        Context_Redirect context_redirect = new Context_Redirect(new Direct());
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+                .getRequestAttributes())).getRequest().getSession();
+        String role =(String) session.getAttribute("Role");
+        VisitorFactory visitorFactory = new IndexPageVisitorFactory();
+        ObjectStructure units = new ObjectStructure();
+        List<String> url = new ArrayList<>();
+
+        UnitVisitor indexPageVisitor = visitorFactory.createVisitor();
+        switch (role){
+            case "admin" -> {
+                UnitFactory unitFactory = new StudentUnitFactory();
+                Unit studentUnit = unitFactory.createUnit();
+                units.add(studentUnit);
+                url = units.accept(indexPageVisitor);
+            }case "teacher" -> {
+                UnitFactory unitFactory = new NotRegisteredUnitFactory();
+                Unit notRegisteredUnit = unitFactory.createUnit();
+                units.add(notRegisteredUnit);
+                url = units.accept(indexPageVisitor);
+            }
+        }
+        model.addAttribute("name",session.getAttribute("username"));
+        return context_redirect.executeStrategy_Redirect(url.get(0));
+    }
+
+
     @RequestMapping(value = "/toCourse", method = {RequestMethod.GET})
     public String toCoursePage() throws Exception {
         Context_Redirect context_redirect=new Context_Redirect(new Redirect());
-                HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
+        HttpSession session = ((ServletRequestAttributes) Objects.requireNonNull(RequestContextHolder
                 .getRequestAttributes())).getRequest().getSession();
         String role =(String) session.getAttribute("Role");
         VisitorFactory visitorFactory = new CoursePageVisitorFactory();
@@ -215,14 +279,14 @@ public class RedirectController {
     @RequestMapping(value = "/adminToAddCourse", method = {RequestMethod.GET})
     public String adminToAddCoursePage() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("toAddCoursePage");
+        return context_redirect.executeStrategy_Redirect("admin/toAddCoursePage");
 //        return "redirect:admin/toAddCoursePage";
     }
 
     @RequestMapping(value = "/adminToNewsletter", method = {RequestMethod.GET})
     public String adminToNewsletter() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("addnewsletter");
+        return context_redirect.executeStrategy_Redirect("admin/addnewsletter");
 //        return "redirect:admin/addnewsletter";
     }
 
@@ -250,21 +314,21 @@ public class RedirectController {
     @RequestMapping(value = "/studentToSubscribedNewsletter", method = {RequestMethod.GET})
     public String studentToSubscribeNewsletterPage() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("subscribedNewsletter");
+        return context_redirect.executeStrategy_Redirect("student/subscribedNewsletter");
 //        return "redirect:student/subscribedNewsletter";
     }
 
     @RequestMapping(value = "/studentToSubscribe", method = {RequestMethod.GET})
     public String studentToSubscribePage() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("tosubscribe");
+        return context_redirect.executeStrategy_Redirect("student/tosubscribe");
 //        return "redirect:student/tosubscribe";
     }
 
     @RequestMapping(value = "/studentToManageSubscription", method = {RequestMethod.GET})
     public String studentToManageSubscriptionPage() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("managesubscription");
+        return context_redirect.executeStrategy_Redirect("student/managesubscription");
 //        return "redirect:student/managesubscription";
     }
 
@@ -297,7 +361,7 @@ public class RedirectController {
     @RequestMapping(value = "/notRegisteredToSubscribedNewsletter", method = {RequestMethod.GET})
     public String notRegitsteredToSubscribedNewsletter() throws Exception {
         Context_Redirect context_redirect = new Context_Redirect(new Redirect());
-        return context_redirect.executeStrategy_Redirect("subscribedNewsletter");
+        return context_redirect.executeStrategy_Redirect("notRegistered/subscribedNewsletter");
 //        return "redirect:notRegistered/subscribedNewsletter";
     }
 
