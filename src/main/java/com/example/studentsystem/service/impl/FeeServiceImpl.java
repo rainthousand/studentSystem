@@ -64,7 +64,7 @@ public class FeeServiceImpl implements FeeService {
             fee.setFeestatus(feeStatus-1);
 
             //TODO subscribe newsletter部分的更新与删除
-            updateSubNews(name);
+            updateSubNews(name,1001);
         }
 
         feeMapper.updateByExampleSelective(fee,feeExample);
@@ -78,7 +78,8 @@ public class FeeServiceImpl implements FeeService {
         Context context = new Context();
         context.shiftRegistered();
         fee.setFeestatus(1);
-        deleteSubNews(feepayerusername);
+        updateSubNews(feepayerusername,1002);
+//        deleteSubNews(feepayerusername);
         fee.setFeeamount(feeamount);
         if(Objects.equals(feeonlineorline, "Online")){
             fee.setFeeonlineoroffline(1);
@@ -99,13 +100,17 @@ public class FeeServiceImpl implements FeeService {
     }
 
     @Override
-    public int updateSubNews(Integer studentId) {
+    public int updateSubNews(Integer studentId,Integer newID) {
+//        System.out.println("1111111111111111111111111");
+//        System.out.println(newsId);
         SubscribedNewsletterKey subscribeNewsKey=new SubscribedNewsletterKey();
-        subscribeNewsKey.setNewsid(1001);
+        subscribeNewsKey.setNewsid(newID);
+//        subscribeNewsKey.setNewsid(newsId);
+        System.out.println(subscribeNewsKey.getNewsid());
         SubscribedNewsletterExample subscribedNewsletterExample = new SubscribedNewsletterExample();
         SubscribedNewsletterExample.Criteria criteria = subscribedNewsletterExample.createCriteria();
         criteria.andStudentidEqualTo(studentId);
-        criteria.andNewsidEqualTo(1000);
+        criteria.andNewsidEqualTo(newID-1);
 //        return 1;
         return subscribeNewsMapper.updateByExampleSelective(subscribeNewsKey,subscribedNewsletterExample);
     }

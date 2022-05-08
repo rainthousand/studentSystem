@@ -13,6 +13,6 @@ public interface FeeService {
     List<Fee> findAllFee();
     String UpdateByUserName(HttpSession session,Integer name, Integer feeAmount, String feePaymentMethod, Integer feeOnlineOrOffline,Integer feeStatus) throws Exception;
     String confirmPending(Integer feeid, Integer feepayerusername, Integer feeamount, String feestatus, String feeonlineorline, String feepaymentmethod);
-    int updateSubNews(Integer studentId);
+    int updateSubNews(Integer studentId,Integer newsID);
     int deleteSubNews(Integer studentId);
 }
