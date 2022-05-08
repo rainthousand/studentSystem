@@ -21,6 +21,10 @@ public class AdminNewsletterController {
     public String adminAddNewsletter() throws Exception {
         return "admin/addnewsletter";
     }
+//    @RequestMapping(value = "/add_newsletter")
+//    public String adminAddNewsletter() throws Exception {
+//        return "admin/add_newsletter";
+//    }
 
     @RequestMapping(value = "/publish")
     public String adminPublishNewsletter(@RequestParam String newslettername, @RequestParam String publishertype,
@@ -62,5 +66,6 @@ public class AdminNewsletterController {
         
 
         return "admin/addnewsletter";
+//        return "admin/add_newsletter";
     }
 }

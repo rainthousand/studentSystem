@@ -293,6 +293,12 @@ public class RedirectController {
         return context_redirect.executeStrategy_Redirect("admin/addnewsletter");
 //        return "redirect:admin/addnewsletter";
     }
+    @RequestMapping(value = "/adminToNewsletterUpdate", method = {RequestMethod.GET})
+    public String adminToNewsletterUpdate() throws Exception {
+        Context_Redirect context_redirect = new Context_Redirect(new Direct());
+        return context_redirect.executeStrategy_Redirect("admin/adminToNewsletterUpdate");
+//        return "admin/adminToNewsletterUpdate";
+    }
 
     //student
     @RequestMapping(value = "/studentToCalendar", method = {RequestMethod.GET})
