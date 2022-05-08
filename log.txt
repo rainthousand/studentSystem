@@ -133,3 +133,69 @@ content:
 Not Registered student get self fee information. studentid:10003;feeid:3
 content:
 Not Registered student get self fee information. studentid:10003;feeid:3
+time:2022-04-08 00-58-35
+content:
+admin login
+time:2022-04-08 00-58-43
+content:
+Admin get all selected courses
+time:2022-04-08 00-58-43
+content:
+Admin get all selected courses
+time:2022-04-08 00-58-55
+content:
+not registered student login
+time:2022-04-08 00-58-59
+time:2022-04-08 00-58-59
+content:
+Not Registered student get selected courses but can't modify. studentid:10003
+content:
+Not Registered student get selected courses but can't modify. studentid:10003
+time:2022-04-08 01-11-58
+content:
+admin login
+time:2022-04-08 01-12-00
+content:
+Admin get all fee information.
+time:2022-04-08 01-12-00
+content:
+Admin get all fee information.
+time:2022-04-08 01-12-09
+time:2022-04-08 01-12-09
+content:
+Admin get all selected courses
+content:
+Admin get all selected courses
+time:2022-04-08 01-13-44
+content:
+admin login
+time:2022-04-08 01-15-19
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-19
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-19
+content:
+Admin get all courses
+time:2022-04-08 01-15-19
+content:
+Admin get all courses
+time:2022-04-08 01-15-22
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-22
+content:
+Admin get all fee information.
+time:2022-04-08 01-15-23
+content:
+Admin get all fee information.
+time:2022-04-08 01-15-24
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-51
+content:
+Admin get all fee information.
+time:2022-04-08 01-15-51
+content:
+Admin get all fee information.
