@@ -1,6 +1,7 @@
 package com.example.studentsystem.pattern.adapter;
 
-public class StudentSelectCourseAdpater {
+//Class Adapter
+public class StudentSelectCourseAdpater extends StudentCourseOperation implements AdminCourseOperation{
     public String studentToAdminAddSelectCourse(Integer sid, Integer cid, String judge){
         String studentid = "studentid="+sid;
         String courseid = "courseid="+cid;

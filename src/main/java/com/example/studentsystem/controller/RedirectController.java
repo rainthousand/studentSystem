@@ -11,18 +11,12 @@ import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.
 import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.IndexPageVisitorFactory;
 import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactories.SelectedCoursePageVisitorFactory;
 import com.example.studentsystem.pattern.factorymethod_visitor.VisitorFactory;
-import com.example.studentsystem.pattern.state_Role.Context_Role;
 import com.example.studentsystem.pattern.strategy_redirect.Context_Redirect;
 import com.example.studentsystem.pattern.strategy_redirect.Direct;
 import com.example.studentsystem.pattern.strategy_redirect.Redirect;
-import com.example.studentsystem.pattern.visitor.MainPageVisitor;
 import com.example.studentsystem.pattern.visitor.ObjectStructure;
 import com.example.studentsystem.pattern.visitor.Unit;
 import com.example.studentsystem.pattern.visitor.UnitVisitor;
-import com.example.studentsystem.pattern.visitor.unitClasses.AdminUnit;
-import com.example.studentsystem.pattern.visitor.unitClasses.NotRegisteredUnit;
-import com.example.studentsystem.pattern.visitor.unitClasses.StudentUnit;
-import com.example.studentsystem.pattern.visitor.unitClasses.TeacherUnit;
 import com.example.studentsystem.service.NewsletterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,17 +29,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
-import com.example.studentsystem.entity.NewsLetter;
-import com.example.studentsystem.service.NewsletterService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
 
