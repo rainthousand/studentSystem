@@ -303,7 +303,8 @@ public class RedirectController {
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
         model.addAttribute("notificationList", notificationList);
-        return "student/calendar";
+        Context_Redirect context_redirect = new Context_Redirect(new Direct());
+        return context_redirect.executeStrategy_Redirect("student/calendar");
     }
 
     @RequestMapping(value = "/studentToSubscribedNewsletter", method = {RequestMethod.GET})
