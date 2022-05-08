@@ -58,11 +58,12 @@ public class FeeController {
                 Context_payment master_payment = new Context_payment(new Master_Card());
                 Context_payment alipay_payment = new Context_payment(new Alipay());
                 Context_payment apple_payment = new Context_payment(new ApplePay());
-
+                Context_payment offline_no_method=new Context_payment(new offline_no_method());
                 if(fee.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
                 else if(fee.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
                 else if(fee.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
                 else if(fee.getFeepaymentmethod()==4) payment=apple_payment.executeStrategy_payment();
+                else if(fee.getFeepaymentmethod()==0) payment=offline_no_method.executeStrategy_payment();
             }
             else if(fee.getFeeonlineoroffline()==2){
                 str+="Offline";
@@ -74,7 +75,7 @@ public class FeeController {
                 Context_payment no_need=new Context_payment(new offline_no_method());
                 payment=no_need.executeStrategy_payment();
             }
-
+            System.out.println(payment);
 
             Feeforshow temp=new Feeforshow(fee.getFeeid(),fee.getFeeamount(),fee.getFeepayerusername(),status,str,payment);
             newfee_list.add(temp);

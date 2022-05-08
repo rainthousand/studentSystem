@@ -128,7 +128,7 @@ public class AdminCourseController {
         List<Integer> teacheridList = teacherService.findAllTeacherID();
 
         //week list
-        List<Integer> weekList = new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6, 7));
+        List<String> weekList = new ArrayList<String>(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"));
 
         //majorid list
         List<String> majoridList = new ArrayList<String>(Arrays.asList("Math", "CS"));
@@ -199,9 +199,9 @@ public class AdminCourseController {
 
         courseService.addNewCourse(newCourse);
 
-        FileLogger obj=FileLogger.getFileLogger();
-        obj.write("Admin added a new course. courseid:"+newCourse.getCourseid());
-        
+//        FileLogger obj=FileLogger.getFileLogger();
+//        obj.write("Admin added a new course. courseid:"+newCourse.getCourseid());
+//
 
         return "admin/addcourse";
     }

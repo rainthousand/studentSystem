@@ -246,7 +246,8 @@
                                                         <input type="text" class="form-control" placeholder="Course Name" name="coursename">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="tid"></label>
+<!--                                                        <label for="tid"></label>-->
+                                                        <h5>Teacher Id</h5>
                                                         <select class="form-control form-select" id="tid" name="teacherid">
                                                             <!--                                                        <option   value=""   selected>Please select</option>-->
                                                             <option
@@ -258,7 +259,8 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="number" class="form-control" placeholder="Phone Number" name="courseweek">
+                                                        <h5>Phone Number</h5>
+                                                        <input type="number" class="form-control" name="courseweek">
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-4">
@@ -269,7 +271,8 @@
                                                         <input type="text" class="form-control" placeholder="Course Type" name="coursetype">
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="cwk"></label>
+<!--                                                        <label for="cwk"></label>-->
+                                                        <h5>Course Time</h5>
                                                         <select class="form-control form-select" id="cwk" name="coursetime">
                                                             <!--                                                        <option   value=""   selected>Please select</option>-->
                                                             <option
@@ -281,6 +284,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
+                                                        <h5>Major Name</h5>
                                                         <select class="form-control form-select" id="mjid" name="majorname">
                                                             <!--                                                        <option   value=""   selected>Please select</option>-->
                                                             <option
@@ -317,7 +321,13 @@
                                                 <div class="col-xl-4">
                                                 </div>
                                                 <div class="col-xl-8">
-                                                    <input type="number" class="form-control" placeholder="Credit" name="credit">
+                                                    <div class="input-group ">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text" id="basic-addon1">Credit</span>
+                                                        </div>
+                                                        <input type="number" class="form-control" name="credit" min=1>
+                                                    </div>
+<!--                                                    <input type="number" class="form-control" placeholder="Credit" name="credit">-->
 <!--                                                    <div class="form-group">-->
 <!--                                                        <select class="form-control ">-->
 <!--                                                            <option>User role</option>-->
