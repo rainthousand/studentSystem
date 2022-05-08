@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Student System | Fee</title>
+  <title>Sorry! Payment methods do not match</title>
   <!-- Base Styling  -->
   <link rel="stylesheet" href="../css/fonts.css">
   <link rel="stylesheet" href="../css/style.css">
@@ -30,8 +30,8 @@
   <aside class="left-panel nicescroll-box">
     <nav class="navigation">
       <ul class="list-unstyled main-menu">
-        <li class="has-submenu">
-          <a href="/allStudentToIndex">
+        <li class="has-submenu active">
+          <a href="">
             <i class="fas fa-th-large"></i>
             <span class="nav-label">Dashboard</span>
           </a>
@@ -42,16 +42,16 @@
             <span class="nav-label">Course</span>
           </a>
           <ul class="list-unstyled mm-collapse">
-            <li><a href="/toSelectedCourse">Student Courses</a></li>
+            <li><a href="/toSelectedCourse">Student Selected</a></li>
             <li><a href="/toCourse">All Courses</a></li>
           </ul>
         </li>
-        <li class="has-submenu active">
+        <li class="has-submenu">
           <a href="#" class="has-arrow mm-collapsed">
             <i class="fas fa-book-medical"></i>
             <span class="nav-label">Fee</span>
           </a>
-          <ul class="list-unstyled mm-collapse">
+          <ul class="list-unstyled mm-collapse active">
             <li><a href="/toFeePage">Fee Status</a></li>
           </ul>
         </li>
@@ -61,20 +61,22 @@
             <span class="nav-label">Newsletter</span>
           </a>
           <ul class="list-unstyled mm-collapse">
-            <li><a href="/notRegisteredToSubscribedNewsletter">All Newsletter</a></li>
+            <li><a href="/studentToSubscribedNewsletter">All Newsletter</a></li>
+            <li><a href="/studentToManageSubscription">Manage Subscription</a></li>
+            <li><a href="/studentToSubscribe">To Subscribe</a></li>
           </ul>
         </li>
-<!--        <li class="has-submenu">-->
-<!--          <a href="/studentToCalendar">-->
-<!--            <i class="fas fa-calendar-alt"></i>-->
-<!--            <span class="nav-label">calendar</span>-->
-<!--          </a>-->
-<!--        </li>-->
+        <li class="has-submenu">
+          <a href="/studentToCalendar">
+            <i class="fas fa-calendar-alt"></i>
+            <span class="nav-label">calendar</span>
+          </a>
+        </li>
       </ul>
     </nav>
     <div class="sidebar-widgets">
       <div class="div1">
-        <img src="https://i0.hdslb.com/bfs/article/ed56b8ede2cd9d4dbf5f6722c3b536ba0c8b9c70.gif" alt="">
+        <img src="https://i0.hdslb.com/bfs/article/b3469b725efd104ac3af76c8e199ce027a47250a.gif" alt="">
       </div>
     </div>
   </aside>
@@ -133,7 +135,7 @@
                     </li>
                   </ul>
                 </div>
-                <a class="all-notification btn btn-primary" href="/notRegisteredToSubscribedNewsletter">
+                <a class="all-notification btn btn-primary" href="/studentToSubscribedNewsletter">
                   See all newsletters
                 </a>
               </div>
@@ -178,82 +180,21 @@
   <!-- start section content -->
   <div class="content-body">
     <div class="warper container-fluid">
-      <div class="all_appointments main_container">
-        <div class="row page-titles mx-0">
-          <div class="col-sm-6 p-md-0">
-            <div class="welcome-text">
-              <h4 class="text-primary">Billing list</h4>
+      <div class="login-tabib auth-404">
+        <div>
+          <div class="login-main">
+            <div class="text-center mb-4">
+              <h4 class="mb-0"> Sorry! </h4>
             </div>
-          </div>
-          <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="/allStudentToIndex">Home</a></li>
-              <li class="breadcrumb-item active"><a href="javascript:;">Billing list</a>
-              </li>
-            </ol>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table id="example3" class="display nowrap">
-                    <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Name</th>
-                      <th>Amount</th>
-                      <th>Status</th>
-                      <th>Online or Offline</th>
-                      <th>Payment Method</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <td th:text="${student_fee.getFeeid()}"></td>
-                    <td th:text="${student_fee.getFeepayerusername()}"></td>
-                    <td th:text="${student_fee.getFeeamount()}"></td>
-                    <!--                    <td th:text="${student_fee.feestatus}"></td>-->
-                    <td>
-                      <span th:if="${student_fee.getFeestatus()} eq 'Registered'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-primary"></span>
-                      <span th:if="${student_fee.getFeestatus()} eq 'Pending'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-dark"></span>
-                      <span th:if="${student_fee.getFeestatus()} eq 'Not Registered'" th:text="${student_fee.feestatus}" class="badge badge-pill badge-danger"></span>
-                    </td>
-                    <td>
-                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Online'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-success" ></span>
-                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Offline'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-secondary" ></span>
-                      <span th:if="${student_fee.getFeeonlineoroffline()} eq 'Not Select'" th:text="${student_fee.feeonlineoroffline}" class="badge badge-secondary" ></span>
-                    </td>
-                    <td th:text="${student_fee.getFeepaymentmethod()}" class="badge badge-dark"></td>
-                    <td>
-                      <a data-bs-toggle='modal' data-bs-target='#modal-edit' class='mr-4'>
-                        <span class='fas fa-pencil-alt'></span>
-                      </a>
-                    </td>
-                    </tbody>
-                  </table>
-                </div>
+            <div class="text-center">
+              <div class="page-content">
+                <h2 class="mt-0 mb-3">Not Match!</h2>
+                <h5 class="text-muted mb-5">Payment methods do not match</h5>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  ...
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
+              <a class="btn btn-primary waves-effect waves-light" href="javascript:history.back(-1)">
+                Back
+                <i class="fas fa-redo ms-1"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -285,21 +226,15 @@
           <div class="container-fluid">
             <div class="row">
               <div class="basic-form">
-                <form action="/student/updateByUsername" method="post">
+                <form action="/student/Exception_payment" method="post">
                   <div class="row">
                     <div class="col-xl-4">
-<!--                      <div class="form-group row">-->
-<!--                        <div class="col-lg-12">-->
-<!--                          <input type="text" class="form-control" placeholder="First Name">-->
-<!--                        </div>-->
-<!--                      </div>-->
                       <div class="form-group row">
-<!--                        <label for="feeAmount" class="col-sm-2 control-label">feeAmount</label>-->
                         <div class="col-lg-12">
                           <h5>Amount</h5>
                           <div class="input-group ">
                             <div class="input-group-prepend">
-                              <span class="input-group-text" id="basic-addon1">$</span>
+                              <span class="input-group-text" id="basic-addon1">£</span>
                             </div>
                             <input type="number" class="form-control" name="feeAmount" id="feeAmount" placeholder="Amount" oninput="if(value>100000)value=100000">
                           </div>
@@ -309,11 +244,10 @@
                         <div class="col-lg-12">
                           <h5>Payment Method (Online payments available)</h5>
                           <select class="form-control form-select" name="feePaymentMethod" id="feePaymentMethod">
-                            <option>No need</option>
-                            <option>Visa Card</option>
-                            <option>Master Card</option>
+                            <option>visa card</option>
+                            <option>master card</option>
                             <option>Alipay</option>
-                            <option>ApplePay</option>
+                            <option>Applepay</option>
                           </select>
                         </div>
                       </div>
@@ -329,8 +263,8 @@
                         </div>
                       </div>
                     </div>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary" value="Save changes">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>>
+                    <input type="submit" class="btn btn-primary">Save changes</input>
                   </div>
                 </form>
               </div>

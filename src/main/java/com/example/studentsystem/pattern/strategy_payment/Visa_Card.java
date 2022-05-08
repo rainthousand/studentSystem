@@ -5,6 +5,6 @@ public class Visa_Card implements StrategyPayment{
     public String paymentMethod(){
 //        Integer strvisa = 0;
 //        strvisa =1;
-        return "Visa card";
+        return "Visa Card";
     }
 }

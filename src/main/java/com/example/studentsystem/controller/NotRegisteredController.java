@@ -94,12 +94,14 @@ public class NotRegisteredController {
         Context_payment master_payment = new Context_payment(new Master_Card());
         Context_payment alipay_payment = new Context_payment(new Alipay());
         Context_payment apple_payment = new Context_payment(new ApplePay());
+        Context_payment offline_no_method = new Context_payment(new offline_no_method());
 
         String payment="";
         if(studentfee_temp.getFeepaymentmethod()==1) payment=visa_payment.executeStrategy_payment();
         else if(studentfee_temp.getFeepaymentmethod()==2) payment=master_payment.executeStrategy_payment();
         else if(studentfee_temp.getFeepaymentmethod()==3) payment=alipay_payment.executeStrategy_payment();
-        else payment=apple_payment.executeStrategy_payment();
+        else if(studentfee_temp.getFeepaymentmethod()==4) payment=apple_payment.executeStrategy_payment();
+        else if(studentfee_temp.getFeepaymentmethod()==0) payment=offline_no_method.executeStrategy_payment();
 
         List<Feeforshow> newfee_list = new ArrayList<Feeforshow>();
         Feeforshow studentfee=new Feeforshow(studentfee_temp.getFeeid(),studentfee_temp.getFeeamount(),studentfee_temp.getFeepayerusername(),status,str,payment);

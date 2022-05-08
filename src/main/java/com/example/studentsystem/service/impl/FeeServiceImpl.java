@@ -45,10 +45,21 @@ public class FeeServiceImpl implements FeeService {
         Fee fee = new Fee();
 //        TODO:如果有此处的amount为0，则需要更改注册状态
         fee.setFeeamount(feeAmount);
-        if(feePaymentMethod=="Visa card") fee.setFeepaymentmethod(1);
-        else if(feePaymentMethod=="Master card") fee.setFeepaymentmethod(2);
-        else if(feePaymentMethod=="Alipay") fee.setFeepaymentmethod(3);
-        else fee.setFeepaymentmethod(4);
+//        System.out.println("feePaymentInService");
+//        System.out.println(feePaymentMethod);
+        if(Objects.equals(feePaymentMethod, "Visa Card")) fee.setFeepaymentmethod(1);
+        else if(Objects.equals(feePaymentMethod, "Master Card")) fee.setFeepaymentmethod(2);
+        else if(Objects.equals(feePaymentMethod, "Alipay")) {
+//            System.out.println("InAlipay");
+            fee.setFeepaymentmethod(3);
+        }
+        else if(Objects.equals(feePaymentMethod,"ApplePay")){
+//            System.out.println("InApplepay");
+            fee.setFeepaymentmethod(4);
+        }
+        else{
+            fee.setFeepaymentmethod(0);
+        }
         fee.setFeeonlineoroffline(feeOnlineOrOffline);
 //        if(feeOnlineOrOffline=="Online"){
 //            fee.setFeeonlineoroffline(1);
@@ -87,10 +98,11 @@ public class FeeServiceImpl implements FeeService {
         else{
             fee.setFeeonlineoroffline(2);
         }
-        if(feepaymentmethod=="Visa card") fee.setFeepaymentmethod(1);
-        else if(feepaymentmethod=="Master card") fee.setFeepaymentmethod(2);
+        if(feepaymentmethod=="Visa Card") fee.setFeepaymentmethod(1);
+        else if(feepaymentmethod=="Master Card") fee.setFeepaymentmethod(2);
         else if(feepaymentmethod=="Alipay") fee.setFeepaymentmethod(3);
-        else fee.setFeepaymentmethod(4);
+        else if(feepaymentmethod=="ApplePay") fee.setFeepaymentmethod(4);
+        else fee.setFeepaymentmethod(0);
 
         FeeExample feeExample = new FeeExample();
         FeeExample.Criteria criteria = feeExample.createCriteria();

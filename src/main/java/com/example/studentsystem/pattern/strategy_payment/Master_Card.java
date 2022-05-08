@@ -5,6 +5,6 @@ public class Master_Card implements StrategyPayment{
     public String paymentMethod(){
 //        Integer strmaster = 0;
 //        strmaster =2;
-        return "Master card";
+        return "Master Card";
     }
 }
