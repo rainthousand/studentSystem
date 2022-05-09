@@ -111,11 +111,9 @@ public class NewsletterServiceImpl implements NewsletterService {
     @Override
     public Integer deleteAnewsLetter(Integer newsid) {
         NewsLetterExample newsLetterExample=new NewsLetterExample();
-        SubscribedNewsletterExample subscribedNewsletterExample = new SubscribedNewsletterExample();
         NewsLetterExample.Criteria criteria = newsLetterExample.createCriteria();
         criteria.andNewsidEqualTo(newsid);
-
-        return subscribedNewsletterMapper.deleteByExample(subscribedNewsletterExample);
+        return newsLetterMapper.deleteByExample(newsLetterExample);
     }
     @Override
     public Integer SubscribeNewsLetterSubject(Integer studentid, String subject) {
