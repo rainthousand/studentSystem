@@ -16,4 +16,6 @@ public interface ScheduleService {
     Integer deleteKey(Integer studentid, Integer activityid);
 
     void updateByName(String name, SchoolActivity newSchoolActivity);
+
+    boolean hasActivity(Integer studentid);
 }

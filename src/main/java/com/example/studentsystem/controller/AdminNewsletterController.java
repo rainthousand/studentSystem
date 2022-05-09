@@ -46,10 +46,10 @@ public class AdminNewsletterController {
 
         return "admin/adminallnewsletter";
     }
-    @RequestMapping(value = "/addnewsletter")
-    public String adminAddNewsletter() throws Exception {
-        return "admin/addnewsletter";
-    }
+//    @RequestMapping(value = "/addnewsletter")
+//    public String adminAddNewsletter() throws Exception {
+//        return "admin/addnewsletter";
+//    }
 //    @RequestMapping(value = "/add_newsletter")
 //    public String adminAddNewsletter() throws Exception {
 //        return "admin/add_newsletter";
@@ -94,7 +94,7 @@ public class AdminNewsletterController {
         obj.write("Admin published a newsletter. newsletterid:"+newsid);
         
 
-        return "admin/addnewsletter";
+        return "admin/adminToNewsletterUpdate";
 //        return "admin/add_newsletter";
     }
     @RequestMapping("/deleteNewsletter")

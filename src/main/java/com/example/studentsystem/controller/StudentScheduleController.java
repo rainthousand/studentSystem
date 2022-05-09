@@ -1,5 +1,6 @@
 package com.example.studentsystem.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.studentsystem.entity.*;
 import com.example.studentsystem.pattern.composite_n_factorymethod.BasicEvent;
@@ -9,6 +10,7 @@ import com.example.studentsystem.pattern.composite_n_factorymethod.SchoolActivit
 import com.example.studentsystem.service.CourseService;
 import com.example.studentsystem.service.NewsletterService;
 import com.example.studentsystem.service.ScheduleService;
+import com.example.studentsystem.tools.TimeUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +21,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -42,28 +45,34 @@ public class StudentScheduleController {
                 .getRequestAttributes())).getRequest().getSession();
         Integer currUsername = Integer.valueOf((String) session.getAttribute("username"));
         schedule.clear();
-        //查询所有已选的课程
-        List<Course> selectedCourseList = courseService.findAllCourseByStudentid(currUsername);
+        if(courseService.hasCourse(currUsername)){
+            //查询所有已选的课程
+            List<Course> selectedCourseList = courseService.findAllCourseByStudentid(currUsername);
+
+            for (Course course : selectedCourseList) {
+                BasicEvent courseEvent = courseEventFactory.newEvent(course.getCoursename(), "Course-" + course.getCourseid(),
+                        new Date(course.getCoursestart().getTime()+3600*1000),
+                        new Date(course.getCourseend().getTime()+3600*1000), false);
+                schedule.add(courseEvent);
+            }
+        }
+
+        if(scheduleService.hasActivity(currUsername)){
+            //查询所有已参加的活动
+            List<SchoolActivity> schoolActivityList = scheduleService.findAllActivityByStudentID(currUsername);
+            //        System.out.println("tttttttttttttttttttttt");
+            for (SchoolActivity activity : schoolActivityList) {
+                BasicEvent schoolActivityEvent = schoolActivityFactory.newEvent(activity.getActivityname(), activity.getActivityname(),
+                        new Date(activity.getActivitystart().getTime()+3600*1000),
+                        new Date(activity.getActivityend().getTime()+3600*1000), false);
+//            System.out.println(activity.getActivityname());
+                schedule.add(schoolActivityEvent);
+            }
+        }
+
         //获取日历类
         Calendar now = Calendar.getInstance();
-        //查询所有已参加的活动
-        List<SchoolActivity> schoolActivityList = scheduleService.findAllActivityByStudentID(currUsername);
-
-        for (Course course : selectedCourseList) {
-            BasicEvent courseEvent = courseEventFactory.newEvent(course.getCoursename(), "Course-" + course.getCourseid(),
-                    new Date(course.getCoursestart().getTime()+3600*1000),
-                    new Date(course.getCourseend().getTime()+3600*1000), false);
-            schedule.add(courseEvent);
-        }
-
-//        System.out.println("tttttttttttttttttttttt");
-        for (SchoolActivity activity : schoolActivityList) {
-            BasicEvent schoolActivityEvent = schoolActivityFactory.newEvent(activity.getActivityname(), activity.getActivityname(),
-                    new Date(activity.getActivitystart().getTime()+3600*1000),
-                    new Date(activity.getActivityend().getTime()+3600*1000), false);
-//            System.out.println(activity.getActivityname());
-            schedule.add(schoolActivityEvent);
-        }
+        TimeUtil timeUtil = new TimeUtil();
 
         List<NewsLetter> notificationList =
                 newsletterService.findAllNewsLetterByStudentid(Integer.valueOf((String) session.getAttribute("username")));
@@ -76,6 +85,13 @@ public class StudentScheduleController {
             newevent.transfer(event);
             demostrationList.add(newevent);
         }
+
+        if(demostrationList.size()==0){
+            demostrationList.add(timeUtil.OriginalEvent());
+        }
+
+//        System.out.println("vvvvvvvvvvvvvvvvvvvv");
+//        System.out.println(JSON.toJSONString(demostrationList));
 
         return demostrationList;
     }
@@ -156,9 +172,9 @@ public class StudentScheduleController {
         BasicEvent schoolActivity = schoolActivityFactory.newEvent(object.getString("Title"), object.getString("Title") + "-" + String.valueOf(newID),
                 object.getDate("Start"), object.getDate("End"), object.getBoolean("AllDay"));
         schoolActivity.setColor(object.getString("backgroundColor"));
-        System.out.println(schedule.get(0));
+//        System.out.println(schedule.get(0));
         this.schedule.add(schoolActivity);
-        System.out.println(schedule.get(0));
+//        System.out.println(schedule.get(0));
         scheduleService.add(schoolActivity.toSchoolActivity());
         scheduleService.addNewKey(Integer.valueOf((String) session.getAttribute("username")), newID);
         String idToSet = object.getString("Title") + "-" + String.valueOf(newID);

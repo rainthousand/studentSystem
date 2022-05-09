@@ -107,4 +107,21 @@ public class CourseServiceImpl implements CourseService {
     public Integer deleteACourse(Integer courseid) {
         return courseMapper.deleteByPrimaryKey(courseid);
     }
+
+    @Override
+    public boolean hasCourse(Integer studentid) {
+        SelectedCourseExample selectedCourseExample = new SelectedCourseExample();
+        SelectedCourseExample.Criteria criteria = selectedCourseExample.createCriteria();
+        criteria.andStudentidEqualTo(studentid);
+
+        int count = selectedCourseMapper.countByExample(selectedCourseExample);
+        boolean has = false;
+        if(count == 0){
+            has = false;
+        }else if(count>0){
+            has = true;
+        }
+
+        return has;
+    }
 }

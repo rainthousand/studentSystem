@@ -80,4 +80,21 @@ public class ScheduleServiceImpl implements ScheduleService {
         criteria.andActivitynameEqualTo(name);
         schoolActivityMapper.updateByExampleSelective(newSchoolActivity,schoolActivityExample);
     }
+
+    @Override
+    public boolean hasActivity(Integer studentid) {
+        AttendActivityExample example = new AttendActivityExample();
+        AttendActivityExample.Criteria criteria = example.createCriteria();
+        criteria.andStudentidEqualTo(studentid);
+
+        int count = attendActivityMapper.countByExample(example);
+        boolean has = false;
+        if(count == 0){
+            has = false;
+        }else if(count>0){
+            has = true;
+        }
+
+        return has;
+    }
 }

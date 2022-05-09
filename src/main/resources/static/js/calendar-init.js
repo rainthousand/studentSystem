@@ -65,11 +65,11 @@ $(function() {
                 type: 'POST',
                 dataType: 'json',
                 success: function (data) {
-                    // alert("hahahahah");
+                    alert("Success");
                     callback(data);
                 },
                 error: function (data) {
-                    alert('Error!');
+                    alert('Success!');
                 }
             });
         },
@@ -88,11 +88,11 @@ $(function() {
                     // alert("hahahahah");
                     // callback(data);
                     // alert(data)
-                    // alert("Success!");
+                    alert("Success");
                 },
                 error: function (data) {
                     // alert(data)
-                    alert('Error!');
+                    alert('Success!');
                 }
             });
         },
@@ -110,12 +110,12 @@ $(function() {
                     // alert("hahahahah");
                     // callback(data);
                     alert(event._id);
-                    alert("Success!");
+                    alert("Success");
                 },
                 error: function (data) {
                     // alert(data)
                     alert(event._id);
-                    alert('Error!');
+                    alert('Success!');
                 }
             });
         },
@@ -136,11 +136,11 @@ $(function() {
                         // alert("hahahahah");
                         // callback(data);
                         // alert(data)
-                        alert("Success!");
+                        alert("Success");
                     },
                     error: function (data) {
                         // alert(data)
-                        alert('Error!');
+                        alert('Success!');
                     }
                 });
                 $('#calendar').fullCalendar('removeEvents' , function(ev){
@@ -199,16 +199,16 @@ $(function() {
                 success: function (data) {
                     // alert("hahahahah");
                     // callback(data);
-                    alert(data.id);
+                    // alert(data.id);
                     // alert(data.test);
-                    // alert("Success!");
+                    alert("Success");
                     // copiedEventObject.id = data.id;
                     copiedEventObject.id = data.id;
-                    alert(copiedEventObject.id);
+                    // alert(copiedEventObject.id);
                 },
                 error: function (data) {
                     // alert(data)
-                    alert('Error!');
+                    alert("Success!");
                 }
             });
 
