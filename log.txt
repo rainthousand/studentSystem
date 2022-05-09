@@ -1,0 +1,951 @@
+time:2022-04-07 02-09-21
+content:
+registered student login
+time:2022-04-07 02-10-29
+content:
+registered student login
+time:2022-04-07 02-18-00
+content:
+registered student login
+time:2022-04-07 02-20-20
+content:
+not registered student login
+time:2022-04-07 02-22-59
+content:
+not registered student login
+time:2022-04-07 02-28-57
+content:
+registered student login
+time:2022-04-07 02-34-34
+content:
+registered student login
+time:2022-04-07 02-40-50
+content:
+registered student login
+time:2022-04-07 02-44-15
+content:
+not registered student login
+time:2022-04-07 02-45-11
+content:
+not registered student login
+time:2022-04-07 02-51-41
+content:
+not registered student login
+time:2022-04-07 02-54-55
+content:
+not registered student login
+time:2022-04-07 02-56-08
+content:
+not registered student login
+time:2022-04-07 03-07-33
+content:
+not registered student login
+time:2022-04-07 03-28-11
+content:
+not registered student login
+time:2022-04-07 03-37-54
+content:
+admin login
+time:2022-04-07 03-40-05
+content:
+admin login
+time:2022-04-07 03-52-30
+content:
+not registered student login
+time:2022-04-07 03-59-03
+content:
+not registered student login
+time:2022-04-08 00-01-52
+content:
+404 Error
+time:2022-04-08 00-13-50
+content:
+registered student login
+time:2022-04-08 00-16-01
+content:
+registered student login
+time:2022-04-08 00-24-44
+content:
+registered student login
+time:2022-04-08 00-25-19
+content:
+registered student login
+time:2022-04-08 00-27-16
+content:
+registered student login
+time:2022-04-07 11-19-40
+content:
+404 Error
+time:2022-04-07 11-41-14
+content:
+not registered student login
+time:2022-04-07 11-42-45
+content:
+not registered student login
+time:2022-04-07 11-48-26
+content:
+registered student login
+time:2022-04-08 00-02-56
+content:
+registered student login
+time:2022-04-08 00-47-09
+content:
+admin login
+time:2022-04-08 00-47-13
+time:2022-04-08 00-47-13
+content:
+Admin get all courses
+content:
+Admin get all courses
+time:2022-04-08 00-47-17
+content:
+Admin get all courses
+time:2022-04-08 00-48-13
+content:
+Admin get all courses
+time:2022-04-08 00-48-17
+content:
+Admin get all courses
+time:2022-04-08 00-48-20
+content:
+Admin get all courses
+time:2022-04-08 00-48-20
+content:
+Admin get all courses
+time:2022-04-08 00-48-25
+content:
+registered student login
+time:2022-04-08 00-48-26
+content:
+500 Error
+time:2022-04-08 00-48-31
+content:
+registered student login
+time:2022-04-08 00-48-32
+content:
+500 Error
+time:2022-04-08 00-48-39
+content:
+not registered student login
+time:2022-04-08 00-48-43
+content:
+Not Registered student get all courses but can't modify. studentid:10003
+time:2022-04-08 00-48-43
+content:
+Not Registered student get all courses but can't modify. studentid:10003
+time:2022-04-08 00-54-26
+content:
+admin login
+time:2022-04-08 00-54-28
+content:
+Admin get all fee information.
+time:2022-04-08 00-54-28
+content:
+Admin get all fee information.
+time:2022-04-08 00-54-35
+content:
+not registered student login
+time:2022-04-08 00-54-38
+time:2022-04-08 00-54-38
+content:
+Not Registered student get self fee information. studentid:10003;feeid:3
+content:
+Not Registered student get self fee information. studentid:10003;feeid:3
+time:2022-04-08 00-58-35
+content:
+admin login
+time:2022-04-08 00-58-43
+content:
+Admin get all selected courses
+time:2022-04-08 00-58-43
+content:
+Admin get all selected courses
+time:2022-04-08 00-58-55
+content:
+not registered student login
+time:2022-04-08 00-58-59
+time:2022-04-08 00-58-59
+content:
+Not Registered student get selected courses but can't modify. studentid:10003
+content:
+Not Registered student get selected courses but can't modify. studentid:10003
+time:2022-04-08 01-11-58
+content:
+admin login
+time:2022-04-08 01-12-00
+content:
+Admin get all fee information.
+time:2022-04-08 01-12-00
+content:
+Admin get all fee information.
+time:2022-04-08 01-12-09
+time:2022-04-08 01-12-09
+content:
+Admin get all selected courses
+content:
+Admin get all selected courses
+time:2022-04-08 01-13-44
+content:
+admin login
+time:2022-04-08 01-15-19
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-19
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-19
+content:
+Admin get all courses
+time:2022-04-08 01-15-19
+content:
+Admin get all courses
+time:2022-04-08 01-15-22
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-22
+content:
+Admin get all fee information.
+time:2022-04-08 01-15-23
+content:
+Admin get all fee information.
+time:2022-04-08 01-15-24
+content:
+Admin get all selected courses
+time:2022-04-08 01-15-51
+content:
+Admin get all fee information.
+time:2022-04-08 01-15-51
+content:
+Admin get all fee information.
+time:2022-04-08 01-41-25
+content:
+admin login
+time:2022-04-08 01-45-50
+content:
+admin login
+time:2022-04-08 01-47-52
+content:
+admin login
+time:2022-04-08 01-47-55
+content:
+Admin get all fee information.
+time:2022-04-08 01-47-55
+content:
+Admin get all fee information.
+time:2022-04-08 01-48-11
+content:
+Admin get all fee information.
+time:2022-04-08 01-49-42
+content:
+admin login
+time:2022-04-08 01-50-32
+content:
+admin login
+time:2022-04-08 01-51-13
+content:
+admin login
+time:2022-04-08 01-51-13
+content:
+admin login
+time:2022-04-08 01-41-25
+content:
+admin login
+time:2022-04-08 01-45-50
+content:
+admin login
+time:2022-04-08 01-47-52
+content:
+admin login
+time:2022-04-08 01-47-55
+content:
+Admin get all fee information.
+time:2022-04-08 01-47-55
+content:
+Admin get all fee information.
+time:2022-04-08 01-48-11
+content:
+Admin get all fee information.
+time:2022-04-08 01-49-42
+content:
+admin login
+time:2022-04-08 01-50-32
+content:
+admin login
+time:2022-04-08 01-51-13
+content:
+admin login
+time:2022-04-08 01-51-13
+content:
+admin login
+time:2022-04-08 01-52-53
+content:
+admin login
+time:2022-04-08 01-54-53
+content:
+admin login
+time:2022-04-08 01-57-12
+content:
+admin login
+time:2022-04-08 01-58-14
+content:
+admin login
+time:2022-04-08 01-58-25
+content:
+Admin get all selected courses
+time:2022-04-08 01-58-25
+content:
+Admin get all selected courses
+time:2022-04-08 01-59-45
+content:
+admin login
+time:2022-04-08 02-00-29
+content:
+admin login
+time:2022-04-08 02-01-08
+content:
+admin login
+time:2022-04-08 02-06-20
+content:
+admin login
+time:2022-04-08 02-07-05
+content:
+admin login
+time:2022-04-08 02-11-34
+content:
+admin login
+time:2022-04-08 02-12-55
+content:
+admin login
+time:2022-04-08 02-13-44
+content:
+admin login
+time:2022-04-08 02-17-10
+content:
+admin login
+time:2022-04-08 02-19-03
+content:
+admin login
+time:2022-04-08 02-19-41
+content:
+admin login
+time:2022-04-08 02-19-46
+content:
+Admin get all fee information.
+time:2022-04-08 02-19-46
+content:
+Admin get all fee information.
+time:2022-04-08 02-21-48
+content:
+admin login
+time:2022-04-08 02-22-44
+content:
+admin login
+time:2022-04-08 02-23-52
+content:
+admin login
+time:2022-04-08 02-23-56
+content:
+Admin get all fee information.
+time:2022-04-08 02-23-56
+content:
+Admin get all fee information.
+time:2022-04-08 02-24-03
+content:
+Admin get all selected courses
+time:2022-04-08 02-24-03
+content:
+Admin get all selected courses
+time:2022-04-08 02-24-05
+content:
+Admin get all selected courses
+time:2022-04-08 02-24-09
+content:
+Admin get all selected courses
+time:2022-04-08 02-24-19
+content:
+Admin published a newsletter. newsletterid:32164
+time:2022-04-08 02-26-37
+content:
+admin login
+time:2022-04-08 02-26-41
+content:
+Admin get all fee information.
+time:2022-04-08 02-26-41
+content:
+Admin get all fee information.
+time:2022-04-08 02-26-49
+content:
+Admin get all selected courses
+time:2022-04-08 02-26-52
+content:
+Admin get all selected courses
+time:2022-04-08 09-15-59
+content:
+registered student login
+time:2022-04-08 09-16-12
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-16-12
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-16-16
+content:
+student all self subscription information. studentid:10002
+time:2022-04-08 09-16-16
+content:
+student all self subscription information. studentid:10002
+time:2022-04-08 09-16-18
+content:
+student get subscription information. studentid:10002
+time:2022-04-08 09-16-19
+content:
+student get subscription information. studentid:10002
+time:2022-04-08 09-27-00
+content:
+not registered student login
+time:2022-04-08 09-27-07
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-27-07
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-27-11
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-27-11
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-27-17
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-27-17
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-27-36
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-27-36
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-27-48
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-27-49
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-29-11
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-29-11
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-29-16
+content:
+Not Registered student get selected courses but can't modify. studentid:10002
+time:2022-04-08 09-29-16
+content:
+Not Registered student get selected courses but can't modify. studentid:10002
+time:2022-04-08 09-29-19
+time:2022-04-08 09-29-19
+content:
+Not Registered student get all courses but can't modify. studentid:10002
+content:
+Not Registered student get all courses but can't modify. studentid:10002
+time:2022-04-08 09-29-23
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-29-24
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-29-26
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-29-26
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-29-44
+content:
+admin login
+time:2022-04-08 09-29-51
+content:
+Admin get all fee information.
+time:2022-04-08 09-29-51
+content:
+Admin get all fee information.
+time:2022-04-08 09-30-27
+content:
+not registered student login
+time:2022-04-08 09-30-31
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-30-31
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-35-57
+content:
+not registered student login
+time:2022-04-08 09-36-13
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-36-13
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-36-52
+time:2022-04-08 09-36-52
+content:
+student get all subscribed information. studentid:10002
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-38-54
+content:
+not registered student login
+time:2022-04-08 09-38-59
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-39-00
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-41-25
+content:
+not registered student login
+time:2022-04-08 09-41-29
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-41-29
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-42-27
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-42-27
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-42-35
+content:
+admin login
+time:2022-04-08 09-42-39
+content:
+Admin get all fee information.
+time:2022-04-08 09-42-40
+content:
+Admin get all fee information.
+time:2022-04-08 09-42-43
+content:
+Admin confirmed a Pending message. feeid:2
+time:2022-04-08 09-42-44
+content:
+Admin confirmed a Pending message. feeid:2
+time:2022-04-08 09-42-45
+content:
+Admin get all fee information.
+time:2022-04-08 09-42-45
+content:
+Admin get all fee information.
+time:2022-04-08 09-42-53
+content:
+registered student login
+time:2022-04-08 09-42-58
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-42-59
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-43-00
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-43-00
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-45-22
+content:
+not registered student login
+time:2022-04-08 09-45-26
+time:2022-04-08 09-45-26
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-45-30
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-45-30
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-45-56
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-45-56
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-45-59
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-45-59
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-46-01
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-46-01
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-46-05
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-46-05
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-46-10
+time:2022-04-08 09-46-10
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-46-20
+content:
+not registered student login
+time:2022-04-08 09-46-24
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-46-24
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-47-09
+content:
+not registered student login
+time:2022-04-08 09-47-14
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-47-14
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-47-17
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-47-17
+content:
+Not Registered student get Reminder Newsletter. studentid:10002
+time:2022-04-08 09-47-21
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-47-21
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-47-37
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-47-37
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-52-00
+content:
+not registered student login
+time:2022-04-08 09-52-05
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-52-05
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-58-33
+content:
+not registered student login
+time:2022-04-08 09-58-39
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-58-39
+content:
+Not Registered student get self fee information. studentid:10002;feeid:2
+time:2022-04-08 09-58-54
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-58-54
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-59-05
+content:
+admin login
+time:2022-04-08 09-59-11
+content:
+Admin get all fee information.
+time:2022-04-08 09-59-11
+content:
+Admin get all fee information.
+time:2022-04-08 09-59-15
+content:
+500 Error
+time:2022-04-08 09-59-15
+content:
+500 Error
+time:2022-04-08 10-01-46
+content:
+admin login
+time:2022-04-08 10-01-49
+content:
+Admin get all fee information.
+time:2022-04-08 10-01-49
+content:
+Admin get all fee information.
+time:2022-04-08 10-01-53
+content:
+Admin confirmed a Pending message. feeid:2
+time:2022-04-08 10-01-53
+content:
+Admin confirmed a Pending message. feeid:2
+time:2022-04-08 10-01-53
+content:
+Admin get all fee information.
+time:2022-04-08 10-01-53
+content:
+Admin get all fee information.
+time:2022-04-08 10-02-09
+content:
+registered student login
+time:2022-04-08 10-02-18
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-22-36
+content:
+500 Error
+time:2022-04-08 09-35-17
+content:
+registered student login
+time:2022-04-08 09-39-36
+content:
+admin login
+time:2022-04-08 09-40-55
+content:
+Admin get all courses
+time:2022-04-08 10-15-12
+content:
+admin login
+time:2022-04-08 10-20-10
+content:
+admin login
+time:2022-04-08 10-20-18
+content:
+Admin get all fee information.
+time:2022-04-08 10-20-27
+content:
+Admin get all selected courses
+time:2022-04-08 10-20-31
+content:
+Admin get all courses
+time:2022-04-08 10-28-59
+content:
+admin login
+time:2022-04-08 10-31-26
+content:
+Admin get all selected courses
+time:2022-04-08 10-31-29
+content:
+Admin get all selected courses
+time:2022-04-08 10-31-45
+content:
+Admin get all courses
+time:2022-04-08 10-46-55
+content:
+Admin get all courses
+time:2022-04-08 10-58-34
+content:
+admin login
+time:2022-04-08 11-03-22
+content:
+admin login
+time:2022-04-08 11-03-33
+content:
+Admin get all fee information.
+time:2022-04-08 11-03-44
+content:
+Admin get all fee information.
+time:2022-04-08 11-06-17
+content:
+Admin get all selected courses
+time:2022-04-08 11-11-25
+content:
+Admin get all fee information.
+time:2022-04-08 11-11-30
+content:
+Admin get all courses
+time:2022-04-08 11-11-31
+content:
+Admin get all selected courses
+time:2022-04-08 10-02-18
+content:
+student get all subscribed information. studentid:10002
+time:2022-04-08 09-22-36
+content:
+500 Error
+time:2022-04-08 09-35-17
+content:
+registered student login
+time:2022-04-08 09-39-36
+content:
+admin login
+time:2022-04-08 09-40-55
+content:
+Admin get all courses
+time:2022-04-08 10-15-12
+content:
+admin login
+time:2022-04-08 10-20-10
+content:
+admin login
+time:2022-04-08 10-20-18
+content:
+Admin get all fee information.
+time:2022-04-08 10-20-27
+content:
+Admin get all selected courses
+time:2022-04-08 10-20-31
+content:
+Admin get all courses
+time:2022-04-08 10-28-59
+content:
+admin login
+time:2022-04-08 10-31-26
+content:
+Admin get all selected courses
+time:2022-04-08 10-31-29
+content:
+Admin get all selected courses
+time:2022-04-08 10-31-45
+content:
+Admin get all courses
+time:2022-04-08 10-46-55
+content:
+Admin get all courses
+time:2022-04-08 10-58-34
+content:
+admin login
+time:2022-04-08 11-03-22
+content:
+admin login
+time:2022-04-08 11-03-33
+content:
+Admin get all fee information.
+time:2022-04-08 11-03-44
+content:
+Admin get all fee information.
+time:2022-04-08 11-06-17
+content:
+Admin get all selected courses
+time:2022-04-08 11-11-25
+content:
+Admin get all fee information.
+time:2022-04-08 11-11-30
+content:
+Admin get all courses
+time:2022-04-08 11-11-31
+content:
+Admin get all selected courses
+time:2022-04-08 11-15-34
+content:
+admin login
+time:2022-04-08 11-15-52
+content:
+Admin get all newsletters
+time:2022-04-08 11-16-33
+content:
+Admin deleted a newsletter. newsid: 1
+time:2022-04-08 11-16-34
+content:
+Admin get all newsletters
+time:2022-04-08 11-16-57
+content:
+Admin get all newsletters
+time:2022-04-08 11-17-00
+content:
+Admin get all newsletters
+time:2022-04-08 11-17-02
+content:
+Admin get all newsletters
+time:2022-04-08 11-17-03
+content:
+Admin get all newsletters
+time:2022-04-08 11-17-05
+content:
+Admin get all newsletters
+time:2022-04-09 10-35-49
+content:
+not registered student login
+time:2022-04-09 10-35-56
+content:
+Not Registered student get self fee information. studentid:10004;feeid:4
+time:2022-04-09 10-46-09
+content:
+registered student login
+time:2022-04-09 10-46-24
+content:
+not registered student login
+time:2022-04-09 10-46-29
+content:
+Not Registered student get self fee information. studentid:10005;feeid:5
+time:2022-04-09 11-17-54
+content:
+registered student login
+time:2022-04-09 11-24-03
+content:
+registered student login
+time:2022-04-09 11-24-34
+content:
+student get all subscribed information. studentid:10001
+time:2022-04-09 11-26-12
+content:
+student get all subscribed information. studentid:10001
+time:2022-04-09 00-52-56
+content:
+admin login
+time:2022-04-09 00-53-05
+content:
+Admin get all newsletters
+time:2022-04-09 00-53-16
+content:
+registered student login
+time:2022-04-09 00-53-20
+content:
+student get subscription information. studentid:10001
+time:2022-04-09 00-56-21
+content:
+admin login
+time:2022-04-09 00-56-45
+content:
+Admin published a newsletter. newsletterid:45868
+time:2022-04-09 00-56-48
+content:
+Admin get all newsletters
+time:2022-04-09 00-57-10
+content:
+Admin deleted a newsletter. newsid: 45868
+time:2022-04-09 00-57-10
+content:
+Admin get all newsletters
+time:2022-04-09 00-57-25
+content:
+Admin get all newsletters
+time:2022-04-09 00-59-48
+content:
+registered student login
+time:2022-04-09 00-59-56
+content:
+student get subscription information. studentid:10001
+time:2022-04-09 01-00-14
+content:
+student all self subscription information. studentid:10001
+time:2022-04-09 01-00-15
+content:
+student all self subscription information. studentid:10001
+time:2022-04-09 01-01-04
+content:
+admin login
+time:2022-04-09 01-01-22
+content:
+Admin published a newsletter. newsletterid:34941
+time:2022-04-09 01-01-26
+content:
+500 Error
+time:2022-04-09 01-01-33
+content:
+500 Error
+time:2022-04-09 01-01-48
+content:
+registered student login
